@@ -176,7 +176,7 @@ namespace MetroFramework
 
         #region Font Resolver
 
-        internal interface IMetroFontResolver
+        public interface IMetroFontResolver
         {
             Font ResolveFont(string familyName, float emSize, FontStyle fontStyle, GraphicsUnit unit);
         }

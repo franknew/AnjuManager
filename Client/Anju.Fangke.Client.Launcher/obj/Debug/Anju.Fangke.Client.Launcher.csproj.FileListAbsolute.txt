@@ -7,3 +7,5 @@ F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\bin\Debug\SOAFram
 F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\bin\Debug\SOAFramework.Library.Json.dll
 F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.exe
 F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.pdb
+F:\Source Codes\AnjuManager\Client\bin\Anju.Fangke.Client.Launcher.exe
+F:\Source Codes\AnjuManager\Client\bin\Anju.Fangke.Client.Launcher.pdb

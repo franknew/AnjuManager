@@ -29,13 +29,13 @@ namespace MetroFramework.Design.Controls
 {
     internal class MetroLabelDesigner : ControlDesigner
     {
-        public override SelectionRules SelectionRules
-        {
-            get
-            {
-                return base.SelectionRules;
-            }
-        }
+        //public override SelectionRules SelectionRules
+        //{
+        //    get
+        //    {
+        //        return base.SelectionRules;
+        //    }
+        //}
 
         protected override void PreFilterProperties(IDictionary properties)
         {

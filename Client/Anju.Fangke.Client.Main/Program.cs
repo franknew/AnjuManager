@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Anju.Fangke.Client.Launcher
+namespace Anju.Fangke.Client.Main
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace Anju.Fangke.Client.Launcher
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Laucher());
+            Application.Run(new Startup());
         }
     }
 }

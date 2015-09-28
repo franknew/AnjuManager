@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 [assembly: CLSCompliant(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ae7e4b21-8ea9-4055-b81a-32f1ec123953")]
+[assembly: Guid("639b45e3-11f9-4e52-8479-7b6f20a5ce98")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -36,16 +36,15 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion(MetroFrameworkDesignAssembly.Version)]
+[assembly: AssemblyFileVersion(MetroFrameworkDesignAssembly.Version)]
 
 internal static class MetroFrameworkDesignAssembly
 {
-    internal const string Title = "MetroFramework.Design.dll";
-    // JT: Use same information as main MetroFramework.dll
-    //internal const string Version = MetroFrameworkAssembly.Version;
-    internal const string Description = "";
-    internal const string Copyright = "";
-    internal const string Company = "";
-    internal const string Product = "";
+    internal const string Title = "MetroFramework.Fonts.dll";
+    internal const string Version = MetroFrameworkAssembly.Version;
+    internal const string Description = MetroFrameworkAssembly.Description;
+    internal const string Copyright = MetroFrameworkAssembly.Copyright;
+    internal const string Company = MetroFrameworkAssembly.Company;
+    internal const string Product = MetroFrameworkAssembly.Product;
 }

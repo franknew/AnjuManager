@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Anju.Fangke.Client.Controls;
+using Anju.Fangke.Client.Controls.Form;
 
-namespace Anju.Fangke.Client.Launcher
+namespace Anju.Fangke.Client.Main
 {
-    public partial class Form1 : Form
+    public partial class Startup : ContainerForm
     {
-        public Form1()
+        public Startup()
         {
             InitializeComponent();
         }
