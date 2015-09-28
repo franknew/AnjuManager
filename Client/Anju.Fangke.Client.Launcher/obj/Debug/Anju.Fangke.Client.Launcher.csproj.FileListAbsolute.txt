@@ -1,0 +1,9 @@
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.csprojResolveAssemblyReference.cache
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.Properties.Resources.resources
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.csproj.GenerateResource.Cache
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\bin\Debug\Anju.Fangke.Client.Launcher.exe
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\bin\Debug\Anju.Fangke.Client.Launcher.pdb
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\bin\Debug\SOAFramework.Library.Http.dll
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\bin\Debug\SOAFramework.Library.Json.dll
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.exe
+F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.pdb
