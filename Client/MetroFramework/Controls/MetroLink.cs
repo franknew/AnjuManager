@@ -33,7 +33,8 @@ namespace MetroFramework.Controls
     using MetroFramework.Drawing;
     using MetroFramework.Interfaces;
 
-    [Designer("MetroFramework.Design.Controls.MetroLinkDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    //[Designer("MetroFramework.Design.Controls.MetroLinkDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
     [ToolboxBitmap(typeof(LinkLabel))]
     [DefaultEvent("Click")]
     public class MetroLink : Button, IMetroControl

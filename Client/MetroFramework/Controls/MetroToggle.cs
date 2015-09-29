@@ -34,7 +34,8 @@ namespace MetroFramework.Controls
     using MetroFramework.Interfaces;
     using MetroFramework.Localization;
 
-    [Designer("MetroFramework.Design.Controls.MetroToggleDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    //[Designer("MetroFramework.Design.Controls.MetroToggleDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
     [ToolboxBitmap(typeof(CheckBox))]
     public class MetroToggle : CheckBox, IMetroControl
     {

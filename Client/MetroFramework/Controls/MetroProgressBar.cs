@@ -33,7 +33,8 @@ namespace MetroFramework.Controls
     using MetroFramework.Drawing;
     using MetroFramework.Interfaces;
 
-    [Designer("MetroFramework.Design.Controls.MetroProgressBarDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    //[Designer("MetroFramework.Design.Controls.MetroProgressBarDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
     [ToolboxBitmap(typeof(ProgressBar))]
     public class MetroProgressBar : ProgressBar, IMetroControl
     {

@@ -31,6 +31,7 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTrackBar1 = new MetroFramework.Controls.MetroTrackBar();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -60,11 +61,21 @@
             this.metroLabel2.TabIndex = 3;
             this.metroLabel2.Text = "metroLabel2";
             // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(436, 241);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(90, 26);
+            this.metroButton1.TabIndex = 4;
+            this.metroButton1.Text = "metroButton1";
+            this.metroButton1.UseSelectable = true;
+            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1351, 793);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroTrackBar1);
             this.Controls.Add(this.metroLabel1);
@@ -73,6 +84,7 @@
             this.Controls.SetChildIndex(this.metroLabel1, 0);
             this.Controls.SetChildIndex(this.metroTrackBar1, 0);
             this.Controls.SetChildIndex(this.metroLabel2, 0);
+            this.Controls.SetChildIndex(this.metroButton1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,6 +95,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTrackBar metroTrackBar1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }
 

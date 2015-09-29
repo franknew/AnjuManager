@@ -45,6 +45,7 @@ namespace MetroFramework.Controls
     #endregion
 
     //[Designer("MetroFramework.Design.Controls.MetroLabelDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    [Designer("MetroFramework.Design.Controls.MetroLabelDesigner")]
     [ToolboxBitmap(typeof(Label))]
     public class MetroLabel : Label, IMetroControl
     {

@@ -49,7 +49,8 @@ namespace MetroFramework.Controls
     #region MetroTabPageCollection
 
     [ToolboxItem(false)]
-    [Editor("MetroFramework.Design.MetroTabPageCollectionEditor, " + AssemblyRef.MetroFrameworkDesignSN, typeof(UITypeEditor))]
+    //[Editor("MetroFramework.Design.MetroTabPageCollectionEditor, " + AssemblyRef.MetroFrameworkDesignSN, typeof(UITypeEditor))]
+    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner", typeof(UITypeEditor))]
     public class MetroTabPageCollection : TabControl.TabPageCollection
     {
         public MetroTabPageCollection(MetroTabControl owner) : base(owner)
