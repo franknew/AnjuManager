@@ -7,6 +7,5 @@ namespace Anju.Fangke.Server.BLL
 {
     public class LoginBLL
     {
-        return null;
     }
 }
