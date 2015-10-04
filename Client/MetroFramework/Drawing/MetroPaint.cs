@@ -42,7 +42,7 @@ namespace MetroFramework.Drawing
         }
     }
 
-    public sealed class MetroPaint
+    public class MetroPaint
     {
         public sealed class BorderColor
         {

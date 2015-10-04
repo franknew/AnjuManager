@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 
-namespace Anju.Fangke.Client.Controls.Form
+namespace SOAFramework.Client.Forms
 {
     public partial class BaseForm : MetroForm
     {

@@ -43,6 +43,7 @@ using System.Security;
 
 [assembly: InternalsVisibleTo(MetroFramework.AssemblyRef.MetroFrameworkDesignIVT)]
 [assembly: InternalsVisibleTo(MetroFramework.AssemblyRef.MetroFrameworkFontsIVT)]
+[assembly: SecurityRules(SecurityRuleSet.Level1)]
 
 internal static class MetroFrameworkAssembly
 {

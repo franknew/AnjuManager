@@ -33,7 +33,7 @@ namespace MetroFramework.Controls
     using MetroFramework.Interfaces;
 
     //[Designer("MetroFramework.Design.Controls.MetroProgressSpinnerDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
-    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
+    [Designer("MetroFramework.Design.Controls.MetroProgressSpinnerDesigner")]
     [ToolboxBitmap(typeof(ProgressBar))]
     public class MetroProgressSpinner : Control, IMetroControl
     {

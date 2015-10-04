@@ -48,6 +48,7 @@
     <Compile Include="Components\MetroStyleManagerDesigner.cs" />
     <Compile Include="Controls\MetroButtonDesigner.cs" />
     <Compile Include="Controls\MetroCheckBoxDesigner.cs" />
+    <Compile Include="Controls\MetroLabelDesigner.cs" />
     <Compile Include="Controls\MetroLinkDesigner.cs" />
     <Compile Include="Controls\MetroPanelDesigner.cs" />
     <Compile Include="Controls\MetroProgressBarDesigner.cs" />

@@ -64,6 +64,7 @@ namespace MetroFramework.Forms
 
     #endregion
 
+    
     public class MetroForm : Form, IMetroForm, IDisposable
     {
         #region Interface
@@ -141,6 +142,9 @@ namespace MetroFramework.Forms
             get { return isMovable; }
             set { isMovable = value; }
         }
+
+        [Browsable(false)]
+        public bool Disposed { get; set; }
 
         public new Padding Padding
         {
@@ -319,7 +323,10 @@ namespace MetroFramework.Forms
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
+            if (Disposed)
+            {
+                return;
+            }
             if (DesignMode) return;
 
             switch (StartPosition)
@@ -573,7 +580,7 @@ namespace MetroFramework.Forms
                     newButton.Text = "2";
             }
 
-            newButton.Style = Style;
+            //newButton.Style = Style;
             newButton.Theme = Theme;
             newButton.Tag = button;
             newButton.Size = new Size(25, 22);
@@ -656,7 +663,7 @@ namespace MetroFramework.Forms
             Refresh();
         }
 
-        private class MetroFormButton : Button, IMetroControl
+        public class MetroFormButton : Button, IMetroControl
         {
             #region Interface
 
@@ -820,7 +827,8 @@ namespace MetroFramework.Forms
                     if (Parent is IMetroForm)
                     {
                         _Theme = ((IMetroForm)Parent).Theme;
-                        backColor = MetroPaint.BackColor.Form(_Theme);
+                        //backColor = MetroPaint.BackColor.Form(_Theme);
+                        backColor = MetroPaint.GetStyleColor(Style);
                     }
                     else if (Parent is IMetroControl)
                     {

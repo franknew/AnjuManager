@@ -35,7 +35,7 @@ namespace MetroFramework.Controls
     using MetroFramework.Interfaces;
 
     //[Designer("MetroFramework.Design.Controls.MetroRadioButtonDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
-    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
+    [Designer("MetroFramework.Design.Controls.MetroRadioButtonDesigner")]
     [ToolboxBitmap(typeof(RadioButton))]
     public class MetroRadioButton : RadioButton, IMetroControl
     {

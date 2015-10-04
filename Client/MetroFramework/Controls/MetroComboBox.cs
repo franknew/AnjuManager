@@ -33,7 +33,7 @@ namespace MetroFramework.Controls
     using MetroFramework.Drawing;
     using MetroFramework.Interfaces;
 
-    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
+    [Designer("MetroFramework.Design.Controls.MetroComboBoxDesigner")]
     [ToolboxBitmap(typeof(ComboBox))]
     public class MetroComboBox : ComboBox, IMetroControl
     {

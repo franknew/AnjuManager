@@ -50,7 +50,7 @@ namespace MetroFramework.Controls
 
     [ToolboxItem(false)]
     //[Editor("MetroFramework.Design.MetroTabPageCollectionEditor, " + AssemblyRef.MetroFrameworkDesignSN, typeof(UITypeEditor))]
-    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner", typeof(UITypeEditor))]
+    [Designer("MetroFramework.Design.Controls.MetroTabPageCollectionEditor", typeof(UITypeEditor))]
     public class MetroTabPageCollection : TabControl.TabPageCollection
     {
         public MetroTabPageCollection(MetroTabControl owner) : base(owner)
@@ -59,7 +59,8 @@ namespace MetroFramework.Controls
 
     #endregion
 
-    [Designer("MetroFramework.Design.Controls.MetroTabControlDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    //[Designer("MetroFramework.Design.Controls.MetroTabControlDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    [Designer("MetroFramework.Design.Controls.MetroTabControlDesigner")]
     [ToolboxBitmap(typeof(TabControl))]
     public class MetroTabControl : TabControl, IMetroControl
     {
@@ -199,7 +200,7 @@ namespace MetroFramework.Controls
         private SubClass scUpDown = null;
         private bool bUpDown = false;
 
-        private const int TabBottomBorderHeight = 3;
+        protected const int TabBottomBorderHeight = 3;
 
         private MetroTabControlSize metroLabelSize = MetroTabControlSize.Medium;
         [DefaultValue(MetroTabControlSize.Medium)]
@@ -349,7 +350,7 @@ namespace MetroFramework.Controls
             OnCustomPaintForeground(new MetroPaintEventArgs(Color.Empty, Color.Empty, e.Graphics));
         }
 
-        private void DrawTabBottomBorder(int index, Graphics graphics)
+        protected virtual void DrawTabBottomBorder(int index, Graphics graphics)
         {
             using (Brush bgBrush = new SolidBrush(MetroPaint.BorderColor.TabControl.Normal(Theme)))
             {
@@ -358,7 +359,7 @@ namespace MetroFramework.Controls
             }
         }
 
-        private void DrawTabSelected(int index, Graphics graphics)
+        protected virtual void DrawTabSelected(int index, Graphics graphics)
         {
             using (Brush selectionBrush = new SolidBrush(MetroPaint.GetStyleColor(Style)))
             {
@@ -382,7 +383,7 @@ namespace MetroFramework.Controls
             return preferredSize;
         }
 
-        private void DrawTab(int index, Graphics graphics)
+        protected virtual void DrawTab(int index, Graphics graphics)
         {
             Color foreColor;
             Color backColor = BackColor;
@@ -510,7 +511,7 @@ namespace MetroFramework.Controls
             }
         }
 
-        private new Rectangle GetTabRect(int index)
+        protected new Rectangle GetTabRect(int index)
         {
             if (index < 0)
                 return new Rectangle();
@@ -577,10 +578,10 @@ namespace MetroFramework.Controls
         //send font change to properly resize tab page header rects
         //http://www.codeproject.com/Articles/13305/Painting-Your-Own-Tabs?msg=2707590#xx2707590xx
         [DllImport("user32.dll")]
-        private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+        protected static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
-        private const int WM_SETFONT = 0x30;
-        private const int WM_FONTCHANGE = 0x1d;
+        protected const int WM_SETFONT = 0x30;
+        protected const int WM_FONTCHANGE = 0x1d;
 
         [SecuritySafeCritical]
         protected override void OnFontChanged(EventArgs e)

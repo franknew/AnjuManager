@@ -34,7 +34,7 @@ namespace MetroFramework.Controls
     using MetroFramework.Interfaces;
 
     //[Designer("MetroFramework.Design.Controls.MetroTextBoxDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
-    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
+    [Designer("MetroFramework.Design.Controls.MetroTextBoxDesigner")]
     public class MetroTextBox : Control, IMetroControl
     {
         #region Interface

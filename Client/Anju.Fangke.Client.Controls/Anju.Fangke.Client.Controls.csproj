@@ -7,7 +7,7 @@
     <ProjectGuid>{C8E5AEBE-7431-444A-8342-9164BE7B06C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Anju.Fangke.Client.Controls</RootNamespace>
+    <RootNamespace>SOAFramework.Client.Controls</RootNamespace>
     <AssemblyName>Anju.Fangke.Client.Controls</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,11 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Button\Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ChildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ChildForm.Designer.cs">
+      <DependentUpon>ChildForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\ContainerForm.cs">
       <SubType>Form</SubType>
@@ -54,8 +63,19 @@
     <Compile Include="Form\ContainerForm.Designer.cs">
       <DependentUpon>ContainerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Label\Label.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Paint\Paint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TabControl\AnjuTabControl.cs">
+    <Compile Include="TabControl\TabControl.cs" />
+    <Compile Include="TabControl\TabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabControl\TabControlDesigner.cs" />
+    <Compile Include="TabControl\TabPageCollectionEditor.cs" />
+    <Compile Include="TabControl\TabPageDesigner.cs" />
+    <Compile Include="TextBox\TextBox.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

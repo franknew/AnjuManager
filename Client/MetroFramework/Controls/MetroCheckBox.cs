@@ -34,7 +34,7 @@ namespace MetroFramework.Controls
     using MetroFramework.Interfaces;
 
     //[Designer("MetroFramework.Design.Controls.MetroCheckBoxDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
-    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
+    [Designer("MetroFramework.Design.Controls.MetroCheckBoxDesigner")]
     [ToolboxBitmap(typeof(CheckBox))]
     public class MetroCheckBox : CheckBox, IMetroControl
     {

@@ -1,4 +1,4 @@
-﻿namespace Anju.Fangke.Client.Controls.Form
+﻿namespace SOAFramework.Client.Forms
 {
     partial class ContainerForm
     {
@@ -28,33 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1192, 131);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ContainerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 699);
-            this.Controls.Add(this.button1);
             this.IsMdiContainer = true;
             this.Name = "ContainerForm";
-            this.Text = "ContainerForm";
+            this.Style = MetroFramework.MetroColorStyle.Default;
+            this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.TransparencyKey = System.Drawing.Color.Empty;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
     }
 }

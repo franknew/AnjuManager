@@ -37,7 +37,7 @@ namespace MetroFramework.Controls
 
     [ToolboxItem(false)]
     //[Designer("MetroFramework.Design.Controls.MetroTabPageDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
-    [Designer("MetroFramework.Design.Controls.MetroButtonDesigner")]
+    [Designer("MetroFramework.Design.Controls.MetroTabPageDesigner")]
     public class MetroTabPage : TabPage, IMetroControl
     {
         #region Interface

@@ -45,7 +45,8 @@ namespace MetroFramework.Controls
 
     #endregion
 
-    [Designer("MetroFramework.Design.Controls.MetroScrollBarDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    //[Designer("MetroFramework.Design.Controls.MetroScrollBarDesigner, " + AssemblyRef.MetroFrameworkDesignSN)]
+    [Designer("MetroFramework.Design.Controls.MetroScrollBarDesigner")]
     [DefaultEvent("Scroll")]
     [DefaultProperty("Value")]
     public class MetroScrollBar : Control, IMetroControl

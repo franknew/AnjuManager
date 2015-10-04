@@ -9,3 +9,10 @@ F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fa
 F:\Source Codes\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.pdb
 F:\Source Codes\AnjuManager\Client\bin\Anju.Fangke.Client.Launcher.exe
 F:\Source Codes\AnjuManager\Client\bin\Anju.Fangke.Client.Launcher.pdb
+E:\AppLib\AnjuManager\Client\bin\Anju.Fangke.Client.Launcher.exe
+E:\AppLib\AnjuManager\Client\bin\Anju.Fangke.Client.Launcher.pdb
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.csprojResolveAssemblyReference.cache
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.Properties.Resources.resources
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.csproj.GenerateResource.Cache
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.exe
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.pdb

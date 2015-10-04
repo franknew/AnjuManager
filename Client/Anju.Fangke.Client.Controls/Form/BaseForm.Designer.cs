@@ -1,4 +1,4 @@
-﻿namespace Anju.Fangke.Client.Controls.Form
+﻿namespace SOAFramework.Client.Forms
 {
     partial class BaseForm
     {
