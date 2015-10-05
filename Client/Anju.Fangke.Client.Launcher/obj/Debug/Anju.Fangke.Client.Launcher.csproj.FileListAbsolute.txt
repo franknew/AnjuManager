@@ -16,3 +16,7 @@ E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.C
 E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.csproj.GenerateResource.Cache
 E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.exe
 E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.pdb
+E:\AppLib\AnjuManager\Client\bin\Anju.Fangke.Client.Launcher.exe.config
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.Laucher.resources
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Interop.IWshRuntimeLibrary.dll
+E:\AppLib\AnjuManager\Client\Anju.Fangke.Client.Launcher\obj\Debug\Anju.Fangke.Client.Launcher.csproj.ResolveComReference.cache

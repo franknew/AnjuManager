@@ -151,7 +151,10 @@ namespace MetroFramework.Forms
             get { return base.Padding; }
             set
             {
-                value.Top = Math.Max(value.Top, 30);
+                if (displayHeader)
+                {
+                    value.Top = Math.Max(value.Top, 30);
+                }
                 base.Padding = value;
             }
         }
@@ -168,6 +171,8 @@ namespace MetroFramework.Forms
             get { return isResizable; }
             set { isResizable = value; }
         }
+
+        private bool displayHeader = true;
 
         private MetroFormShadowType shadowType = MetroFormShadowType.None;
         [Category(MetroDefaults.PropertyCategory.Appearance)]
@@ -240,12 +245,6 @@ namespace MetroFramework.Forms
 
             e.Graphics.Clear(backColor);
 
-            using (SolidBrush b = MetroPaint.GetStyleBrush(Style))
-            {
-                Rectangle topRect = new Rectangle(0, 0, Width, 32);
-                e.Graphics.FillRectangle(b, topRect);
-            }
-
             if (BorderStyle != MetroFormBorderStyle.None)
             {   
                 using (Pen p = MetroPaint.GetStylePen(Style))
@@ -260,11 +259,21 @@ namespace MetroFramework.Forms
                 }
             }
 
-            SizeF stringSize = e.Graphics.MeasureString(Text, MetroFonts.Title);
+            if (displayHeader)
+            {
 
-            Rectangle bounds = new Rectangle((ClientRectangle.Width / 2) - ((int)stringSize.Width / 2), 4, ClientRectangle.Width - 2 * 20, 24);
-            TextFormatFlags flags = TextFormatFlags.EndEllipsis | GetTextFormatFlags();
-            TextRenderer.DrawText(e.Graphics, Text, MetroFonts.Title, bounds, foreColor, flags);
+                using (SolidBrush b = MetroPaint.GetStyleBrush(Style))
+                {
+                    Rectangle topRect = new Rectangle(0, 0, Width, 32);
+                    e.Graphics.FillRectangle(b, topRect);
+                }
+
+                SizeF stringSize = e.Graphics.MeasureString(Text, MetroFonts.Title);
+
+                Rectangle bounds = new Rectangle((ClientRectangle.Width / 2) - ((int)stringSize.Width / 2), 4, ClientRectangle.Width - 2 * 20, 24);
+                TextFormatFlags flags = TextFormatFlags.EndEllipsis | GetTextFormatFlags();
+                TextRenderer.DrawText(e.Graphics, Text, MetroFonts.Title, bounds, foreColor, flags);
+            }
 
             if (Resizable && (SizeGripStyle == SizeGripStyle.Auto || SizeGripStyle == SizeGripStyle.Show))
             {
@@ -926,6 +935,20 @@ namespace MetroFramework.Forms
                 if (ShadowType == MetroFormShadowType.SystemShadow)
                     cp.ClassStyle |= CS_DROPSHADOW;
                 return cp;
+            }
+        }
+
+        [DefaultValue(true)]
+        public bool DisplayHeader
+        {
+            get
+            {
+                return displayHeader;
+            }
+
+            set
+            {
+                displayHeader = value;
             }
         }
 

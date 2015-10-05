@@ -4,13 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB83D855-3273-43AF-AEFE-E057F1035234}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{B09C10D0-6C53-41FA-8EF0-F04075235BEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Anju.Fangke.Client.Main</RootNamespace>
-    <AssemblyName>Anju.Fangke.Client.Main</AssemblyName>
+    <RootNamespace>Anju.Fangke.Client.SDK</RootNamespace>
+    <AssemblyName>Anju.Fangke.Client.SDK</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Anju.Fangke.Client.SDK.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,9 +34,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Anju.Fangke.Server.Entity">
       <HintPath>..\CommonDll\Anju.Fangke.Server.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Http, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDll\SOAFramework.Library.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDll\SOAFramework.Library.Json.dll</HintPath>
     </Reference>
     <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -47,27 +61,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form\Startup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\Startup.Designer.cs">
-      <DependentUpon>Startup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Request\FangkeRequest.cs" />
+    <Compile Include="Request\Login\LoginRequest.cs" />
+    <Compile Include="Response\Login\LoginResponse.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,11 +78,8 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Form\Startup.resx">
-      <DependentUpon>Startup.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,30 +91,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Anju.Fangke.Client.AppData\Anju.Fangke.Client.AppData.csproj">
-      <Project>{566aeeed-4c41-4dc7-80a3-a7cac06007f4}</Project>
-      <Name>Anju.Fangke.Client.AppData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Anju.Fangke.Client.Controls\Anju.Fangke.Client.Controls.csproj">
-      <Project>{c8e5aebe-7431-444a-8342-9164be7b06c2}</Project>
-      <Name>Anju.Fangke.Client.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Anju.Fangke.Client.SDK\Anju.Fangke.Client.SDK.csproj">
-      <Project>{b09c10d0-6c53-41fa-8ef0-f04075235beb}</Project>
-      <Name>Anju.Fangke.Client.SDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MetroFramework.Design\MetroFramework.Design.csproj">
-      <Project>{1c0fdd58-8c81-4624-8e39-d0c14f375def}</Project>
-      <Name>MetroFramework.Design</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MetroFramework.Fonts\MetroFramework.Fonts.csproj">
-      <Project>{bcda5068-5737-4939-b480-107c50d5cc12}</Project>
-      <Name>MetroFramework.Fonts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MetroFramework\MetroFramework.csproj">
-      <Project>{028f8695-f2d0-4a96-8f48-feeab758c717}</Project>
-      <Name>MetroFramework</Name>
-    </ProjectReference>
+    <Folder Include="Entity\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

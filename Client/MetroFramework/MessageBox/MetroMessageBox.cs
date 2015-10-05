@@ -10,7 +10,7 @@ namespace MetroFramework
     /// <summary>
     /// Metro-styled message notification.
     /// </summary>
-    public static class MetroMessageBox
+    public class MetroMessageBox
     {
         /// <summary>
         /// Shows a metro-styles message notification into the specified owner window.

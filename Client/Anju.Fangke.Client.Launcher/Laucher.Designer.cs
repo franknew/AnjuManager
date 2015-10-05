@@ -29,11 +29,44 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.progress = new System.Windows.Forms.ProgressBar();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // progress
+            // 
+            this.progress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progress.Location = new System.Drawing.Point(0, 0);
+            this.progress.Margin = new System.Windows.Forms.Padding(0);
+            this.progress.Name = "progress";
+            this.progress.Size = new System.Drawing.Size(473, 18);
+            this.progress.TabIndex = 0;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // Laucher
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(473, 18);
+            this.ControlBox = false;
+            this.Controls.Add(this.progress);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "Laucher";
+            this.Opacity = 0.9D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "正在验证程序...";
+            this.Load += new System.EventHandler(this.Laucher_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ProgressBar progress;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

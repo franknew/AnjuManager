@@ -15,6 +15,8 @@ namespace SOAFramework.Client.Forms
         public BaseForm()
         {
             InitializeComponent();
+            this.BorderStyle = MetroFormBorderStyle.FixedSingle;
+            this.ShadowType = MetroFormShadowType.AeroShadow;
         }
     }
 }

@@ -37,5 +37,14 @@ namespace Anju.Fangke.Client.Main
             lblTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
+        public void SetInfo(string username)
+        {
+            lblName.Text = username;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddMdiChild("Anju.Fangke.Client.Forms.UserManagement.dll", "Anju.Fangke.Client.Forms.UserManagement");
+        }
     }
 }

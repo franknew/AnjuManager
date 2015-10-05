@@ -41,10 +41,11 @@ namespace Anju.Fangke.Client.Main
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ssStatus = new System.Windows.Forms.StatusStrip();
             this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timerNow = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timerNow = new System.Windows.Forms.Timer(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.ssStatus.SuspendLayout();
             this.SuspendLayout();
@@ -56,13 +57,14 @@ namespace Anju.Fangke.Client.Main
             this.系统ToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(1, 30);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1349, 28);
+            this.menu.Size = new System.Drawing.Size(1249, 28);
             this.menu.TabIndex = 3;
             this.menu.Text = "menuStrip1";
             // 
             // 系统ToolStripMenuItem
             // 
             this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
             this.退出ToolStripMenuItem});
             this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
             this.系统ToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
@@ -71,7 +73,7 @@ namespace Anju.Fangke.Client.Main
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.退出ToolStripMenuItem.Text = "退出";
             // 
             // tabMenu
@@ -81,7 +83,7 @@ namespace Anju.Fangke.Client.Main
             this.tabMenu.ItemSize = new System.Drawing.Size(54, 24);
             this.tabMenu.Location = new System.Drawing.Point(1, 58);
             this.tabMenu.Name = "tabMenu";
-            this.tabMenu.Size = new System.Drawing.Size(1349, 28);
+            this.tabMenu.Size = new System.Drawing.Size(1249, 28);
             this.tabMenu.TabIndex = 4;
             this.tabMenu.TabStop = false;
             this.tabMenu.UseSelectable = true;
@@ -95,7 +97,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage2.Name = "clientTabPage2";
             this.clientTabPage2.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage2.TabIndex = 0;
-            this.clientTabPage2.Text = "clientTabPage2      ";
+            this.clientTabPage2.Text = "clientTabPage2        ";
             this.clientTabPage2.VerticalScrollbarBarColor = true;
             this.clientTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage2.VerticalScrollbarSize = 10;
@@ -109,7 +111,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage3.Name = "clientTabPage3";
             this.clientTabPage3.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage3.TabIndex = 1;
-            this.clientTabPage3.Text = "clientTabPage3      ";
+            this.clientTabPage3.Text = "clientTabPage3        ";
             this.clientTabPage3.VerticalScrollbarBarColor = true;
             this.clientTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage3.VerticalScrollbarSize = 10;
@@ -123,7 +125,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage1.Name = "clientTabPage1";
             this.clientTabPage1.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage1.TabIndex = 0;
-            this.clientTabPage1.Text = "clientTabPage1          ";
+            this.clientTabPage1.Text = "clientTabPage1            ";
             this.clientTabPage1.VerticalScrollbarBarColor = true;
             this.clientTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage1.VerticalScrollbarSize = 10;
@@ -143,9 +145,9 @@ namespace Anju.Fangke.Client.Main
             this.toolStripStatusLabel1,
             this.lblName,
             this.toolStripStatusLabel2});
-            this.ssStatus.Location = new System.Drawing.Point(1, 763);
+            this.ssStatus.Location = new System.Drawing.Point(1, 380);
             this.ssStatus.Name = "ssStatus";
-            this.ssStatus.Size = new System.Drawing.Size(1349, 23);
+            this.ssStatus.Size = new System.Drawing.Size(1249, 23);
             this.ssStatus.TabIndex = 5;
             this.ssStatus.Text = "statusStrip1";
             // 
@@ -155,22 +157,17 @@ namespace Anju.Fangke.Client.Main
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(120, 18);
             // 
-            // lblName
-            // 
-            this.lblName.AutoSize = false;
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(100, 18);
-            // 
-            // timerNow
-            // 
-            this.timerNow.Interval = 1000;
-            this.timerNow.Tick += new System.EventHandler(this.timerNow_Tick);
-            // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(11, 18);
             this.toolStripStatusLabel1.Text = "|";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = false;
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(100, 18);
             // 
             // toolStripStatusLabel2
             // 
@@ -178,17 +175,31 @@ namespace Anju.Fangke.Client.Main
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(11, 18);
             this.toolStripStatusLabel2.Text = "|";
             // 
+            // timerNow
+            // 
+            this.timerNow.Interval = 1000;
+            this.timerNow.Tick += new System.EventHandler(this.timerNow_Tick);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 24);
+            this.toolStripMenuItem1.Text = "用户管理";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1351, 787);
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(1251, 404);
             this.Controls.Add(this.ssStatus);
             this.Controls.Add(this.tabMenu);
             this.Controls.Add(this.menu);
             this.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip = this.menu;
             this.Name = "Startup";
+            this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.Text = "房客易租管理系统";
             this.Load += new System.EventHandler(this.Startup_Load);
             this.Controls.SetChildIndex(this.menu, 0);
@@ -218,6 +229,7 @@ namespace Anju.Fangke.Client.Main
         private System.Windows.Forms.Timer timerNow;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

@@ -4,26 +4,25 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB83D855-3273-43AF-AEFE-E057F1035234}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{35574FFB-43C3-45FC-9B7E-63E916B915B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Anju.Fangke.Client.Main</RootNamespace>
-    <AssemblyName>Anju.Fangke.Client.Main</AssemblyName>
+    <RootNamespace>Anju.Fangke.Client.Forms.UserManagement</RootNamespace>
+    <AssemblyName>Anju.Fangke.Client.Forms.UserManagement</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>..\..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,90 +31,56 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Anju.Fangke.Server.Entity">
-      <HintPath>..\CommonDll\Anju.Fangke.Server.Entity.dll</HintPath>
-    </Reference>
-    <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CommonDll\SOAFramework.Service.SDK.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form\Login.cs">
+    <Compile Include="UserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Startup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\Startup.Designer.cs">
-      <DependentUpon>Startup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Form\Startup.resx">
-      <DependentUpon>Startup.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="App.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Anju.Fangke.Client.AppData\Anju.Fangke.Client.AppData.csproj">
+    <ProjectReference Include="..\..\..\Anju.Fangke.Client.AppData\Anju.Fangke.Client.AppData.csproj">
       <Project>{566aeeed-4c41-4dc7-80a3-a7cac06007f4}</Project>
       <Name>Anju.Fangke.Client.AppData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Anju.Fangke.Client.Controls\Anju.Fangke.Client.Controls.csproj">
+    <ProjectReference Include="..\..\..\Anju.Fangke.Client.Controls\Anju.Fangke.Client.Controls.csproj">
       <Project>{c8e5aebe-7431-444a-8342-9164be7b06c2}</Project>
       <Name>Anju.Fangke.Client.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Anju.Fangke.Client.SDK\Anju.Fangke.Client.SDK.csproj">
+    <ProjectReference Include="..\..\..\Anju.Fangke.Client.SDK\Anju.Fangke.Client.SDK.csproj">
       <Project>{b09c10d0-6c53-41fa-8ef0-f04075235beb}</Project>
       <Name>Anju.Fangke.Client.SDK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MetroFramework.Design\MetroFramework.Design.csproj">
+    <ProjectReference Include="..\..\..\MetroFramework.Design\MetroFramework.Design.csproj">
       <Project>{1c0fdd58-8c81-4624-8e39-d0c14f375def}</Project>
       <Name>MetroFramework.Design</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MetroFramework.Fonts\MetroFramework.Fonts.csproj">
+    <ProjectReference Include="..\..\..\MetroFramework.Fonts\MetroFramework.Fonts.csproj">
       <Project>{bcda5068-5737-4939-b480-107c50d5cc12}</Project>
       <Name>MetroFramework.Fonts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MetroFramework\MetroFramework.csproj">
+    <ProjectReference Include="..\..\..\MetroFramework\MetroFramework.csproj">
       <Project>{028f8695-f2d0-4a96-8f48-feeab758c717}</Project>
       <Name>MetroFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
