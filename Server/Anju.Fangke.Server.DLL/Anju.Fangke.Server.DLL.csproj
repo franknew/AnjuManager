@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SOAFramework.Library.DAL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,11 +52,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="sql.sql" />
+    <Compile Include="Dao\ActionDao.cs" />
+    <Compile Include="Dao\LogonHistoryDao.cs" />
+    <Compile Include="Dao\MenuDao.cs" />
+    <Compile Include="Dao\Menu_RoleDao.cs" />
+    <Compile Include="Dao\ModuleDao.cs" />
+    <Compile Include="Dao\RoleDao.cs" />
+    <Compile Include="Dao\Role_Module_ActionDao.cs" />
+    <Compile Include="Dao\UserDao.cs" />
+    <Compile Include="Dao\UserInfoDao.cs" />
+    <Compile Include="Dao\User_RoleDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="SqlMapping\Action.xml" />
+    <Content Include="SqlMapping\LogonHistory.xml" />
+    <Content Include="SqlMapping\Menu.xml" />
+    <Content Include="SqlMapping\Menu_Role.xml" />
+    <Content Include="SqlMapping\Module.xml" />
+    <Content Include="SqlMapping\Role.xml" />
+    <Content Include="SqlMapping\Role_Module_Action.xml" />
+    <Content Include="SqlMapping\User.xml" />
+    <Content Include="SqlMapping\UserInfo.xml" />
+    <Content Include="SqlMapping\User_Role.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dao\" />
-    <Folder Include="SqlMapping\" />
+    <ProjectReference Include="..\Anju.Fangke.Server.Entity\Anju.Fangke.Server.Entity.csproj">
+      <Project>{d8233c0a-013b-49ed-8db6-b0f889c25c71}</Project>
+      <Name>Anju.Fangke.Server.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Anju.Fangke.Server.Entity.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,15 +43,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Action.cs" />
+    <Compile Include="Entities\FileVersion.cs" />
+    <Compile Include="Entities\LogonHistory.cs" />
+    <Compile Include="Entities\Menu.cs" />
+    <Compile Include="Entities\Menu_Role.cs" />
+    <Compile Include="Entities\Module.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\Role_Module_Action.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserFullInfo.cs" />
+    <Compile Include="Entities\UserInfo.cs" />
+    <Compile Include="Entities\User_Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryForm\ActionQueryForm.cs" />
+    <Compile Include="QueryForm\LogonHistoryQueryForm.cs" />
+    <Compile Include="QueryForm\MenuQueryForm.cs" />
+    <Compile Include="QueryForm\Menu_RoleQueryForm.cs" />
+    <Compile Include="QueryForm\ModuleQueryForm.cs" />
+    <Compile Include="QueryForm\RoleQueryForm.cs" />
+    <Compile Include="QueryForm\Role_Module_ActionQueryForm.cs" />
+    <Compile Include="QueryForm\UserInfoQueryForm.cs" />
+    <Compile Include="QueryForm\UserQueryForm.cs" />
+    <Compile Include="QueryForm\User_RoleQueryForm.cs" />
+    <Compile Include="ResultForm\LoginResultForm.cs" />
+    <Compile Include="UpdateForm\ActionUpdateForm.cs" />
+    <Compile Include="UpdateForm\LogonHistoryUpdateForm.cs" />
+    <Compile Include="UpdateForm\MenuUpdateForm.cs" />
+    <Compile Include="UpdateForm\Menu_RoleUpdateForm.cs" />
+    <Compile Include="UpdateForm\ModuleUpdateForm.cs" />
+    <Compile Include="UpdateForm\RoleUpdateForm.cs" />
+    <Compile Include="UpdateForm\Role_Module_ActionUpdateForm.cs" />
+    <Compile Include="UpdateForm\UserInfoUpdateForm.cs" />
+    <Compile Include="UpdateForm\UserUpdateForm.cs" />
+    <Compile Include="UpdateForm\User_RoleUpdateForm.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="QueryForm\" />
-    <Folder Include="ResultForm\" />
     <Folder Include="ServiceForm\" />
-    <Folder Include="UpdateForm\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

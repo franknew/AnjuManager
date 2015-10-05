@@ -14,6 +14,7 @@ namespace Anju.Fangke.Server.Api
     {
         public override bool OnActionExecuting(ActionContext context)
         {
+            int result = 0;
             LoginBLL logonbll = new LoginBLL();
             //验证没有token
             if (!context.Parameters.ContainsKey("token") || context.Parameters["token"] == null)

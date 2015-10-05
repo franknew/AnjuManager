@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anju.Fangke.Server.DLL", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anju.Fangke.Server.Entity", "Anju.Fangke.Server.Entity\Anju.Fangke.Server.Entity.csproj", "{D8233C0A-013B-49ED-8DB6-B0F889C25C71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformTest", "WinformTest\WinformTest.csproj", "{13487696-FC63-4588-A24B-E027BD777E8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D8233C0A-013B-49ED-8DB6-B0F889C25C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8233C0A-013B-49ED-8DB6-B0F889C25C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8233C0A-013B-49ED-8DB6-B0F889C25C71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13487696-FC63-4588-A24B-E027BD777E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13487696-FC63-4588-A24B-E027BD777E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13487696-FC63-4588-A24B-E027BD777E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13487696-FC63-4588-A24B-E027BD777E8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
