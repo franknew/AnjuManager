@@ -30,6 +30,7 @@ namespace Anju.Fangke.Client.Main
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +39,14 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage3 = new SOAFramework.Client.Controls.ClientTabPage();
             this.clientTabPage1 = new SOAFramework.Client.Controls.ClientTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ssStatus = new System.Windows.Forms.StatusStrip();
+            this.lblTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timerNow = new System.Windows.Forms.Timer(this.components);
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menu.SuspendLayout();
+            this.ssStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
@@ -75,6 +83,7 @@ namespace Anju.Fangke.Client.Main
             this.tabMenu.Name = "tabMenu";
             this.tabMenu.Size = new System.Drawing.Size(1349, 28);
             this.tabMenu.TabIndex = 4;
+            this.tabMenu.TabStop = false;
             this.tabMenu.UseSelectable = true;
             // 
             // clientTabPage2
@@ -86,7 +95,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage2.Name = "clientTabPage2";
             this.clientTabPage2.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage2.TabIndex = 0;
-            this.clientTabPage2.Text = "clientTabPage2    ";
+            this.clientTabPage2.Text = "clientTabPage2      ";
             this.clientTabPage2.VerticalScrollbarBarColor = true;
             this.clientTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage2.VerticalScrollbarSize = 10;
@@ -100,7 +109,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage3.Name = "clientTabPage3";
             this.clientTabPage3.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage3.TabIndex = 1;
-            this.clientTabPage3.Text = "clientTabPage3    ";
+            this.clientTabPage3.Text = "clientTabPage3      ";
             this.clientTabPage3.VerticalScrollbarBarColor = true;
             this.clientTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage3.VerticalScrollbarSize = 10;
@@ -114,7 +123,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage1.Name = "clientTabPage1";
             this.clientTabPage1.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage1.TabIndex = 0;
-            this.clientTabPage1.Text = "clientTabPage1        ";
+            this.clientTabPage1.Text = "clientTabPage1          ";
             this.clientTabPage1.VerticalScrollbarBarColor = true;
             this.clientTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage1.VerticalScrollbarSize = 10;
@@ -127,11 +136,54 @@ namespace Anju.Fangke.Client.Main
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             // 
+            // ssStatus
+            // 
+            this.ssStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblTime,
+            this.toolStripStatusLabel1,
+            this.lblName,
+            this.toolStripStatusLabel2});
+            this.ssStatus.Location = new System.Drawing.Point(1, 763);
+            this.ssStatus.Name = "ssStatus";
+            this.ssStatus.Size = new System.Drawing.Size(1349, 23);
+            this.ssStatus.TabIndex = 5;
+            this.ssStatus.Text = "statusStrip1";
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = false;
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(120, 18);
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = false;
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(100, 18);
+            // 
+            // timerNow
+            // 
+            this.timerNow.Interval = 1000;
+            this.timerNow.Tick += new System.EventHandler(this.timerNow_Tick);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(11, 18);
+            this.toolStripStatusLabel1.Text = "|";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(11, 18);
+            this.toolStripStatusLabel2.Text = "|";
+            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1351, 787);
+            this.Controls.Add(this.ssStatus);
             this.Controls.Add(this.tabMenu);
             this.Controls.Add(this.menu);
             this.Location = new System.Drawing.Point(0, 0);
@@ -141,8 +193,11 @@ namespace Anju.Fangke.Client.Main
             this.Load += new System.EventHandler(this.Startup_Load);
             this.Controls.SetChildIndex(this.menu, 0);
             this.Controls.SetChildIndex(this.tabMenu, 0);
+            this.Controls.SetChildIndex(this.ssStatus, 0);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.ssStatus.ResumeLayout(false);
+            this.ssStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,6 +212,12 @@ namespace Anju.Fangke.Client.Main
         private System.Windows.Forms.TabPage tabPage1;
         private ClientTabPage clientTabPage2;
         private ClientTabPage clientTabPage3;
+        private System.Windows.Forms.StatusStrip ssStatus;
+        private System.Windows.Forms.ToolStripStatusLabel lblTime;
+        private System.Windows.Forms.ToolStripStatusLabel lblName;
+        private System.Windows.Forms.Timer timerNow;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 

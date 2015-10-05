@@ -27,7 +27,16 @@ namespace Anju.Fangke.Client.Main
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            this.Owner.Show();
+            this.Close();
+        }
 
+        private void txbPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 using SOAFramework.Client.Forms;
 
 namespace Anju.Fangke.Client.Main
@@ -22,6 +23,19 @@ namespace Anju.Fangke.Client.Main
             this.Hide();
             Login form = new Login();
             form.ShowDialog(this);
+            SetTime();
+            timerNow.Start();
         }
+
+        private void timerNow_Tick(object sender, EventArgs e)
+        {
+            SetTime();
+        }
+
+        private void SetTime()
+        {
+            lblTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
     }
 }

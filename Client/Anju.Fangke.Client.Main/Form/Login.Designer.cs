@@ -75,7 +75,7 @@
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
             this.txbUserName.Size = new System.Drawing.Size(179, 23);
-            this.txbUserName.TabIndex = 3;
+            this.txbUserName.TabIndex = 1;
             this.txbUserName.UseSelectable = true;
             // 
             // txbPassword
@@ -88,15 +88,16 @@
             this.txbPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbPassword.SelectedText = "";
             this.txbPassword.Size = new System.Drawing.Size(179, 23);
-            this.txbPassword.TabIndex = 4;
+            this.txbPassword.TabIndex = 2;
             this.txbPassword.UseSelectable = true;
+            this.txbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPassword_KeyPress);
             // 
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(53, 243);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 5;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseSelectable = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -106,7 +107,7 @@
             this.btnClose.Location = new System.Drawing.Point(181, 243);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 6;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "退出";
             this.btnClose.UseSelectable = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -115,6 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(300, 300);
             this.ControlBox = false;
             this.Controls.Add(this.btnClose);
