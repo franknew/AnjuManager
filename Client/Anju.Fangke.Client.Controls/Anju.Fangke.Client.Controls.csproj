@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SOAFramework.Library.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDll\SOAFramework.Library.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDll\SOAFramework.Service.SDK.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -45,9 +53,18 @@
     <Compile Include="Button\Button.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ComboBox\ComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\ReflectionExtension.cs" />
+    <Compile Include="ControlCategory.cs" />
     <Compile Include="DataGridView\DataGrid.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DateTime\DateTimeComboPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enum.cs" />
     <Compile Include="Form\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +83,8 @@
     <Compile Include="Form\ContainerForm.Designer.cs">
       <DependentUpon>ContainerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IServiceBindable.cs" />
+    <Compile Include="Interface\IServiceSubmitable.cs" />
     <Compile Include="Label\Label.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -84,6 +103,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\ChildForm.resx">
+      <DependentUpon>ChildForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\ContainerForm.resx">
       <DependentUpon>ContainerForm.cs</DependentUpon>
     </EmbeddedResource>

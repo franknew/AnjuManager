@@ -14,6 +14,7 @@ namespace SOAFramework.Client.Forms
         public ChildForm()
         {
             InitializeComponent();
+            this.Padding = new Padding(5, 5, 5, 5);
         }
     }
 }

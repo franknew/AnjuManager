@@ -14,16 +14,16 @@ using System.ComponentModel;
 
 namespace SOAFramework.Client.Controls
 {
-    [Designer("SOAFramework.Client.Controls.ClientTabPageCollectionEditor", typeof(UITypeEditor))]
-    public class ClientTabPageCollection : TabControl.TabPageCollection
+    [Designer("SOAFramework.Client.Controls.TabPageCollectionEditor", typeof(UITypeEditor))]
+    public class TabPageCollection : TabControl.TabPageCollection
     {
-        public ClientTabPageCollection(ClientTabControl owner) : base(owner)
+        public TabPageCollection(TabControl owner) : base(owner)
         { }
     }
 
     [Designer("SOAFramework.Client.Controls.TabControlDesigner")]
     [ToolboxBitmap(typeof(TabControl))]
-    public class ClientTabControl : MetroTabControl
+    public class TabControl : MetroTabControl
     {
         protected int hoveredIndex = -1;
         protected int hoveredCloseButtonIndex = -1;

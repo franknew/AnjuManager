@@ -36,27 +36,27 @@ using MetroFramework.Controls;
 
 namespace SOAFramework.Client.Controls
 {
-    internal class ClientTabPageCollectionEditor : CollectionEditor
+    internal class TabPageCollectionEditor : CollectionEditor
     {
         protected override CollectionForm CreateCollectionForm()
         {
             var baseForm = base.CreateCollectionForm();
-            baseForm.Text = "ClientTabPage Collection Editor";
+            baseForm.Text = "SOAFramework Client TabPage Collection Editor";
             return baseForm;
         }
 
-        public ClientTabPageCollectionEditor(Type type)
+        public TabPageCollectionEditor(Type type)
             : base(type)
         { }
 
         protected override Type CreateCollectionItemType()
         {
-            return typeof(ClientTabPage);
+            return typeof(Controls.TabPage);
         }
 
         protected override Type[] CreateNewItemTypes()
         {
-            return new[] { typeof(ClientTabPage) };
+            return new[] { typeof(Controls.TabPage) };
         }
     }
 }

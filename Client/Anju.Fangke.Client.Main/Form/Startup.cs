@@ -18,13 +18,18 @@ namespace Anju.Fangke.Client.Main
             InitializeComponent();
         }
 
-        private void Startup_Load(object sender, EventArgs e)
+        public void ShowLogin()
         {
             this.Hide();
             Login form = new Login();
             form.ShowDialog(this);
             SetTime();
             timerNow.Start();
+        }
+
+        private void Startup_Load(object sender, EventArgs e)
+        {
+            ShowLogin();
         }
 
         private void timerNow_Tick(object sender, EventArgs e)

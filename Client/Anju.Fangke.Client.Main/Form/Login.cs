@@ -50,7 +50,7 @@ namespace Anju.Fangke.Client.Main
             }
             else
             {
-                ClientMessageBox.Show(this, response.ErrorMessage, "Error", MessageBoxButtons.YesNo);
+                SOAFramework.Client.Controls.MessageBox.Show(this, response.ErrorMessage, "Error", MessageBoxButtons.YesNo);
             }
         }
 

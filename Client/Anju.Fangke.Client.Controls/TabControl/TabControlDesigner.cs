@@ -62,7 +62,7 @@ namespace SOAFramework.Client.Controls
             {
                 if (designerVerbs.Count == 2)
                 {
-                    var myControl = (ClientTabControl)Control;
+                    var myControl = (Controls.TabControl)Control;
                     designerVerbs[1].Enabled = myControl.TabCount != 0;
                 }
                 return designerVerbs;
@@ -102,12 +102,12 @@ namespace SOAFramework.Client.Controls
         
         private void OnAddPage(Object sender, EventArgs e)
         {
-            var parentControl = (ClientTabControl) Control;
+            var parentControl = (Controls.TabControl) Control;
             var oldTabs = parentControl.Controls;
 
             RaiseComponentChanging(TypeDescriptor.GetProperties(parentControl)["TabPages"]);
 
-            var p = (ClientTabPage)(DesignerHost.CreateComponent(typeof(ClientTabPage)));
+            var p = (Controls.TabPage)(DesignerHost.CreateComponent(typeof(Controls.TabPage)));
             p.Text = p.Name;
             parentControl.TabPages.Add(p);
 
@@ -120,7 +120,7 @@ namespace SOAFramework.Client.Controls
 
         private void OnRemovePage(Object sender, EventArgs e)
         {
-            var parentControl = (ClientTabControl) Control;
+            var parentControl = (Controls.TabControl) Control;
             var oldTabs = parentControl.Controls;
 
             if (parentControl.SelectedIndex < 0)
@@ -145,7 +145,7 @@ namespace SOAFramework.Client.Controls
 
         private void SetVerbs()
         {
-            var parentControl = (ClientTabControl) Control;
+            var parentControl = (Controls.TabControl) Control;
 
             switch (parentControl.TabPages.Count)
             {

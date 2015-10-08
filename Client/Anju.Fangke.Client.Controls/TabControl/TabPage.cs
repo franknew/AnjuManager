@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SOAFramework.Client.Controls
 {
-    public class ClientTabPage : MetroTabPage
+    public class TabPage : MetroTabPage
     {
         public override string Text
         {
