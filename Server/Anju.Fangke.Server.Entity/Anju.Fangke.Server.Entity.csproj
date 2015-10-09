@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Entities\Action.cs" />
     <Compile Include="Entities\FileVersion.cs" />
+    <Compile Include="Entities\FullUser.cs" />
     <Compile Include="Entities\LogonHistory.cs" />
     <Compile Include="Entities\Menu.cs" />
     <Compile Include="Entities\Menu_Role.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Entities\User_Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryForm\ActionQueryForm.cs" />
+    <Compile Include="QueryForm\FullUserQueryForm.cs" />
     <Compile Include="QueryForm\LogonHistoryQueryForm.cs" />
     <Compile Include="QueryForm\MenuQueryForm.cs" />
     <Compile Include="QueryForm\Menu_RoleQueryForm.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="QueryForm\User_RoleQueryForm.cs" />
     <Compile Include="ResultForm\LoginResultForm.cs" />
     <Compile Include="UpdateForm\ActionUpdateForm.cs" />
+    <Compile Include="UpdateForm\FullUserUpdateForm.cs" />
     <Compile Include="UpdateForm\LogonHistoryUpdateForm.cs" />
     <Compile Include="UpdateForm\MenuUpdateForm.cs" />
     <Compile Include="UpdateForm\Menu_RoleUpdateForm.cs" />

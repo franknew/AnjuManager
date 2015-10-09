@@ -62,8 +62,10 @@
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Dao\UserInfoDao.cs" />
     <Compile Include="Dao\User_RoleDao.cs" />
+    <Compile Include="Dao_ex\UserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SqlMapping\Action.xml" />
+    <Content Include="SqlMapping\FullUser.xml" />
     <Content Include="SqlMapping\LogonHistory.xml" />
     <Content Include="SqlMapping\Menu.xml" />
     <Content Include="SqlMapping\Menu_Role.xml" />
