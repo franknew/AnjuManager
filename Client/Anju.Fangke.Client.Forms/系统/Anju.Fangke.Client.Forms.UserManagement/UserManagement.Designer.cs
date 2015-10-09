@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new SOAFramework.Client.Controls.Button();
             this.btnEdit = new SOAFramework.Client.Controls.Button();
@@ -38,6 +38,7 @@
             this.btnClose = new SOAFramework.Client.Controls.Button();
             this.btnSearch = new SOAFramework.Client.Controls.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbEnabled = new SOAFramework.Client.Controls.ComboBox();
             this.txbMobile = new SOAFramework.Client.Controls.TextBox();
             this.txbName = new SOAFramework.Client.Controls.TextBox();
             this.txbId = new SOAFramework.Client.Controls.TextBox();
@@ -54,7 +55,6 @@
             this.证件号码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.启用 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbEnabled = new SOAFramework.Client.Controls.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -76,8 +76,15 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.ClickCallback = null;
+            this.btnDelete.IngoreCallbackOnce = false;
+            this.btnDelete.InitClick = null;
+            this.btnDelete.InterfaceName = null;
             this.btnDelete.Location = new System.Drawing.Point(249, 17);
             this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Response = null;
+            this.btnDelete.ResponseBindingControlName = null;
+            this.btnDelete.ResponseBindingPropertyName = null;
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "删除";
@@ -85,8 +92,15 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.ClickCallback = null;
+            this.btnEdit.IngoreCallbackOnce = false;
+            this.btnEdit.InitClick = null;
+            this.btnEdit.InterfaceName = null;
             this.btnEdit.Location = new System.Drawing.Point(168, 17);
             this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Response = null;
+            this.btnEdit.ResponseBindingControlName = null;
+            this.btnEdit.ResponseBindingPropertyName = null;
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "编辑";
@@ -94,8 +108,15 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.ClickCallback = null;
+            this.btnAdd.IngoreCallbackOnce = false;
+            this.btnAdd.InitClick = null;
+            this.btnAdd.InterfaceName = null;
             this.btnAdd.Location = new System.Drawing.Point(87, 17);
             this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Response = null;
+            this.btnAdd.ResponseBindingControlName = null;
+            this.btnAdd.ResponseBindingPropertyName = null;
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "新增";
@@ -103,20 +124,34 @@
             // 
             // btnClose
             // 
+            this.btnClose.ClickCallback = null;
+            this.btnClose.IngoreCallbackOnce = false;
+            this.btnClose.InitClick = null;
+            this.btnClose.InterfaceName = null;
             this.btnClose.Location = new System.Drawing.Point(330, 17);
             this.btnClose.Name = "btnClose";
+            this.btnClose.Response = null;
+            this.btnClose.ResponseBindingControlName = null;
+            this.btnClose.ResponseBindingPropertyName = null;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "关闭";
             this.btnClose.UseSelectable = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSearch
             // 
+            this.btnSearch.ClickCallback = null;
+            this.btnSearch.IngoreCallbackOnce = false;
+            this.btnSearch.InitClick = null;
+            this.btnSearch.InterfaceName = null;
             this.btnSearch.Location = new System.Drawing.Point(6, 17);
             this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Response = null;
+            this.btnSearch.ResponseBindingControlName = null;
+            this.btnSearch.ResponseBindingPropertyName = null;
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 0;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "查询";
             this.btnSearch.UseSelectable = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -140,6 +175,17 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
+            // cmbEnabled
+            // 
+            this.cmbEnabled.FormattingEnabled = true;
+            this.cmbEnabled.ItemHeight = 23;
+            this.cmbEnabled.Location = new System.Drawing.Point(331, 51);
+            this.cmbEnabled.Name = "cmbEnabled";
+            this.cmbEnabled.ServiceBindingPropertyName = null;
+            this.cmbEnabled.Size = new System.Drawing.Size(155, 29);
+            this.cmbEnabled.TabIndex = 10;
+            this.cmbEnabled.UseSelectable = true;
+            // 
             // txbMobile
             // 
             this.txbMobile.Lines = new string[0];
@@ -149,6 +195,7 @@
             this.txbMobile.PasswordChar = '\0';
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
+            this.txbMobile.ServiceBindingPropertyName = null;
             this.txbMobile.Size = new System.Drawing.Size(156, 23);
             this.txbMobile.TabIndex = 8;
             this.txbMobile.UseSelectable = true;
@@ -162,6 +209,7 @@
             this.txbName.PasswordChar = '\0';
             this.txbName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbName.SelectedText = "";
+            this.txbName.ServiceBindingPropertyName = null;
             this.txbName.Size = new System.Drawing.Size(156, 23);
             this.txbName.TabIndex = 7;
             this.txbName.UseSelectable = true;
@@ -175,8 +223,9 @@
             this.txbId.PasswordChar = '\0';
             this.txbId.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbId.SelectedText = "";
+            this.txbId.ServiceBindingPropertyName = null;
             this.txbId.Size = new System.Drawing.Size(156, 23);
-            this.txbId.TabIndex = 6;
+            this.txbId.TabIndex = 9;
             this.txbId.UseSelectable = true;
             // 
             // txbUserName
@@ -188,8 +237,9 @@
             this.txbUserName.PasswordChar = '\0';
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
+            this.txbUserName.ServiceBindingPropertyName = null;
             this.txbUserName.Size = new System.Drawing.Size(156, 23);
-            this.txbUserName.TabIndex = 5;
+            this.txbUserName.TabIndex = 6;
             this.txbUserName.UseSelectable = true;
             // 
             // label5
@@ -246,14 +296,14 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.用户名,
@@ -262,14 +312,14 @@
             this.证件号码,
             this.启用,
             this.备注});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -278,17 +328,18 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.ServiceBindingPropertyName = null;
             this.dataGridView1.Size = new System.Drawing.Size(1184, 341);
             this.dataGridView1.TabIndex = 2;
             // 
@@ -333,16 +384,6 @@
             this.备注.Name = "备注";
             this.备注.ReadOnly = true;
             this.备注.Width = 200;
-            // 
-            // cmbEnabled
-            // 
-            this.cmbEnabled.FormattingEnabled = true;
-            this.cmbEnabled.ItemHeight = 23;
-            this.cmbEnabled.Location = new System.Drawing.Point(331, 51);
-            this.cmbEnabled.Name = "cmbEnabled";
-            this.cmbEnabled.Size = new System.Drawing.Size(155, 29);
-            this.cmbEnabled.TabIndex = 9;
-            this.cmbEnabled.UseSelectable = true;
             // 
             // UserManagement
             // 

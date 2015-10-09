@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Anju.Fangke.Server.Entity">
       <HintPath>..\CommonDll\Anju.Fangke.Server.Entity.dll</HintPath>
@@ -51,22 +54,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form\Login.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Login.Designer.cs">
+    <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Startup.cs">
+    <Compile Include="Forms\Startup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Startup.Designer.cs">
+    <Compile Include="Forms\Startup.Designer.cs">
       <DependentUpon>Startup.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form\Login.resx">
+    <Compile Include="Watcher\ContolWatcher.cs" />
+    <Compile Include="Watcher\FormNoticer.cs" />
+    <Compile Include="Watcher\IControlNoticer.cs" />
+    <Compile Include="Watcher\MenuNoticer.cs" />
+    <Compile Include="Watcher\TabNoticer.cs" />
+    <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Startup.resx">
+      <DependentUpon>Startup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,10 +87,8 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Form\Startup.resx">
-      <DependentUpon>Startup.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -116,6 +125,15 @@
       <Project>{028f8695-f2d0-4a96-8f48-feeab758c717}</Project>
       <Name>MetroFramework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bitbug_favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\房客易租图标.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

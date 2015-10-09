@@ -21,6 +21,8 @@ namespace SOAFramework.Client.Controls
         { }
     }
 
+    public delegate void TabControlCloseButtonClick(object sender, TabControlCloseButtonClickEventArgs e);
+
     [Designer("SOAFramework.Client.Controls.TabControlDesigner")]
     [ToolboxBitmap(typeof(TabControl))]
     public class TabControl : MetroTabControl
@@ -28,6 +30,8 @@ namespace SOAFramework.Client.Controls
         protected int hoveredIndex = -1;
         protected int hoveredCloseButtonIndex = -1;
         protected Dictionary<int, Rectangle> closeButtonDic = new Dictionary<int, Rectangle>();
+
+        public TabControlCloseButtonClick CloseButtonClick { get; set; }
 
         protected override void DrawTabSelected(int index, Graphics graphics)
         {
@@ -214,7 +218,12 @@ namespace SOAFramework.Client.Controls
             {
                 if (closeButtonDic[key].Contains(e.Location))
                 {
-                    TabPages.RemoveAt(key);
+                    TabControlCloseButtonClickEventArgs args = new TabControlCloseButtonClickEventArgs();
+                    args.ClickIndex = key;
+                    if (CloseButtonClick != null)
+                    {
+                        CloseButtonClick.Invoke(this, args);
+                    }
                     break;
                 }
             }

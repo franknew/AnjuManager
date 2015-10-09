@@ -12,5 +12,7 @@ namespace Anju.Fangke.Client.Launcher
         public DateTime? LastModifyTime { get; set; }
 
         public string FileName { get; set; }
+
+        public bool NeedUpdate { get; set; }
     }
 }

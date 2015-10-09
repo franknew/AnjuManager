@@ -147,6 +147,8 @@ namespace SOAFramework.Client.Controls
                     IngoreCallbackOnce = true;
                     return;
                 }
+                //给request设置参数
+
                 var response = SDKFactory.Client.Execute(request);
                 if (response.IsError)
                 {

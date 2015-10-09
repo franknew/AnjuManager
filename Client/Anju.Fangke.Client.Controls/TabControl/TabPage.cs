@@ -12,7 +12,13 @@ namespace SOAFramework.Client.Controls
         {
             get
             {
-                return base.Text + "  ";
+                StringBuilder emtpy = new StringBuilder();
+                foreach (var c in base.Text)
+                {
+                    emtpy.Append("  ");
+                }
+
+                return emtpy.AppendFormat("{0}{1}", base.Text, emtpy.ToString()).ToString();
             }
 
             set

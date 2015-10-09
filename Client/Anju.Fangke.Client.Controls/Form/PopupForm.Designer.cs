@@ -1,6 +1,6 @@
 ﻿namespace SOAFramework.Client.Forms
 {
-    partial class BaseForm
+    partial class PopupForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,20 @@
         {
             this.SuspendLayout();
             // 
-            // BaseForm
+            // PopupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
-            this.KeyPreview = true;
-            this.Name = "BaseForm";
+            this.ClientSize = new System.Drawing.Size(335, 327);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "PopupForm";
+            this.Opacity = 0.9D;
+            this.Resizable = false;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "";
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
