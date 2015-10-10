@@ -9,58 +9,58 @@
       <isGreaterThan compareProperty="PageSize" compareValue="0">
 
       </isGreaterThan>
-      SELECT * FROM `User` u LEFT JOIN `UserInfo` ui ON u.ID=ui.ID
+      SELECT u.ID,u.Name,u.Creator,u.CreateTime,u.LastUpdator,u.LastUpdateTime,u.Enabled,ui.* FROM `User` u LEFT JOIN `UserInfo` ui ON u.ID=ui.ID
       <dynamic prepend="WHERE">
         <isNotNull prepend="AND" property="ID">
-          `u.ID`=#ID#
+          u.`ID`=#ID#
         </isNotNull>
         <isNotNull prepend="AND" property="Name">
-          `u.Name`=#Name#
+          u.`Name`=#Name#
         </isNotNull>
         <isNotNull prepend="AND" property="Creator">
-          `u.Creator`=#Creator#
+          u.`Creator`=#Creator#
         </isNotNull>
         <isNotNull prepend="AND" property="CreateTime_Start">
-          `u.CreateTime`&gt;=#CreateTime_Start#
+          u.`CreateTime`&gt;=#CreateTime_Start#
         </isNotNull>
         <isNotNull prepend="AND" property="CreateTime_End">
-          `u.CreateTime`&lt;=#CreateTime_End#
+          u.`CreateTime`&lt;=#CreateTime_End#
         </isNotNull>
         <isNotNull prepend="AND" property="Password">
-          `u.Password`=#Password#
+          u.`Password`=#Password#
         </isNotNull>
         <isNotNull prepend="AND" property="Enabled">
-          `u.Enabled`=#Enabled#
+          u.`Enabled`=#Enabled#
         </isNotNull>
         <isNotNull prepend="AND" property="LastUpdateTime_Start">
-          `u.LastUpdateTime`&gt;=#LastUpdateTime_Start#
+          u.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
         </isNotNull>
         <isNotNull prepend="AND" property="LastUpdateTime_End">
-          `u.LastUpdateTime`&lt;=#LastUpdateTime_End#
+          u.`LastUpdateTime`&lt;=#LastUpdateTime_End#
         </isNotNull>
         <isNotNull prepend="AND" property="LastUpdator">
-          `u.LastUpdator`=#LastUpdator#
+          u.`LastUpdator`=#LastUpdator#
         </isNotNull>
         <isNotNull prepend="AND" property="QQ">
-          `ur.QQ` LIKE '%QQ%'
+          ui.`QQ` LIKE '%QQ%'
         </isNotNull>
         <isNotNull prepend="AND" property="Mobile">
-          `ur.Mobile` LIKE '%Mobile%'
+          ui.`Mobile` LIKE '%Mobile%'
         </isNotNull>
         <isNotNull prepend="AND" property="WX">
-          `ur.WX` LIKE '%WX%'
+          ui.`WX` LIKE '%WX%'
         </isNotNull>
         <isNotNull prepend="AND" property="Address">
-          `ur.Address` LIKE '%Address%'
+          ui.`Address` LIKE '%Address%'
         </isNotNull>
         <isNotNull prepend="AND" property="Identity">
-          `ur.Identity`=#Identity#
+          ui.`Identity`=#Identity#
         </isNotNull>
         <isNotNull prepend="AND" property="CnName">
-          `ur.CnName` LIKE '%CnName%'
+          ui.`CnName` LIKE '%CnName%'
         </isNotNull>
         <isNotNull prepend="AND" property="Remark">
-          `ur.Remark` LIKE '%$Remark$%'
+          ui.`Remark` LIKE '%$Remark$%'
         </isNotNull>
         <isNotNull property="Ids">
           <iterate property="Ids" open="(" close=")" conjunction="OR">
