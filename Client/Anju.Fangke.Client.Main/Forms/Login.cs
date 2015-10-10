@@ -44,6 +44,7 @@ namespace Anju.Fangke.Client.Main
                 AppData.User = response.Result.User.User;
                 AppData.UserInfo = response.Result.User.UserInfo;
                 Startup form = this.Owner as Startup;
+                form.Token = AppData.token;
                 form.SetInfo(AppData.UserInfo.CnName);
                 form.Show();
                 this.Close();
@@ -60,6 +61,11 @@ namespace Anju.Fangke.Client.Main
             {
                 btnLogin.PerformClick();
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            btnLogin.PerformClick();
         }
     }
 }

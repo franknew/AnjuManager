@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Controls;
+using SOAFramework.Library;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace SOAFramework.Client.Controls
 
         [Category(ControlCategory.Category)]
         [DefaultValue("Text")]
-        public string ControlBindingPropertyName
+        public string BindingControlPropertyName
         {
             get
             {
@@ -30,11 +31,19 @@ namespace SOAFramework.Client.Controls
 
         [Category(ControlCategory.Category)]
         [DefaultValue("")]
-        public string ServiceBindingPropertyName { get; set; }
+        public string BindingRequestPropertyName { get; set; }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("")]
+        public string BindingResponsePropertyName { get; set; }
 
         public object CollectBindingData()
         {
             string value = this.GetValue<string>(controlBindingPropertyName);
+            if (string.IsNullOrEmpty(value))
+            {
+                value = null;
+            }
             return value;
         }
         #endregion

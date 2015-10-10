@@ -7,10 +7,12 @@ namespace SOAFramework.Client.Controls
 {
     public interface IServiceBindable
     {
-        string ServiceBindingPropertyName { get; set; }
+        string BindingRequestPropertyName { get; set; }
 
-        string ControlBindingPropertyName { get; set; }
+        string BindingControlPropertyName { get; set; }
 
         object CollectBindingData();
+
+        string BindingResponsePropertyName { get; set; }
     }
 }

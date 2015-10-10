@@ -7,6 +7,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using SOAFramework.Library;
+using System.Drawing;
+using SOAFramework.Client.Forms;
 
 namespace SOAFramework.Client.Controls
 {
@@ -15,6 +18,8 @@ namespace SOAFramework.Client.Controls
         #region attribute
         private BackgroundWorker _worker = null;
         private bool _status = false;
+        MetroProgressSpinner spinner = new MetroProgressSpinner();
+        private ErrorHandler _handler = new ErrorHandler();
         #endregion
 
         #region property
@@ -37,37 +42,24 @@ namespace SOAFramework.Client.Controls
 
         [Browsable(false)]
         public object Response { get; set; }
+
+        private bool enableSyncSpinner = true;
+        /// <summary>
+        /// 是否异步时显示时间轴
+        /// </summary>
+        [DefaultValue(true)]
+        [Category(ControlCategory.Category)]
+        public bool EnableSyncSpinner
+        {
+            get { return enableSyncSpinner; }
+            set { enableSyncSpinner = value; }
+        }
         #endregion
 
         #region service submitable property
         [Category(ControlCategory.Category)]
-        [DefaultValue("")]
-        public string InterfaceName { get; set; }
-
-        private ResponseBindingEnum responseBindingType = ResponseBindingEnum.Form;
-        [Category(ControlCategory.Category)]
-        [DefaultValue(ResponseBindingEnum.Form)]
-        public ResponseBindingEnum ResponseBindingType
-        {
-            get
-            {
-                return responseBindingType;
-            }
-
-            set
-            {
-                responseBindingType = value;
-            }
-        }
-
-        [Category(ControlCategory.Category)]
-        [DefaultValue("")]
-        public string ResponseBindingControlName { get; set; }
-
-        [Category(ControlCategory.Category)]
-        [DefaultValue("")]
-        public string ResponseBindingPropertyName { get; set; }
-
+        [DefaultValue(null)]
+        public string RequestName { get; set; }
         #endregion
 
         #region override
@@ -89,6 +81,11 @@ namespace SOAFramework.Client.Controls
                 _worker.DoWork += worker_DoWork;
                 _worker.RunWorkerCompleted += worker_RunWorkerCompleted;
                 this.FindForm().Enabled = false;
+                InitSpinner(this.FindForm().MdiParent);
+                //将异步处理传递给窗体以支持取消异步
+                //dynamic dyForm = parentForm;
+                //dyForm.Worker = worker;
+                spinner.Visible = enableSyncSpinner;
                 _worker.RunWorkerAsync();
             }
             base.OnClick(e);
@@ -98,20 +95,29 @@ namespace SOAFramework.Client.Controls
         #region event
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (IngoreCallbackOnce)
+            if (_handler.IsError)
             {
-                this.FindForm().Enabled = true;
-                DisposeWorkder(sender);
-                IngoreCallbackOnce = false;
-                return;
+                SOAFramework.Client.Controls.MessageBox.Show(this.FindForm(), _handler.Message);
+                _handler.IsError = false;
             }
-            if (ClickCallback != null)
+            if (!IngoreCallbackOnce)
             {
-                ClickCallback.Invoke(this, e);
+                BindingResponse();
+                if (ClickCallback != null)
+                {
+                    ClickCallback.Invoke(this, e);
+                }
             }
+            IngoreCallbackOnce = false;
+            this.FindForm().Enabled = true;
             if (EnableClickOnceOnAction)
             {
                 this.Enabled = _status;
+            }
+            //完成时执行回调事件
+            if (spinner != null)
+            {
+                spinner.Hide();
             }
             this.FindForm().Enabled = true;
             DisposeWorkder(sender);
@@ -128,62 +134,120 @@ namespace SOAFramework.Client.Controls
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (string.IsNullOrEmpty(InterfaceName))
+            if (!string.IsNullOrEmpty(RequestName))
             {
-                Form form = this.FindForm();
+                ContainerForm form = this.FindForm().MdiParent as ContainerForm;
                 var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
                 if (sdk == null)
                 {
-                    SOAFramework.Client.Controls.MessageBox.Show(this, "Anju.Fangke.Client.SDK不存在！");
+                    _handler = new ErrorHandler
+                    {
+                        IsError = true,
+                        Message = "Anju.Fangke.Client.SDK不存在！"
+                    };
                     IngoreCallbackOnce = true;
                     return;
                 }
                 var types = sdk.GetTypes();
-                var interfaces = types.OfType<BaseRequest<BaseResponse>>();
-                var request = interfaces.FirstOrDefault(t => t.GetApi() == InterfaceName);
-                if (request == null)
+                var requestType = types.FirstOrDefault(t => t.Name == RequestName);
+                if (requestType == null)
                 {
-                    SOAFramework.Client.Controls.MessageBox.Show(this, string.Format("接口名：{0}不存在！", InterfaceName));
+                    _handler = new ErrorHandler
+                    {
+                        IsError = true,
+                        Message = string.Format("Request：{0}不存在！", RequestName),
+                    };
                     IngoreCallbackOnce = true;
                     return;
                 }
                 //给request设置参数
-
-                var response = SDKFactory.Client.Execute(request);
-                if (response.IsError)
+                var request = Activator.CreateInstance(requestType);
+                var bindingcontrols = form.GetAllControls().OfType<IServiceBindable>();
+                foreach (var binding in bindingcontrols)
                 {
-                    SOAFramework.Client.Controls.MessageBox.Show(this, response.ErrorMessage);
+                    if (string.IsNullOrEmpty(binding.BindingRequestPropertyName))
+                    {
+                        continue;
+                    }
+                    request.SetValue(binding.BindingRequestPropertyName, binding.CollectBindingData());
+                }
+                request.SetValue("token", form.Token);
+                var responseType = requestType.BaseType.GetGenericArguments()[0];
+
+                Response = SDKFactory.Client.Execute(request, responseType);
+                dynamic dyresponse = Response;
+                if (dyresponse.IsError)
+                {
+                    _handler = new ErrorHandler
+                    {
+                        IsError = true,
+                        Message = dyresponse.ErrorMessage,
+                    };
                     IngoreCallbackOnce = true;
                     return;
                 }
                 //没有token或者token失效，需要重新登录
-                if (response.Code == -1)
+                if (dyresponse.Code == -1)
                 {
                     dynamic mdiparent = this.FindForm().MdiParent;
                     mdiparent.ShowLogin();
                     IngoreCallbackOnce = true;
                 }
-                try
-                {
-                    object value = response.GetValue(this.ResponseBindingPropertyName);
-                }
-                catch (Exception ex)
-                {
-                    SOAFramework.Client.Controls.MessageBox.Show(this, ex.Message);
-                    IngoreCallbackOnce = true;
-                    return;
-                }
-                //绑定数据
-                switch (this.responseBindingType)
-                {
-                    case ResponseBindingEnum.Form:
-                        break;
-                    case ResponseBindingEnum.Grid:
-                        break;
-                }
             }
             base.OnClick(e);
         }
         #endregion
+
+        #region helper
+        private void BindingResponse()
+        {
+            if (Response == null)
+            {
+                return;
+            }
+            //绑定数据
+            var controls = this.FindForm().GetAllControls().OfType<IServiceBindable>();
+            foreach (var i in controls)
+            {
+                Control c = i as Control;
+                if(string.IsNullOrEmpty(i.BindingResponsePropertyName))
+                {
+                    continue;
+                }
+                object value = Response.TryGetValue(i.BindingResponsePropertyName);
+                c.SetValue(i.BindingControlPropertyName, value);
+            }
+        }
+
+        private void InitSpinner(Form parentForm)
+        {
+            if (parentForm.Controls.Contains(spinner))
+            {
+                spinner = parentForm.Controls["spnProgressSpinner"] as MetroProgressSpinner;
+            }
+            else
+            {
+                spinner = new MetroProgressSpinner();
+                spinner.Name = "spnProgressSpinner";
+                spinner.Hide();
+                parentForm.Controls.Add(spinner);
+            }
+            spinner.BringToFront();
+            spinner.Size = new System.Drawing.Size(40, 40);
+            spinner.Value = 50;
+            spinner.Maximum = 100;
+            spinner.Location = new Point(parentForm.Width / 2 - spinner.Width / 2, parentForm.Height / 2 - spinner.Height / 2);
+            spinner.Show();
+        }
+        #endregion
+    }
+
+    public class ErrorHandler
+    {
+        public bool IsError { get; set; }
+
+        public string Message { get; set; }
+
+        public string Response { get; set; }
     }
 }

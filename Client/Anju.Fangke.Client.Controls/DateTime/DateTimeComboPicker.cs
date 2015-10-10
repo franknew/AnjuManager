@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using MetroFramework.Controls;
 using System.ComponentModel;
+using SOAFramework.Library;
 
 namespace SOAFramework.Client.Controls
 {
-    public class DataGridView : MetroGrid, IServiceBindable
+    public class DateTimeComboPicker : MetroDateTime, IServiceBindable
     {
         #region service binding property
-        private string controlBindingPropertyName = "DataSource";
+        private string controlBindingPropertyName = "Value";
 
         [Category(ControlCategory.Category)]
-        [DefaultValue("DataSource")]
-        public string ControlBindingPropertyName
+        [DefaultValue("Value")]
+        public string BindingControlPropertyName
         {
             get
             {
@@ -29,7 +30,11 @@ namespace SOAFramework.Client.Controls
 
         [Category(ControlCategory.Category)]
         [DefaultValue("")]
-        public string ServiceBindingPropertyName { get; set; }
+        public string BindingRequestPropertyName { get; set; }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("")]
+        public string BindingResponsePropertyName { get; set; }
 
         public object CollectBindingData()
         {

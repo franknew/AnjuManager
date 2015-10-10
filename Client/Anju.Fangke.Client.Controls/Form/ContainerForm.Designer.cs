@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 699);
             this.IsMdiContainer = true;
+            this.KeyPreview = true;
             this.Name = "ContainerForm";
             this.Style = MetroFramework.MetroColorStyle.Default;
             this.Theme = MetroFramework.MetroThemeStyle.Default;

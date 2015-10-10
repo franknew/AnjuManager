@@ -19,6 +19,8 @@ namespace SOAFramework.Client.Forms
             InitializeComponent();
         }
 
+        public string Token { get; set; }
+
         public void AddMdiChild(string dllpath, string typename)
         {
             string fullFileName = AppDomain.CurrentDomain.BaseDirectory + "\\" + dllpath;

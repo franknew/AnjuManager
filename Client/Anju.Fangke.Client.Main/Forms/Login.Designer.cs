@@ -67,30 +67,32 @@
             // 
             // txbUserName
             // 
-            this.txbUserName.Lines = new string[0];
+            this.txbUserName.Lines = new string[] {
+        "admin"};
             this.txbUserName.Location = new System.Drawing.Point(97, 158);
             this.txbUserName.MaxLength = 32767;
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.PasswordChar = '\0';
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
-            this.txbUserName.ServiceBindingPropertyName = null;
             this.txbUserName.Size = new System.Drawing.Size(179, 23);
             this.txbUserName.TabIndex = 1;
+            this.txbUserName.Text = "admin";
             this.txbUserName.UseSelectable = true;
             // 
             // txbPassword
             // 
-            this.txbPassword.Lines = new string[0];
+            this.txbPassword.Lines = new string[] {
+        "admin"};
             this.txbPassword.Location = new System.Drawing.Point(97, 189);
             this.txbPassword.MaxLength = 32767;
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '●';
             this.txbPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbPassword.SelectedText = "";
-            this.txbPassword.ServiceBindingPropertyName = null;
             this.txbPassword.Size = new System.Drawing.Size(179, 23);
             this.txbPassword.TabIndex = 2;
+            this.txbPassword.Text = "admin";
             this.txbPassword.UseSelectable = true;
             this.txbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPassword_KeyPress);
             // 
@@ -99,12 +101,9 @@
             this.btnLogin.ClickCallback = null;
             this.btnLogin.IngoreCallbackOnce = false;
             this.btnLogin.InitClick = null;
-            this.btnLogin.InterfaceName = null;
             this.btnLogin.Location = new System.Drawing.Point(30, 243);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Response = null;
-            this.btnLogin.ResponseBindingControlName = null;
-            this.btnLogin.ResponseBindingPropertyName = null;
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "登录";
@@ -116,12 +115,9 @@
             this.btnClose.ClickCallback = null;
             this.btnClose.IngoreCallbackOnce = false;
             this.btnClose.InitClick = null;
-            this.btnClose.InterfaceName = null;
             this.btnClose.Location = new System.Drawing.Point(181, 243);
             this.btnClose.Name = "btnClose";
             this.btnClose.Response = null;
-            this.btnClose.ResponseBindingControlName = null;
-            this.btnClose.ResponseBindingPropertyName = null;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "退出";
@@ -145,6 +141,7 @@
             this.Opacity = 0.9D;
             this.Resizable = false;
             this.Text = "房客易租管理系统";
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

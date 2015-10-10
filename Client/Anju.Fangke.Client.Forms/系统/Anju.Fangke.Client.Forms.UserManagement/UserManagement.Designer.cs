@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new SOAFramework.Client.Controls.Button();
             this.btnEdit = new SOAFramework.Client.Controls.Button();
@@ -48,16 +45,17 @@
             this.label3 = new SOAFramework.Client.Controls.Label();
             this.label2 = new SOAFramework.Client.Controls.Label();
             this.label1 = new SOAFramework.Client.Controls.Label();
-            this.dataGridView1 = new SOAFramework.Client.Controls.DataGridView();
+            this.dgvUsers = new SOAFramework.Client.Controls.DataGridView();
             this.用户名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.姓名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.手机 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.证件号码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.微信 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.启用 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -79,12 +77,9 @@
             this.btnDelete.ClickCallback = null;
             this.btnDelete.IngoreCallbackOnce = false;
             this.btnDelete.InitClick = null;
-            this.btnDelete.InterfaceName = null;
             this.btnDelete.Location = new System.Drawing.Point(249, 17);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Response = null;
-            this.btnDelete.ResponseBindingControlName = null;
-            this.btnDelete.ResponseBindingPropertyName = null;
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "删除";
@@ -95,12 +90,9 @@
             this.btnEdit.ClickCallback = null;
             this.btnEdit.IngoreCallbackOnce = false;
             this.btnEdit.InitClick = null;
-            this.btnEdit.InterfaceName = null;
             this.btnEdit.Location = new System.Drawing.Point(168, 17);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Response = null;
-            this.btnEdit.ResponseBindingControlName = null;
-            this.btnEdit.ResponseBindingPropertyName = null;
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "编辑";
@@ -111,12 +103,9 @@
             this.btnAdd.ClickCallback = null;
             this.btnAdd.IngoreCallbackOnce = false;
             this.btnAdd.InitClick = null;
-            this.btnAdd.InterfaceName = null;
             this.btnAdd.Location = new System.Drawing.Point(87, 17);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Response = null;
-            this.btnAdd.ResponseBindingControlName = null;
-            this.btnAdd.ResponseBindingPropertyName = null;
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "新增";
@@ -127,12 +116,9 @@
             this.btnClose.ClickCallback = null;
             this.btnClose.IngoreCallbackOnce = false;
             this.btnClose.InitClick = null;
-            this.btnClose.InterfaceName = null;
             this.btnClose.Location = new System.Drawing.Point(330, 17);
             this.btnClose.Name = "btnClose";
             this.btnClose.Response = null;
-            this.btnClose.ResponseBindingControlName = null;
-            this.btnClose.ResponseBindingPropertyName = null;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "关闭";
@@ -142,14 +128,14 @@
             // btnSearch
             // 
             this.btnSearch.ClickCallback = null;
+            this.btnSearch.EnableClickOnceOnAction = true;
+            this.btnSearch.EnableSyncClick = true;
             this.btnSearch.IngoreCallbackOnce = false;
             this.btnSearch.InitClick = null;
-            this.btnSearch.InterfaceName = null;
             this.btnSearch.Location = new System.Drawing.Point(6, 17);
             this.btnSearch.Name = "btnSearch";
+            this.btnSearch.RequestName = "QueryUserRequest";
             this.btnSearch.Response = null;
-            this.btnSearch.ResponseBindingControlName = null;
-            this.btnSearch.ResponseBindingPropertyName = null;
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "查询";
@@ -177,17 +163,20 @@
             // 
             // cmbEnabled
             // 
+            this.cmbEnabled.BindingRequestPropertyName = null;
+            this.cmbEnabled.BindingResponsePropertyName = null;
             this.cmbEnabled.FormattingEnabled = true;
             this.cmbEnabled.ItemHeight = 23;
             this.cmbEnabled.Location = new System.Drawing.Point(331, 51);
             this.cmbEnabled.Name = "cmbEnabled";
-            this.cmbEnabled.ServiceBindingPropertyName = null;
             this.cmbEnabled.Size = new System.Drawing.Size(155, 29);
             this.cmbEnabled.TabIndex = 10;
             this.cmbEnabled.UseSelectable = true;
             // 
             // txbMobile
             // 
+            this.txbMobile.BindingRequestPropertyName = null;
+            this.txbMobile.BindingResponsePropertyName = null;
             this.txbMobile.Lines = new string[0];
             this.txbMobile.Location = new System.Drawing.Point(567, 17);
             this.txbMobile.MaxLength = 32767;
@@ -195,13 +184,14 @@
             this.txbMobile.PasswordChar = '\0';
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
-            this.txbMobile.ServiceBindingPropertyName = null;
             this.txbMobile.Size = new System.Drawing.Size(156, 23);
             this.txbMobile.TabIndex = 8;
             this.txbMobile.UseSelectable = true;
             // 
             // txbName
             // 
+            this.txbName.BindingRequestPropertyName = null;
+            this.txbName.BindingResponsePropertyName = null;
             this.txbName.Lines = new string[0];
             this.txbName.Location = new System.Drawing.Point(330, 17);
             this.txbName.MaxLength = 32767;
@@ -209,13 +199,14 @@
             this.txbName.PasswordChar = '\0';
             this.txbName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbName.SelectedText = "";
-            this.txbName.ServiceBindingPropertyName = null;
             this.txbName.Size = new System.Drawing.Size(156, 23);
             this.txbName.TabIndex = 7;
             this.txbName.UseSelectable = true;
             // 
             // txbId
             // 
+            this.txbId.BindingRequestPropertyName = null;
+            this.txbId.BindingResponsePropertyName = null;
             this.txbId.Lines = new string[0];
             this.txbId.Location = new System.Drawing.Point(87, 51);
             this.txbId.MaxLength = 32767;
@@ -223,13 +214,14 @@
             this.txbId.PasswordChar = '\0';
             this.txbId.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbId.SelectedText = "";
-            this.txbId.ServiceBindingPropertyName = null;
             this.txbId.Size = new System.Drawing.Size(156, 23);
             this.txbId.TabIndex = 9;
             this.txbId.UseSelectable = true;
             // 
             // txbUserName
             // 
+            this.txbUserName.BindingRequestPropertyName = "Form.CnName";
+            this.txbUserName.BindingResponsePropertyName = null;
             this.txbUserName.Lines = new string[0];
             this.txbUserName.Location = new System.Drawing.Point(87, 17);
             this.txbUserName.MaxLength = 32767;
@@ -237,7 +229,6 @@
             this.txbUserName.PasswordChar = '\0';
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
-            this.txbUserName.ServiceBindingPropertyName = null;
             this.txbUserName.Size = new System.Drawing.Size(156, 23);
             this.txbUserName.TabIndex = 6;
             this.txbUserName.UseSelectable = true;
@@ -287,99 +278,79 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "用户名";
             // 
-            // dataGridView1
+            // dgvUsers
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUsers.AllowUserToAddRows = false;
+            this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvUsers.BindingRequestPropertyName = null;
+            this.dgvUsers.BindingResponsePropertyName = "Users";
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.用户名,
             this.姓名,
             this.手机,
-            this.证件号码,
+            this.QQ,
+            this.微信,
             this.启用,
             this.备注});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridView1.Location = new System.Drawing.Point(5, 144);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.ServiceBindingPropertyName = null;
-            this.dataGridView1.Size = new System.Drawing.Size(1184, 341);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsers.Location = new System.Drawing.Point(5, 144);
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.RowTemplate.Height = 23;
+            this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsers.Size = new System.Drawing.Size(1184, 341);
+            this.dgvUsers.TabIndex = 2;
             // 
             // 用户名
             // 
+            this.用户名.DataPropertyName = "Name";
             this.用户名.HeaderText = "用户名";
             this.用户名.Name = "用户名";
             this.用户名.ReadOnly = true;
             // 
             // 姓名
             // 
+            this.姓名.DataPropertyName = "CnName";
             this.姓名.HeaderText = "姓名";
             this.姓名.Name = "姓名";
             this.姓名.ReadOnly = true;
             // 
             // 手机
             // 
+            this.手机.DataPropertyName = "Mobile";
             this.手机.HeaderText = "手机";
             this.手机.Name = "手机";
             this.手机.ReadOnly = true;
             this.手机.Width = 120;
             // 
-            // 证件号码
+            // QQ
             // 
-            this.证件号码.HeaderText = "证件号码";
-            this.证件号码.Name = "证件号码";
-            this.证件号码.ReadOnly = true;
-            this.证件号码.Width = 150;
+            this.QQ.DataPropertyName = "QQ";
+            this.QQ.HeaderText = "QQ";
+            this.QQ.Name = "QQ";
+            this.QQ.ReadOnly = true;
+            this.QQ.Width = 120;
+            // 
+            // 微信
+            // 
+            this.微信.DataPropertyName = "WX";
+            this.微信.HeaderText = "微信";
+            this.微信.Name = "微信";
+            this.微信.ReadOnly = true;
             // 
             // 启用
             // 
+            this.启用.DataPropertyName = "Enabled";
             this.启用.HeaderText = "启用";
             this.启用.Name = "启用";
             this.启用.ReadOnly = true;
-            this.启用.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.启用.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.启用.Width = 80;
             // 
             // 备注
             // 
+            this.备注.DataPropertyName = "Remark";
             this.备注.HeaderText = "备注";
             this.备注.Name = "备注";
             this.备注.ReadOnly = true;
@@ -390,7 +361,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 490);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.DisplayHeader = false;
@@ -400,7 +371,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,13 +385,6 @@
         private SOAFramework.Client.Controls.Button btnDelete;
         private SOAFramework.Client.Controls.Button btnEdit;
         private SOAFramework.Client.Controls.Button btnAdd;
-        private SOAFramework.Client.Controls.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 用户名;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 姓名;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 手机;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 证件号码;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn 启用;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
         private SOAFramework.Client.Controls.Label label5;
         private SOAFramework.Client.Controls.Label label4;
         private SOAFramework.Client.Controls.Label label3;
@@ -431,5 +395,13 @@
         private SOAFramework.Client.Controls.TextBox txbId;
         private SOAFramework.Client.Controls.TextBox txbUserName;
         private SOAFramework.Client.Controls.ComboBox cmbEnabled;
+        private SOAFramework.Client.Controls.DataGridView dgvUsers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 用户名;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 姓名;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 手机;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 微信;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn 启用;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
     }
 }
