@@ -163,7 +163,7 @@
             // 
             // cmbEnabled
             // 
-            this.cmbEnabled.BindingRequestPropertyName = null;
+            this.cmbEnabled.BindingRequestPropertyName = "Enabled";
             this.cmbEnabled.BindingResponsePropertyName = null;
             this.cmbEnabled.FormattingEnabled = true;
             this.cmbEnabled.ItemHeight = 23;
@@ -175,7 +175,7 @@
             // 
             // txbMobile
             // 
-            this.txbMobile.BindingRequestPropertyName = null;
+            this.txbMobile.BindingRequestPropertyName = "Mobile";
             this.txbMobile.BindingResponsePropertyName = null;
             this.txbMobile.Lines = new string[0];
             this.txbMobile.Location = new System.Drawing.Point(567, 17);
@@ -190,7 +190,7 @@
             // 
             // txbName
             // 
-            this.txbName.BindingRequestPropertyName = null;
+            this.txbName.BindingRequestPropertyName = "CnName";
             this.txbName.BindingResponsePropertyName = null;
             this.txbName.Lines = new string[0];
             this.txbName.Location = new System.Drawing.Point(330, 17);
@@ -205,7 +205,7 @@
             // 
             // txbId
             // 
-            this.txbId.BindingRequestPropertyName = null;
+            this.txbId.BindingRequestPropertyName = "Identity";
             this.txbId.BindingResponsePropertyName = null;
             this.txbId.Lines = new string[0];
             this.txbId.Location = new System.Drawing.Point(87, 51);
@@ -282,6 +282,7 @@
             // 
             this.dgvUsers.AllowUserToAddRows = false;
             this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.AutoGenerateColumns = false;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvUsers.BindingRequestPropertyName = null;
             this.dgvUsers.BindingResponsePropertyName = "Users";
