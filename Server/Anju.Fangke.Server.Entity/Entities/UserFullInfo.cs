@@ -7,9 +7,7 @@ namespace Anju.Fangke.Server.Model
 {
     public class UserFullInfo
     {
-        public User User { get; set; }
-
-        public UserInfo UserInfo { get; set; }
+        public FullUser User { get; set; }
 
         public List<Role> Roles { get; set; }
     }

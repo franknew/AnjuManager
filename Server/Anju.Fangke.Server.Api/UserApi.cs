@@ -17,5 +17,26 @@ namespace Anju.Fangke.Server.Api
         {
             return bll.Query(form);
         }
+
+        public string Add(FullUser form)
+        {
+            User user = new User
+            {
+                ID = form.ID,
+                Enabled = form.Enabled,
+                Password = form.Password,
+            };
+            UserInfo ui = new UserInfo
+            {
+                CnName = form.CnName,
+                Address = form.Address,
+                Identity = form.Identity,
+                Mobile = form.Mobile,
+                QQ = form.QQ,
+                Remark = form.Remark,
+                WX = form.WX,
+            };
+            return bll.Add(user, ui);
+        }
     }
 }

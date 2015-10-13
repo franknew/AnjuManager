@@ -38,7 +38,31 @@ namespace SOAFramework.Client.Controls
 
         public object CollectBindingData()
         {
-            return this.GetValue(controlBindingPropertyName);
+            var value = this.GetValue(controlBindingPropertyName);
+            if (value.ToString().Trim() == emptyValue)
+            {
+                value = null;
+            }
+            return value;
+        }
+        #endregion
+
+        #region property
+        [Category(ControlCategory.Category)]
+        [DefaultValue("-1")]
+        private string emptyValue = "-1";
+
+        public string EmptyValue
+        {
+            get
+            {
+                return emptyValue;
+            }
+
+            set
+            {
+                emptyValue = value;
+            }
         }
         #endregion
     }
