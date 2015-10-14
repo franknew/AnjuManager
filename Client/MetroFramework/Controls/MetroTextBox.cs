@@ -326,11 +326,16 @@ namespace MetroFramework.Controls
             set { baseTextBox.ReadOnly = value; }
         }
 
+        [DefaultValue("")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public char PasswordChar
         {
             get { return baseTextBox.PasswordChar; }
             set { baseTextBox.PasswordChar = value; }
         }
+
+        [DefaultValue(false)]
+        public bool WarnStyle { get; set; }
 
         [DefaultValue(false)]
         public bool UseSystemPasswordChar
@@ -541,7 +546,13 @@ namespace MetroFramework.Controls
             Color borderColor = MetroPaint.BorderColor.Button.Normal(Theme);
 
             if (useStyleColors)
+            {
                 borderColor = MetroPaint.GetStyleColor(Style);
+            }
+            if (WarnStyle)
+            {
+                borderColor = Color.Red;
+            }
 
             using (Pen p = new Pen(borderColor))
             {

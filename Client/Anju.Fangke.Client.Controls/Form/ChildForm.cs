@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOAFramework.Client.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,6 @@ namespace SOAFramework.Client.Forms
             InitializeComponent();
             this.Padding = new Padding(5, 5, 5, 5);
         }
+
     }
 }

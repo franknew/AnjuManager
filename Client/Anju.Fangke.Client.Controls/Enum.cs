@@ -10,4 +10,10 @@ namespace SOAFramework.Client.Controls
         Form,
         Grid,
     }
+
+    public enum EditMode
+    {
+        Add,
+        Edit
+    }
 }

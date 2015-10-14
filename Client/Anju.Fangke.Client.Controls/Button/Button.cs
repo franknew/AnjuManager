@@ -20,6 +20,7 @@ namespace SOAFramework.Client.Controls
         private bool _status = false;
         MetroProgressSpinner spinner = new MetroProgressSpinner();
         private ErrorHandler _handler = new ErrorHandler();
+        private IDictionary<string, object> data = null;
         #endregion
 
         #region property
@@ -54,6 +55,9 @@ namespace SOAFramework.Client.Controls
             get { return enableSyncSpinner; }
             set { enableSyncSpinner = value; }
         }
+
+        [Category(ControlCategory.Category)]
+        public EventHandler BeforeRunSyncClick{ get; set; }
         #endregion
 
         #region service submitable property
@@ -67,6 +71,7 @@ namespace SOAFramework.Client.Controls
         {
             if (EnableSyncClick)
             {
+                Form form = this.FindForm();
                 _worker = new BackgroundWorker();
                 _worker.WorkerSupportsCancellation = true;
                 if (EnableClickOnceOnAction)
@@ -78,14 +83,20 @@ namespace SOAFramework.Client.Controls
                 {
                     InitClick.Invoke(this, e);
                 }
+                //收集窗体数据
+                data = form.CollectData();
                 _worker.DoWork += worker_DoWork;
                 _worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-                this.FindForm().Enabled = false;
+                form.Enabled = false;
                 InitSpinner(this.FindForm().MdiParent);
                 //将异步处理传递给窗体以支持取消异步
                 //dynamic dyForm = parentForm;
                 //dyForm.Worker = worker;
                 spinner.Visible = enableSyncSpinner;
+                if (BeforeRunSyncClick != null)
+                {
+                    BeforeRunSyncClick.Invoke(this, e);
+                }
                 _worker.RunWorkerAsync();
             }
             base.OnClick(e);
@@ -162,14 +173,9 @@ namespace SOAFramework.Client.Controls
                 }
                 //给request设置参数
                 var request = Activator.CreateInstance(requestType);
-                var bindingcontrols = form.GetAllControls().OfType<IServiceBindable>();
-                foreach (var binding in bindingcontrols)
+                foreach (var key in data.Keys)
                 {
-                    if (string.IsNullOrEmpty(binding.BindingRequestPropertyName))
-                    {
-                        continue;
-                    }
-                    request.SetValue(binding.BindingRequestPropertyName, binding.CollectBindingData());
+                    request.SetValue(key, data[key]);
                 }
                 request.SetValue("token", form.Token);
                 var responseType = requestType.BaseType.GetGenericArguments()[0];

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAuthority = new SOAFramework.Client.Controls.Button();
+            this.btnChangePassword = new SOAFramework.Client.Controls.Button();
             this.btnDelete = new SOAFramework.Client.Controls.Button();
             this.btnEdit = new SOAFramework.Client.Controls.Button();
             this.btnAdd = new SOAFramework.Client.Controls.Button();
@@ -60,6 +62,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAuthority);
+            this.groupBox1.Controls.Add(this.btnChangePassword);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnAdd);
@@ -72,8 +76,39 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // btnAuthority
+            // 
+            this.btnAuthority.BeforeRunSyncClick = null;
+            this.btnAuthority.ClickCallback = null;
+            this.btnAuthority.IngoreCallbackOnce = false;
+            this.btnAuthority.InitClick = null;
+            this.btnAuthority.Location = new System.Drawing.Point(412, 17);
+            this.btnAuthority.Name = "btnAuthority";
+            this.btnAuthority.Response = null;
+            this.btnAuthority.Size = new System.Drawing.Size(75, 23);
+            this.btnAuthority.TabIndex = 7;
+            this.btnAuthority.Text = "配置权限";
+            this.btnAuthority.UseSelectable = true;
+            this.btnAuthority.Click += new System.EventHandler(this.btnAuthority_Click);
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.BeforeRunSyncClick = null;
+            this.btnChangePassword.ClickCallback = null;
+            this.btnChangePassword.IngoreCallbackOnce = false;
+            this.btnChangePassword.InitClick = null;
+            this.btnChangePassword.Location = new System.Drawing.Point(331, 17);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Response = null;
+            this.btnChangePassword.Size = new System.Drawing.Size(75, 23);
+            this.btnChangePassword.TabIndex = 6;
+            this.btnChangePassword.Text = "修改密码";
+            this.btnChangePassword.UseSelectable = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
+            // 
             // btnDelete
             // 
+            this.btnDelete.BeforeRunSyncClick = null;
             this.btnDelete.ClickCallback = null;
             this.btnDelete.IngoreCallbackOnce = false;
             this.btnDelete.InitClick = null;
@@ -87,6 +122,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.BeforeRunSyncClick = null;
             this.btnEdit.ClickCallback = null;
             this.btnEdit.IngoreCallbackOnce = false;
             this.btnEdit.InitClick = null;
@@ -97,9 +133,11 @@
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "编辑";
             this.btnEdit.UseSelectable = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BeforeRunSyncClick = null;
             this.btnAdd.ClickCallback = null;
             this.btnAdd.IngoreCallbackOnce = false;
             this.btnAdd.InitClick = null;
@@ -110,13 +148,15 @@
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseSelectable = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // btnClose
             // 
+            this.btnClose.BeforeRunSyncClick = null;
             this.btnClose.ClickCallback = null;
             this.btnClose.IngoreCallbackOnce = false;
             this.btnClose.InitClick = null;
-            this.btnClose.Location = new System.Drawing.Point(330, 17);
+            this.btnClose.Location = new System.Drawing.Point(493, 17);
             this.btnClose.Name = "btnClose";
             this.btnClose.Response = null;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
@@ -127,6 +167,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.BeforeRunSyncClick = null;
             this.btnSearch.ClickCallback = null;
             this.btnSearch.EnableClickOnceOnAction = true;
             this.btnSearch.EnableSyncClick = true;
@@ -165,6 +206,10 @@
             // 
             this.cmbEnabled.BindingRequestPropertyName = "Enabled";
             this.cmbEnabled.BindingResponsePropertyName = null;
+            this.cmbEnabled.BindingSourcePropertyName = null;
+            this.cmbEnabled.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.cmbEnabled.DisplayMember = "Name";
+            this.cmbEnabled.EmptyValue = "-1";
             this.cmbEnabled.FormattingEnabled = true;
             this.cmbEnabled.ItemHeight = 23;
             this.cmbEnabled.Location = new System.Drawing.Point(331, 51);
@@ -172,16 +217,18 @@
             this.cmbEnabled.Size = new System.Drawing.Size(155, 29);
             this.cmbEnabled.TabIndex = 10;
             this.cmbEnabled.UseSelectable = true;
+            this.cmbEnabled.ValueMember = "Value";
             // 
             // txbMobile
             // 
             this.txbMobile.BindingRequestPropertyName = "Mobile";
             this.txbMobile.BindingResponsePropertyName = null;
+            this.txbMobile.BindingSourcePropertyName = null;
+            this.txbMobile.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
             this.txbMobile.Lines = new string[0];
             this.txbMobile.Location = new System.Drawing.Point(567, 17);
             this.txbMobile.MaxLength = 32767;
             this.txbMobile.Name = "txbMobile";
-            this.txbMobile.PasswordChar = '\0';
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
             this.txbMobile.Size = new System.Drawing.Size(156, 23);
@@ -192,11 +239,12 @@
             // 
             this.txbName.BindingRequestPropertyName = "CnName";
             this.txbName.BindingResponsePropertyName = null;
+            this.txbName.BindingSourcePropertyName = null;
+            this.txbName.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
             this.txbName.Lines = new string[0];
             this.txbName.Location = new System.Drawing.Point(330, 17);
             this.txbName.MaxLength = 32767;
             this.txbName.Name = "txbName";
-            this.txbName.PasswordChar = '\0';
             this.txbName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbName.SelectedText = "";
             this.txbName.Size = new System.Drawing.Size(156, 23);
@@ -207,11 +255,12 @@
             // 
             this.txbId.BindingRequestPropertyName = "Identity";
             this.txbId.BindingResponsePropertyName = null;
+            this.txbId.BindingSourcePropertyName = null;
+            this.txbId.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
             this.txbId.Lines = new string[0];
             this.txbId.Location = new System.Drawing.Point(87, 51);
             this.txbId.MaxLength = 32767;
             this.txbId.Name = "txbId";
-            this.txbId.PasswordChar = '\0';
             this.txbId.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbId.SelectedText = "";
             this.txbId.Size = new System.Drawing.Size(156, 23);
@@ -222,11 +271,12 @@
             // 
             this.txbUserName.BindingRequestPropertyName = "Form.CnName";
             this.txbUserName.BindingResponsePropertyName = null;
+            this.txbUserName.BindingSourcePropertyName = null;
+            this.txbUserName.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
             this.txbUserName.Lines = new string[0];
             this.txbUserName.Location = new System.Drawing.Point(87, 17);
             this.txbUserName.MaxLength = 32767;
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.PasswordChar = '\0';
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
             this.txbUserName.Size = new System.Drawing.Size(156, 23);
@@ -297,6 +347,7 @@
             this.备注});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsers.Location = new System.Drawing.Point(5, 144);
+            this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowTemplate.Height = 23;
@@ -369,6 +420,7 @@
             this.Name = "UserManagement";
             this.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
             this.Text = "员工管理";
+            this.Load += new System.EventHandler(this.UserManagement_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -404,5 +456,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 微信;
         private System.Windows.Forms.DataGridViewCheckBoxColumn 启用;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
+        private SOAFramework.Client.Controls.Button btnAuthority;
+        private SOAFramework.Client.Controls.Button btnChangePassword;
     }
 }

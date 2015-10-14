@@ -38,11 +38,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PopupForm";
-            this.Opacity = 0.9D;
             this.Resizable = false;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "";
             this.TopMost = true;
             this.ResumeLayout(false);
 

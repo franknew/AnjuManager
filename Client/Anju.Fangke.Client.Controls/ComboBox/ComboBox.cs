@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SOAFramework.Client.Controls
 {
-    public class ComboBox : MetroComboBox, IServiceBindable
+    public class ComboBox : MetroComboBox, IServiceBindable, IControlBindable 
     {
         #region service binding property
-        private string controlBindingPropertyName = "Value";
+        private string controlBindingPropertyName = "SelectedValue";
 
         [Category(ControlCategory.Category)]
-        [DefaultValue("Value")]
+        [DefaultValue("SelectedValue")]
         public string BindingControlPropertyName
         {
             get
@@ -45,6 +46,49 @@ namespace SOAFramework.Client.Controls
             }
             return value;
         }
+        #endregion
+
+        #region control bindable
+        private string bindingSelfPropertyName = "SelectedValue";
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("SelectedValue")]
+        public string BindingSelfPropertyName
+        {
+            get
+            {
+                return bindingSelfPropertyName;
+            }
+
+            set
+            {
+                bindingSelfPropertyName = value;
+            }
+        }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("")]
+        public string BindingSourcePropertyName { get; set; }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(DataSourceUpdateMode.OnValidation)]
+        private DataSourceUpdateMode dataSourceUpdateMode = DataSourceUpdateMode.OnValidation;
+        public DataSourceUpdateMode DataSourceUpdateMode
+        {
+            get
+            {
+                return dataSourceUpdateMode;
+            }
+
+            set
+            {
+                dataSourceUpdateMode = value;
+            }
+        }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(null)]
+        public object DBNullValue { get; set; }
         #endregion
 
         #region property

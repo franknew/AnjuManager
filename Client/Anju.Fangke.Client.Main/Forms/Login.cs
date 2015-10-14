@@ -42,10 +42,9 @@ namespace Anju.Fangke.Client.Main
             {
                 AppData.token = response.Result.token;
                 AppData.User = response.Result.User.User;
-                AppData.UserInfo = response.Result.User.UserInfo;
                 Startup form = this.Owner as Startup;
                 form.Token = AppData.token;
-                form.SetInfo(AppData.UserInfo.CnName);
+                form.SetInfo(AppData.User.CnName);
                 form.Show();
                 this.Close();
             }

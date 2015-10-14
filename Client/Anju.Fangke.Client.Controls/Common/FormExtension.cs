@@ -19,6 +19,21 @@ namespace SOAFramework.Client.Controls
             return list;
         }
 
+        public static Dictionary<string, object> CollectData(this Form form)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            var bindingcontrols = form.GetAllControls().OfType<IServiceBindable>();
+            foreach (var binding in bindingcontrols)
+            {
+                if (string.IsNullOrEmpty(binding.BindingRequestPropertyName))
+                {
+                    continue;
+                }
+                data[binding.BindingRequestPropertyName] = binding.CollectBindingData();
+            }
+            return data;
+        }
+
         private static void GetControls(List<Control> list, Control control)
         {
             foreach (Control c in control.Controls)

@@ -56,6 +56,9 @@
     <Compile Include="Button\Button.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CheckBox\CheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ComboBox\ComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -92,6 +95,7 @@
     <Compile Include="Form\PopupForm.Designer.cs">
       <DependentUpon>PopupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IControlBindable.cs" />
     <Compile Include="Interface\IServiceBindable.cs" />
     <Compile Include="Interface\IServiceSubmitable.cs" />
     <Compile Include="Label\Label.cs">

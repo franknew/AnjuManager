@@ -6,10 +6,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SOAFramework.Client.Controls
 {
-    public class TextBox : MetroTextBox, IServiceBindable
+    public class TextBox : MetroTextBox, IServiceBindable, IControlBindable
     {
         #region service binding property
         private string controlBindingPropertyName = "Text";
@@ -46,6 +47,49 @@ namespace SOAFramework.Client.Controls
             }
             return value;
         }
+        #endregion
+
+        #region control bindable
+        private string bindingSelfPropertyName = "Text";
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("Text")]
+        public string BindingSelfPropertyName
+        {
+            get
+            {
+                return bindingSelfPropertyName;
+            }
+
+            set
+            {
+                bindingSelfPropertyName = value;
+            }
+        }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("")]
+        public string BindingSourcePropertyName { get; set; }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(DataSourceUpdateMode.OnValidation)]
+        private DataSourceUpdateMode dataSourceUpdateMode = DataSourceUpdateMode.OnValidation;
+        public DataSourceUpdateMode DataSourceUpdateMode
+        {
+            get
+            {
+                return dataSourceUpdateMode;
+            }
+
+            set
+            {
+                dataSourceUpdateMode = value;
+            }
+        }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(null)]
+        public object DBNullValue { get; set; }
         #endregion
 
         protected override void OnEnter(EventArgs e)
