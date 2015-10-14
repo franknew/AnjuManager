@@ -4,6 +4,7 @@ using Anju.Fangke.Server.Forms;
 using Anju.Fangke.Server.Model;
 using IBatisNet.DataMapper;
 using SOAFramework.Library.Cache;
+using SOAFramework.Service.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,11 +37,22 @@ namespace Anju.Fangke.Server.BLL
                 var userinfo = userInfoDao.Query(new UserInfoQueryForm { ID = user.ID }).FirstOrDefault();
                 UserFullInfo u = new UserFullInfo
                 {
-                    User = user,
+                    User = new FullUser
+                    {
+                        Name = user.Name,
+                        ID = user.ID,
+                        Enabled = user.Enabled,
+                    },
                 };
                 if (userinfo != null)
                 {
-                    u.UserInfo = userinfo;
+                    u.User.Address = userinfo.Address;
+                    u.User.Identity = userinfo.Identity;
+                    u.User.Mobile = userinfo.Mobile;
+                    u.User.QQ = userinfo.QQ;
+                    u.User.Remark = userinfo.Remark;
+                    u.User.WX = userinfo.WX;
+                    u.User.CnName = userinfo.CnName;
                 }
                 var ur = urdao.Query(new User_RoleQueryForm { UserID = user.ID });
                 List<string> roleidlist = new List<string>();
@@ -70,6 +82,17 @@ namespace Anju.Fangke.Server.BLL
             {
                 throw new Exception("用户名或者密码错误！请输入正确的用户名和密码！");
             }
+        }
+
+        public bool Logout()
+        {
+            string token = ServiceSession.Current.Context.Parameters["token"].ToString();
+            var item = cache.GetItem(token);
+            if (item != null)
+            {
+                cache.DelItem(item);
+            }
+            return true;
         }
     }
 }

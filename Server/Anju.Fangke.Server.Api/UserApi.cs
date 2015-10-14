@@ -8,6 +8,7 @@ using System.Text;
 
 namespace Anju.Fangke.Server.Api
 {
+    [AuthFilter]
     public class UserApi
     {
         private UserBLL bll = new UserBLL();

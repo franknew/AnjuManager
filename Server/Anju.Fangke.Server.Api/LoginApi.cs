@@ -18,5 +18,11 @@ namespace Anju.Fangke.Server.Api
         {
             return bll.Login(username, password);
         }
+
+        [AuthFilter]
+        public bool Logout()
+        {
+            return bll.Logout();
+        }
     }
 }

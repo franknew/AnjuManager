@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="DataDictionaryBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="MapperHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

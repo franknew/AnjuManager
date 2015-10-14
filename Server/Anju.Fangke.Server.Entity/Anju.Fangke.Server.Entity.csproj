@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Action.cs" />
+    <Compile Include="Entities\CacheEntity.cs" />
+    <Compile Include="Entities\DataDictionary.cs" />
+    <Compile Include="Entities\DataDictionaryGroup.cs" />
     <Compile Include="Entities\FileVersion.cs" />
     <Compile Include="Entities\FullUser.cs" />
     <Compile Include="Entities\LogonHistory.cs" />
@@ -58,6 +61,8 @@
     <Compile Include="Entities\User_Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryForm\ActionQueryForm.cs" />
+    <Compile Include="QueryForm\DataDictionaryGroupQueryForm.cs" />
+    <Compile Include="QueryForm\DataDictionaryQueryForm.cs" />
     <Compile Include="QueryForm\FullUserQueryForm.cs" />
     <Compile Include="QueryForm\LogonHistoryQueryForm.cs" />
     <Compile Include="QueryForm\MenuQueryForm.cs" />
@@ -68,8 +73,12 @@
     <Compile Include="QueryForm\UserInfoQueryForm.cs" />
     <Compile Include="QueryForm\UserQueryForm.cs" />
     <Compile Include="QueryForm\User_RoleQueryForm.cs" />
+    <Compile Include="ResultForm\DataDictionaryResultForm.cs" />
     <Compile Include="ResultForm\LoginResultForm.cs" />
+    <Compile Include="QueryForm\ChangePasswordForm.cs" />
     <Compile Include="UpdateForm\ActionUpdateForm.cs" />
+    <Compile Include="UpdateForm\DataDictionaryGroupUpdateForm.cs" />
+    <Compile Include="UpdateForm\DataDictionaryUpdateForm.cs" />
     <Compile Include="UpdateForm\FullUserUpdateForm.cs" />
     <Compile Include="UpdateForm\LogonHistoryUpdateForm.cs" />
     <Compile Include="UpdateForm\MenuUpdateForm.cs" />
