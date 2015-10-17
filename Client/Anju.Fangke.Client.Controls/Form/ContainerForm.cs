@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using System.IO;
 using System.Reflection;
+using Anju.Fangke.Client.Controls;
 
 namespace SOAFramework.Client.Forms
 {
@@ -19,9 +20,16 @@ namespace SOAFramework.Client.Forms
             InitializeComponent();
         }
 
+        protected ControlWatcher _watcher = new ControlWatcher();
+
+        public ControlWatcher Watcher
+        {
+            get { return _watcher; }
+        }
+
         public string Token { get; set; }
 
-        public void AddMdiChild(string dllpath, string typename)
+        public Form AddMdiChild(string dllpath, string typename)
         {
             string fullFileName = AppDomain.CurrentDomain.BaseDirectory + "\\" + dllpath;
             FileInfo file = new FileInfo(fullFileName);
@@ -39,9 +47,9 @@ namespace SOAFramework.Client.Forms
             {
                 throw new Exception("无法加载窗体：" + typename);
             }
-            if (this.MdiChildren.Contains(child))
+            if (this.MdiChildren.Any(t=>t.Name.Equals(child.Name)))
             {
-
+                _watcher.Activate(child.Name);
             }
             else
             {
@@ -54,6 +62,7 @@ namespace SOAFramework.Client.Forms
                 child.ShowInTaskbar = false;
                 child.Show();
             }
+            return child;
         }
     }
 }

@@ -334,8 +334,17 @@ namespace MetroFramework.Controls
             set { baseTextBox.PasswordChar = value; }
         }
 
+        private bool useWarnStyle = false;
         [DefaultValue(false)]
-        public bool WarnStyle { get; set; }
+        public bool UseWarnStyle
+        {
+            get { return useWarnStyle; }
+            set
+            {
+                useWarnStyle = value;
+                this.Invalidate();
+            }
+        }
 
         [DefaultValue(false)]
         public bool UseSystemPasswordChar
@@ -549,7 +558,7 @@ namespace MetroFramework.Controls
             {
                 borderColor = MetroPaint.GetStyleColor(Style);
             }
-            if (WarnStyle)
+            else if (UseWarnStyle)
             {
                 borderColor = Color.Red;
             }

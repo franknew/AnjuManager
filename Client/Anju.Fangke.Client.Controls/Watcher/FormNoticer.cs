@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SOAFramework.Client.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Anju.Fangke.Client.Main
+namespace Anju.Fangke.Client.Controls
 {
     public class FormNoticer : IControlNoticer
     {
@@ -31,12 +32,15 @@ namespace Anju.Fangke.Client.Main
 
         public virtual void Remove(string name)
         {
-            Form form = listForm.Find(t => t.Name == name);
+            ChildForm form = listForm.Find(t => t.Name == name) as ChildForm;
             if (form == null)
             {
                 return;
             }
-            form.Close();
+            if (!form.FormClosing)
+            {
+                form.Close();
+            }
             listForm.Remove(form);
         }
 

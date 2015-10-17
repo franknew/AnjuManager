@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using SOAFramework.Client.Controls;
+using System.Dynamic;
 
 namespace SOAFramework.Client.Forms
 {
@@ -20,10 +21,10 @@ namespace SOAFramework.Client.Forms
             this.ShadowType = MetroFormShadowType.AeroShadow;
         }
 
-        private BindingSource binding = new BindingSource();
+        private CustomBindingSource binding = new CustomBindingSource();
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public BindingSource Binding
+        public CustomBindingSource Binding
         {
             get { return binding; }
             set { binding = value; }
@@ -50,7 +51,7 @@ namespace SOAFramework.Client.Forms
                 IBindableComponent component = control as IBindableComponent;
                 if (!string.IsNullOrEmpty(control.BindingSelfPropertyName) && !string.IsNullOrEmpty(control.BindingSourcePropertyName))
                 {
-                    Binding binding = new Binding(control.BindingSelfPropertyName, Binding, control.BindingSourcePropertyName, false, control.DataSourceUpdateMode);
+                    CustomBinding binding = new CustomBinding(control.BindingSelfPropertyName, Binding, control.BindingSourcePropertyName, true, control.DataSourceUpdateMode);
                     binding.DataSourceNullValue = control.DBNullValue;
                     binding.NullValue = control.DBNullValue;
                     component.DataBindings.Add(binding);
@@ -58,6 +59,7 @@ namespace SOAFramework.Client.Forms
             }
 
             base.OnLoad(e);
+
         }
     }
 }

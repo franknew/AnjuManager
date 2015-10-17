@@ -19,21 +19,14 @@ namespace Anju.Fangke.Client.Forms
         public UserManagement()
         {
             InitializeComponent();
-            btnAdd.Click += BtnAdd_Click;
+            this.btnDelete.Click += this.btnDelete_Click;
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
-        {
-        }
+        private CommonResponse deleteResponse;
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void UserManagement_Load(object sender, EventArgs e)
@@ -50,13 +43,17 @@ namespace Anju.Fangke.Client.Forms
             var form = response.Result.Find(t => t.Group.Name == "启用状态");
             form.Items.Insert(0, new DataDictionary { Value = -1, Name = "全部" });
             cmbEnabled.DataSource = form.Items;
+            this.Binding.DataSource = new List<FullUser>();
+            dgvUsers.DataSource = this.Binding;
         }
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
+            DataGridViewRow row = dgvUsers.NewRow();
+            row.Cells["启用"].Value = 1;
             EditUser form = new EditUser();
             form.Mode = EditMode.Add;
-            this.Binding.DataSource = this.dgvUsers.DataSource;
+            form.Binding = this.Binding;
             form.ShowDialog(this);
         }
 
@@ -66,7 +63,7 @@ namespace Anju.Fangke.Client.Forms
             {
                 EditUser form = new EditUser();
                 form.Mode = EditMode.Edit;
-                this.Binding.DataSource = this.dgvUsers.DataSource;
+                form.Binding = this.Binding;
                 form.ShowDialog(this);
             }
             else
@@ -79,9 +76,17 @@ namespace Anju.Fangke.Client.Forms
         {
             if (dgvUsers.SelectedRows.Count > 0)
             {
-                if (SOAFramework.Client.Controls.MessageBox.Show(this,"是否删除选中数据？", "删除", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (SOAFramework.Client.Controls.MessageBox.Show(this, "是否删除选中数据？", "警告", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-
+                    List<string> list = new List<string>();
+                    foreach (DataGridViewRow row in dgvUsers.SelectedRows)
+                    {
+                        list.Add(row.Cells["ID"].Value.ToString());
+                    }
+                    DeleteUserRequest request = new DeleteUserRequest();
+                    request.token = AppData.token;
+                    request.IDs = list;
+                    deleteResponse = SDKFactory.Client.Execute(request);
                 }
             }
             else
@@ -97,8 +102,34 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            ChangePassword form = new ChangePassword();
-            form.ShowDialog(this);
+            if (dgvUsers.SelectedRows.Count > 0)
+            {
+                ChangePassword form = new ChangePassword();
+                form.Binding = this.Binding;
+                form.ShowDialog(this);
+            }
+            else
+            {
+                SOAFramework.Client.Controls.MessageBox.Show(this, "没有选择数据！", "警告");
+            }
+        }
+
+        private void btnDelete_ClickCallback(object sender, EventArgs e)
+        {
+            if (deleteResponse == null)
+            {
+                return;
+            }
+
+            if (deleteResponse.IsError)
+            {
+                SOAFramework.Client.Controls.MessageBox.Show(this, deleteResponse.ErrorMessage, "错误");
+            }
+            else
+            {
+                this.Binding.RemoveCurrent();
+                SOAFramework.Client.Controls.MessageBox.Show(this, "操作成功！", "信息");
+            }
         }
     }
 }

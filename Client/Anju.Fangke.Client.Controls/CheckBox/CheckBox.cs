@@ -4,19 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
 namespace SOAFramework.Client.Controls
 {
-    public class TextBox : MetroTextBox, IServiceBindable, IControlBindable, IControlEmptable
+    public class CheckBox : MetroCheckBox, IServiceBindable, IControlBindable
     {
         #region service binding property
-        private string controlBindingPropertyName = "Text";
+        private string controlBindingPropertyName = "BindingChecked";
 
         [Category(ControlCategory.Category)]
-        [DefaultValue("Text")]
+        [DefaultValue("BindingChecked")]
         public string BindingControlPropertyName
         {
             get
@@ -40,20 +39,16 @@ namespace SOAFramework.Client.Controls
 
         public object CollectBindingData()
         {
-            string value = this.GetValue<string>(controlBindingPropertyName);
-            if (string.IsNullOrEmpty(value) && emptyToNull)
-            {
-                value = null;
-            }
+            var value = this.GetValue(controlBindingPropertyName);
             return value;
         }
         #endregion
 
         #region control bindable
-        private string bindingSelfPropertyName = "Text";
+        private string bindingSelfPropertyName = "Checked";
 
         [Category(ControlCategory.Category)]
-        [DefaultValue("Text")]
+        [DefaultValue("Checked")]
         public string BindingSelfPropertyName
         {
             get
@@ -92,67 +87,29 @@ namespace SOAFramework.Client.Controls
         public object DBNullValue { get; set; }
         #endregion
 
-        #region emptable property
-        private bool canbeEmpty = true;
+        #region property
         /// <summary>
-        /// 文本框是否可空
+        /// 用来绑定整形的Checked属性
         /// </summary>
-        [Category(ControlCategory.Category)]
-        [DefaultValue(true)]
-        public bool CanbeEmpty
+        [Browsable(false)]
+        public int BindingChecked
         {
-            get
-            {
-                return canbeEmpty;
-            }
-
             set
             {
-                canbeEmpty = value;
+                this.Checked = (value != 0);
             }
-        }
-
-        [Category(ControlCategory.Category)]
-        [DefaultValue(true)]
-        public string EmptyWarning { get; set; }
-        #endregion
-
-        #region common property
-        private bool emptyToNull = false;
-
-        /// <summary>
-        /// 空值是否读出为null
-        /// </summary>
-        [Category(ControlCategory.Category)]
-        [DefaultValue(false)]
-        public bool EmptyToNull
-        {
             get
             {
-                return emptyToNull;
-            }
-
-            set
-            {
-                emptyToNull = value;
+                if (this.Checked)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
-
         #endregion
-
-        protected override void OnEnter(EventArgs e)
-        {
-            base.OnEnter(e);
-            this.UseStyleColors = true;
-            this.UseWarnStyle = false;
-            this.Invalidate();
-        }
-
-        protected override void OnLeave(EventArgs e)
-        {
-            this.UseStyleColors = false;
-            this.Invalidate();
-            base.OnLeave(e);
-        }
     }
 }

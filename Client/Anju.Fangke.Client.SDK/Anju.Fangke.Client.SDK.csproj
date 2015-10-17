@@ -71,7 +71,10 @@
     <Compile Include="Request\FangkeRequest.cs" />
     <Compile Include="Request\Login\LoginRequest.cs" />
     <Compile Include="Request\User\AddUserRequest.cs" />
+    <Compile Include="Request\User\ChangePasswordRequest.cs" />
+    <Compile Include="Request\User\DeleteUserRequest.cs" />
     <Compile Include="Request\User\QueryUserRequest.cs" />
+    <Compile Include="Request\User\UpdateUserRequest.cs" />
     <Compile Include="Response\CommonResponse.cs" />
     <Compile Include="Response\DataDictionary\QueryDataDictionaryByNameResponse.cs" />
     <Compile Include="Response\Login\LoginResponse.cs" />

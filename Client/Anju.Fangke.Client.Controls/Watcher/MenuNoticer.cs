@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace Anju.Fangke.Client.Main
+namespace Anju.Fangke.Client.Controls
 {
     public class MenuNoticer : IControlNoticer
     {

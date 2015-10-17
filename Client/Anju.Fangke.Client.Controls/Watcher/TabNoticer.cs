@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Anju.Fangke.Client.Main
+namespace Anju.Fangke.Client.Controls
 {
     public class TabNoticer : IControlNoticer
     {

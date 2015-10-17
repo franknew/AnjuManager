@@ -199,8 +199,8 @@ namespace MetroFramework.Controls
             set { metroButtonSize = value; }
         }
 
-        private MetroButtonWeight metroButtonWeight = MetroButtonWeight.Bold;
-        [DefaultValue(MetroButtonWeight.Bold)]
+        private MetroButtonWeight metroButtonWeight = MetroButtonWeight.Light;
+        [DefaultValue(MetroButtonWeight.Light)]
         [Category(MetroDefaults.PropertyCategory.Appearance)]
         public MetroButtonWeight FontWeight
         {
@@ -332,13 +332,13 @@ namespace MetroFramework.Controls
                 }
             }
             
-            /*using (Pen p = new Pen(borderColor))
+            using (Pen p = new Pen(borderColor))
             {
                 Rectangle borderRect = new Rectangle(0, 0, Width - 1, Height - 1);
                 e.Graphics.DrawRectangle(p, borderRect);
             }
 
-            if (Highlight && !isHovered && !isPressed && Enabled)
+            /*if (Highlight && !isHovered && !isPressed && Enabled)
             {
                 using (Pen p = MetroPaint.GetStylePen(Style))
                 {

@@ -118,7 +118,7 @@ namespace MetroFramework
                 _control.Properties.Title = title;
                 _control.Padding = new Padding(0, 0, 0, 0);
                 _control.ControlBox = false;
-                _control.ShowInTaskbar = false;                
+                _control.ShowInTaskbar = false;
                 //_owner.Controls.Add(_control);
                 //if (_owner is IMetroForm)
                 //{
@@ -129,7 +129,8 @@ namespace MetroFramework
                 //    _control.Theme = ((MetroForm)_owner).Theme;
                 //    _control.Style = ((MetroForm)_owner).Style;
                 //}
-
+                _control.TopLevel = true;
+                _control.TopMost = true;
                 _control.Size = new Size(_owner.Size.Width, height);
                 _control.Location = new Point(_owner.Location.X, _owner.Location.Y + (_owner.Height - _control.Height) / 2);
                 _control.ArrangeApperance();
@@ -167,9 +168,10 @@ namespace MetroFramework
                 {
                     _result = _control.Result;
                     //_owner.Controls.Remove(_control);
-                    _control.Dispose(); _control = null;
+                    _control.Dispose();
+                    _control = null;
                 }
-                 
+                _owner.Activate();
             }
 
             return _result;

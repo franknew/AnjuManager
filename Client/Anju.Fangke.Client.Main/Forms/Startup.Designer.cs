@@ -31,6 +31,7 @@ namespace Anju.Fangke.Client.Main
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Startup));
             this.menu = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,7 @@ namespace Anju.Fangke.Client.Main
             this.lblName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerNow = new System.Windows.Forms.Timer(this.components);
+            this.nIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.menu.SuspendLayout();
             this.ssStatus.SuspendLayout();
             this.SuspendLayout();
@@ -105,8 +107,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage2.Name = "clientTabPage2";
             this.clientTabPage2.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage2.TabIndex = 0;
-            this.clientTabPage2.Text = "                                                clientTabPage2                   " +
-    "                                       ";
+            this.clientTabPage2.Text = resources.GetString("clientTabPage2.Text");
             this.clientTabPage2.VerticalScrollbarBarColor = true;
             this.clientTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage2.VerticalScrollbarSize = 10;
@@ -120,8 +121,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage3.Name = "clientTabPage3";
             this.clientTabPage3.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage3.TabIndex = 1;
-            this.clientTabPage3.Text = "                                                clientTabPage3                   " +
-    "                                       ";
+            this.clientTabPage3.Text = resources.GetString("clientTabPage3.Text");
             this.clientTabPage3.VerticalScrollbarBarColor = true;
             this.clientTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage3.VerticalScrollbarSize = 10;
@@ -135,8 +135,7 @@ namespace Anju.Fangke.Client.Main
             this.clientTabPage1.Name = "clientTabPage1";
             this.clientTabPage1.Size = new System.Drawing.Size(1341, 0);
             this.clientTabPage1.TabIndex = 0;
-            this.clientTabPage1.Text = "                                                        clientTabPage1           " +
-    "                                                           ";
+            this.clientTabPage1.Text = resources.GetString("clientTabPage1.Text");
             this.clientTabPage1.VerticalScrollbarBarColor = true;
             this.clientTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.clientTabPage1.VerticalScrollbarSize = 10;
@@ -191,6 +190,13 @@ namespace Anju.Fangke.Client.Main
             this.timerNow.Interval = 1000;
             this.timerNow.Tick += new System.EventHandler(this.timerNow_Tick);
             // 
+            // nIcon
+            // 
+            this.nIcon.BalloonTipTitle = "房客易租管理系统";
+            this.nIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("nIcon.Icon")));
+            this.nIcon.Text = "房客易租";
+            this.nIcon.Visible = true;
+            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -200,6 +206,7 @@ namespace Anju.Fangke.Client.Main
             this.Controls.Add(this.ssStatus);
             this.Controls.Add(this.tabMenu);
             this.Controls.Add(this.menu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip = this.menu;
             this.Name = "Startup";
@@ -234,6 +241,7 @@ namespace Anju.Fangke.Client.Main
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.NotifyIcon nIcon;
     }
 }
 

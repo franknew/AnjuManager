@@ -67,12 +67,16 @@
             // 
             // txbUserName
             // 
+            this.txbUserName.BindingRequestPropertyName = null;
+            this.txbUserName.BindingResponsePropertyName = null;
+            this.txbUserName.BindingSourcePropertyName = null;
+            this.txbUserName.CanbeEmpty = false;
+            this.txbUserName.EmptyWarning = "请输入用户名";
             this.txbUserName.Lines = new string[] {
         "admin"};
             this.txbUserName.Location = new System.Drawing.Point(97, 158);
             this.txbUserName.MaxLength = 32767;
             this.txbUserName.Name = "txbUserName";
-            this.txbUserName.PasswordChar = '\0';
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
             this.txbUserName.Size = new System.Drawing.Size(179, 23);
@@ -82,12 +86,16 @@
             // 
             // txbPassword
             // 
+            this.txbPassword.BindingRequestPropertyName = null;
+            this.txbPassword.BindingResponsePropertyName = null;
+            this.txbPassword.BindingSourcePropertyName = null;
+            this.txbPassword.CanbeEmpty = false;
+            this.txbPassword.EmptyWarning = "请输入密码";
             this.txbPassword.Lines = new string[] {
         "admin"};
             this.txbPassword.Location = new System.Drawing.Point(97, 189);
             this.txbPassword.MaxLength = 32767;
             this.txbPassword.Name = "txbPassword";
-            this.txbPassword.PasswordChar = '●';
             this.txbPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbPassword.SelectedText = "";
             this.txbPassword.Size = new System.Drawing.Size(179, 23);
@@ -98,9 +106,9 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.ClickCallback = null;
+            this.btnLogin.CheckFormEmpty = true;
+            this.btnLogin.ClickedMessage = null;
             this.btnLogin.IngoreCallbackOnce = false;
-            this.btnLogin.InitClick = null;
             this.btnLogin.Location = new System.Drawing.Point(30, 243);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Response = null;
@@ -112,9 +120,8 @@
             // 
             // btnClose
             // 
-            this.btnClose.ClickCallback = null;
+            this.btnClose.ClickedMessage = null;
             this.btnClose.IngoreCallbackOnce = false;
-            this.btnClose.InitClick = null;
             this.btnClose.Location = new System.Drawing.Point(181, 243);
             this.btnClose.Name = "btnClose";
             this.btnClose.Response = null;

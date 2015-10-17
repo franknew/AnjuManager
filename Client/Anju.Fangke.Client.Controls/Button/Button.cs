@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SOAFramework.Library;
 using System.Drawing;
 using SOAFramework.Client.Forms;
+using System.Diagnostics;
 
 namespace SOAFramework.Client.Controls
 {
@@ -36,10 +37,10 @@ namespace SOAFramework.Client.Controls
         public bool IngoreCallbackOnce { get; set; }
 
         [Category(ControlCategory.Category)]
-        public EventHandler InitClick { get; set; }
+        public event EventHandler InitClick;
 
         [Category(ControlCategory.Category)]
-        public EventHandler ClickCallback { get; set; }
+        public event EventHandler ClickCallback;
 
         [Browsable(false)]
         public object Response { get; set; }
@@ -57,7 +58,19 @@ namespace SOAFramework.Client.Controls
         }
 
         [Category(ControlCategory.Category)]
-        public EventHandler BeforeRunSyncClick{ get; set; }
+        public event EventHandler BeforeRunSyncClick;
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool CheckFormEmpty { get; set; }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool CloseFormAfterInvoke { get; set; }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("")]
+        public string ClickedMessage { get; set; }
         #endregion
 
         #region service submitable property
@@ -69,9 +82,17 @@ namespace SOAFramework.Client.Controls
         #region override
         protected override void OnClick(EventArgs e)
         {
+            Form form = this.FindForm();
+            if (CheckFormEmpty)
+            {
+                //检查窗体输入项为空情况
+                if (CheckFormInputEmpty(form))
+                {
+                    return;
+                }
+            }
             if (EnableSyncClick)
             {
-                Form form = this.FindForm();
                 _worker = new BackgroundWorker();
                 _worker.WorkerSupportsCancellation = true;
                 if (EnableClickOnceOnAction)
@@ -88,29 +109,47 @@ namespace SOAFramework.Client.Controls
                 _worker.DoWork += worker_DoWork;
                 _worker.RunWorkerCompleted += worker_RunWorkerCompleted;
                 form.Enabled = false;
-                InitSpinner(this.FindForm().MdiParent);
+                Form parent = form;
+                if (form.MdiParent != null)
+                {
+                    parent = form.MdiParent;
+                }
+                InitSpinner(parent);
                 //将异步处理传递给窗体以支持取消异步
                 //dynamic dyForm = parentForm;
                 //dyForm.Worker = worker;
-                spinner.Visible = enableSyncSpinner;
                 if (BeforeRunSyncClick != null)
                 {
                     BeforeRunSyncClick.Invoke(this, e);
                 }
                 _worker.RunWorkerAsync();
             }
-            base.OnClick(e);
+            else
+            {
+                base.OnClick(e);
+                ShowClickedMessage(form);
+                CloseParentForm(form);
+            }
         }
         #endregion
 
         #region event
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            Form form = this.FindForm();
+            //完成时执行回调事件
+            if (spinner != null)
+            {
+                spinner.Hide();
+            }
+
             if (_handler.IsError)
             {
-                SOAFramework.Client.Controls.MessageBox.Show(this.FindForm(), _handler.Message);
+                SOAFramework.Client.Controls.MessageBox.Show(form, _handler.Message, "错误");
                 _handler.IsError = false;
+                return;
             }
+
             if (!IngoreCallbackOnce)
             {
                 BindingResponse();
@@ -118,22 +157,114 @@ namespace SOAFramework.Client.Controls
                 {
                     ClickCallback.Invoke(this, e);
                 }
+                IngoreCallbackOnce = false;
             }
-            IngoreCallbackOnce = false;
+
             this.FindForm().Enabled = true;
+
             if (EnableClickOnceOnAction)
             {
                 this.Enabled = _status;
             }
-            //完成时执行回调事件
-            if (spinner != null)
-            {
-                spinner.Hide();
-            }
-            this.FindForm().Enabled = true;
+            ShowClickedMessage(form);
             DisposeWorkder(sender);
+            CloseParentForm(form);
         }
 
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(RequestName))
+                {
+                    Form form = this.FindForm();
+                    ContainerForm container = null;
+                    if (form is PopupForm)
+                    {
+                        if (form.Owner is ContainerForm)
+                        {
+                            container = form.Owner as ContainerForm;
+                        }
+                        else if (form.Owner != null)
+                        {
+                            container = form.Owner.MdiParent as ContainerForm;
+                        }
+                    }
+                    else
+                    {
+                        container = form.MdiParent as ContainerForm;
+                    }
+                    var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
+                    if (sdk == null)
+                    {
+                        _handler = new ErrorHandler
+                        {
+                            IsError = true,
+                            Message = "Anju.Fangke.Client.SDK不存在！"
+                        };
+                        return;
+                    }
+                    var types = sdk.GetTypes();
+                    var requestType = types.FirstOrDefault(t => t.Name == RequestName);
+                    if (requestType == null)
+                    {
+                        _handler = new ErrorHandler
+                        {
+                            IsError = true,
+                            Message = string.Format("Request：{0}不存在！", RequestName),
+                        };
+                        return;
+                    }
+                    //给request设置参数
+                    var request = Activator.CreateInstance(requestType);
+                    foreach (var key in data.Keys)
+                    {
+                        request.SetValue(key, data[key]);
+                    }
+                    request.SetValue("token", container.Token);
+                    var responseType = requestType.BaseType.GetGenericArguments()[0];
+
+                    Response = SDKFactory.Client.Execute(request, responseType);
+                    dynamic dyresponse = Response;
+                    if (dyresponse.IsError)
+                    {
+                        _handler = new ErrorHandler
+                        {
+                            IsError = true,
+                            Message = dyresponse.ErrorMessage,
+                        };
+                        return;
+                    }
+                    //没有token或者token失效，需要重新登录
+                    if (dyresponse.Code == -1)
+                    {
+                        dynamic mdiparent = this.FindForm().MdiParent;
+                        mdiparent.ShowLogin();
+                        IngoreCallbackOnce = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _handler = new ErrorHandler
+                {
+                    IsError = true,
+                    Message = string.Format(ex.Message),
+                };
+                return;
+            }
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new ButtonClickInvoker(base.OnClick), e);
+            }
+            else
+            {
+                base.OnClick(e);
+            }
+        }
+        #endregion
+
+        #region helper
         private void DisposeWorkder(object sender)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -143,68 +274,6 @@ namespace SOAFramework.Client.Controls
             }
         }
 
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(RequestName))
-            {
-                ContainerForm form = this.FindForm().MdiParent as ContainerForm;
-                var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
-                if (sdk == null)
-                {
-                    _handler = new ErrorHandler
-                    {
-                        IsError = true,
-                        Message = "Anju.Fangke.Client.SDK不存在！"
-                    };
-                    IngoreCallbackOnce = true;
-                    return;
-                }
-                var types = sdk.GetTypes();
-                var requestType = types.FirstOrDefault(t => t.Name == RequestName);
-                if (requestType == null)
-                {
-                    _handler = new ErrorHandler
-                    {
-                        IsError = true,
-                        Message = string.Format("Request：{0}不存在！", RequestName),
-                    };
-                    IngoreCallbackOnce = true;
-                    return;
-                }
-                //给request设置参数
-                var request = Activator.CreateInstance(requestType);
-                foreach (var key in data.Keys)
-                {
-                    request.SetValue(key, data[key]);
-                }
-                request.SetValue("token", form.Token);
-                var responseType = requestType.BaseType.GetGenericArguments()[0];
-
-                Response = SDKFactory.Client.Execute(request, responseType);
-                dynamic dyresponse = Response;
-                if (dyresponse.IsError)
-                {
-                    _handler = new ErrorHandler
-                    {
-                        IsError = true,
-                        Message = dyresponse.ErrorMessage,
-                    };
-                    IngoreCallbackOnce = true;
-                    return;
-                }
-                //没有token或者token失效，需要重新登录
-                if (dyresponse.Code == -1)
-                {
-                    dynamic mdiparent = this.FindForm().MdiParent;
-                    mdiparent.ShowLogin();
-                    IngoreCallbackOnce = true;
-                }
-            }
-            base.OnClick(e);
-        }
-        #endregion
-
-        #region helper
         private void BindingResponse()
         {
             if (Response == null)
@@ -216,17 +285,27 @@ namespace SOAFramework.Client.Controls
             foreach (var i in controls)
             {
                 Control c = i as Control;
-                if(string.IsNullOrEmpty(i.BindingResponsePropertyName))
+                if (string.IsNullOrEmpty(i.BindingResponsePropertyName))
                 {
                     continue;
                 }
                 object value = Response.TryGetValue(i.BindingResponsePropertyName);
+                if (c is DataGridView)
+                {
+                    BaseForm form = this.FindForm() as BaseForm;
+                    form.Binding.DataSource = value;
+                    value = form.Binding;
+                }
                 c.SetValue(i.BindingControlPropertyName, value);
             }
         }
 
         private void InitSpinner(Form parentForm)
         {
+            if (!enableSyncSpinner)
+            {
+                return;
+            }
             if (parentForm.Controls.Contains(spinner))
             {
                 spinner = parentForm.Controls["spnProgressSpinner"] as MetroProgressSpinner;
@@ -245,8 +324,53 @@ namespace SOAFramework.Client.Controls
             spinner.Location = new Point(parentForm.Width / 2 - spinner.Width / 2, parentForm.Height / 2 - spinner.Height / 2);
             spinner.Show();
         }
+
+        private bool CheckFormInputEmpty(Form form)
+        {
+            //检查窗体文本为空情况
+            bool hasEmtpy = false;
+            var controls = form.GetAllControls().OfType<IControlEmptable>();
+            foreach (var control in controls)
+            {
+                if (!control.CanbeEmpty && string.IsNullOrEmpty(control.Text))
+                {
+                    dynamic c = control as Control;
+                    try
+                    {
+                        c.PromptText = control.EmptyWarning;
+                    }
+                    catch
+                    {
+
+                    }
+                    control.UseWarnStyle = true;
+                    hasEmtpy = true;
+                }
+            }
+            return hasEmtpy;
+        }
+
+        private void ShowClickedMessage(Form form)
+        {
+            if (!string.IsNullOrEmpty( this.ClickedMessage))
+            {
+                SOAFramework.Client.Controls.MessageBox.Show(form, ClickedMessage, "信息");
+            }
+        }
+
+        private void CloseParentForm (Form form)
+        {
+            if (CloseFormAfterInvoke)
+            {
+                form.Close();
+                var mainform = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle) as Form;
+                mainform.Activate();
+            }
+        }
         #endregion
+        private delegate void ButtonClickInvoker(EventArgs e); 
     }
+
 
     public class ErrorHandler
     {

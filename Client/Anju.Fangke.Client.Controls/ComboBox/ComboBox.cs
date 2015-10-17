@@ -70,9 +70,9 @@ namespace SOAFramework.Client.Controls
         [DefaultValue("")]
         public string BindingSourcePropertyName { get; set; }
 
+        private DataSourceUpdateMode dataSourceUpdateMode = DataSourceUpdateMode.OnValidation;
         [Category(ControlCategory.Category)]
         [DefaultValue(DataSourceUpdateMode.OnValidation)]
-        private DataSourceUpdateMode dataSourceUpdateMode = DataSourceUpdateMode.OnValidation;
         public DataSourceUpdateMode DataSourceUpdateMode
         {
             get

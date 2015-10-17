@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SOAFramework.Client.Forms;
+using SOAFramework.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,13 +25,34 @@ namespace SOAFramework.Client.Controls
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
             var bindingcontrols = form.GetAllControls().OfType<IServiceBindable>();
+            BaseForm baseform = null;
+            if (form is BaseForm)
+            {
+                baseform = form as BaseForm;
+            }
             foreach (var binding in bindingcontrols)
             {
                 if (string.IsNullOrEmpty(binding.BindingRequestPropertyName))
                 {
                     continue;
                 }
-                data[binding.BindingRequestPropertyName] = binding.CollectBindingData();
+                Control control = binding as Control;
+                IControlBindable controlbind = control as IControlBindable;
+                if (control.Visible)
+                {
+                    data[binding.BindingRequestPropertyName] = binding.CollectBindingData();
+                }
+                else
+                {
+                    if (baseform != null)
+                    {
+                        object value = baseform.Binding.Current.GetValue(controlbind.BindingSourcePropertyName);
+                        if (value != null)
+                        {
+                            data[binding.BindingRequestPropertyName] = value;
+                        }
+                    }
+                }
             }
             return data;
         }
@@ -41,6 +64,28 @@ namespace SOAFramework.Client.Controls
                 list.Add(c);
                 GetControls(list, c);
             }
+        }
+
+        public static void FlushBinding(this Control control)
+        {
+            IControlBindable bindable = control as IControlBindable;
+            IServiceBindable servicebind = control as IServiceBindable;
+            foreach (Binding binding in control.DataBindings)
+            {
+                BindingSource source = binding.DataSource as BindingSource;
+                source.Current.SetValue(bindable.BindingSourcePropertyName, servicebind.CollectBindingData());
+            }
+        }
+
+        public static void FlushBinding(this BaseForm form)
+        {
+            var list = form.GetAllControls();
+            foreach (var control in list)
+            {
+                control.FlushBinding();
+            }
+            form.Binding.EndEdit();
+            form.Binding.ResetBindings(false);
         }
     }
 }

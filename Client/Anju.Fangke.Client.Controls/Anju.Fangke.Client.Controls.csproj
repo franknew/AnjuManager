@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingSource\CustomBindingSource.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Button\Button.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,6 +99,7 @@
       <DependentUpon>PopupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IControlBindable.cs" />
+    <Compile Include="Interface\IControlEmptable.cs" />
     <Compile Include="Interface\IServiceBindable.cs" />
     <Compile Include="Interface\IServiceSubmitable.cs" />
     <Compile Include="Label\Label.cs">
@@ -115,6 +119,11 @@
     <Compile Include="TextBox\TextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Watcher\ContolWatcher.cs" />
+    <Compile Include="Watcher\FormNoticer.cs" />
+    <Compile Include="Watcher\IControlNoticer.cs" />
+    <Compile Include="Watcher\MenuNoticer.cs" />
+    <Compile Include="Watcher\TabNoticer.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form\BaseForm.resx">

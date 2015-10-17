@@ -48,7 +48,8 @@
             this.label5 = new SOAFramework.Client.Controls.Label();
             this.label3 = new SOAFramework.Client.Controls.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new SOAFramework.Client.Controls.CheckBox();
+            this.textBox1 = new SOAFramework.Client.Controls.TextBox();
+            this.chkEnabled = new SOAFramework.Client.Controls.CheckBox();
             this.txbUserName = new SOAFramework.Client.Controls.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,38 +64,37 @@
             this.groupBox1.Location = new System.Drawing.Point(1, 415);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(573, 46);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 102;
             this.groupBox1.TabStop = false;
             // 
             // btnClose
             // 
-            this.btnClose.BeforeRunSyncClick = null;
-            this.btnClose.ClickCallback = null;
+            this.btnClose.ClickedMessage = null;
             this.btnClose.IngoreCallbackOnce = false;
-            this.btnClose.InitClick = null;
             this.btnClose.Location = new System.Drawing.Point(327, 17);
             this.btnClose.Name = "btnClose";
             this.btnClose.Response = null;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 11;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "关闭";
             this.btnClose.UseSelectable = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
-            this.btnSave.BeforeRunSyncClick = null;
-            this.btnSave.ClickCallback = null;
+            this.btnSave.CheckFormEmpty = true;
+            this.btnSave.ClickedMessage = "保存成功！";
+            this.btnSave.CloseFormAfterInvoke = true;
+            this.btnSave.EnableClickOnceOnAction = true;
+            this.btnSave.EnableSyncClick = true;
             this.btnSave.IngoreCallbackOnce = false;
-            this.btnSave.InitClick = null;
             this.btnSave.Location = new System.Drawing.Point(153, 17);
             this.btnSave.Name = "btnSave";
             this.btnSave.Response = null;
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "保存";
             this.btnSave.UseSelectable = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label1
             // 
@@ -125,7 +125,7 @@
             this.groupBox2.Location = new System.Drawing.Point(1, 91);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(573, 324);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 101;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "详细信息";
             // 
@@ -134,7 +134,8 @@
             this.txbRemark.BindingRequestPropertyName = "Form.Remark";
             this.txbRemark.BindingResponsePropertyName = null;
             this.txbRemark.BindingSourcePropertyName = "Remark";
-            this.txbRemark.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbRemark.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbRemark.EmptyWarning = null;
             this.txbRemark.Lines = new string[0];
             this.txbRemark.Location = new System.Drawing.Point(78, 220);
             this.txbRemark.MaxLength = 32767;
@@ -143,7 +144,7 @@
             this.txbRemark.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRemark.SelectedText = "";
             this.txbRemark.Size = new System.Drawing.Size(452, 55);
-            this.txbRemark.TabIndex = 9;
+            this.txbRemark.TabIndex = 8;
             this.txbRemark.UseSelectable = true;
             // 
             // txbAddress
@@ -151,7 +152,8 @@
             this.txbAddress.BindingRequestPropertyName = "Form.Address";
             this.txbAddress.BindingResponsePropertyName = null;
             this.txbAddress.BindingSourcePropertyName = "Address";
-            this.txbAddress.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbAddress.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbAddress.EmptyWarning = null;
             this.txbAddress.Lines = new string[0];
             this.txbAddress.Location = new System.Drawing.Point(78, 166);
             this.txbAddress.MaxLength = 32767;
@@ -160,7 +162,7 @@
             this.txbAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbAddress.SelectedText = "";
             this.txbAddress.Size = new System.Drawing.Size(452, 48);
-            this.txbAddress.TabIndex = 8;
+            this.txbAddress.TabIndex = 7;
             this.txbAddress.UseSelectable = true;
             // 
             // txbIdentity
@@ -168,7 +170,8 @@
             this.txbIdentity.BindingRequestPropertyName = "Form.Identity";
             this.txbIdentity.BindingResponsePropertyName = null;
             this.txbIdentity.BindingSourcePropertyName = "Identity";
-            this.txbIdentity.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbIdentity.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbIdentity.EmptyWarning = null;
             this.txbIdentity.Lines = new string[0];
             this.txbIdentity.Location = new System.Drawing.Point(78, 126);
             this.txbIdentity.MaxLength = 32767;
@@ -176,7 +179,7 @@
             this.txbIdentity.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbIdentity.SelectedText = "";
             this.txbIdentity.Size = new System.Drawing.Size(452, 23);
-            this.txbIdentity.TabIndex = 7;
+            this.txbIdentity.TabIndex = 6;
             this.txbIdentity.UseSelectable = true;
             // 
             // txbWX
@@ -184,7 +187,8 @@
             this.txbWX.BindingRequestPropertyName = "Form.WX";
             this.txbWX.BindingResponsePropertyName = null;
             this.txbWX.BindingSourcePropertyName = "WX";
-            this.txbWX.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbWX.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbWX.EmptyWarning = null;
             this.txbWX.Lines = new string[0];
             this.txbWX.Location = new System.Drawing.Point(357, 78);
             this.txbWX.MaxLength = 32767;
@@ -192,7 +196,7 @@
             this.txbWX.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbWX.SelectedText = "";
             this.txbWX.Size = new System.Drawing.Size(173, 23);
-            this.txbWX.TabIndex = 6;
+            this.txbWX.TabIndex = 5;
             this.txbWX.UseSelectable = true;
             // 
             // txbQQ
@@ -200,7 +204,8 @@
             this.txbQQ.BindingRequestPropertyName = "Form.QQ";
             this.txbQQ.BindingResponsePropertyName = null;
             this.txbQQ.BindingSourcePropertyName = "QQ";
-            this.txbQQ.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbQQ.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbQQ.EmptyWarning = null;
             this.txbQQ.Lines = new string[0];
             this.txbQQ.Location = new System.Drawing.Point(78, 78);
             this.txbQQ.MaxLength = 32767;
@@ -208,7 +213,7 @@
             this.txbQQ.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbQQ.SelectedText = "";
             this.txbQQ.Size = new System.Drawing.Size(173, 23);
-            this.txbQQ.TabIndex = 5;
+            this.txbQQ.TabIndex = 4;
             this.txbQQ.UseSelectable = true;
             // 
             // txbMobile
@@ -216,7 +221,8 @@
             this.txbMobile.BindingRequestPropertyName = "Form.Mobile";
             this.txbMobile.BindingResponsePropertyName = null;
             this.txbMobile.BindingSourcePropertyName = "Mobile";
-            this.txbMobile.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbMobile.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbMobile.EmptyWarning = null;
             this.txbMobile.Lines = new string[0];
             this.txbMobile.Location = new System.Drawing.Point(357, 34);
             this.txbMobile.MaxLength = 32767;
@@ -224,7 +230,7 @@
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
             this.txbMobile.Size = new System.Drawing.Size(173, 23);
-            this.txbMobile.TabIndex = 4;
+            this.txbMobile.TabIndex = 3;
             this.txbMobile.UseSelectable = true;
             // 
             // txbCnName
@@ -232,7 +238,8 @@
             this.txbCnName.BindingRequestPropertyName = "Form.CnName";
             this.txbCnName.BindingResponsePropertyName = null;
             this.txbCnName.BindingSourcePropertyName = "CnName";
-            this.txbCnName.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbCnName.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbCnName.EmptyWarning = null;
             this.txbCnName.Lines = new string[0];
             this.txbCnName.Location = new System.Drawing.Point(78, 34);
             this.txbCnName.MaxLength = 32767;
@@ -240,7 +247,7 @@
             this.txbCnName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbCnName.SelectedText = "";
             this.txbCnName.Size = new System.Drawing.Size(173, 23);
-            this.txbCnName.TabIndex = 3;
+            this.txbCnName.TabIndex = 2;
             this.txbCnName.UseSelectable = true;
             // 
             // label9
@@ -308,40 +315,62 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.chkEnabled);
             this.groupBox3.Controls.Add(this.txbUserName);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(1, 30);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(573, 61);
-            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabIndex = 100;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "基础信息";
             // 
-            // checkBox1
+            // textBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BindingRequestPropertyName = "Form.Enabled";
-            this.checkBox1.BindingResponsePropertyName = null;
-            this.checkBox1.BindingSourcePropertyName = "Enabled";
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
-            this.checkBox1.Location = new System.Drawing.Point(304, 34);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(47, 15);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "启用";
-            this.checkBox1.UseSelectable = true;
-            this.checkBox1.ValueToInt = false;
+            this.textBox1.BindingRequestPropertyName = "Form.ID";
+            this.textBox1.BindingResponsePropertyName = null;
+            this.textBox1.BindingSourcePropertyName = "ID";
+            this.textBox1.EmptyWarning = null;
+            this.textBox1.Enabled = false;
+            this.textBox1.Lines = new string[0];
+            this.textBox1.Location = new System.Drawing.Point(358, 28);
+            this.textBox1.MaxLength = 32767;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBox1.SelectedText = "";
+            this.textBox1.Size = new System.Drawing.Size(172, 23);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.UseSelectable = true;
+            this.textBox1.Visible = false;
+            // 
+            // chkEnabled
+            // 
+            this.chkEnabled.AutoSize = true;
+            this.chkEnabled.BindingChecked = 1;
+            this.chkEnabled.BindingRequestPropertyName = "Form.Enabled";
+            this.chkEnabled.BindingResponsePropertyName = null;
+            this.chkEnabled.BindingSelfPropertyName = "BindingChecked";
+            this.chkEnabled.BindingSourcePropertyName = "Enabled";
+            this.chkEnabled.Checked = true;
+            this.chkEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEnabled.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.chkEnabled.Location = new System.Drawing.Point(304, 34);
+            this.chkEnabled.Name = "chkEnabled";
+            this.chkEnabled.Size = new System.Drawing.Size(47, 15);
+            this.chkEnabled.TabIndex = 1;
+            this.chkEnabled.Text = "启用";
+            this.chkEnabled.UseSelectable = true;
             // 
             // txbUserName
             // 
             this.txbUserName.BindingRequestPropertyName = "Form.Name";
             this.txbUserName.BindingResponsePropertyName = null;
             this.txbUserName.BindingSourcePropertyName = "Name";
-            this.txbUserName.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.OnValidation;
+            this.txbUserName.CanbeEmpty = false;
+            this.txbUserName.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.txbUserName.EmptyWarning = "请输入用户名";
             this.txbUserName.Lines = new string[0];
             this.txbUserName.Location = new System.Drawing.Point(78, 28);
             this.txbUserName.MaxLength = 32767;
@@ -388,7 +417,7 @@
         private SOAFramework.Client.Controls.Label label4;
         private SOAFramework.Client.Controls.Label label5;
         private SOAFramework.Client.Controls.TextBox txbUserName;
-        private SOAFramework.Client.Controls.CheckBox checkBox1;
+        private SOAFramework.Client.Controls.CheckBox chkEnabled;
         private SOAFramework.Client.Controls.TextBox txbRemark;
         private SOAFramework.Client.Controls.TextBox txbAddress;
         private SOAFramework.Client.Controls.TextBox txbIdentity;
@@ -396,5 +425,6 @@
         private SOAFramework.Client.Controls.TextBox txbQQ;
         private SOAFramework.Client.Controls.TextBox txbMobile;
         private SOAFramework.Client.Controls.TextBox txbCnName;
+        private SOAFramework.Client.Controls.TextBox textBox1;
     }
 }
