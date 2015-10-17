@@ -94,6 +94,11 @@
     <isNotNull prepend="AND" property="ActionID">
         `ActionID`=#ActionID#
     </isNotNull>
+    <isNotNull property="Ids">
+        <iterate property="Ids" open="(" close=")" conjunction="OR">
+         ID=#Ids[]#
+        </iterate>
+    </isNotNull>
   </delete>
    <select id="QueryRole_Module_ActionRecordCount" resultClass="int" parameterClass="Role_Module_ActionQueryForm">
    SELECT COUNT(*) FROM `Role_Module_Action` 

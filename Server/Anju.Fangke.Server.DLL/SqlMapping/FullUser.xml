@@ -9,7 +9,8 @@
       <isGreaterThan compareProperty="PageSize" compareValue="0">
 
       </isGreaterThan>
-      SELECT u.ID,u.Name,u.Creator,u.CreateTime,u.LastUpdator,u.LastUpdateTime,u.Enabled,ui.* FROM `User` u LEFT JOIN `UserInfo` ui ON u.ID=ui.ID
+      SELECT u.ID AS ID,u.Name,u.Creator,u.CreateTime,u.LastUpdator,u.LastUpdateTime,u.Enabled,ui.QQ,ui.WX,ui.Address,ui.CnName,ui.Mobile,ui.Remark,ui.Identity
+      FROM `User` u LEFT JOIN `UserInfo` ui ON u.ID=ui.ID
       <dynamic prepend="WHERE">
         <isNotNull prepend="AND" property="ID">
           u.`ID`=#ID#

@@ -80,6 +80,11 @@
     <isNotNull prepend="AND" property="RoleID">
         `RoleID`=#RoleID#
     </isNotNull>
+    <isNotNull property="Ids">
+        <iterate property="Ids" open="(" close=")" conjunction="OR">
+         ID=#Ids[]#
+        </iterate>
+    </isNotNull>
   </delete>
    <select id="QueryUser_RoleRecordCount" resultClass="int" parameterClass="User_RoleQueryForm">
    SELECT COUNT(*) FROM `User_Role` 

@@ -140,6 +140,11 @@
     <isNotNull prepend="AND" property="ActiveTime_End">
         `ActiveTime`&lt;=#ActiveTime_End#
     </isNotNull>
+    <isNotNull property="Ids">
+        <iterate property="Ids" open="(" close=")" conjunction="OR">
+         ID=#Ids[]#
+        </iterate>
+    </isNotNull>
   </delete>
    <select id="QueryLogonHistoryRecordCount" resultClass="int" parameterClass="LogonHistoryQueryForm">
    SELECT COUNT(*) FROM `LogonHistory` 

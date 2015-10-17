@@ -56,11 +56,19 @@ namespace Anju.Fangke.Server.BLL
             });
             if (ui != null)
             {
-                uidao.Update(new UserInfoUpdateForm
+                if (uidao.Query(new UserInfoQueryForm { ID = user.ID }).FirstOrDefault() == null)
                 {
-                    Entity = ui,
-                    UserInfoQueryForm = new UserInfoQueryForm { ID = user.ID }
-                });
+                    ui.ID = user.ID;
+                    uidao.Add(ui);
+                }
+                else
+                {
+                    uidao.Update(new UserInfoUpdateForm
+                    {
+                        Entity = ui,
+                        UserInfoQueryForm = new UserInfoQueryForm { ID = user.ID }
+                    });
+                }
             }
             return true;
         }
@@ -75,14 +83,18 @@ namespace Anju.Fangke.Server.BLL
             return true;
         }
 
-        public bool ChangePassword(string username, string oldpassword, string newpassword)
+        public bool ChangePassword(string username, string newpassword)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             UserDao dao = new UserDao(mapper);
-            var user = dao.Query(new UserQueryForm { Name = username, Password = oldpassword }).FirstOrDefault();
+            var user = dao.Query(new UserQueryForm { Name = username }).FirstOrDefault();
             if (user == null)
             {
-                throw new Exception("用户名或者密码输入错误！");
+                throw new Exception(string.Format("用户名：{0}不存在！", username));
+            }
+            if (user.Enabled == 0)
+            {
+                throw new Exception(string.Format("用户名：{0}已被禁用！", username));
             }
             dao.Update(new UserUpdateForm
             {
@@ -95,11 +107,16 @@ namespace Anju.Fangke.Server.BLL
             return true;
         }
 
-        public bool ChangeSelfPassword(string password)
+        public bool ChangeSelfPassword(string oldpassword, string password)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             UserDao dao = new UserDao(mapper);
             var user = GetUserFormCache();
+            var u = dao.Query(new UserQueryForm { ID = user.User.ID, Password = oldpassword }).FirstOrDefault();
+            if (u == null)
+            {
+                throw new Exception(string.Format("旧密码错误！"));
+            }
             dao.Update(new UserUpdateForm
             {
                 Entity = new User { Password = password },
