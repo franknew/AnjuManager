@@ -46,16 +46,20 @@ namespace Anju.Fangke.Client.Launcher
                 //创建快捷方式
                 string desktoppath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 WshShell shell = new WshShellClass();
-                IWshShortcut shortcut = shell.CreateShortcut(desktoppath + "\\房客易租.lnk") as IWshShortcut;
-                shortcut.TargetPath = Assembly.GetEntryAssembly().Location;
-                shortcut.Description = "房客易租管理系统";
-                shortcut.WorkingDirectory = file.Directory.FullName;
-                if (icon.Exists)
+                string linkpath = desktoppath + "\\房客易租.lnk";
+                if (!System.IO.File.Exists(linkpath))
                 {
-                    shortcut.IconLocation = icon.FullName;
+                    IWshShortcut shortcut = shell.CreateShortcut(linkpath) as IWshShortcut;
+                    shortcut.TargetPath = Assembly.GetEntryAssembly().Location;
+                    shortcut.Description = "房客易租管理系统";
+                    shortcut.WorkingDirectory = file.Directory.FullName;
+                    if (icon.Exists)
+                    {
+                        shortcut.IconLocation = icon.FullName;
+                    }
+                    shortcut.WindowStyle = 1;
+                    shortcut.Save();
                 }
-                shortcut.WindowStyle = 1;
-                shortcut.Save();
                 Process.Start(fullentry);
                 this.Close();
             }

@@ -78,6 +78,7 @@
     <Compile Include="Response\CommonResponse.cs" />
     <Compile Include="Response\DataDictionary\QueryDataDictionaryByNameResponse.cs" />
     <Compile Include="Response\Login\LoginResponse.cs" />
+    <Compile Include="Response\User\AddUserResponse.cs" />
     <Compile Include="Response\User\QueryUserResponse.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

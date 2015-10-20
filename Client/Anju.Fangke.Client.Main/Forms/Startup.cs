@@ -53,6 +53,7 @@ namespace Anju.Fangke.Client.Main
             {
                 this.Show();
             }
+            this.WindowState = FormWindowState.Maximized;
             this.Activate();
         }
 
@@ -91,5 +92,10 @@ namespace Anju.Fangke.Client.Main
             timerNow.Start();
         }
         #endregion
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

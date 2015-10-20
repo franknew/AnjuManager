@@ -330,7 +330,7 @@
             // textBox1
             // 
             this.textBox1.BindingRequestPropertyName = "Form.ID";
-            this.textBox1.BindingResponsePropertyName = null;
+            this.textBox1.BindingResponsePropertyName = "ID";
             this.textBox1.BindingSourcePropertyName = "ID";
             this.textBox1.EmptyWarning = null;
             this.textBox1.Enabled = false;
@@ -391,6 +391,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "EditUser";
             this.Text = "编辑用户";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditUser_FormClosing);
             this.Load += new System.EventHandler(this.EditUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

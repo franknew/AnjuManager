@@ -36,6 +36,13 @@ namespace Anju.Fangke.Client.Main
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.楼盘管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.房间管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.租客管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.房东管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.维护管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabMenu = new SOAFramework.Client.Controls.TabControl();
             this.clientTabPage2 = new SOAFramework.Client.Controls.TabPage();
             this.clientTabPage3 = new SOAFramework.Client.Controls.TabPage();
@@ -48,6 +55,8 @@ namespace Anju.Fangke.Client.Main
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerNow = new System.Windows.Forms.Timer(this.components);
             this.nIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.水电管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.ssStatus.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +65,9 @@ namespace Anju.Fangke.Client.Main
             // 
             this.menu.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.系统ToolStripMenuItem});
+            this.系统ToolStripMenuItem,
+            this.管理ToolStripMenuItem,
+            this.报表ToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(1, 30);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(1249, 28);
@@ -67,7 +78,8 @@ namespace Anju.Fangke.Client.Main
             // 
             this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.退出ToolStripMenuItem});
+            this.退出ToolStripMenuItem,
+            this.退出ToolStripMenuItem1});
             this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
             this.系统ToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.系统ToolStripMenuItem.Text = "系统";
@@ -75,15 +87,64 @@ namespace Anju.Fangke.Client.Main
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(134, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 24);
             this.toolStripMenuItem1.Text = "用户管理";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
-            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.退出ToolStripMenuItem.Text = "重新登录";
+            // 
+            // 管理ToolStripMenuItem
+            // 
+            this.管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.楼盘管理ToolStripMenuItem,
+            this.房间管理ToolStripMenuItem,
+            this.租客管理ToolStripMenuItem,
+            this.房东管理ToolStripMenuItem,
+            this.维护管理ToolStripMenuItem,
+            this.水电管理ToolStripMenuItem});
+            this.管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
+            this.管理ToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.管理ToolStripMenuItem.Text = "管理";
+            // 
+            // 楼盘管理ToolStripMenuItem
+            // 
+            this.楼盘管理ToolStripMenuItem.Name = "楼盘管理ToolStripMenuItem";
+            this.楼盘管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.楼盘管理ToolStripMenuItem.Text = "房源管理";
+            // 
+            // 房间管理ToolStripMenuItem
+            // 
+            this.房间管理ToolStripMenuItem.Name = "房间管理ToolStripMenuItem";
+            this.房间管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.房间管理ToolStripMenuItem.Text = "房租管理";
+            // 
+            // 租客管理ToolStripMenuItem
+            // 
+            this.租客管理ToolStripMenuItem.Name = "租客管理ToolStripMenuItem";
+            this.租客管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.租客管理ToolStripMenuItem.Text = "租客管理";
+            // 
+            // 房东管理ToolStripMenuItem
+            // 
+            this.房东管理ToolStripMenuItem.Name = "房东管理ToolStripMenuItem";
+            this.房东管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.房东管理ToolStripMenuItem.Text = "房东管理";
+            // 
+            // 维护管理ToolStripMenuItem
+            // 
+            this.维护管理ToolStripMenuItem.Name = "维护管理ToolStripMenuItem";
+            this.维护管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.维护管理ToolStripMenuItem.Text = "维护管理";
+            // 
+            // 报表ToolStripMenuItem
+            // 
+            this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
+            this.报表ToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.报表ToolStripMenuItem.Text = "报表";
             // 
             // tabMenu
             // 
@@ -197,6 +258,19 @@ namespace Anju.Fangke.Client.Main
             this.nIcon.Text = "房客易租";
             this.nIcon.Visible = true;
             // 
+            // 水电管理ToolStripMenuItem
+            // 
+            this.水电管理ToolStripMenuItem.Name = "水电管理ToolStripMenuItem";
+            this.水电管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.水电管理ToolStripMenuItem.Text = "水电管理";
+            // 
+            // 退出ToolStripMenuItem1
+            // 
+            this.退出ToolStripMenuItem1.Name = "退出ToolStripMenuItem1";
+            this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(152, 24);
+            this.退出ToolStripMenuItem1.Text = "退出";
+            this.退出ToolStripMenuItem1.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -242,6 +316,15 @@ namespace Anju.Fangke.Client.Main
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.NotifyIcon nIcon;
+        private System.Windows.Forms.ToolStripMenuItem 管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 楼盘管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 房间管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 租客管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 房东管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 维护管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 报表ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 水电管理ToolStripMenuItem;
     }
 }
 
