@@ -114,7 +114,7 @@ namespace SOAFramework.Client.Controls
                 {
                     parent = form.MdiParent;
                 }
-                InitSpinner(parent);
+                InitSpinner(form);
                 //将异步处理传递给窗体以支持取消异步
                 //dynamic dyForm = parentForm;
                 //dyForm.Worker = worker;
@@ -160,8 +160,8 @@ namespace SOAFramework.Client.Controls
                 IngoreCallbackOnce = false;
             }
 
-            this.FindForm().Enabled = true;
-
+            form.Enabled = true;
+            form.Activate();
             if (EnableClickOnceOnAction)
             {
                 this.Enabled = _status;

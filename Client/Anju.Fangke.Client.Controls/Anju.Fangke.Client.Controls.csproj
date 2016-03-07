@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Anju.Fangke.Client.Controls.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SOAFramework.Library.Extension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDll\SOAFramework.Library.Extension.dll</HintPath>
+    </Reference>
     <Reference Include="SOAFramework.Library.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CommonDll\SOAFramework.Library.Json.dll</HintPath>
@@ -98,8 +103,12 @@
     <Compile Include="Form\PopupForm.Designer.cs">
       <DependentUpon>PopupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupBox\GroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Interface\IControlBindable.cs" />
     <Compile Include="Interface\IControlEmptable.cs" />
+    <Compile Include="Interface\IInitableBinding.cs" />
     <Compile Include="Interface\IServiceBindable.cs" />
     <Compile Include="Interface\IServiceSubmitable.cs" />
     <Compile Include="Label\Label.cs">
@@ -117,6 +126,9 @@
     <Compile Include="TabControl\TabPageCollectionEditor.cs" />
     <Compile Include="TabControl\TabPageDesigner.cs" />
     <Compile Include="TextBox\TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Watcher\ContolWatcher.cs" />
@@ -153,7 +165,9 @@
       <Name>MetroFramework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TreeView\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

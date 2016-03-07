@@ -44,7 +44,7 @@ namespace Anju.Fangke.Client.Main
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form form = AddMdiChild("Anju.Fangke.Client.Forms.UserManagement.dll", "Anju.Fangke.Client.Forms.UserManagement");
-            _watcher.Add("UserManagement", form.Text);
+            _watcher.Add(form.Name, form.Text);
         }
 
         private void show_click(object sender, EventArgs e)
@@ -96,6 +96,20 @@ namespace Anju.Fangke.Client.Main
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void 楼盘管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = AddMdiChild("Anju.Fangke.Client.Forms.AssetManagement.dll", "Anju.Fangke.Client.Forms.AssetManagement");
+            _watcher.Add(form.Name, form.Text);
+        }
+
+        private void tabMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabMenu.SelectedTab != null)
+            {
+                _watcher.Activate(tabMenu.SelectedTab.Name);
+            }
         }
     }
 }

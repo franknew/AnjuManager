@@ -6,10 +6,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace SOAFramework.Client.Controls
 {
-    public class ComboBox : MetroComboBox, IServiceBindable, IControlBindable 
+    public class ComboBox : MetroComboBox, IServiceBindable, IControlBindable, IInitableBinding
     {
         #region service binding property
         private string controlBindingPropertyName = "SelectedValue";
@@ -91,11 +92,40 @@ namespace SOAFramework.Client.Controls
         public object DBNullValue { get; set; }
         #endregion
 
-        #region property
+        #region initable binding
         [Category(ControlCategory.Category)]
-        [DefaultValue("-1")]
+        [DefaultValue("")]
+        public string InitableBindingGroupName
+        {
+            get; set;
+        }
+
+        private string initableBindingControlPropertyName = "DataSource";
+        [Category(ControlCategory.Category)]
+        [DefaultValue("DataSource")]
+        public string InitableBindingControlPropertyName
+        {
+            get
+            {
+                return initableBindingControlPropertyName;
+            }
+
+            set
+            {
+                initableBindingControlPropertyName = value;
+            }
+        }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool HasAll { get; set; }
+        #endregion
+
+        #region property
         private string emptyValue = "-1";
 
+        [Category(ControlCategory.Category)]
+        [DefaultValue("-1")]
         public string EmptyValue
         {
             get
@@ -106,6 +136,29 @@ namespace SOAFramework.Client.Controls
             set
             {
                 emptyValue = value;
+            }
+        }
+
+
+        public object Value
+        {
+            get { return this.SelectedValue; }
+            set
+            {
+                if (value == null)
+                {
+                    this.SelectedIndex = -1;
+                    return;
+                }
+                foreach (var item in this.Items)
+                {
+                    object objValue = item.TryGetValue(this.ValueMember);
+                    if (value.Equals(objValue.ChangeTypeTo(value.GetType())))
+                    {
+                        this.SelectedItem = item;
+                        break;
+                    }
+                }
             }
         }
         #endregion

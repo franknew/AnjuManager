@@ -31,8 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SOAFramework.Library.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\SOAFramework.Library.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\SOAFramework.Service.SDK.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +51,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBuilding.Designer.cs">
+      <DependentUpon>AddBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddHouse.Designer.cs">
+      <DependentUpon>AddHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssetManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssetManagement.Designer.cs">
+      <DependentUpon>AssetManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseEditBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseEditBuilding.Designer.cs">
+      <DependentUpon>BaseEditBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseEditHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseEditHouse.Designer.cs">
+      <DependentUpon>BaseEditHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBuilding.Designer.cs">
+      <DependentUpon>EditBuilding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Anju.Fangke.Client.AppData\Anju.Fangke.Client.AppData.csproj">
+      <Project>{566aeeed-4c41-4dc7-80a3-a7cac06007f4}</Project>
+      <Name>Anju.Fangke.Client.AppData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Anju.Fangke.Client.Controls\Anju.Fangke.Client.Controls.csproj">
+      <Project>{c8e5aebe-7431-444a-8342-9164be7b06c2}</Project>
+      <Name>Anju.Fangke.Client.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Anju.Fangke.Client.SDK\Anju.Fangke.Client.SDK.csproj">
+      <Project>{b09c10d0-6c53-41fa-8ef0-f04075235beb}</Project>
+      <Name>Anju.Fangke.Client.SDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MetroFramework.Design\MetroFramework.Design.csproj">
+      <Project>{1c0fdd58-8c81-4624-8e39-d0c14f375def}</Project>
+      <Name>MetroFramework.Design</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MetroFramework.Fonts\MetroFramework.Fonts.csproj">
+      <Project>{bcda5068-5737-4939-b480-107c50d5cc12}</Project>
+      <Name>MetroFramework.Fonts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\MetroFramework\MetroFramework.csproj">
+      <Project>{028f8695-f2d0-4a96-8f48-feeab758c717}</Project>
+      <Name>MetroFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddBuilding.resx">
+      <DependentUpon>AddBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetManagement.resx">
+      <DependentUpon>AssetManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseEditBuilding.resx">
+      <DependentUpon>BaseEditBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseEditHouse.resx">
+      <DependentUpon>BaseEditHouse.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

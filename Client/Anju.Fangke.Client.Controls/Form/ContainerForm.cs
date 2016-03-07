@@ -13,7 +13,7 @@ using Anju.Fangke.Client.Controls;
 
 namespace SOAFramework.Client.Forms
 {
-    public partial class ContainerForm : MetroForm
+    public partial class ContainerForm : BaseForm
     {
         public ContainerForm()
         {
@@ -26,8 +26,6 @@ namespace SOAFramework.Client.Forms
         {
             get { return _watcher; }
         }
-
-        public string Token { get; set; }
 
         public Form AddMdiChild(string dllpath, string typename)
         {
@@ -60,6 +58,7 @@ namespace SOAFramework.Client.Forms
                 child.MdiParent = this;
                 child.ShowIcon = false;
                 child.ShowInTaskbar = false;
+                child.Token = this.Token;
                 child.Show();
             }
             return child;

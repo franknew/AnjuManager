@@ -51,8 +51,7 @@ namespace Anju.Fangke.Client.Forms
         {
             DataGridViewRow row = dgvUsers.NewRow();
             row.Cells["启用"].Value = 1;
-            EditUser form = new EditUser();
-            form.Mode = EditMode.Add;
+            AddUser form = new AddUser();
             form.Binding = this.Binding;
             form.ShowDialog(this);
         }
@@ -62,7 +61,6 @@ namespace Anju.Fangke.Client.Forms
             if (dgvUsers.SelectedRows.Count > 0)
             {
                 EditUser form = new EditUser();
-                form.Mode = EditMode.Edit;
                 form.Binding = this.Binding;
                 form.ShowDialog(this);
             }
