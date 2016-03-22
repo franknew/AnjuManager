@@ -63,5 +63,21 @@ namespace Anju.Fangke.Client.SDK
         /// </summary>
         public int? KitchenNumber { get; set; }
 
+        public string HouseTypeName
+        {
+            get
+            {
+                return $"{RoomCount}室{HallCount}厅{ToiletCount}卫";
+            }
+        }
+
+        public string RentTypeName
+        {
+            get
+            {
+                return RentType.Value == 1 ? "整租" : "合租";
+            }
+        }
+
     }
 }

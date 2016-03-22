@@ -82,7 +82,7 @@ namespace SOAFramework.Client.Controls
         #region override
         protected override void OnClick(EventArgs e)
         {
-            Form form = this.FindForm();
+            BaseForm form = this.FindForm() as BaseForm;
             if (CheckFormEmpty)
             {
                 //检查窗体输入项为空情况
@@ -108,13 +108,12 @@ namespace SOAFramework.Client.Controls
                 data = form.CollectData();
                 _worker.DoWork += worker_DoWork;
                 _worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-                form.Enabled = false;
                 Form parent = form;
                 if (form.MdiParent != null)
                 {
                     parent = form.MdiParent;
                 }
-                InitSpinner(form);
+                form.ShowSpinner();
                 //将异步处理传递给窗体以支持取消异步
                 //dynamic dyForm = parentForm;
                 //dyForm.Worker = worker;
@@ -136,12 +135,7 @@ namespace SOAFramework.Client.Controls
         #region event
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Form form = this.FindForm();
-            //完成时执行回调事件
-            if (spinner != null)
-            {
-                spinner.Hide();
-            }
+            BaseForm form = this.FindForm() as BaseForm;
 
             if (_handler.IsError)
             {
@@ -159,9 +153,7 @@ namespace SOAFramework.Client.Controls
                 }
                 IngoreCallbackOnce = false;
             }
-
-            form.Enabled = true;
-            form.Activate();
+            form.HideSpinner();
             if (EnableClickOnceOnAction)
             {
                 this.Enabled = _status;

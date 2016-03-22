@@ -7,27 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
+using Anju.Fangke.Client.SDK.Entity;
+using SOAFramework.Client.Controls;
 using SOAFramework.Service.SDK.Core;
 
 namespace Anju.Fangke.Client.Forms
 {
     public partial class AddBuilding : BaseEditBuilding
     {
-        private AddModelResponse _response = null;
-
         public AddBuilding()
         {
             InitializeComponent();
             btnSave.EnableSyncClick = true;
             btnSave.Click += btnSave_Click;
-            btnSave.ClickCallback += btnSave_Callback;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             AddBuildingRequest request = new AddBuildingRequest();
             request.token = this.Token;
-            Building building = new Building();
+            FullBuilding building = new FullBuilding();
             building.FloorCount = Convert.ToInt16(txbFloor.Text);
             building.AreaID = cmbArea.SelectedValue.ToString() == "-1" ? null : cmbArea.SelectedValue.ToString();
             building.ProvinceID = cmbProvince.SelectedValue.ToString() == "-1" ? null : cmbProvince.SelectedValue.ToString();
@@ -37,23 +36,17 @@ namespace Anju.Fangke.Client.Forms
             building.Name = txbName.Text;
             Building = building;
             request.form = building;
-            _response = SDKFactory.Client.Execute(request);
+            Building = building;
+            SDKSync<AddModelResponse>.CreateInstance(this).Execute(request, btnSave_Callback);
         }
 
-        private void btnSave_Callback(object sender, EventArgs e)
+        private void btnSave_Callback(AddModelResponse response)
         {
-            if (_response != null)
+            if (SaveClickCallBack != null)
             {
-                if (_response.IsError)
-                {
-                    SOAFramework.Client.Controls.MessageBox.Show(this, _response.ResponseBody);
-                    return;
-                }
-                if (SaveClickCallBack != null)
-                {
-                    SaveClickCallBack.Invoke(this, e);
-                    this.Close();
-                }
+                Building.ID = response.ID;
+                SaveClickCallBack.Invoke(Building, null);
+                this.Close();
             }
         }
     }

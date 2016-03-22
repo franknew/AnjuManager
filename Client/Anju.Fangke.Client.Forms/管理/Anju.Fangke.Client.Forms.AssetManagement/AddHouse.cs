@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
+using SOAFramework.Client.Controls;
 using SOAFramework.Service.SDK.Core;
 
 namespace Anju.Fangke.Client.Forms
@@ -17,36 +18,42 @@ namespace Anju.Fangke.Client.Forms
         {
             InitializeComponent();
             this.Text = "新增房间";
-            this.btnSave.ClickCallback += BtnSave_ClickCallback;
             this.btnSave.Click += BtnSave_Click;
+            this.Shown += AddHouse_Shown;
         }
 
-        public House House { get; set; }
-        public string BuildingID { get; set; }
-        public int Floor { get; set; }
-
-
+        private void AddHouse_Shown(object sender, EventArgs e)
+        {
+            this.txbBuildingName.Text = this.Building.Name;
+            this.txbFloor.Text = this.Floor.ToString();
+        }
+        
         private void BtnSave_Click(object sender, EventArgs e)
         {
             AddHouseRequest request = new AddHouseRequest();
             request.token = this.Token;
             House house = new House
             {
-                BuildingID = this.BuildingID,
+                BuildingID = this.Building.ID,
                 Floor = this.Floor,
-                HallCount = (int)cmbHall.SelectedValue,
-                RoomCount = (int)cmbRoom.SelectedValue,
-                ToiletCount = (int)cmbToilet.SelectedValue,
+                HallCount = Convert.ToInt32(cmbHall.SelectedItem),
+                RoomCount = Convert.ToInt32(cmbRoom.SelectedItem),
+                ToiletCount = Convert.ToInt32(cmbToilet.SelectedItem),
                 Remark = txbRemark.Text,
                 Name = txbHouseName.Text,
-                RentType = chkRentType.Checked ? 1 : 0,
+                RentType = rabZhengZu.Checked ? 1 : 0,
             };
-            var response = SDKFactory.Client.Execute(request);
+            this.House = house;
+            request.form = house;
+            var response = SDKSync<AddModelResponse>.CreateInstance(this).Execute(request, AddHouse_Callback);
         }
 
-        private void BtnSave_ClickCallback(object sender, EventArgs e)
+        private void AddHouse_Callback(AddModelResponse response)
         {
-            throw new NotImplementedException();
+            this.House.ID = response.ID;
+            Building?.House?.Add(this.House);
+            SOAFramework.Client.Controls.MessageBox.Show(this, "新增房间成功");
+            this.Close();
         }
     }
 }

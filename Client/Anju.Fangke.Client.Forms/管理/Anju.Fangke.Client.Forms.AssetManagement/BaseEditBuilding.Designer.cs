@@ -294,23 +294,22 @@
         }
 
         #endregion
-
-        protected SOAFramework.Client.Controls.GroupBox groupBox1;
-        protected SOAFramework.Client.Controls.GroupBox groupBox2;
-        private SOAFramework.Client.Controls.Label label6;
-        private SOAFramework.Client.Controls.Label label5;
-        private SOAFramework.Client.Controls.Label label4;
-        private SOAFramework.Client.Controls.Label label3;
-        private SOAFramework.Client.Controls.Label label2;
-        private SOAFramework.Client.Controls.Label label1;
-        private SOAFramework.Client.Controls.Label label7;
-        protected SOAFramework.Client.Controls.Button btnClose;
-        protected SOAFramework.Client.Controls.TextBox txbRemark;
-        protected SOAFramework.Client.Controls.TextBox txbStreet;
-        protected SOAFramework.Client.Controls.TextBox txbName;
-        protected SOAFramework.Client.Controls.TextBox txbFloor;
-        protected SOAFramework.Client.Controls.ComboBox cmbArea;
-        protected SOAFramework.Client.Controls.ComboBox cmbcity;
-        protected SOAFramework.Client.Controls.ComboBox cmbProvince;
+        public SOAFramework.Client.Controls.GroupBox groupBox1;
+        public SOAFramework.Client.Controls.GroupBox groupBox2;
+        public SOAFramework.Client.Controls.Button btnClose;
+        public SOAFramework.Client.Controls.TextBox txbRemark;
+        public SOAFramework.Client.Controls.TextBox txbStreet;
+        public SOAFramework.Client.Controls.TextBox txbName;
+        public SOAFramework.Client.Controls.TextBox txbFloor;
+        public SOAFramework.Client.Controls.ComboBox cmbArea;
+        public SOAFramework.Client.Controls.ComboBox cmbcity;
+        public SOAFramework.Client.Controls.ComboBox cmbProvince;
+        public SOAFramework.Client.Controls.Label label6;
+        public SOAFramework.Client.Controls.Label label5;
+        public SOAFramework.Client.Controls.Label label4;
+        public SOAFramework.Client.Controls.Label label3;
+        public SOAFramework.Client.Controls.Label label2;
+        public SOAFramework.Client.Controls.Label label1;
+        public SOAFramework.Client.Controls.Label label7;
     }
 }

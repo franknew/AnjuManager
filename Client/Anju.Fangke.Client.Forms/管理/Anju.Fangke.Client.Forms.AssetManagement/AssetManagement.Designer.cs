@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("房客易租");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("房客易租");
             this.groupBox3 = new SOAFramework.Client.Controls.GroupBox();
             this.dgvHouse = new SOAFramework.Client.Controls.DataGridView();
             this.房屋名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.所在楼层 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.房型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.费用 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.费用周期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.出租类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
             this.btnEditRoom = new SOAFramework.Client.Controls.Button();
             this.btnDelete = new SOAFramework.Client.Controls.Button();
@@ -71,21 +71,21 @@
             this.dgvHouse.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvHouse.BindingRequestPropertyName = null;
             this.dgvHouse.BindingResponsePropertyName = null;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHouse.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHouse.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHouse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.房屋名称,
             this.所在楼层,
             this.房型,
-            this.费用,
-            this.费用周期});
+            this.出租类型,
+            this.备注});
             this.dgvHouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHouse.Location = new System.Drawing.Point(3, 109);
             this.dgvHouse.Name = "dgvHouse";
@@ -111,21 +111,26 @@
             // 
             // 房型
             // 
+            this.房型.DataPropertyName = "HouseTypeName";
             this.房型.HeaderText = "房型";
             this.房型.Name = "房型";
             this.房型.ReadOnly = true;
+            this.房型.Width = 150;
             // 
-            // 费用
+            // 出租类型
             // 
-            this.费用.HeaderText = "费用";
-            this.费用.Name = "费用";
-            this.费用.ReadOnly = true;
+            this.出租类型.DataPropertyName = "RentTypeName";
+            this.出租类型.HeaderText = "出租类型";
+            this.出租类型.Name = "出租类型";
+            this.出租类型.ReadOnly = true;
             // 
-            // 费用周期
+            // 备注
             // 
-            this.费用周期.HeaderText = "费用周期";
-            this.费用周期.Name = "费用周期";
-            this.费用周期.ReadOnly = true;
+            this.备注.DataPropertyName = "Remark";
+            this.备注.HeaderText = "备注";
+            this.备注.Name = "备注";
+            this.备注.ReadOnly = true;
+            this.备注.Width = 350;
             // 
             // groupBox1
             // 
@@ -202,7 +207,6 @@
             this.tabFloor.Size = new System.Drawing.Size(853, 39);
             this.tabFloor.TabIndex = 0;
             this.tabFloor.UseSelectable = true;
-            this.tabFloor.SelectedIndexChanged += new System.EventHandler(this.tabFloor_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -219,13 +223,12 @@
             this.tvBuilding.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvBuilding.Location = new System.Drawing.Point(3, 17);
             this.tvBuilding.Name = "tvBuilding";
-            treeNode1.Name = "nodeRoot";
-            treeNode1.Text = "房客易租";
+            treeNode2.Name = "nodeRoot";
+            treeNode2.Text = "房客易租";
             this.tvBuilding.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.tvBuilding.Size = new System.Drawing.Size(222, 404);
             this.tvBuilding.TabIndex = 0;
-            this.tvBuilding.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBuilding_AfterSelect);
             this.tvBuilding.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBuilding_NodeMouseClick);
             // 
             // AssetManagement
@@ -239,7 +242,6 @@
             this.Name = "AssetManagement";
             this.Padding = new System.Windows.Forms.Padding(5, 30, 5, 5);
             this.Text = "房源管理";
-            this.Load += new System.EventHandler(this.AssetManagement_Load);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHouse)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -262,7 +264,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 房屋名称;
         private System.Windows.Forms.DataGridViewTextBoxColumn 所在楼层;
         private System.Windows.Forms.DataGridViewTextBoxColumn 房型;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 费用;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 费用周期;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 出租类型;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
     }
 }

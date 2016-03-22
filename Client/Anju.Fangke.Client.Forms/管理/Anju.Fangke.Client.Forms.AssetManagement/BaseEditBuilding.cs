@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
+using Anju.Fangke.Client.SDK.Entity;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -18,7 +19,7 @@ namespace Anju.Fangke.Client.Forms
             InitializeComponent();
         }
 
-        public Building Building { get; set; }
+        public FullBuilding Building { get; set; }
 
         private void btnClose_Click(object sender, EventArgs e)
         {

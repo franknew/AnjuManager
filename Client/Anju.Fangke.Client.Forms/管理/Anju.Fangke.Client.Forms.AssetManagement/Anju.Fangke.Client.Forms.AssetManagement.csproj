@@ -119,6 +119,9 @@
     <EmbeddedResource Include="AddBuilding.resx">
       <DependentUpon>AddBuilding.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddHouse.resx">
+      <DependentUpon>AddHouse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssetManagement.resx">
       <DependentUpon>AssetManagement.cs</DependentUpon>
     </EmbeddedResource>

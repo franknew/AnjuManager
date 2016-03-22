@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
 using SOAFramework.Service.SDK.Core;
 using MetroFramework.Controls;
+using SOAFramework.Client.Controls;
+using Anju.Fangke.Client.SDK.Entity;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -18,12 +20,35 @@ namespace Anju.Fangke.Client.Forms
         public AssetManagement()
         {
             InitializeComponent();
+            tabFloor.SelectedIndexChanged += tabFloor_SelectedIndexChanged;
+            tvBuilding.AfterSelect += tvBuilding_AfterSelect;
+            this.Shown += AssetManagement_Shown;
         }
 
         private TreeNode _selectedNode = null;
+        private int _currentFloor = 1;
 
-        private void tvBuilding_MouseClick(object sender, MouseEventArgs e)
+        private void AssetManagement_Shown(object sender, EventArgs e)
         {
+            QueryBuildingRequest request = new QueryBuildingRequest();
+            request.token = this.Token;
+            request.form = new BuildingQueryForm();
+            var response = SDKSync<QueryBuildingResponse>.CreateInstance(this).Execute(request, FormShown_Callback);
+        }
+
+        private void FormShown_Callback(QueryBuildingResponse response)
+        {
+            foreach (var buiding in response.List)
+            {
+                TreeNode node = new TreeNode
+                {
+                    Name = buiding.ID,
+                    Text = buiding.Name,
+                    Tag = buiding,
+                };
+                tvBuilding.TopNode.Nodes.Add(node);
+            }
+            tvBuilding.TopNode.ExpandAll();
         }
 
         private void tvBuilding_Add(object sender, EventArgs e)
@@ -37,17 +62,17 @@ namespace Anju.Fangke.Client.Forms
 
         private void AddSave_Callback(object sender, EventArgs e)
         {
-            AddBuilding form = sender as AddBuilding;
-            if (form.Building == null) return;
-            tvBuilding.TopNode.Nodes.Add(new TreeNode { Name = form.Building.ID, Text = form.Building.Name, Tag = form.Building });
+            FullBuilding building = sender as FullBuilding;
+            if (building == null) return;
+            tvBuilding.TopNode.Nodes.Add(new TreeNode { Name = building.ID, Text = building.Name, Tag = building });
         }
 
         private void EditSave_Callback(object sender, EventArgs e)
         {
-            EditBuilding form = sender as EditBuilding;
-            if (form.Building == null) return;
-            _selectedNode.Tag = form.Building;
-            _selectedNode.Text = form.Building.Name;
+            FullBuilding building = sender as FullBuilding;
+            if (building == null) return;
+            _selectedNode.Tag = building;
+            _selectedNode.Text = building.Name;
             tvBuilding_AfterSelect(sender, new TreeViewEventArgs(_selectedNode));
         }
 
@@ -55,7 +80,7 @@ namespace Anju.Fangke.Client.Forms
         {
             EditBuilding form = new EditBuilding();
             form.SaveClickCallBack += EditSave_Callback;
-            form.Building = _selectedNode.Tag as Building;
+            form.Building = _selectedNode.Tag as FullBuilding;
             form.Token = this.Token;
             form.ShowDialog(this);
         }
@@ -64,19 +89,18 @@ namespace Anju.Fangke.Client.Forms
         {
             if (_selectedNode == null || _selectedNode.Tag == null) return;
             if (SOAFramework.Client.Controls.MessageBox.Show(this, "是否删除该楼盘？", "删除", MessageBoxButtons.YesNo) == DialogResult.No) return;
-            Building building = _selectedNode.Tag as Building;
+            FullBuilding building = _selectedNode.Tag as FullBuilding;
             DeleteBuildingRequest request = new DeleteBuildingRequest();
             request.token = this.Token;
             request.form = new BuildingQueryForm
             {
                 ID = building.ID,
             };
-            var response = SDKFactory.Client.Execute(request);
-            if (response.IsError)
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, response.ResponseBody);
-                return;
-            }
+            var response = SDKSync<CommonResponse>.CreateInstance(this).Execute(request, DeleteBuilding_Callback);
+        }
+
+        private void DeleteBuilding_Callback(CommonResponse response)
+        {
             tvBuilding.TopNode.Nodes.Remove(_selectedNode);
             _selectedNode = null;
         }
@@ -97,30 +121,6 @@ namespace Anju.Fangke.Client.Forms
             }
         }
 
-        private void AssetManagement_Load(object sender, EventArgs e)
-        {
-            QueryBuildingRequest request = new QueryBuildingRequest();
-            request.token = this.Token;
-            request.form = new BuildingQueryForm();
-            var response = SDKFactory.Client.Execute(request);
-            if (response.IsError)
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, response.ResponseBody);
-                return;
-            }
-            foreach (var buiding in response.List)
-            {
-                TreeNode node = new TreeNode
-                {
-                    Name = buiding.ID,
-                    Text = buiding.Name,
-                    Tag = buiding,
-                };
-                tvBuilding.TopNode.Nodes.Add(node);
-            }
-            tvBuilding.TopNode.ExpandAll();
-        }
-
         private void btnEditRoom_Click(object sender, EventArgs e)
         {
 
@@ -129,45 +129,52 @@ namespace Anju.Fangke.Client.Forms
         private void tvBuilding_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Tag == null) return;
-            Building building = e.Node.Tag as Building;
-            tabFloor.TabPages.Clear();
-            tabFloor.SelectedIndexChanged -= tabFloor_SelectedIndexChanged;
-            for (int i = 0; i < building.FloorCount; i++)
+            FullBuilding building = e.Node.Tag as FullBuilding;
+            _selectedNode = e.Node;
+            if (building.FloorCount > tabFloor.TabPages.Count)
             {
-                int floor = i + 1;
-                MetroTabPage page = new MetroTabPage();
-                page.Text = string.Format("第{0}层", floor);
-                page.Name = string.Format("pageFloor" + floor);
-                page.Tag = floor;
-                tabFloor.TabPages.Add(page);
+                for (int i = tabFloor.TabPages.Count; i < building.FloorCount; i++)
+                {
+                    int floor = i + 1;
+                    MetroTabPage page = new MetroTabPage();
+                    page.Text = string.Format("第{0}层", floor);
+                    page.Name = string.Format("pageFloor" + floor);
+                    page.Tag = floor;
+                    tabFloor.TabPages.Add(page);
+                }
             }
-            tabFloor.SelectedIndexChanged += tabFloor_SelectedIndexChanged;
-            if (tabFloor.TabPages.Count > 0)
+            else if (building.FloorCount < tabFloor.TabPages.Count)
             {
-                tabFloor.TabPages[0].Select();
+                for (int i = tabFloor.TabPages.Count; i > building.FloorCount; i--)
+                {
+                    int floor = i - 1;
+                    tabFloor.TabPages.RemoveAt(floor);
+                }
             }
             groupBox3.Text = building.Name;
-        }
-
-        private void tabFloor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tvBuilding.SelectedNode.Tag == null || tabFloor.SelectedTab == null) return;
-            Building building = tvBuilding.SelectedNode.Tag as Building;
             QueryHouseRequest request = new QueryHouseRequest();
             request.token = this.Token;
             request.form = new HouseQueryForm
             {
                 BuildingID = building.ID,
-                Floor = (int)tabFloor.SelectedTab.Tag,
-                
             };
-            var response = SDKFactory.Client.Execute(request);
-            if (response.IsError)
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, response.ResponseBody);
-                return;
-            }
-            dgvHouse.DataSource = response.List;
+            var response = new SDKSync<QueryHouseResponse>(this).Execute(request, tvBuilding_AfterSelect_CallBack);
+        }
+
+        private void tvBuilding_AfterSelect_CallBack(QueryHouseResponse r)
+        {
+            FullBuilding buiding = tvBuilding.SelectedNode.Tag as FullBuilding;
+            if (buiding == null) return;
+            buiding.House = r.List;
+            tabFloor_SelectedIndexChanged(this, null);
+        }
+
+        private void tabFloor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_selectedNode == null || tabFloor.SelectedTab == null) return;
+            FullBuilding building = _selectedNode.Tag as FullBuilding;
+            _currentFloor = tabFloor.SelectedIndex + 1;
+            dgvHouse.DataSource = building.House?.FindAll(t => t.Floor == _currentFloor);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -187,10 +194,17 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (_selectedNode == null)
+            {
+                SOAFramework.Client.Controls.MessageBox.Show(this, "请先选择一个楼盘");
+                return;
+            }
             AddHouse form = new AddHouse();
             form.Token = this.Token;
-
+            form.Building = _selectedNode.Tag as FullBuilding;
+            form.Floor = _currentFloor;
             form.ShowDialog(this);
+            tabFloor_SelectedIndexChanged(null, null);
         }
     }
 }

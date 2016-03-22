@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
+            this.rabHezu = new SOAFramework.Client.Controls.RadioButton();
+            this.rabZhengZu = new SOAFramework.Client.Controls.RadioButton();
             this.txbFloor = new SOAFramework.Client.Controls.TextBox();
             this.txbBuildingName = new SOAFramework.Client.Controls.TextBox();
             this.txbRemark = new SOAFramework.Client.Controls.TextBox();
@@ -46,14 +48,14 @@
             this.label1 = new SOAFramework.Client.Controls.Label();
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
             this.btnClose = new SOAFramework.Client.Controls.Button();
-            this.chkRentType = new SOAFramework.Client.Controls.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkRentType);
+            this.groupBox1.Controls.Add(this.rabHezu);
+            this.groupBox1.Controls.Add(this.rabZhengZu);
             this.groupBox1.Controls.Add(this.txbFloor);
             this.groupBox1.Controls.Add(this.txbBuildingName);
             this.groupBox1.Controls.Add(this.txbRemark);
@@ -75,7 +77,34 @@
             this.groupBox1.Size = new System.Drawing.Size(370, 367);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // rabHezu
+            // 
+            this.rabHezu.AutoSize = true;
+            this.rabHezu.BindingRequestPropertyName = null;
+            this.rabHezu.BindingResponsePropertyName = null;
+            this.rabHezu.BindingSourcePropertyName = null;
+            this.rabHezu.Location = new System.Drawing.Point(144, 192);
+            this.rabHezu.Name = "rabHezu";
+            this.rabHezu.Size = new System.Drawing.Size(47, 15);
+            this.rabHezu.TabIndex = 6;
+            this.rabHezu.Text = "合租";
+            this.rabHezu.UseSelectable = true;
+            // 
+            // rabZhengZu
+            // 
+            this.rabZhengZu.AutoSize = true;
+            this.rabZhengZu.BindingRequestPropertyName = null;
+            this.rabZhengZu.BindingResponsePropertyName = null;
+            this.rabZhengZu.BindingSourcePropertyName = null;
+            this.rabZhengZu.Checked = true;
+            this.rabZhengZu.Location = new System.Drawing.Point(87, 192);
+            this.rabZhengZu.Name = "rabZhengZu";
+            this.rabZhengZu.Size = new System.Drawing.Size(47, 15);
+            this.rabZhengZu.TabIndex = 5;
+            this.rabZhengZu.TabStop = true;
+            this.rabZhengZu.Text = "整租";
+            this.rabZhengZu.UseSelectable = true;
             // 
             // txbFloor
             // 
@@ -125,7 +154,7 @@
             this.txbRemark.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRemark.SelectedText = "";
             this.txbRemark.Size = new System.Drawing.Size(250, 133);
-            this.txbRemark.TabIndex = 12;
+            this.txbRemark.TabIndex = 7;
             this.txbRemark.UseSelectable = true;
             // 
             // txbHouseName
@@ -141,9 +170,8 @@
             this.txbHouseName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbHouseName.SelectedText = "";
             this.txbHouseName.Size = new System.Drawing.Size(250, 23);
-            this.txbHouseName.TabIndex = 11;
+            this.txbHouseName.TabIndex = 1;
             this.txbHouseName.UseSelectable = true;
-            this.txbHouseName.Click += new System.EventHandler(this.textBox1_Click);
             // 
             // cmbToilet
             // 
@@ -162,7 +190,7 @@
             this.cmbToilet.Location = new System.Drawing.Point(256, 140);
             this.cmbToilet.Name = "cmbToilet";
             this.cmbToilet.Size = new System.Drawing.Size(52, 29);
-            this.cmbToilet.TabIndex = 10;
+            this.cmbToilet.TabIndex = 4;
             this.cmbToilet.UseSelectable = true;
             this.cmbToilet.Value = null;
             // 
@@ -183,7 +211,7 @@
             this.cmbHall.Location = new System.Drawing.Point(173, 140);
             this.cmbHall.Name = "cmbHall";
             this.cmbHall.Size = new System.Drawing.Size(52, 29);
-            this.cmbHall.TabIndex = 9;
+            this.cmbHall.TabIndex = 3;
             this.cmbHall.UseSelectable = true;
             this.cmbHall.Value = null;
             // 
@@ -209,7 +237,7 @@
             this.cmbRoom.Location = new System.Drawing.Point(86, 140);
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(52, 29);
-            this.cmbRoom.TabIndex = 8;
+            this.cmbRoom.TabIndex = 2;
             this.cmbRoom.UseSelectable = true;
             this.cmbRoom.Value = null;
             // 
@@ -308,20 +336,6 @@
             this.btnClose.Text = "关闭";
             this.btnClose.UseSelectable = true;
             // 
-            // chkRentType
-            // 
-            this.chkRentType.AutoSize = true;
-            this.chkRentType.BindingChecked = 0;
-            this.chkRentType.BindingRequestPropertyName = null;
-            this.chkRentType.BindingResponsePropertyName = null;
-            this.chkRentType.BindingSourcePropertyName = null;
-            this.chkRentType.Location = new System.Drawing.Point(86, 185);
-            this.chkRentType.Name = "chkRentType";
-            this.chkRentType.Size = new System.Drawing.Size(47, 15);
-            this.chkRentType.TabIndex = 15;
-            this.chkRentType.Text = "整租";
-            this.chkRentType.UseSelectable = true;
-            // 
             // BaseEditHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -357,6 +371,7 @@
         protected SOAFramework.Client.Controls.TextBox txbBuildingName;
         protected SOAFramework.Client.Controls.GroupBox groupBox1;
         protected SOAFramework.Client.Controls.GroupBox groupBox2;
-        protected SOAFramework.Client.Controls.CheckBox chkRentType;
+        public SOAFramework.Client.Controls.RadioButton rabHezu;
+        public SOAFramework.Client.Controls.RadioButton rabZhengZu;
     }
 }

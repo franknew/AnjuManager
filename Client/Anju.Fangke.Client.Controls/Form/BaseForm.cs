@@ -11,6 +11,7 @@ using SOAFramework.Client.Controls;
 using System.Dynamic;
 using System.Reflection;
 using SOAFramework.Service.SDK.Core;
+using MetroFramework.Controls;
 
 namespace SOAFramework.Client.Forms
 {
@@ -22,6 +23,8 @@ namespace SOAFramework.Client.Forms
             this.BorderStyle = MetroFormBorderStyle.FixedSingle;
             this.ShadowType = MetroFormShadowType.AeroShadow;
         }
+
+        private MetroProgressSpinner spinner = new MetroProgressSpinner();
 
         private CustomBindingSource binding = new CustomBindingSource();
         [Browsable(false)]
@@ -39,7 +42,7 @@ namespace SOAFramework.Client.Forms
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
+            if (DesignMode) return;
             var allcontrols = this.GetAllControls();
 
             #region 添加绑定
@@ -123,6 +126,38 @@ namespace SOAFramework.Client.Forms
             {
                 AfterLoaded.Invoke(this, e);
             }
+        }
+
+        public void ShowSpinner()
+        {
+            this.Enabled = false;
+            if (this.Controls.Contains(spinner))
+            {
+                spinner = this.Controls["spnProgressSpinner"] as MetroProgressSpinner;
+            }
+            else
+            {
+                spinner = new MetroProgressSpinner();
+                spinner.Name = "spnProgressSpinner";
+                spinner.Hide();
+                this.Controls.Add(spinner);
+            }
+            spinner.BringToFront();
+            spinner.Size = new System.Drawing.Size(40, 40);
+            spinner.Value = 50;
+            spinner.Maximum = 100;
+            spinner.Location = new Point(this.Width / 2 - spinner.Width / 2, this.Height / 2 - spinner.Height / 2);
+            spinner.Show();
+        }
+
+        public void HideSpinner()
+        {
+            if (spinner != null)
+            {
+                spinner.Hide();
+            }
+            this.Enabled = true;
+            this.Activate();
         }
     }
 }

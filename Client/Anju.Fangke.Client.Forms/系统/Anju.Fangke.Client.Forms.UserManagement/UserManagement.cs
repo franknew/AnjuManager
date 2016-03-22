@@ -41,8 +41,11 @@ namespace Anju.Fangke.Client.Forms
                 return;
             }
             var form = response.Result.Find(t => t.Group.Name == "启用状态");
-            form.Items.Insert(0, new DataDictionary { Value = -1, Name = "全部" });
-            cmbEnabled.DataSource = form.Items;
+            if (form != null)
+            {
+                form.Items.Insert(0, new DataDictionary { Value = -1, Name = "全部" });
+                cmbEnabled.DataSource = form.Items;
+            }
             this.Binding.DataSource = new List<FullUser>();
             dgvUsers.DataSource = this.Binding;
         }
