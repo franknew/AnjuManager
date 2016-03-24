@@ -87,6 +87,12 @@
     <Compile Include="EditBuilding.Designer.cs">
       <DependentUpon>EditBuilding.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditHouse.Designer.cs">
+      <DependentUpon>EditHouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseEditHouse.resx">
       <DependentUpon>BaseEditHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditHouse.resx">
+      <DependentUpon>EditHouse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

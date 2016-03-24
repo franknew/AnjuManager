@@ -18,10 +18,15 @@ namespace Anju.Fangke.Client.Forms
         {
             InitializeComponent();
         }
-
-        public House House { get; set; }
         public FullBuilding Building { get; set; }
         public int Floor { get; set; }
         public SOAFramework.Client.Controls.DataGridView Grid { get; set; }
+
+        private void BaseEditHouse_Load(object sender, EventArgs e)
+        {
+            cmbHall.SelectedIndex = 0;
+            cmbRoom.SelectedIndex = 0;
+            cmbToilet.SelectedIndex = 0;
+        }
     }
 }

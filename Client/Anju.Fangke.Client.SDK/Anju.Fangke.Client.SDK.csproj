@@ -81,6 +81,7 @@
     <Compile Include="Request\Asset\DeleteBuildingRequest.cs" />
     <Compile Include="Request\Asset\DeleteHouseRequest.cs" />
     <Compile Include="Request\Asset\EditBuildingRequest.cs" />
+    <Compile Include="Request\Asset\EditHouseRequest.cs" />
     <Compile Include="Request\Asset\QueryBuildingRequest.cs" />
     <Compile Include="Request\Asset\QueryHouseRequest.cs" />
     <Compile Include="Request\DataDictionary\QueryDataDictionaryByNameRequest.cs" />

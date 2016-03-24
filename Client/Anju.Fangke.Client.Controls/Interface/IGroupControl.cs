@@ -5,7 +5,10 @@ using System.Text;
 
 namespace SOAFramework.Client.Controls
 {
-    public class TreeView : System.Windows.Forms.TreeView
+    public interface IGroupControl
     {
+        string Group { get; set; }
+
+        object Value { get; set; }
     }
 }

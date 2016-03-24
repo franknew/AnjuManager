@@ -97,6 +97,7 @@
     <Compile Include="Form\ContainerForm.Designer.cs">
       <DependentUpon>ContainerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\FormExtension.cs" />
     <Compile Include="Form\PopupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +110,7 @@
     </Compile>
     <Compile Include="Interface\IControlBindable.cs" />
     <Compile Include="Interface\IControlEmptable.cs" />
+    <Compile Include="Interface\IGroupControl.cs" />
     <Compile Include="Interface\IInitableBinding.cs" />
     <Compile Include="Interface\IServiceBindable.cs" />
     <Compile Include="Interface\IServiceSubmitable.cs" />

@@ -9,7 +9,7 @@ using SOAFramework.Library;
 
 namespace SOAFramework.Client.Controls
 {
-    public class RadioButton : MetroRadioButton, IServiceBindable, IControlBindable
+    public class RadioButton : MetroRadioButton, IServiceBindable, IControlBindable, IGroupControl
     {
         #region service binding property
         private string controlBindingPropertyName = "BindingChecked";
@@ -85,6 +85,15 @@ namespace SOAFramework.Client.Controls
         [Category(ControlCategory.Category)]
         [DefaultValue(null)]
         public object DBNullValue { get; set; }
+        #endregion
+
+        #region group control
+        [Category(ControlCategory.Category)]
+        public string Group { get; set; }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(null)]
+        public object Value { get; set; }
         #endregion
     }
 }

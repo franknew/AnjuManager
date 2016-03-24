@@ -345,6 +345,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "BaseEditHouse";
             this.Text = "BaseEditHouse";
+            this.Load += new System.EventHandler(this.BaseEditHouse_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

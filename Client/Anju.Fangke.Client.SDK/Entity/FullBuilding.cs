@@ -7,7 +7,8 @@ namespace Anju.Fangke.Client.SDK.Entity
 {
     public class FullBuilding : Building
     {
-
         public List<House> House { get; set; }
+
+        public House CurrentHouse { get; set; }
     }
 }

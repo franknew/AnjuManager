@@ -43,15 +43,15 @@ namespace Anju.Fangke.Client.Forms
                 Name = txbHouseName.Text,
                 RentType = rabZhengZu.Checked ? 1 : 0,
             };
-            this.House = house;
+            this.Building.CurrentHouse = house;
             request.form = house;
             var response = SDKSync<AddModelResponse>.CreateInstance(this).Execute(request, AddHouse_Callback);
         }
 
         private void AddHouse_Callback(AddModelResponse response)
         {
-            this.House.ID = response.ID;
-            Building?.House?.Add(this.House);
+            this.Building.CurrentHouse.ID = response.ID;
+            Building?.House?.Add(this.Building.CurrentHouse);
             SOAFramework.Client.Controls.MessageBox.Show(this, "新增房间成功");
             this.Close();
         }
