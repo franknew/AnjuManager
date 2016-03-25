@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
+using SOAFramework.Library;
 
 namespace Anju.Fangke.Server.BLL
 {
@@ -78,8 +79,8 @@ namespace Anju.Fangke.Server.BLL
             ISqlMapper mapper = MapperHelper.GetMapper();
             UserDao dao = new UserDao(mapper);
             UserInfoDao uidao = new UserInfoDao(mapper);
-            dao.Delete(new UserQueryForm { Ids = ids });
-            uidao.Delete(new UserInfoQueryForm { Ids = ids });
+            dao.Delete(new UserQueryForm { IDs = ids });
+            uidao.Delete(new UserInfoQueryForm { IDs = ids });
             return true;
         }
 
@@ -137,6 +138,44 @@ namespace Anju.Fangke.Server.BLL
                 return null;
             }
             UserFullInfo u = item.Value as UserFullInfo;
+            return u;
+        }
+
+        public UserEntireInfo GetCurrentUser(string token = null)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            if (string.IsNullOrEmpty(token))
+            {
+                token = ServiceSession.Current.Context.Parameters["token"].ToString();
+            }
+            var u = GetUserEntireInfoFromCache(token);
+            if (u == null)
+            {
+                MonitorCache.GetInstance().PushMessage(new CacheMessage { Message = "user is null" }, SOAFramework.Library.CacheEnum.FormMonitor);
+                UserDao userdao = new UserDao(mapper);
+                RoleDao roledao = new RoleDao(mapper);
+                UserInfoDao uidao = new UserInfoDao(mapper);
+                LogonHistoryDao lhdao = new LogonHistoryDao(mapper);
+                var logonhistory = lhdao.Query(new LogonHistoryQueryForm { Token = token }).FirstOrDefault();
+                string userid = logonhistory.UserID;
+                var user = userdao.Query(new UserQueryForm { ID = userid }).FirstOrDefault();
+                var userinfo = uidao.Query(new UserInfoQueryForm { ID = userid }).FirstOrDefault();
+                var roles = roledao.QueryRoleByUserID(userid);
+                u = new UserEntireInfo
+                {
+                    User = user,
+                    Role = roles,
+                    UserInfo = userinfo,
+                };
+            }
+            return u;
+        }
+
+        public UserEntireInfo GetUserEntireInfoFromCache(string token)
+        {
+            var item = cache.GetItem(token);
+            UserEntireInfo u = null;
+            if (item != null) u = item.Value as UserEntireInfo;
             return u;
         }
     }

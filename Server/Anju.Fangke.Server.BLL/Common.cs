@@ -11,6 +11,9 @@ namespace Anju.Fangke.Server.BLL
 {
     public class Common
     {
+        public const string DataAuthorityKey = "_dataauthorityuseridlist";
+        public const string MapperKey = "_Mapper";
+        public const string AuthorityMappingFile = "AuthorityMapping.xml";
         public static string NecessaryFilePath = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + "\\Necessary\\";
 
         public static List<TEntity> GetDataFromCache<TEntity>(Type daoType)

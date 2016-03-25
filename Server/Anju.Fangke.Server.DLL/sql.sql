@@ -7,7 +7,8 @@ CreateTime DATETIME NULL,
 `Password` VARCHAR(50) NULL,
 `Enabled` BIT NULL,
 LastUpdateTime DATETIME NULL,
-LastUpdator VARCHAR(32) NULL
+LastUpdator VARCHAR(32) NULL,
+IsDeleted BIT NULL
 );
 
 CREATE TABLE UserInfo

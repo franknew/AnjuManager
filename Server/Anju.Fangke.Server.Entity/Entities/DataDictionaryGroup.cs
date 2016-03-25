@@ -6,12 +6,17 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class DataDictionaryGroup : SimpleEntity
+    public partial class DataDictionaryGroup : SimpleEntity
     {
         /// <summary>
         /// 
         /// </summary>
         public string Remark { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ParentID { get; set; }
         
     }
 }

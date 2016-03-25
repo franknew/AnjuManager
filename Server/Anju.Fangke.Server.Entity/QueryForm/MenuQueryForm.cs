@@ -8,10 +8,13 @@ namespace Anju.Fangke.Server.Form
 {
     public class MenuQueryForm : SimpleQueryForm
     {
+        public List<String> IDs { get; set;}
+        public List<String> Creators { get; set;}
         public string Page { get; set; }
         
         public string ParentID { get; set; }
         
+        public List<String> ParentIDs { get; set;}
         public UInt64? Enabled { get; set; }
         
         public string Remark { get; set; }

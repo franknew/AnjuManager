@@ -6,7 +6,7 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class LogonHistory : BaseEntity
+    public partial class LogonHistory : BaseEntity
     {
         /// <summary>
         /// 

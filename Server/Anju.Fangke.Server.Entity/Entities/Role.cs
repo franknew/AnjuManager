@@ -6,12 +6,27 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class Role : SimpleEntity
+    public partial class Role : SimpleEntity
     {
         /// <summary>
         /// 
         /// </summary>
         public string Remark { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IsDeleted { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? DataAccessType { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ParentID { get; set; }
         
     }
 }

@@ -9,7 +9,7 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.DAL
 {
-    public partial class ActionDao : SimpleDao<Model.Action, ActionQueryForm, ActionUpdateForm>
+    public partial class ActionDao : SimpleDao<Action, ActionQueryForm, ActionUpdateForm>
     {
         public ActionDao(ISqlMapper mapper)
             : base(mapper)

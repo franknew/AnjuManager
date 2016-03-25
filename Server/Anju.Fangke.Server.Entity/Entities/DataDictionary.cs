@@ -6,7 +6,7 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class DataDictionary : SimpleEntity
+    public partial class DataDictionary : SimpleEntity
     {
         /// <summary>
         /// 

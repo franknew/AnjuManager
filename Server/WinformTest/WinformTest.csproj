@@ -84,6 +84,14 @@
       <Project>{463ab9e6-cb73-4a9e-909f-a7eb4488b714}</Project>
       <Name>Anju.Fangke.Server.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Anju.Fangke.Server.BLL\Anju.Fangke.Server.BLL.csproj">
+      <Project>{9692fabc-d3ed-4d89-a8a6-e08f737fbbc4}</Project>
+      <Name>Anju.Fangke.Server.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Anju.Fangke.Server.DLL\Anju.Fangke.Server.DLL.csproj">
+      <Project>{c1734229-1fb9-49f9-820f-51fb8b3ce383}</Project>
+      <Name>Anju.Fangke.Server.DLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Anju.Fangke.Server.Entity\Anju.Fangke.Server.Entity.csproj">
       <Project>{d8233c0a-013b-49ed-8db6-b0f889c25c71}</Project>
       <Name>Anju.Fangke.Server.Entity</Name>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Anju.Fangke.Server.BLL;
 
 namespace WinformTest
 {
@@ -22,6 +23,27 @@ namespace WinformTest
         {
             VersionApi api = new VersionApi();
             var response = api.DownloadNecessaryFile("testfile.txt");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataDictionaryBLL bll = new DataDictionaryBLL();
+            var list = bll.QueryByGroupName(new List<string> { "省份" });
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HouseBLL bll = new HouseBLL();
+            bll.Add(new Anju.Fangke.Server.Model.House
+            {
+                BuildingID = "1",
+                Floor = 1,
+                HallCount = 1,
+                RoomCount = 1,
+                RentType = 1,
+                ToiletCount = 1,
+                Remark = "test",
+            });
         }
     }
 }

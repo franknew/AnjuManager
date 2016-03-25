@@ -29,10 +29,7 @@ namespace Anju.Fangke.Server.BLL
             var user = userdao.Query(new UserQueryForm { Name = username, Password = password }).FirstOrDefault();
             if (user != null)
             {
-                if (user.Enabled == 0)
-                {
-                    throw new Exception("该用户已被禁用，请联系管理员！");
-                }
+                if (user.Enabled == 0) throw new Exception("该用户已被禁用，请联系管理员！"); 
                 string token = Guid.NewGuid().ToString().Replace("-", "");
                 var userinfo = userInfoDao.Query(new UserInfoQueryForm { ID = user.ID }).FirstOrDefault();
                 UserFullInfo u = new UserFullInfo
@@ -61,7 +58,7 @@ namespace Anju.Fangke.Server.BLL
                     roleidlist.Add(t.RoleID);
                 });
 
-                var roles = roleDao.Query(new RoleQueryForm { Ids = roleidlist });
+                var roles = roleDao.Query(new RoleQueryForm { IDs = roleidlist });
                 u.Roles = roles;
 
                 CacheItem item = new CacheItem(token, u);

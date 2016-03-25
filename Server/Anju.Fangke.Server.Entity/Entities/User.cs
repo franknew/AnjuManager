@@ -6,7 +6,7 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class User : SimpleEntity
+    public partial class User : SimpleEntity
     {
         /// <summary>
         /// 
@@ -17,6 +17,11 @@ namespace Anju.Fangke.Server.Model
         /// 
         /// </summary>
         public int? Enabled { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IsDeleted { get; set; }
         
     }
 }

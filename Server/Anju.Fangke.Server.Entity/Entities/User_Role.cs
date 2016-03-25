@@ -6,7 +6,7 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class User_Role : BaseEntity
+    public partial class User_Role : BaseEntity
     {
         /// <summary>
         /// 

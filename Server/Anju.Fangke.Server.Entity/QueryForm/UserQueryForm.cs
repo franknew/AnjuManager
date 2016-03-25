@@ -8,9 +8,13 @@ namespace Anju.Fangke.Server.Form
 {
     public class UserQueryForm : SimpleQueryForm
     {
+        public List<String> IDs { get; set;}
+        public List<String> Creators { get; set;}
         public string Password { get; set; }
         
         public UInt64? Enabled { get; set; }
+        
+        public UInt64? IsDeleted { get; set; }
         
     }
 }

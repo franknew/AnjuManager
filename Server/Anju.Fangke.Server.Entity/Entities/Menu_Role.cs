@@ -6,7 +6,7 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class Menu_Role : BaseEntity
+    public partial class Menu_Role : BaseEntity
     {
         /// <summary>
         /// 

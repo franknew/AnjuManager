@@ -6,7 +6,7 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public class Menu : SimpleEntity
+    public partial class Menu : SimpleEntity
     {
         /// <summary>
         /// 

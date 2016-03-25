@@ -14,19 +14,13 @@ namespace Anju.Fangke.Server.BLL
         public List<DataDictionaryResultForm> QueryByGroupName(List<string> nameList)
         {
             List<DataDictionaryResultForm> list = new List<DataDictionaryResultForm>();
-            if (nameList == null)
-            {
-                return list;
-            }
+            if (nameList == null) return list;
             var datadiclist = Common.GetDataFromCache<DataDictionary>(typeof(DataDictionaryDao));
             var datadicgrouplist = Common.GetDataFromCache<DataDictionaryGroup>(typeof(DataDictionaryGroupDao));
             foreach (var name in nameList)
             {
                 var group = datadicgrouplist.Find(t => t.Name.Equals(name));
-                if (group == null)
-                {
-                    continue;
-                }
+                if (group == null) continue;
                 var datadic = datadiclist.FindAll(t => t.DataDictionaryGroupID == group.ID);
                 DataDictionaryResultForm dicform = new DataDictionaryResultForm
                 {
@@ -68,10 +62,7 @@ namespace Anju.Fangke.Server.BLL
         /// <returns></returns>
         public string AddGroup(DataDictionaryGroup group)
         {
-            if (group == null)
-            {
-                throw new Exception("数据字典分组不能为null");
-            }
+            if (group == null) throw new Exception("数据字典分组不能为null");
             ISqlMapper mapper = MapperHelper.GetMapper();
             DataDictionaryGroupDao groupdao = new DataDictionaryGroupDao(mapper);
             string id = groupdao.Add(group);
@@ -85,6 +76,7 @@ namespace Anju.Fangke.Server.BLL
         /// <returns>返回数据组回传加上了id</returns>
         public List<DataDictionary> AddItems(List<DataDictionary> items)
         {
+            if (items == null) throw new Exception("数据字典项不能为null");
             ISqlMapper mapper = MapperHelper.GetMapper();
             DataDictionaryDao dicdao = new DataDictionaryDao(mapper);
             if (items != null)
@@ -105,10 +97,7 @@ namespace Anju.Fangke.Server.BLL
         /// <returns></returns>
         public List<DataDictionary> Update(DataDictionaryGroup group, List<DataDictionary> items)
         {
-            if (group == null)
-            {
-                throw new Exception("数据字典分组不能为null");
-            }
+            if (group == null) throw new Exception("数据字典分组不能为null");
             ISqlMapper mapper = MapperHelper.GetMapper();
             DataDictionaryGroupDao groupdao = new DataDictionaryGroupDao(mapper);
             DataDictionaryDao dicdao = new DataDictionaryDao(mapper);
@@ -124,17 +113,11 @@ namespace Anju.Fangke.Server.BLL
             {
                 foreach (var item in items)
                 {
-                    if (string.IsNullOrEmpty(item.ID))
-                    {
-                        dicdao.Add(item);
-                    }
+                    if (string.IsNullOrEmpty(item.ID))  dicdao.Add(item);
                     else
                     {
                         var dic = dicdao.Query(new DataDictionaryQueryForm { ID = item.ID });
-                        if (dic == null)
-                        {
-                            dicdao.Add(item);
-                        }
+                        if (dic == null) dicdao.Add(item);
                         else
                         {
                             dicdao.Update(new DataDictionaryUpdateForm
