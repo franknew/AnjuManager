@@ -12,9 +12,11 @@ namespace Anju.Fangke.Server.Api
     public class UserApi
     {
         private UserBLL bll = new UserBLL();
-        
+
         public List<FullUser> Query(FullUserQueryForm form)
         {
+            form.Enabled = 1;
+            form.IsDeleted = 0;
             return bll.Query(form);
         }
 
@@ -64,7 +66,8 @@ namespace Anju.Fangke.Server.Api
 
         public bool Delete(List<string> ids)
         {
-            return bll.Delete(ids);
+            if (ids == null) throw new Exception("没有ID");
+            return bll.Delete(new UserQueryForm { IDs = ids });
         }
 
         public bool ChangePassword(string username, string password)

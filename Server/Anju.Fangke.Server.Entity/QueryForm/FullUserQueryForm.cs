@@ -25,5 +25,7 @@ namespace Anju.Fangke.Server.Form
         public string CnName { get; set; }
 
         public string Remark { get; set; }
+
+        public int? IsDeleted { get; set; }
     }
 }

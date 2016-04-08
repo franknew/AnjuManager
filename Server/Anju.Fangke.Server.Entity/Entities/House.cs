@@ -73,5 +73,20 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public decimal? Area { get; set; }
         
+        /// <summary>
+        /// 是否出租
+        /// </summary>
+        public int? IsRented { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Enabled { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IsDeleted { get; set; }
+        
     }
 }

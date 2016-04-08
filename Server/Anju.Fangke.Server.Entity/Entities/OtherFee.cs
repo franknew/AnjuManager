@@ -6,8 +6,18 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Model
 {
-    public partial class Role : SimpleEntity
+    public partial class OtherFee : SimpleEntity
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? FeeType { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal? UnitPrice { get; set; }
+        
         /// <summary>
         /// 
         /// </summary>
@@ -16,27 +26,12 @@ namespace Anju.Fangke.Server.Model
         /// <summary>
         /// 
         /// </summary>
-        public int? IsDeleted { get; set; }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public int? DataAccessType { get; set; }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public string ParentID { get; set; }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public string LevelID { get; set; }
-        
-        /// <summary>
-        /// 
-        /// </summary>
         public int? Enabled { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IsDeleted { get; set; }
         
     }
 }

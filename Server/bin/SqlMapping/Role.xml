@@ -73,6 +73,15 @@
          `ParentID`=#ParentIDs[]#
         </iterate>
     </isNotNull>
+    <isNotNull prepend="AND" property="LevelID">
+        `LevelID`=#LevelID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="LevelIDs">
+        <iterate property="LevelIDs" open="(" close=")" conjunction="OR">
+         `LevelID`=#LevelIDs[]#
+        </iterate>
+    </isNotNull>
     </dynamic>
         ORDER BY LastUpdateTime DESC
     <isNotNull property="PageSize">
@@ -93,7 +102,8 @@
     `LastUpdator`,
     `IsDeleted`,
     `DataAccessType`,
-    `ParentID`
+    `ParentID`,
+    `LevelID`
   )
   VALUES
   (
@@ -106,7 +116,8 @@
         #LastUpdator#,
         #IsDeleted#,
         #DataAccessType#,
-        #ParentID#
+        #ParentID#,
+        #LevelID#
   )
   </insert>
   <update id="UpdateRole" parameterClass="RoleUpdateForm">
@@ -138,6 +149,9 @@
         </isNotNull>
         <isNotNull prepend="," property="Entity.ParentID">
         `ParentID`=#Entity.ParentID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LevelID">
+        `LevelID`=#Entity.LevelID#
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
@@ -176,6 +190,9 @@
     </isNotNull>
     <isNotNull prepend="AND" property="RoleQueryForm.ParentID">
         `ParentID`=#RoleQueryForm.ParentID#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoleQueryForm.LevelID">
+        `LevelID`=#RoleQueryForm.LevelID#
     </isNotNull>
     </dynamic>
   </update>
@@ -230,6 +247,14 @@
         <isNotNull prepend="AND"  property="ParentIDs">
         <iterate property="ParentIDs" open="(" close=")" conjunction="OR">
          `ParentID`=#ParentIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelID">
+        `LevelID`=#LevelID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="LevelIDs">
+        <iterate property="LevelIDs" open="(" close=")" conjunction="OR">
+         `LevelID`=#LevelIDs[]#
         </iterate>
     </isNotNull>
   </update>
@@ -288,6 +313,14 @@
         <isNotNull prepend="AND"  property="ParentIDs">
         <iterate property="ParentIDs" open="(" close=")" conjunction="OR">
          `ParentID`=#ParentIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelID">
+        `LevelID`=#LevelID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="LevelIDs">
+        <iterate property="LevelIDs" open="(" close=")" conjunction="OR">
+         `LevelID`=#LevelIDs[]#
         </iterate>
     </isNotNull>
     </dynamic>

@@ -106,37 +106,10 @@
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
-    <isNotNull prepend="AND" property="UserInfoQueryForm.ID">
-        `ID`=#UserInfoQueryForm.ID#
-    </isNotNull>
-    <isNotNull prepend="AND" property="UserInfoQueryForm.QQ">
-        `QQ`=#UserInfoQueryForm.QQ#
-    </isNotNull>
-    <isNotNull prepend="AND" property="UserInfoQueryForm.Mobile">
-        `Mobile`=#UserInfoQueryForm.Mobile#
-    </isNotNull>
-    <isNotNull prepend="AND" property="UserInfoQueryForm.WX">
-        `WX`=#UserInfoQueryForm.WX#
-    </isNotNull>
-    <isNotNull prepend="AND" property="UserInfoQueryForm.Address">
-        `Address`=#UserInfoQueryForm.Address#
-    </isNotNull>
-    <isNotNull prepend="AND" property="UserInfoQueryForm.Identity">
-        `Identity`=#UserInfoQueryForm.Identity#
-    </isNotNull>
-    <isNotNull prepend="AND" property="UserInfoQueryForm.CnName">
-        `CnName`=#UserInfoQueryForm.CnName#
-    </isNotNull>
-    <isNotNull prepend="AND" property="UserInfoQueryForm.Remark">
-        `Remark` LIKE '%$UserInfoQueryForm.Remark$%'
-    </isNotNull>
-    </dynamic>
-  </update>
-  <delete id="DeleteUserInfo" parameterClass="UserInfoQueryForm">
-    DELETE FROM `UserInfo` WHERE 1=1
     <isNotNull prepend="AND" property="ID">
         `ID`=#ID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="IDs">
         <iterate property="IDs" open="(" close=")" conjunction="OR">
          `ID`=#IDs[]#
@@ -145,24 +118,73 @@
     <isNotNull prepend="AND" property="QQ">
         `QQ`=#QQ#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Mobile">
         `Mobile`=#Mobile#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="WX">
         `WX`=#WX#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Address">
         `Address`=#Address#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Identity">
         `Identity`=#Identity#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="CnName">
         `CnName`=#CnName#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Remark">
-        `Remark`=#Remark#
+        `Remark` LIKE '%$Remark$%'
     </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteUserInfo" parameterClass="UserInfoQueryForm">
+    DELETE FROM `UserInfo` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="QQ">
+        `QQ`=#QQ#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Mobile">
+        `Mobile`=#Mobile#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="WX">
+        `WX`=#WX#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Address">
+        `Address`=#Address#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Identity">
+        `Identity`=#Identity#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CnName">
+        `CnName`=#CnName#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
   </delete>
    <select id="QueryUserInfoRecordCount" resultClass="int" parameterClass="UserInfoQueryForm">
    SELECT COUNT(*) FROM `UserInfo` 

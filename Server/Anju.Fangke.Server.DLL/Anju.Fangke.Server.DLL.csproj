@@ -58,10 +58,13 @@
     <Compile Include="Dao\DataDictionaryDao.cs" />
     <Compile Include="Dao\DataDictionaryGroupDao.cs" />
     <Compile Include="Dao\HouseDao.cs" />
+    <Compile Include="Dao\House_OtherFeeDao.cs" />
+    <Compile Include="Dao\LevelDao.cs" />
     <Compile Include="Dao\LogonHistoryDao.cs" />
     <Compile Include="Dao\MenuDao.cs" />
     <Compile Include="Dao\Menu_RoleDao.cs" />
     <Compile Include="Dao\ModuleDao.cs" />
+    <Compile Include="Dao\OtherFeeDao.cs" />
     <Compile Include="Dao\RentFeeDao.cs" />
     <Compile Include="Dao\RentPeriodTypeDao.cs" />
     <Compile Include="Dao\RoleDao.cs" />
@@ -70,22 +73,30 @@
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Dao\UserInfoDao.cs" />
     <Compile Include="Dao\User_RoleDao.cs" />
+    <Compile Include="Dao_ex\HouseDao_ex.cs" />
     <Compile Include="Dao_ex\RoleDao_ex.cs" />
     <Compile Include="Dao_ex\UserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SqlMapping\Action.xml" />
+    <Content Include="SqlMapping\Bill.xml" />
     <Content Include="SqlMapping\Building.xml" />
     <Content Include="SqlMapping\ChargeFee.xml" />
     <Content Include="SqlMapping\DataDictionary.xml" />
     <Content Include="SqlMapping\DataDictionaryGroup.xml" />
     <Content Include="SqlMapping\FullUser.xml" />
+    <Content Include="SqlMapping\House_ex.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="SqlMapping\House.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="SqlMapping\House_OtherFee.xml" />
+    <Content Include="SqlMapping\Level.xml" />
     <Content Include="SqlMapping\LogonHistory.xml" />
     <Content Include="SqlMapping\Menu.xml" />
     <Content Include="SqlMapping\Menu_Role.xml" />
     <Content Include="SqlMapping\Module.xml" />
+    <Content Include="SqlMapping\OtherFee.xml" />
     <Content Include="SqlMapping\RentFee.xml" />
     <Content Include="SqlMapping\RentPeriodType.xml" />
     <Content Include="SqlMapping\Role.xml" />

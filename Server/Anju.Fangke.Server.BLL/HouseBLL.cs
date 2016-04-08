@@ -27,24 +27,17 @@ namespace Anju.Fangke.Server.BLL
 
         public bool Update(House House)
         {
-            if (string.IsNullOrEmpty(House.ID))
-            {
-                throw new Exception("没有套房ID");
-            }
+            if (string.IsNullOrEmpty(House.ID)) throw new Exception("没有房间ID");
             ISqlMapper mapper = MapperHelper.GetMapper();
             HouseDao dao = new HouseDao(mapper);
             return dao.Update(new HouseUpdateForm { Entity = House, HouseQueryForm = new HouseQueryForm { ID = House.ID } });
         }
 
-        public bool Delete(string id)
+        public bool Delete(HouseQueryForm form)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new Exception("没有套房ID");
-            }
             ISqlMapper mapper = MapperHelper.GetMapper();
             HouseDao dao = new HouseDao(mapper);
-            return dao.Delete(new HouseQueryForm { ID = id });
+            return dao.Delete(form);
         }
     }
 }

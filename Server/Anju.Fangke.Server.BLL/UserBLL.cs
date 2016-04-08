@@ -74,13 +74,15 @@ namespace Anju.Fangke.Server.BLL
             return true;
         }
 
-        public bool Delete(List<string> ids)
+        public bool Delete(UserQueryForm form)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             UserDao dao = new UserDao(mapper);
-            UserInfoDao uidao = new UserInfoDao(mapper);
-            dao.Delete(new UserQueryForm { IDs = ids });
-            uidao.Delete(new UserInfoQueryForm { IDs = ids });
+            dao.Update(new UserUpdateForm
+            {
+                Entity = new User { IsDeleted = 1 },
+                UserQueryForm = form,
+            });
             return true;
         }
 

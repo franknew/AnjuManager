@@ -73,6 +73,19 @@
          `ParentID`=#ParentIDs[]#
         </iterate>
     </isNotNull>
+    <isNotNull prepend="AND" property="LevelID">
+        `LevelID`=#LevelID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="LevelIDs">
+        <iterate property="LevelIDs" open="(" close=")" conjunction="OR">
+         `LevelID`=#LevelIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
     </dynamic>
         ORDER BY LastUpdateTime DESC
     <isNotNull property="PageSize">
@@ -93,7 +106,9 @@
     `LastUpdator`,
     `IsDeleted`,
     `DataAccessType`,
-    `ParentID`
+    `ParentID`,
+    `LevelID`,
+    `Enabled`
   )
   VALUES
   (
@@ -106,7 +121,9 @@
         #LastUpdator#,
         #IsDeleted#,
         #DataAccessType#,
-        #ParentID#
+        #ParentID#,
+        #LevelID#,
+        #Enabled#
   )
   </insert>
   <update id="UpdateRole" parameterClass="RoleUpdateForm">
@@ -139,51 +156,18 @@
         <isNotNull prepend="," property="Entity.ParentID">
         `ParentID`=#Entity.ParentID#
         </isNotNull>
+        <isNotNull prepend="," property="Entity.LevelID">
+        `LevelID`=#Entity.LevelID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Enabled">
+        `Enabled`=#Entity.Enabled#
+        </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
-    <isNotNull prepend="AND" property="RoleQueryForm.ID">
-        `ID`=#RoleQueryForm.ID#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.Name">
-        `Name`=#RoleQueryForm.Name#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.Creator">
-        `Creator`=#RoleQueryForm.Creator#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.CreateTime_Start">
-        `CreateTime`&gt;=#RoleQueryForm.CreateTime_Start#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.CreateTime_End">
-        `CreateTime`&lt;=#RoleQueryForm.CreateTime_End#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.Remark">
-        `Remark` LIKE '%$RoleQueryForm.Remark$%'
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.LastUpdateTime_Start">
-        `LastUpdateTime`&gt;=#RoleQueryForm.LastUpdateTime_Start#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.LastUpdateTime_End">
-        `LastUpdateTime`&lt;=#RoleQueryForm.LastUpdateTime_End#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.LastUpdator">
-        `LastUpdator`=#RoleQueryForm.LastUpdator#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.IsDeleted">
-        `IsDeleted`=#RoleQueryForm.IsDeleted#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.DataAccessType">
-        `DataAccessType`=#RoleQueryForm.DataAccessType#
-    </isNotNull>
-    <isNotNull prepend="AND" property="RoleQueryForm.ParentID">
-        `ParentID`=#RoleQueryForm.ParentID#
-    </isNotNull>
-    </dynamic>
-  </update>
-  <update id="DeleteRole" parameterClass="RoleQueryForm">
-    UPDATE `Role` SET IsDeleted=1 WHERE 1=1
     <isNotNull prepend="AND" property="ID">
         `ID`=#ID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="IDs">
         <iterate property="IDs" open="(" close=")" conjunction="OR">
          `ID`=#IDs[]#
@@ -192,9 +176,11 @@
     <isNotNull prepend="AND" property="Name">
         `Name`=#Name#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Creator">
         `Creator`=#Creator#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="Creators">
         <iterate property="Creators" open="(" close=")" conjunction="OR">
          `Creator`=#Creators[]#
@@ -206,33 +192,132 @@
     <isNotNull prepend="AND" property="CreateTime_End">
         `CreateTime`&lt;=#CreateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Remark">
-        `Remark`=#Remark#
+        `Remark` LIKE '%$Remark$%'
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdateTime_Start">
         `LastUpdateTime`&gt;=#LastUpdateTime_Start#
     </isNotNull>
     <isNotNull prepend="AND" property="LastUpdateTime_End">
         `LastUpdateTime`&lt;=#LastUpdateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdator">
         `LastUpdator`=#LastUpdator#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="IsDeleted">
         `IsDeleted`=#IsDeleted#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="DataAccessType">
         `DataAccessType`=#DataAccessType#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="ParentID">
         `ParentID`=#ParentID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="ParentIDs">
         <iterate property="ParentIDs" open="(" close=")" conjunction="OR">
          `ParentID`=#ParentIDs[]#
         </iterate>
     </isNotNull>
+    <isNotNull prepend="AND" property="LevelID">
+        `LevelID`=#LevelID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="LevelIDs">
+        <iterate property="LevelIDs" open="(" close=")" conjunction="OR">
+         `LevelID`=#LevelIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    </dynamic>
   </update>
+  
+  <delete id="DeleteRole" parameterClass="RoleQueryForm">
+    DELETE FROM `Role` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DataAccessType">
+        `DataAccessType`=#DataAccessType#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ParentID">
+        `ParentID`=#ParentID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="ParentIDs">
+        <iterate property="ParentIDs" open="(" close=")" conjunction="OR">
+         `ParentID`=#ParentIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelID">
+        `LevelID`=#LevelID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="LevelIDs">
+        <iterate property="LevelIDs" open="(" close=")" conjunction="OR">
+         `LevelID`=#LevelIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+  </delete>
    <select id="QueryRoleLastUpdateTime" resultClass="DateTime">
         SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Role`
    </select>
@@ -289,6 +374,17 @@
         <iterate property="ParentIDs" open="(" close=")" conjunction="OR">
          `ParentID`=#ParentIDs[]#
         </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelID">
+        `LevelID`=#LevelID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="LevelIDs">
+        <iterate property="LevelIDs" open="(" close=")" conjunction="OR">
+         `LevelID`=#LevelIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
     </isNotNull>
     </dynamic>
    </select>

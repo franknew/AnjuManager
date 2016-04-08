@@ -33,6 +33,9 @@
         <isNotNull prepend="AND" property="Enabled">
           u.`Enabled`=#Enabled#
         </isNotNull>
+        <isNotNull prepend="AND" property="IsDeleted">
+          u.`IsDeleted`=#IsDeleted#
+        </isNotNull>
         <isNotNull prepend="AND" property="LastUpdateTime_Start">
           u.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
         </isNotNull>
@@ -63,9 +66,9 @@
         <isNotNull prepend="AND" property="Remark">
           ui.`Remark` LIKE '%$Remark$%'
         </isNotNull>
-        <isNotNull property="Ids">
-          <iterate property="Ids" open="(" close=")" conjunction="OR">
-            u.ID=#Ids[]#
+        <isNotNull property="IDs">
+          <iterate property="IDs" open="(" close=")" conjunction="OR">
+            u.ID=#IDs[]#
           </iterate>
         </isNotNull>
       </dynamic>

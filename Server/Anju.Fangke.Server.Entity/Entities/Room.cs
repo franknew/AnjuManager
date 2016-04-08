@@ -23,5 +23,15 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public string Remark { get; set; }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Enabled { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IsDeleted { get; set; }
+        
     }
 }

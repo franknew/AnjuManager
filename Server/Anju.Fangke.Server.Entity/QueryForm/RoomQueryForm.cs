@@ -19,5 +19,9 @@ namespace Anju.Fangke.Server.Form
         public string Remark { get; set; }
         
         public List<String> Creators { get; set;}
+        public UInt64? Enabled { get; set; }
+        
+        public UInt64? IsDeleted { get; set; }
+        
     }
 }

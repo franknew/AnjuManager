@@ -7,8 +7,8 @@ using SOAFramework.Library.DAL;
 
 namespace Anju.Fangke.Server.Form
 {
-    public class ActionUpdateForm : SimpleUpdateForm<Model.Action>
+    public class OtherFeeUpdateForm : SimpleUpdateForm<OtherFee>
     {
-        public ActionQueryForm ActionQueryForm { get; set; }
+        public OtherFeeQueryForm OtherFeeQueryForm { get; set; }
     }
 }

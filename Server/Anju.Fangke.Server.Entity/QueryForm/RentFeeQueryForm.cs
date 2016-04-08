@@ -29,5 +29,15 @@ namespace Anju.Fangke.Server.Form
         public DateTime? Deposit_End { get; set; }
         
         public List<String> Creators { get; set;}
+        public Int32? RentDay { get; set; }
+        
+        public UInt64? Enabled { get; set; }
+        
+        public UInt64? IsDeleted { get; set; }
+        
+        public DateTime? ExpiredTime_Start { get; set; }
+        
+        public DateTime? ExpiredTime_End { get; set; }
+        
     }
 }

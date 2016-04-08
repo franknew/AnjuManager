@@ -40,5 +40,11 @@ namespace Anju.Fangke.Server.Form
         
         public DateTime? Area_End { get; set; }
         
+        public UInt64? IsRented { get; set; }
+        
+        public UInt64? Enabled { get; set; }
+        
+        public UInt64? IsDeleted { get; set; }
+        
     }
 }

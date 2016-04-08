@@ -109,40 +109,10 @@
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
-    <isNotNull prepend="AND" property="ModuleQueryForm.ID">
-        `ID`=#ModuleQueryForm.ID#
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.Name">
-        `Name`=#ModuleQueryForm.Name#
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.Creator">
-        `Creator`=#ModuleQueryForm.Creator#
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.CreateTime_Start">
-        `CreateTime`&gt;=#ModuleQueryForm.CreateTime_Start#
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.CreateTime_End">
-        `CreateTime`&lt;=#ModuleQueryForm.CreateTime_End#
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.Remark">
-        `Remark` LIKE '%$ModuleQueryForm.Remark$%'
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.LastUpdateTime_Start">
-        `LastUpdateTime`&gt;=#ModuleQueryForm.LastUpdateTime_Start#
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.LastUpdateTime_End">
-        `LastUpdateTime`&lt;=#ModuleQueryForm.LastUpdateTime_End#
-    </isNotNull>
-    <isNotNull prepend="AND" property="ModuleQueryForm.LastUpdator">
-        `LastUpdator`=#ModuleQueryForm.LastUpdator#
-    </isNotNull>
-    </dynamic>
-  </update>
-  <delete id="DeleteModule" parameterClass="ModuleQueryForm">
-    DELETE FROM `Module` WHERE 1=1
     <isNotNull prepend="AND" property="ID">
         `ID`=#ID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="IDs">
         <iterate property="IDs" open="(" close=")" conjunction="OR">
          `ID`=#IDs[]#
@@ -151,9 +121,11 @@
     <isNotNull prepend="AND" property="Name">
         `Name`=#Name#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Creator">
         `Creator`=#Creator#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="Creators">
         <iterate property="Creators" open="(" close=")" conjunction="OR">
          `Creator`=#Creators[]#
@@ -165,18 +137,71 @@
     <isNotNull prepend="AND" property="CreateTime_End">
         `CreateTime`&lt;=#CreateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Remark">
-        `Remark`=#Remark#
+        `Remark` LIKE '%$Remark$%'
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdateTime_Start">
         `LastUpdateTime`&gt;=#LastUpdateTime_Start#
     </isNotNull>
     <isNotNull prepend="AND" property="LastUpdateTime_End">
         `LastUpdateTime`&lt;=#LastUpdateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdator">
         `LastUpdator`=#LastUpdator#
     </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteModule" parameterClass="ModuleQueryForm">
+    DELETE FROM `Module` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
   </delete>
    <select id="QueryModuleLastUpdateTime" resultClass="DateTime">
         SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Module`

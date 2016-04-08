@@ -19,5 +19,10 @@ namespace Anju.Fangke.Server.Form
         public string ParentID { get; set; }
         
         public List<String> ParentIDs { get; set;}
+        public string LevelID { get; set; }
+        
+        public List<String> LevelIDs { get; set;}
+        public UInt64? Enabled { get; set; }
+        
     }
 }

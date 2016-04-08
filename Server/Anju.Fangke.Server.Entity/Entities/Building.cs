@@ -38,5 +38,10 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public int? FloorCount { get; set; }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Enabled { get; set; }
+        
     }
 }
