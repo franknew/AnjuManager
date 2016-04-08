@@ -48,6 +48,7 @@
     <Compile Include="Entities\AuthorityMapping.cs" />
     <Compile Include="Entities\AuthorityMappingNode.cs" />
     <Compile Include="Entities\AuthorityNodeForCheck.cs" />
+    <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\Building.cs" />
     <Compile Include="Entities\CacheEntity.cs" />
     <Compile Include="Entities\ChargeFee.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Entities\User_Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryForm\ActionQueryForm.cs" />
+    <Compile Include="QueryForm\BillQueryForm.cs" />
     <Compile Include="QueryForm\BuildingQueryForm.cs" />
     <Compile Include="QueryForm\ChargeFeeQueryForm.cs" />
     <Compile Include="QueryForm\DataDictionaryGroupQueryForm.cs" />
@@ -106,13 +108,14 @@
     <Compile Include="ServiceForm\AddHouseServiceForm.cs" />
     <Compile Include="ServiceForm\AddRoleServiceForm.cs" />
     <Compile Include="UpdateForm\ActionUpdateForm.cs" />
+    <Compile Include="UpdateForm\BillUpdateForm.cs" />
     <Compile Include="UpdateForm\BuildingUpdateForm.cs" />
     <Compile Include="UpdateForm\ChargeFeeUpdateForm.cs" />
     <Compile Include="UpdateForm\DataDictionaryGroupUpdateForm.cs" />
     <Compile Include="UpdateForm\DataDictionaryUpdateForm.cs" />
     <Compile Include="UpdateForm\FullUserUpdateForm.cs" />
     <Compile Include="UpdateForm\HouseUpdateForm.cs" />
-    <Compile Include="UpdateForm\House_OtherFeeUpdateForm.cs" />
+    <Compile Include="ServiceForm\House_OtherFeeUpdateForm.cs" />
     <Compile Include="UpdateForm\LevelUpdateForm.cs" />
     <Compile Include="UpdateForm\LogonHistoryUpdateForm.cs" />
     <Compile Include="UpdateForm\MenuUpdateForm.cs" />

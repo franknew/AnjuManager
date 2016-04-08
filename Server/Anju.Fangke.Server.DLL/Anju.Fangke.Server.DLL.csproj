@@ -53,6 +53,7 @@
   <ItemGroup>
     <Content Include="sql.sql" />
     <Compile Include="Dao\ActionDao.cs" />
+    <Compile Include="Dao\BillDao.cs" />
     <Compile Include="Dao\BuildingDao.cs" />
     <Compile Include="Dao\ChargeFeeDao.cs" />
     <Compile Include="Dao\DataDictionaryDao.cs" />
