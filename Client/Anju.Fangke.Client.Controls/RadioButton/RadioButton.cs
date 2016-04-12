@@ -34,6 +34,10 @@ namespace SOAFramework.Client.Controls
         public string BindingRequestPropertyName { get; set; }
 
         [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool Bindable { get; set; }
+
+        [Category(ControlCategory.Category)]
         [DefaultValue("")]
         public string BindingResponsePropertyName { get; set; }
 
@@ -93,7 +97,7 @@ namespace SOAFramework.Client.Controls
 
         [Category(ControlCategory.Category)]
         [DefaultValue(null)]
-        public object Value { get; set; }
+        public string Value { get; set; }
         #endregion
     }
 }

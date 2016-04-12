@@ -33,5 +33,10 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public int? IsDeleted { get; set; }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IsShared { get; set; }
+        
     }
 }

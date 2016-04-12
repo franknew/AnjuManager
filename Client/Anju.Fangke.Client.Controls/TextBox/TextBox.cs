@@ -35,6 +35,10 @@ namespace SOAFramework.Client.Controls
         public string BindingRequestPropertyName { get; set; }
 
         [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool Bindable { get; set; }
+
+        [Category(ControlCategory.Category)]
         [DefaultValue("")]
         public string BindingResponsePropertyName { get; set; }
 
@@ -93,6 +97,20 @@ namespace SOAFramework.Client.Controls
         #endregion
 
         #region emptable property
+
+
+        private bool useWarnStyle = false;
+        [DefaultValue(false)]
+        public bool UseWarnStyle
+        {
+            get { return useWarnStyle; }
+            set
+            {
+                useWarnStyle = value;
+                this.Invalidate();
+            }
+        }
+
         private bool canbeEmpty = true;
         /// <summary>
         /// 文本框是否可空
@@ -138,6 +156,24 @@ namespace SOAFramework.Client.Controls
             }
         }
 
+        /// <summary>
+        /// 文本输入类型
+        /// </summary>
+        [Category(ControlCategory.Category)]
+        [DefaultValue(InputType.文本)]
+        public InputType InputType
+        {
+            get
+            {
+                return inputType;
+            }
+
+            set
+            {
+                inputType = value;
+            }
+        }
+        private InputType inputType = InputType.文本;
         #endregion
 
         protected override void OnEnter(EventArgs e)
@@ -153,6 +189,26 @@ namespace SOAFramework.Client.Controls
             this.UseStyleColors = false;
             this.Invalidate();
             base.OnLeave(e);
+        }
+
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            switch (inputType)
+            {
+                case InputType.整数:
+                    if (e.KeyChar > 57 || e.KeyChar < 48) e.Handled = true;
+                    break;
+                case InputType.小数:
+                    if ((e.KeyChar <= 57 && e.KeyChar >= 48) || e.KeyChar == 46 || e.KeyChar == 45)
+                    {
+                        if (e.KeyChar == 46 && this.Text.Contains(".")) e.Handled = true;
+                        else if (e.KeyChar == 45 && (this.Text.Contains("-") || this.SelectionStart > 0)) e.Handled = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            base.OnKeyPress(e);
         }
     }
 }

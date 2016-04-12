@@ -1,5 +1,4 @@
-﻿using Anju.Fangke.Server.Form;
-using SOAFramework.Service.SDK.Core;
+﻿using SOAFramework.Service.SDK.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

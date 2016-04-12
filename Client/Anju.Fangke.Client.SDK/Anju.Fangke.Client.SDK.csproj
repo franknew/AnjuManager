@@ -38,9 +38,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Anju.Fangke.Server.Entity">
-      <HintPath>..\CommonDll\Anju.Fangke.Server.Entity.dll</HintPath>
-    </Reference>
     <Reference Include="SOAFramework.Library.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CommonDll\SOAFramework.Library.DAL.dll</HintPath>
@@ -52,6 +49,10 @@
     <Reference Include="SOAFramework.Library.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CommonDll\SOAFramework.Library.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Reflection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDll\SOAFramework.Library.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,11 +71,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\AddHouse.cs" />
+    <Compile Include="Entity\Bill.cs" />
     <Compile Include="Entity\BuildingQueryForm.cs" />
     <Compile Include="Entity\Building.cs" />
+    <Compile Include="Entity\DataDictionary.cs" />
+    <Compile Include="Entity\DataDictionaryGroup.cs" />
+    <Compile Include="Entity\DataDictionaryResult.cs" />
+    <Compile Include="Entity\DisplayHouse.cs" />
+    <Compile Include="Entity\BillModel.cs" />
+    <Compile Include="Entity\FullBill.cs" />
     <Compile Include="Entity\FullBuilding.cs" />
+    <Compile Include="Entity\FullHouse.cs" />
+    <Compile Include="Entity\FullOtherFeeBill.cs" />
+    <Compile Include="Entity\FullUser.cs" />
+    <Compile Include="Entity\FullUserQueryForm.cs" />
     <Compile Include="Entity\House.cs" />
     <Compile Include="Entity\HouseQueryForm.cs" />
+    <Compile Include="Entity\House_OtherFee.cs" />
+    <Compile Include="Entity\Level.cs" />
+    <Compile Include="Entity\LoginResult.cs" />
+    <Compile Include="Entity\Menu.cs" />
+    <Compile Include="Entity\OtherFee.cs" />
+    <Compile Include="Entity\OtherFeeBill.cs" />
+    <Compile Include="Entity\QueryBill.cs" />
+    <Compile Include="Entity\RentFee.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\UserFullInfo.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\Asset\AddBuildingRequest.cs" />
     <Compile Include="Request\Asset\AddHouseRequest.cs" />
@@ -84,6 +108,11 @@
     <Compile Include="Request\Asset\EditHouseRequest.cs" />
     <Compile Include="Request\Asset\QueryBuildingRequest.cs" />
     <Compile Include="Request\Asset\QueryHouseRequest.cs" />
+    <Compile Include="Request\Asset\QueryOtherFeeRequest.cs" />
+    <Compile Include="Request\Bill\GenerateBillRequest.cs" />
+    <Compile Include="Request\Bill\QueryBillRequest.cs" />
+    <Compile Include="Request\Bill\QuerySingleBillRequest.cs" />
+    <Compile Include="Request\Bill\UpdateBillModelRequest.cs" />
     <Compile Include="Request\DataDictionary\QueryDataDictionaryByNameRequest.cs" />
     <Compile Include="Request\FangkeRequest.cs" />
     <Compile Include="Request\Login\LoginRequest.cs" />
@@ -92,10 +121,15 @@
     <Compile Include="Request\User\DeleteUserRequest.cs" />
     <Compile Include="Request\User\QueryUserRequest.cs" />
     <Compile Include="Request\User\UpdateUserRequest.cs" />
+    <Compile Include="Response\Asset\AddHouseResponse.cs" />
     <Compile Include="Response\Asset\AddModelResponse.cs" />
     <Compile Include="Response\Asset\QueryBuildingResponse.cs" />
     <Compile Include="Response\Asset\QueryHouseResponse.cs" />
-    <Compile Include="Response\CommonResponse.cs" />
+    <Compile Include="Response\Asset\QueryOtherFeeResponse.cs" />
+    <Compile Include="CommonResponse.cs" />
+    <Compile Include="Response\Bill\GenerateBillResponse.cs" />
+    <Compile Include="Response\Bill\QueryBillResponse.cs" />
+    <Compile Include="Response\Bill\QuerySingleBillResponse.cs" />
     <Compile Include="Response\DataDictionary\QueryDataDictionaryByNameResponse.cs" />
     <Compile Include="Response\Login\LoginResponse.cs" />
     <Compile Include="Response\User\AddUserResponse.cs" />

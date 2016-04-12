@@ -46,7 +46,7 @@
             this.label5 = new SOAFramework.Client.Controls.Label();
             this.label3 = new SOAFramework.Client.Controls.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new SOAFramework.Client.Controls.TextBox();
+            this.txbID = new SOAFramework.Client.Controls.TextBox();
             this.chkEnabled = new SOAFramework.Client.Controls.CheckBox();
             this.txbUserName = new SOAFramework.Client.Controls.TextBox();
             this.groupBox2.SuspendLayout();
@@ -109,6 +109,7 @@
             this.txbRemark.Name = "txbRemark";
             this.txbRemark.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRemark.SelectedText = "";
+            this.txbRemark.SelectionLength = 0;
             this.txbRemark.Size = new System.Drawing.Size(452, 55);
             this.txbRemark.TabIndex = 8;
             this.txbRemark.UseSelectable = true;
@@ -127,6 +128,7 @@
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbAddress.SelectedText = "";
+            this.txbAddress.SelectionLength = 0;
             this.txbAddress.Size = new System.Drawing.Size(452, 48);
             this.txbAddress.TabIndex = 7;
             this.txbAddress.UseSelectable = true;
@@ -144,6 +146,7 @@
             this.txbIdentity.Name = "txbIdentity";
             this.txbIdentity.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbIdentity.SelectedText = "";
+            this.txbIdentity.SelectionLength = 0;
             this.txbIdentity.Size = new System.Drawing.Size(452, 23);
             this.txbIdentity.TabIndex = 6;
             this.txbIdentity.UseSelectable = true;
@@ -161,6 +164,7 @@
             this.txbWX.Name = "txbWX";
             this.txbWX.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbWX.SelectedText = "";
+            this.txbWX.SelectionLength = 0;
             this.txbWX.Size = new System.Drawing.Size(173, 23);
             this.txbWX.TabIndex = 5;
             this.txbWX.UseSelectable = true;
@@ -178,6 +182,7 @@
             this.txbQQ.Name = "txbQQ";
             this.txbQQ.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbQQ.SelectedText = "";
+            this.txbQQ.SelectionLength = 0;
             this.txbQQ.Size = new System.Drawing.Size(173, 23);
             this.txbQQ.TabIndex = 4;
             this.txbQQ.UseSelectable = true;
@@ -195,6 +200,7 @@
             this.txbMobile.Name = "txbMobile";
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
+            this.txbMobile.SelectionLength = 0;
             this.txbMobile.Size = new System.Drawing.Size(173, 23);
             this.txbMobile.TabIndex = 3;
             this.txbMobile.UseSelectable = true;
@@ -212,6 +218,7 @@
             this.txbCnName.Name = "txbCnName";
             this.txbCnName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbCnName.SelectedText = "";
+            this.txbCnName.SelectionLength = 0;
             this.txbCnName.Size = new System.Drawing.Size(173, 23);
             this.txbCnName.TabIndex = 2;
             this.txbCnName.UseSelectable = true;
@@ -281,7 +288,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txbID);
             this.groupBox3.Controls.Add(this.chkEnabled);
             this.groupBox3.Controls.Add(this.txbUserName);
             this.groupBox3.Controls.Add(this.label1);
@@ -293,23 +300,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "基础信息";
             // 
-            // textBox1
+            // txbID
             // 
-            this.textBox1.BindingRequestPropertyName = "Form.ID";
-            this.textBox1.BindingResponsePropertyName = "ID";
-            this.textBox1.BindingSourcePropertyName = "ID";
-            this.textBox1.EmptyWarning = null;
-            this.textBox1.Enabled = false;
-            this.textBox1.Lines = new string[0];
-            this.textBox1.Location = new System.Drawing.Point(358, 28);
-            this.textBox1.MaxLength = 32767;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textBox1.SelectedText = "";
-            this.textBox1.Size = new System.Drawing.Size(172, 23);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.UseSelectable = true;
-            this.textBox1.Visible = false;
+            this.txbID.BindingRequestPropertyName = "Form.ID";
+            this.txbID.BindingResponsePropertyName = "ID";
+            this.txbID.BindingSourcePropertyName = "ID";
+            this.txbID.EmptyWarning = null;
+            this.txbID.Enabled = false;
+            this.txbID.Lines = new string[0];
+            this.txbID.Location = new System.Drawing.Point(358, 28);
+            this.txbID.MaxLength = 32767;
+            this.txbID.Name = "txbID";
+            this.txbID.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txbID.SelectedText = "";
+            this.txbID.SelectionLength = 0;
+            this.txbID.Size = new System.Drawing.Size(172, 23);
+            this.txbID.TabIndex = 2;
+            this.txbID.UseSelectable = true;
+            this.txbID.Visible = false;
             // 
             // chkEnabled
             // 
@@ -322,6 +330,7 @@
             this.chkEnabled.Checked = true;
             this.chkEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkEnabled.DataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.chkEnabled.Group = null;
             this.chkEnabled.Location = new System.Drawing.Point(304, 34);
             this.chkEnabled.Name = "chkEnabled";
             this.chkEnabled.Size = new System.Drawing.Size(47, 15);
@@ -343,6 +352,7 @@
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
+            this.txbUserName.SelectionLength = 0;
             this.txbUserName.Size = new System.Drawing.Size(173, 23);
             this.txbUserName.TabIndex = 0;
             this.txbUserName.UseSelectable = true;
@@ -369,25 +379,25 @@
 
         #endregion
         private SOAFramework.Client.Controls.Label label1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private SOAFramework.Client.Controls.Label label3;
-        private System.Windows.Forms.GroupBox groupBox3;
         private SOAFramework.Client.Controls.Label label9;
         private SOAFramework.Client.Controls.Label label8;
         private SOAFramework.Client.Controls.Label label7;
         private SOAFramework.Client.Controls.Label label6;
         private SOAFramework.Client.Controls.Label label4;
         private SOAFramework.Client.Controls.Label label5;
-        private SOAFramework.Client.Controls.TextBox txbUserName;
-        private SOAFramework.Client.Controls.CheckBox chkEnabled;
-        private SOAFramework.Client.Controls.TextBox txbRemark;
-        private SOAFramework.Client.Controls.TextBox txbAddress;
-        private SOAFramework.Client.Controls.TextBox txbIdentity;
-        private SOAFramework.Client.Controls.TextBox txbWX;
-        private SOAFramework.Client.Controls.TextBox txbQQ;
-        private SOAFramework.Client.Controls.TextBox txbMobile;
-        private SOAFramework.Client.Controls.TextBox txbCnName;
-        private SOAFramework.Client.Controls.TextBox textBox1;
         protected System.Windows.Forms.GroupBox groupBox1;
+        protected System.Windows.Forms.GroupBox groupBox2;
+        protected System.Windows.Forms.GroupBox groupBox3;
+        protected SOAFramework.Client.Controls.TextBox txbUserName;
+        protected SOAFramework.Client.Controls.CheckBox chkEnabled;
+        protected SOAFramework.Client.Controls.TextBox txbRemark;
+        protected SOAFramework.Client.Controls.TextBox txbAddress;
+        protected SOAFramework.Client.Controls.TextBox txbIdentity;
+        protected SOAFramework.Client.Controls.TextBox txbWX;
+        protected SOAFramework.Client.Controls.TextBox txbQQ;
+        protected SOAFramework.Client.Controls.TextBox txbMobile;
+        protected SOAFramework.Client.Controls.TextBox txbCnName;
+        protected SOAFramework.Client.Controls.TextBox txbID;
     }
 }

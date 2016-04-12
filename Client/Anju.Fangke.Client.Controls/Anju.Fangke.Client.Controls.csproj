@@ -39,8 +39,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CommonDll\SOAFramework.Library.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SOAFramework.Library.Lib, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CommonDll\SOAFramework.Library.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="SOAFramework.Library.Reflection">
       <HintPath>..\CommonDll\SOAFramework.Library.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Validator">
+      <HintPath>..\CommonDll\SOAFramework.Library.Validator.dll</HintPath>
     </Reference>
     <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -73,6 +80,10 @@
     <Compile Include="Common\FormExtension.cs" />
     <Compile Include="ControlCategory.cs" />
     <Compile Include="DataGridView\DataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataGridView\DataGridViewExtension.cs" />
+    <Compile Include="DateTimePicker\DateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DateTime\DateTimeComboPicker.cs">
@@ -118,7 +129,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MessageBox\ClientMessageBox.cs" />
+    <Compile Include="NumbericUpDown\NumbericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Paint\Paint.cs" />
+    <Compile Include="Panel\Panel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadioButton\RadioButton.cs">
       <SubType>Component</SubType>

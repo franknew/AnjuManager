@@ -14,18 +14,28 @@ namespace Anju.Fangke.Server.Form
         public List<String> HouseOrRoomIDs { get; set;}
         public Int32? Type { get; set; }
         
-        public DateTime? ShouldPay_Start { get; set; }
+        public Int32? Type_Start { get; set; }
         
-        public DateTime? ShouldPay_End { get; set; }
+        public Int32? Type_End { get; set; }
         
-        public DateTime? Payed_Start { get; set; }
+        public Decimal? ShouldPay { get; set; }
         
-        public DateTime? Payed_End { get; set; }
+        public Decimal? ShouldPay_Start { get; set; }
+        
+        public Decimal? ShouldPay_End { get; set; }
+        
+        public Decimal? Payed { get; set; }
+        
+        public Decimal? Payed_Start { get; set; }
+        
+        public Decimal? Payed_End { get; set; }
         
         public string Remark { get; set; }
         
         public List<String> Creators { get; set;}
         public UInt64? IsDeleted { get; set; }
+        
+        public DateTime? PayDay { get; set; }
         
         public DateTime? PayDay_Start { get; set; }
         
@@ -33,7 +43,15 @@ namespace Anju.Fangke.Server.Form
         
         public Int32? Year { get; set; }
         
+        public Int32? Year_Start { get; set; }
+        
+        public Int32? Year_End { get; set; }
+        
         public Int32? Month { get; set; }
+        
+        public Int32? Month_Start { get; set; }
+        
+        public Int32? Month_End { get; set; }
         
     }
 }

@@ -9,6 +9,8 @@ namespace SOAFramework.Client.Controls
     {
         string Group { get; set; }
 
-        object Value { get; set; }
+        string Value { get; set; }
+
+        bool Checked { get; set; }
     }
 }

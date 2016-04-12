@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
+using SOAFramework.Client.Controls;
+using SOAFramework.Client.Forms;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -15,30 +17,37 @@ namespace Anju.Fangke.Client.Forms
         public EditHouse()
         {
             InitializeComponent();
-            this.Shown += EditHouse_Shown;
         }
 
-        private void EditHouse_Shown(object sender, EventArgs e)
-        {
-            this.txbBuildingName.Text = this.Building.Name;
-            this.txbFloor.Text = this.Floor.ToString();
-            this.txbHouseName.Text = this.Building.CurrentHouse.Name;
-            this.txbRemark.Text = this.Building.CurrentHouse.Remark;
-            this.cmbHall.SelectedItem = this.Building.CurrentHouse.HallCount;
-            this.cmbRoom.SelectedItem = this.Building.CurrentHouse.RoomCount;
-            this.cmbToilet.SelectedItem = this.Building.CurrentHouse.ToiletCount;
-            if (this.Building.CurrentHouse.RentType == 1) rabZhengZu.Checked = true;
-            else rabHezu.Checked = true;
-        }
+        public event EventHandler Update_Callback;
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!this.Validate())
+            {
+                this.btnSave.IngoreCallbackOnce = true;
+                return;
+            }
+            FullHouse house = this.CollectData<FullHouse>(this.Building.CurrentHouse);
+            EditHouseRequest request = new EditHouseRequest();
+            request.token = this.Token;
+            request.form = house;
+            SDKSync<CommonResponse>.CreateInstance(this).Execute(request, UpdateCallBack);
         }
 
         private void UpdateCallBack(CommonResponse response)
         {
-            SOAFramework.Client.Controls.MessageBox.Show(this, "更新房间成功");
+            this.Building.CurrentHouse.House.RentFee = this.Building.CurrentHouse.RentFee.RentMoney;
+            //this.Building.CurrentHouse.House.IsRented = this.Building.CurrentHouse
+            SOAFramework.Client.Controls.MessageBox.Show(this, "更新成功");
             this.Close();
+        }
+
+        private void EditHouse_InitControl(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+            this.txbBuildingName.Text = this.Building.Name;
+            this.SetForm(this.Building.CurrentHouse);
         }
     }
 }

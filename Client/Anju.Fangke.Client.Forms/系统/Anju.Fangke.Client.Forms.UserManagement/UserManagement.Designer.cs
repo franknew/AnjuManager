@@ -198,14 +198,17 @@
             this.cmbEnabled.BindingResponsePropertyName = null;
             this.cmbEnabled.BindingSourcePropertyName = null;
             this.cmbEnabled.DisplayMember = "Name";
-            this.cmbEnabled.EmptyValue = "-1";
+            this.cmbEnabled.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.cmbEnabled.FormattingEnabled = true;
-            this.cmbEnabled.ItemHeight = 23;
-            this.cmbEnabled.Location = new System.Drawing.Point(331, 51);
+            this.cmbEnabled.HasAll = true;
+            this.cmbEnabled.InitableBindingGroupName = "启用状态";
+            this.cmbEnabled.ItemHeight = 19;
+            this.cmbEnabled.Location = new System.Drawing.Point(330, 51);
             this.cmbEnabled.Name = "cmbEnabled";
-            this.cmbEnabled.Size = new System.Drawing.Size(155, 29);
+            this.cmbEnabled.Size = new System.Drawing.Size(155, 25);
             this.cmbEnabled.TabIndex = 10;
             this.cmbEnabled.UseSelectable = true;
+            this.cmbEnabled.Value = null;
             this.cmbEnabled.ValueMember = "Value";
             // 
             // txbMobile
@@ -221,6 +224,7 @@
             this.txbMobile.Name = "txbMobile";
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
+            this.txbMobile.SelectionLength = 0;
             this.txbMobile.Size = new System.Drawing.Size(156, 23);
             this.txbMobile.TabIndex = 8;
             this.txbMobile.UseSelectable = true;
@@ -238,6 +242,7 @@
             this.txbName.Name = "txbName";
             this.txbName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbName.SelectedText = "";
+            this.txbName.SelectionLength = 0;
             this.txbName.Size = new System.Drawing.Size(156, 23);
             this.txbName.TabIndex = 7;
             this.txbName.UseSelectable = true;
@@ -255,6 +260,7 @@
             this.txbId.Name = "txbId";
             this.txbId.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbId.SelectedText = "";
+            this.txbId.SelectionLength = 0;
             this.txbId.Size = new System.Drawing.Size(156, 23);
             this.txbId.TabIndex = 9;
             this.txbId.UseSelectable = true;
@@ -272,6 +278,7 @@
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
+            this.txbUserName.SelectionLength = 0;
             this.txbUserName.Size = new System.Drawing.Size(156, 23);
             this.txbUserName.TabIndex = 6;
             this.txbUserName.UseSelectable = true;
@@ -433,6 +440,7 @@
             this.Name = "UserManagement";
             this.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
             this.Text = "员工管理";
+            this.InitControl += new System.EventHandler(this.UserManagement_InitControl);
             this.Load += new System.EventHandler(this.UserManagement_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

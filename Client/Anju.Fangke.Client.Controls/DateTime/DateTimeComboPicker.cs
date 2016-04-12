@@ -65,6 +65,11 @@ namespace SOAFramework.Client.Controls
         [DefaultValue("")]
         public string BindingSourcePropertyName { get; set; }
 
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool Bindable { get; set; }
+
         private DataSourceUpdateMode dataSourceUpdateMode = DataSourceUpdateMode.OnValidation;
         [Category(ControlCategory.Category)]
         [DefaultValue(DataSourceUpdateMode.OnValidation)]

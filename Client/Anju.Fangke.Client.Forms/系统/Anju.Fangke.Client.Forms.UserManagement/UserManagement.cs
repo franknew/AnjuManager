@@ -1,5 +1,4 @@
 ﻿using Anju.Fangke.Client.SDK;
-using Anju.Fangke.Server.Model;
 using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
 using SOAFramework.Service.SDK.Core;
@@ -31,32 +30,28 @@ namespace Anju.Fangke.Client.Forms
 
         private void UserManagement_Load(object sender, EventArgs e)
         {
-            QueryDataDictionaryByNameRequest request = new QueryDataDictionaryByNameRequest();
-            request.NameList = new List<string> { "启用状态" };
-            request.token = AppData.token;
-            var response = SDKFactory.Client.Execute(request);
-            if (response.IsError)
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, response.ErrorMessage);
-                return;
-            }
-            var form = response.Result.Find(t => t.Group.Name == "启用状态");
-            if (form != null)
-            {
-                form.Items.Insert(0, new DataDictionary { Value = -1, Name = "全部" });
-                cmbEnabled.DataSource = form.Items;
-            }
             this.Binding.DataSource = new List<FullUser>();
             dgvUsers.DataSource = this.Binding;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dgvUsers.NewRow();
-            row.Cells["启用"].Value = 1;
             AddUser form = new AddUser();
-            form.Binding = this.Binding;
+            form.SaveCallback += btnAddClick_Callback;
             form.ShowDialog(this);
+            this.dgvUsers.Reset();
+        }
+
+        private void btnAddClick_Callback(object sender, EventArgs e)
+        {
+            var user = sender as FullUser;
+            List<FullUser> list = dgvUsers.DataSource as List<FullUser>;
+            if (list == null)
+            {
+                list = new List<FullUser>();
+                dgvUsers.DataSource = list;
+            }
+            list.Add(user);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -64,13 +59,16 @@ namespace Anju.Fangke.Client.Forms
             if (dgvUsers.SelectedRows.Count > 0)
             {
                 EditUser form = new EditUser();
-                form.Binding = this.Binding;
+                form.User = dgvUsers.SelectedRows[0].DataBoundItem as FullUser;
+                form.SaveCallback += btnEdit_Callback;
                 form.ShowDialog(this);
             }
-            else
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, "没有选择数据！", "警告");
-            }
+            else SOAFramework.Client.Controls.MessageBox.Show(this, "没有选择数据！", "警告");
+        }
+
+        private void btnEdit_Callback(object sender, EventArgs e)
+        {
+            FullUser user = sender as FullUser;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -90,10 +88,7 @@ namespace Anju.Fangke.Client.Forms
                     deleteResponse = SDKFactory.Client.Execute(request);
                 }
             }
-            else
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, "没有选择数据！", "警告");
-            }
+            else SOAFramework.Client.Controls.MessageBox.Show(this, "请选择数据！", "警告");
         }
 
         private void btnAuthority_Click(object sender, EventArgs e)
@@ -117,20 +112,21 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnDelete_ClickCallback(object sender, EventArgs e)
         {
-            if (deleteResponse == null)
-            {
-                return;
-            }
+            if (deleteResponse == null)  return;
 
-            if (deleteResponse.IsError)
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, deleteResponse.ErrorMessage, "错误");
-            }
+            if (deleteResponse.IsError) SOAFramework.Client.Controls.MessageBox.Show(this, deleteResponse.ErrorMessage, "错误");
             else
             {
-                this.Binding.RemoveCurrent();
+                var list = dgvUsers.DataSource as List<FullUser>;
+                list.Remove(dgvUsers.SelectedRows[0].DataBoundItem as FullUser);
+                dgvUsers.Reset();
                 SOAFramework.Client.Controls.MessageBox.Show(this, "操作成功！", "信息");
             }
+        }
+
+        private void UserManagement_InitControl(object sender, EventArgs e)
+        {
+
         }
     }
 }

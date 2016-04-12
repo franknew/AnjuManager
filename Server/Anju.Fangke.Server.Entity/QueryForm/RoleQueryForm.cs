@@ -16,6 +16,10 @@ namespace Anju.Fangke.Server.Form
         
         public Int32? DataAccessType { get; set; }
         
+        public Int32? DataAccessType_Start { get; set; }
+        
+        public Int32? DataAccessType_End { get; set; }
+        
         public string ParentID { get; set; }
         
         public List<String> ParentIDs { get; set;}

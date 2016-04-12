@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillBLL.cs" />
     <Compile Include="BuildingBLL.cs" />
     <Compile Include="ChargeFeeBLL.cs" />
     <Compile Include="Common.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="House_OtherFeeBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="MapperHelper.cs" />
+    <Compile Include="OtherFeeBillBLL.cs" />
     <Compile Include="OtherFeeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentFeeBLL.cs" />

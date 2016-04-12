@@ -83,5 +83,23 @@ namespace WinformTest
                 list.Add(fh);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            BillBLL bll = new BillBLL();
+            var list = bll.QueryFullBill(new QueryFullBillServiceForm { });
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            BillBLL bll = new BillBLL();
+            var list = bll.GenerateBill("test");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            BillBLL bll = new BillBLL();
+            var bill = bll.QuerySingle("1");
+        }
     }
 }

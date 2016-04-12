@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
 using SOAFramework.Client.Controls;
+using SOAFramework.Client.Forms;
 using SOAFramework.Service.SDK.Core;
 
 namespace Anju.Fangke.Client.Forms
@@ -30,30 +31,31 @@ namespace Anju.Fangke.Client.Forms
         
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            if (!this.Validate())
+            {
+                this.btnSave.IngoreCallbackOnce = true;
+                return;
+            }
             AddHouseRequest request = new AddHouseRequest();
             request.token = this.Token;
-            House house = new House
-            {
-                BuildingID = this.Building.ID,
-                Floor = this.Floor,
-                HallCount = Convert.ToInt32(cmbHall.SelectedItem),
-                RoomCount = Convert.ToInt32(cmbRoom.SelectedItem),
-                ToiletCount = Convert.ToInt32(cmbToilet.SelectedItem),
-                Remark = txbRemark.Text,
-                Name = txbHouseName.Text,
-                RentType = rabZhengZu.Checked ? 1 : 0,
-            };
+            var house = this.CollectData<FullHouse>();
             this.Building.CurrentHouse = house;
             request.form = house;
-            var response = SDKSync<AddModelResponse>.CreateInstance(this).Execute(request, AddHouse_Callback);
+            var response = SDKSync<AddHouseResponse>.CreateInstance(this).Execute(request, AddHouse_Callback);
         }
 
-        private void AddHouse_Callback(AddModelResponse response)
+        private void AddHouse_Callback(AddHouseResponse response)
         {
-            this.Building.CurrentHouse.ID = response.ID;
+            this.Building.CurrentHouse.House.ID = response.Result.HouseID;
+            this.Building.CurrentHouse.RentFee.ID = response.Result.RentFeeID;
             Building?.House?.Add(this.Building.CurrentHouse);
             SOAFramework.Client.Controls.MessageBox.Show(this, "新增房间成功");
             this.Close();
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

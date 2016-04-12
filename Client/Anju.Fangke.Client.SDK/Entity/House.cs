@@ -53,6 +53,12 @@ namespace Anju.Fangke.Client.SDK
         /// </summary>
         public int? HallNumber { get; set; }
 
+        public decimal? Area { get; set; }
+
+        public string OwnerID { get; set; }
+
+        public int? IsRented { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -75,7 +81,7 @@ namespace Anju.Fangke.Client.SDK
         {
             get
             {
-                return RentType.Value == 1 ? "整租" : "合租";
+                return Enum.GetName(typeof(RentType), this.RentType);
             }
         }
 

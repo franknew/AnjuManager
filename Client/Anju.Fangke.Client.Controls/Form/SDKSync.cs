@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -49,8 +50,22 @@ namespace SOAFramework.Client.Controls
             var param = e.Result as SDKSyncParam<T>;
             if (param.Response.IsError)
             {
-                SOAFramework.Client.Controls.MessageBox.Show(_currentform, param.Response.ResponseBody);
-                return;
+                if (param.Response.Code == 3)
+                {
+                    SOAFramework.Client.Controls.MessageBox.Show(_currentform, "登录由于长时间没有操作而失效，请重新登录");
+                    dynamic mainform = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle);
+                    mainform.ShowLogin();
+                    _currentform?.Activate();
+                    _currentform?.ActiveControl?.Focus();
+                    return;
+                }
+                else
+                {
+                    SOAFramework.Client.Controls.MessageBox.Show(_currentform, param.Response.ResponseBody);
+                    _currentform?.Activate();
+                    _currentform?.ActiveControl?.Focus();
+                    return;
+                }
             }
             param.CallBack?.Invoke(param.Response);
 

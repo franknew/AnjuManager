@@ -35,6 +35,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\CommonDll\SOAFramework.Library.DAL.dll</HintPath>
     </Reference>
+    <Reference Include="SOAFramework.Library.Lib">
+      <HintPath>..\..\..\CommonDll\SOAFramework.Library.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Validator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\SOAFramework.Library.Validator.dll</HintPath>
+    </Reference>
     <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\CommonDll\SOAFramework.Service.SDK.Core.dll</HintPath>
@@ -62,6 +69,12 @@
     </Compile>
     <Compile Include="AddHouse.Designer.cs">
       <DependentUpon>AddHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddOtherFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOtherFee.Designer.cs">
+      <DependentUpon>AddOtherFee.cs</DependentUpon>
     </Compile>
     <Compile Include="AssetManagement.cs">
       <SubType>Form</SubType>
@@ -128,6 +141,9 @@
     <EmbeddedResource Include="AddHouse.resx">
       <DependentUpon>AddHouse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddOtherFee.resx">
+      <DependentUpon>AddOtherFee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssetManagement.resx">
       <DependentUpon>AssetManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseEditHouse.resx">
       <DependentUpon>BaseEditHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditBuilding.resx">
+      <DependentUpon>EditBuilding.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditHouse.resx">
       <DependentUpon>EditHouse.cs</DependentUpon>

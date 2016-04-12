@@ -111,5 +111,11 @@ namespace Anju.Fangke.Client.Main
                 _watcher.Activate(tabMenu.SelectedTab.Name);
             }
         }
+
+        private void 账单管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = AddMdiChild("Anju.Fangke.Client.Forms.BillManagement.dll", "Anju.Fangke.Client.Forms.BillManagement");
+            _watcher.Add(form.Name, form.Text);
+        }
     }
 }

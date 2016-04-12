@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(300, 300);
             this.KeyPreview = true;
             this.Name = "BaseForm";
+            this.Shown += new System.EventHandler(this.BaseForm_Shown);
             this.ResumeLayout(false);
 
         }

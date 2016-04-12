@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetManagerApi.cs" />
+    <Compile Include="BillApi.cs" />
     <Compile Include="Filter\AuthFilter.cs" />
     <Compile Include="DataDictionaryApi.cs" />
     <Compile Include="Filter\DataAuthorityFilter.cs" />

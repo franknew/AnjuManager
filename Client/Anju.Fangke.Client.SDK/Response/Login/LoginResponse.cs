@@ -1,5 +1,4 @@
-﻿using Anju.Fangke.Server.Forms;
-using SOAFramework.Service.SDK.Core;
+﻿using SOAFramework.Service.SDK.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,6 @@ namespace Anju.Fangke.Client.SDK
 {
     public class LoginResponse : BaseResponse
     {
-        public LoginResultForm Result { get; set; }
+        public LoginResult Result { get; set; }
     }
 }

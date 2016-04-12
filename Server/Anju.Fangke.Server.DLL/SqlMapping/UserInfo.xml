@@ -106,41 +106,41 @@
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
-    <isNotNull prepend="AND" property="ID">
-        `ID`=#ID#
+    <isNotNull prepend="AND" property="UserInfoQueryForm.ID">
+        `ID`=#UserInfoQueryForm.ID#
     </isNotNull>
     
-        <isNotNull prepend="AND"  property="IDs">
-        <iterate property="IDs" open="(" close=")" conjunction="OR">
-         `ID`=#IDs[]#
+        <isNotNull prepend="AND"  property="UserInfoQueryForm.IDs">
+        <iterate property="UserInfoQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#UserInfoQueryForm.IDs[]#
         </iterate>
     </isNotNull>
-    <isNotNull prepend="AND" property="QQ">
-        `QQ`=#QQ#
+    <isNotNull prepend="AND" property="UserInfoQueryForm.QQ">
+        `QQ`=#UserInfoQueryForm.QQ#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="Mobile">
-        `Mobile`=#Mobile#
+    <isNotNull prepend="AND" property="UserInfoQueryForm.Mobile">
+        `Mobile`=#UserInfoQueryForm.Mobile#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="WX">
-        `WX`=#WX#
+    <isNotNull prepend="AND" property="UserInfoQueryForm.WX">
+        `WX`=#UserInfoQueryForm.WX#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="Address">
-        `Address`=#Address#
+    <isNotNull prepend="AND" property="UserInfoQueryForm.Address">
+        `Address`=#UserInfoQueryForm.Address#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="Identity">
-        `Identity`=#Identity#
+    <isNotNull prepend="AND" property="UserInfoQueryForm.Identity">
+        `Identity`=#UserInfoQueryForm.Identity#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="CnName">
-        `CnName`=#CnName#
+    <isNotNull prepend="AND" property="UserInfoQueryForm.CnName">
+        `CnName`=#UserInfoQueryForm.CnName#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="Remark">
-        `Remark` LIKE '%$Remark$%'
+    <isNotNull prepend="AND" property="UserInfoQueryForm.Remark">
+        `Remark` LIKE '%$UserInfoQueryForm.Remark$%'
     </isNotNull>
     
     </dynamic>

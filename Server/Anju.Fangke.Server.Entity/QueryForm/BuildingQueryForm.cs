@@ -25,6 +25,10 @@ namespace Anju.Fangke.Server.Form
         
         public Int32? FloorCount { get; set; }
         
+        public Int32? FloorCount_Start { get; set; }
+        
+        public Int32? FloorCount_End { get; set; }
+        
         public UInt64? Enabled { get; set; }
         
     }

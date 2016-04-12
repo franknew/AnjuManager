@@ -12,6 +12,7 @@ using System.Dynamic;
 using System.Reflection;
 using SOAFramework.Service.SDK.Core;
 using MetroFramework.Controls;
+using SOAFramework.Library.Validator;
 
 namespace SOAFramework.Client.Forms
 {
@@ -25,7 +26,10 @@ namespace SOAFramework.Client.Forms
         }
 
         private MetroProgressSpinner spinner = new MetroProgressSpinner();
+        private List<Control> _allcontrols = new List<Control>();
+        private Dictionary<string, bool> _enableDic = null;
 
+        #region property
         private CustomBindingSource binding = new CustomBindingSource();
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -37,21 +41,44 @@ namespace SOAFramework.Client.Forms
 
         public string Token { get; set; }
 
+        public bool EnableEscClose { get; set; }
+
+        public ValidatorManager ValidationManager
+        {
+            get
+            {
+                return validationManager;
+            }
+
+            set
+            {
+                validationManager = value;
+            }
+        }
+
+        private ValidatorManager validationManager = new ValidatorManager();
+        #endregion
+
         public event EventHandler AfterLoaded;
+        public event EventHandler InitControl;
+
+        public Dictionary<string, object> DataDictionary = new Dictionary<string, object>();
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             if (DesignMode) return;
-            var allcontrols = this.GetAllControls();
+
+            var _allcontrols = this.GetAllControls();
 
             #region 添加绑定
-            var controls = allcontrols.OfType<IControlBindable>();
+            var controls = _allcontrols.OfType<IControlBindable>();
             if (this.Binding.DataSource == null)
             {
                 DataTable source = new DataTable();
                 foreach (var bindable in controls)
                 {
+                    if (!bindable.Bindable) continue;
                     if (!string.IsNullOrEmpty(bindable.BindingSourcePropertyName))
                     {
                         source.Columns.Add(bindable.BindingSourcePropertyName);
@@ -61,6 +88,7 @@ namespace SOAFramework.Client.Forms
             }
             foreach (var control in controls)
             {
+                if (!control.Bindable) continue;
                 IBindableComponent component = control as IBindableComponent;
                 if (!string.IsNullOrEmpty(control.BindingSelfPropertyName) && !string.IsNullOrEmpty(control.BindingSourcePropertyName))
                 {
@@ -71,70 +99,30 @@ namespace SOAFramework.Client.Forms
                 }
             }
             #endregion
-
-            #region 绑定数据字典
-            var initablebindings = allcontrols.OfType<IInitableBinding>();
-            List<string> groups = new List<string>();
-            foreach (var binding in initablebindings)
-            {
-                if (!string.IsNullOrEmpty(binding.InitableBindingGroupName))
-                {
-                    groups.Add(binding.InitableBindingGroupName);
-                }
-            }
-            if (groups.Count == 0) return;
-            var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
-            if (sdk == null) return;
-            var types = sdk.GetTypes();
-            var requestType = types.FirstOrDefault(t => t.Name == "QueryDataDictionaryByNameRequest");
-            if (requestType == null) return;
-            dynamic request = Activator.CreateInstance(requestType);
-            request.NameList = groups;
-            request.token = this.Token;
-            var responseType = requestType.BaseType.GetGenericArguments()[0];
-
-            object Response = SDKFactory.Client.Execute(request, responseType);
-            dynamic dyresponse = Response;
-            if (dyresponse.IsError)
-            {
-                Client.Controls.MessageBox.Show(this, dyresponse.ErrorMessage);
-            }
-            foreach (dynamic result in dyresponse.Result)
-            {
-                var binding = initablebindings.FirstOrDefault(t => t.InitableBindingGroupName == result.Group.Name);
-                Control c = binding as Control;
-                PropertyInfo property = c.GetType().GetProperty(binding.InitableBindingControlPropertyName);
-                if (property != null)
-                {
-                    if (binding.HasAll)
-                    {
-                        var modeldll = Assembly.Load("Anju.Fangke.Server.Model");
-                        if (modeldll == null) return;
-                        var modelType = modeldll.GetType("DataDictionary");
-                        if (modelType == null) return;
-                        dynamic datadictionary = Activator.CreateInstance(modelType);
-                        datadictionary.Name = "全部";
-                        datadictionary.Value = -1;
-                        result.Items.Insert(0, datadictionary);
-                    }
-                    property.SetValue(c, result.Items, null);
-                }
-            }
-            #endregion
-
-            if (AfterLoaded != null)
-            {
-                AfterLoaded.Invoke(this, e);
-            }
+            
+            if (AfterLoaded != null) AfterLoaded.Invoke(this, e);
         }
 
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyUp(e);
+            if (EnableEscClose) if (e.KeyCode.Equals(Keys.Escape)) this.Close();
+        }
+
+        #region action
         public void ShowSpinner()
         {
-            this.Enabled = false;
-            if (this.Controls.Contains(spinner))
+            //this.Enabled = false;
+            if (_enableDic == null)
             {
-                spinner = this.Controls["spnProgressSpinner"] as MetroProgressSpinner;
+                _enableDic = new Dictionary<string, bool>();
+                foreach (Control control in this.Controls)
+                {
+                    _enableDic[control.Name] = control.Enabled;
+                    control.Enabled = false;
+                }
             }
+            if (this.Controls.Contains(spinner)) spinner = this.Controls["spnProgressSpinner"] as MetroProgressSpinner;
             else
             {
                 spinner = new MetroProgressSpinner();
@@ -152,12 +140,121 @@ namespace SOAFramework.Client.Forms
 
         public void HideSpinner()
         {
-            if (spinner != null)
+            if (spinner != null) spinner.Hide();
+            if (_enableDic != null)
             {
-                spinner.Hide();
+                //this.Enabled = true;
+                foreach (Control control in this.Controls)
+                {
+                    if (_enableDic.ContainsKey(control.Name)) control.Enabled = _enableDic[control.Name];
+                }
+                _enableDic = null;
             }
-            this.Enabled = true;
             this.Activate();
         }
+
+        public bool Validate()
+        {
+            return validationManager.ValidateInForm(this).IsValid;
+        }
+        #endregion
+
+        #region events
+        private void BaseForm_Shown(object sender, EventArgs e)
+        {
+            if (DesignMode) return;
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+
+            this.ShowSpinner();
+            _allcontrols = this.GetAllControls();
+            worker.RunWorkerAsync(_allcontrols);
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var initablebindings = _allcontrols.OfType<IInitableBinding>();
+            if (e.Result == null)
+            {
+                this.HideSpinner();
+                if (InitControl != null) InitControl.Invoke(this, e);
+                return;
+            }
+            dynamic dyresponse = e.Result;
+            if (dyresponse.IsError)
+            {
+                this.HideSpinner();
+                Client.Controls.MessageBox.Show(this, dyresponse.ErrorMessage);
+                if (InitControl != null) InitControl.Invoke(this, e);
+                return;
+            }
+            foreach (dynamic result in dyresponse.Result)
+            {
+                var binding = initablebindings.FirstOrDefault(t => t.InitableBindingGroupName == result.Group.Name);
+                Control c = binding as Control;
+                PropertyInfo property = c.GetType().GetProperty(binding.InitableBindingControlPropertyName);
+                if (property != null)
+                {
+                    if (binding.HasAll)
+                    {
+                        Type itemType = result.Items.GetType();
+                        if (itemType == null)
+                        {
+                            this.HideSpinner();
+                            return;
+                        }
+                        Type modelType = itemType.GetGenericArguments()[0];
+                        if (modelType == null)
+                        {
+                            this.HideSpinner();
+                            return;
+                        }
+                        dynamic datadictionary = Activator.CreateInstance(modelType);
+                        datadictionary.Name = "全部";
+                        datadictionary.Value = -1;
+                        result.Items.Insert(0, datadictionary);
+                    }
+                    property.SetValue(c, result.Items, null);
+                }
+                DataDictionary[binding.InitableBindingGroupName] = result.Items;
+            }
+            this.HideSpinner();
+            if (InitControl != null) InitControl.Invoke(this, e);
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            #region 绑定数据字典
+            _allcontrols = e.Argument as List<Control>;
+            var initablebindings = _allcontrols.OfType<IInitableBinding>();
+            List<string> groups = new List<string>();
+            foreach (var binding in initablebindings)
+            {
+                if (!string.IsNullOrEmpty(binding.InitableBindingGroupName)) groups.Add(binding.InitableBindingGroupName);
+            }
+            if (groups.Count == 0) return;
+            var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
+            if (sdk == null) return;
+            var types = sdk.GetTypes();
+            var requestType = types.FirstOrDefault(t => t.Name == "QueryDataDictionaryByNameRequest");
+            if (requestType == null) return;
+            dynamic request = Activator.CreateInstance(requestType);
+            request.NameList = groups;
+            request.token = this.Token;
+            var responseType = requestType.BaseType.GetGenericArguments()[0];
+            object Response = SDKFactory.Client.Execute(request, responseType);
+            e.Result = Response;
+            
+            #endregion
+        }
+        #endregion
+    }
+
+    public class WorkResult
+    {
+        public object Response { get; set; }
+
+        public List<Control> Controls { get; set; }
     }
 }

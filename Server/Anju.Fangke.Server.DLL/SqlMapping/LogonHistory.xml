@@ -41,6 +41,10 @@
         `LogonTime`&lt;=#LogonTime_End#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="LogonTime">
+        `LogonTime`=#LogonTime#
+    </isNotNull>
+    
     <isNotNull prepend="AND" property="IP">
         `IP`=#IP#
     </isNotNull>
@@ -50,6 +54,10 @@
     </isNotNull>
     <isNotNull prepend="AND" property="ActiveTime_End">
         `ActiveTime`&lt;=#ActiveTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ActiveTime">
+        `ActiveTime`=#ActiveTime#
     </isNotNull>
     
     </dynamic>
@@ -99,44 +107,44 @@
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
-    <isNotNull prepend="AND" property="ID">
-        `ID`=#ID#
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.ID">
+        `ID`=#LogonHistoryQueryForm.ID#
     </isNotNull>
     
-        <isNotNull prepend="AND"  property="IDs">
-        <iterate property="IDs" open="(" close=")" conjunction="OR">
-         `ID`=#IDs[]#
+        <isNotNull prepend="AND"  property="LogonHistoryQueryForm.IDs">
+        <iterate property="LogonHistoryQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#LogonHistoryQueryForm.IDs[]#
         </iterate>
     </isNotNull>
-    <isNotNull prepend="AND" property="UserID">
-        `UserID`=#UserID#
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.UserID">
+        `UserID`=#LogonHistoryQueryForm.UserID#
     </isNotNull>
     
-        <isNotNull prepend="AND"  property="UserIDs">
-        <iterate property="UserIDs" open="(" close=")" conjunction="OR">
-         `UserID`=#UserIDs[]#
+        <isNotNull prepend="AND"  property="LogonHistoryQueryForm.UserIDs">
+        <iterate property="LogonHistoryQueryForm.UserIDs" open="(" close=")" conjunction="OR">
+         `UserID`=#LogonHistoryQueryForm.UserIDs[]#
         </iterate>
     </isNotNull>
-    <isNotNull prepend="AND" property="Token">
-        `Token`=#Token#
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.Token">
+        `Token`=#LogonHistoryQueryForm.Token#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="LogonTime_Start">
-        `LogonTime`&gt;=#LogonTime_Start#
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.LogonTime_Start">
+        `LogonTime`&gt;=#LogonHistoryQueryForm.LogonTime_Start#
     </isNotNull>
-    <isNotNull prepend="AND" property="LogonTime_End">
-        `LogonTime`&lt;=#LogonTime_End#
-    </isNotNull>
-    
-    <isNotNull prepend="AND" property="IP">
-        `IP`=#IP#
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.LogonTime_End">
+        `LogonTime`&lt;=#LogonHistoryQueryForm.LogonTime_End#
     </isNotNull>
     
-    <isNotNull prepend="AND" property="ActiveTime_Start">
-        `ActiveTime`&gt;=#ActiveTime_Start#
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.IP">
+        `IP`=#LogonHistoryQueryForm.IP#
     </isNotNull>
-    <isNotNull prepend="AND" property="ActiveTime_End">
-        `ActiveTime`&lt;=#ActiveTime_End#
+    
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.ActiveTime_Start">
+        `ActiveTime`&gt;=#LogonHistoryQueryForm.ActiveTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LogonHistoryQueryForm.ActiveTime_End">
+        `ActiveTime`&lt;=#LogonHistoryQueryForm.ActiveTime_End#
     </isNotNull>
     
     </dynamic>

@@ -29,10 +29,38 @@
         private void InitializeComponent()
         {
             this.btnSave = new SOAFramework.Client.Controls.Button();
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "编辑楼盘";
-            this.groupBox2.Controls.Add(this.btnSave);// 
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Size = new System.Drawing.Size(468, 374);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnSave);
+            this.groupBox2.Size = new System.Drawing.Size(468, 60);
+            this.groupBox2.Controls.SetChildIndex(this.btnSave, 0);
+            this.groupBox2.Controls.SetChildIndex(this.btnClose, 0);
+            // 
+            // txbRemark
+            // 
+            this.txbRemark.Lines = new string[0];
+            // 
+            // txbStreet
+            // 
+            this.txbStreet.Lines = new string[0];
+            // 
+            // txbName
+            // 
+            this.txbName.Lines = new string[0];
+            this.txbName.UseStyleColors = true;
+            // 
+            // txbFloor
+            // 
+            this.txbFloor.Lines = new string[0];
+            // 
             // btnSave
             // 
             this.btnSave.ClickedMessage = null;
@@ -45,6 +73,18 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "保存";
             this.btnSave.UseSelectable = true;
+            // 
+            // EditBuilding
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(470, 465);
+            this.Name = "EditBuilding";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

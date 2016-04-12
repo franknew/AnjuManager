@@ -53,10 +53,7 @@ namespace Anju.Fangke.Client.Launcher
                     shortcut.TargetPath = Assembly.GetEntryAssembly().Location;
                     shortcut.Description = "房客易租管理系统";
                     shortcut.WorkingDirectory = file.Directory.FullName;
-                    if (icon.Exists)
-                    {
-                        shortcut.IconLocation = icon.FullName;
-                    }
+                    if (icon.Exists) shortcut.IconLocation = icon.FullName;
                     shortcut.WindowStyle = 1;
                     shortcut.Save();
                 }

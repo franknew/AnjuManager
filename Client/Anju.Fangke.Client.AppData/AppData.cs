@@ -1,9 +1,9 @@
-﻿using Anju.Fangke.Server.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Anju.Fangke.Client.SDK;
 
 namespace Anju.Fangke.Client
 {

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Anju.Fangke.Client.SDK;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -20,14 +21,11 @@ namespace Anju.Fangke.Client.Forms
             InitializeComponent();
         }
 
+        public FullUser User { get; set; }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnSave_ClickCallback(object sender, EventArgs e)
-        {
-            this.FlushBinding();
         }
 
         private void BeforeClick(object sender, EventArgs e)
@@ -60,10 +58,6 @@ namespace Anju.Fangke.Client.Forms
 
         private void BaseEditUser_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_needRemoveCurrent)
-            {
-                this.Binding.RemoveCurrent();
-            }
         }
     }
 }

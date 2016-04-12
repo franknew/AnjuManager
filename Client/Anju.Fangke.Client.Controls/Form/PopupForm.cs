@@ -14,6 +14,7 @@ namespace SOAFramework.Client.Forms
         public PopupForm()
         {
             InitializeComponent();
+            this.EnableEscClose = true;
         }
     }
 }

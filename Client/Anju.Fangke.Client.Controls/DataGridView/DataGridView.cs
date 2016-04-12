@@ -12,7 +12,7 @@ using System.Collections;
 
 namespace SOAFramework.Client.Controls
 {
-    public class DataGridView : System.Windows.Forms.DataGridView, IServiceBindable
+    public class DataGridView : System.Windows.Forms.DataGridView, IServiceBindable, IControlBindable
     {
         #region attribute
 
@@ -54,12 +54,65 @@ namespace SOAFramework.Client.Controls
         }
         #endregion
 
+        #region control bindable
+        [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool Bindable { get; set; }
+
+        private string bindingSelfPropertyName = "DataSource";
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("DataSource")]
+        public string BindingSelfPropertyName
+        {
+            get
+            {
+                return bindingSelfPropertyName;
+            }
+
+            set
+            {
+                bindingSelfPropertyName = value;
+            }
+        }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("")]
+        public string BindingSourcePropertyName { get; set; }
+
+        private DataSourceUpdateMode dataSourceUpdateMode = DataSourceUpdateMode.OnValidation;
+        [Category(ControlCategory.Category)]
+        [DefaultValue(DataSourceUpdateMode.OnValidation)]
+        public DataSourceUpdateMode DataSourceUpdateMode
+        {
+            get { return dataSourceUpdateMode; }
+
+            set { dataSourceUpdateMode = value; }
+        }
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue(null)]
+        public object DBNullValue { get; set; }
+        #endregion
+
         protected override void OnLayout(LayoutEventArgs e)
         {
             this.AutoGenerateColumns = false;
             this.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.BackgroundColor = MetroPaint.BackColor.Form(MetroFramework.MetroThemeStyle.Default);
             base.OnLayout(e);
+        }
+
+        protected override void OnCellFormatting(DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.Rows[e.RowIndex].DataBoundItem != null &&
+                this.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
+            {
+                object item = this.Rows[e.RowIndex].DataBoundItem;
+                object value = item.TryGetValue(this.Columns[e.ColumnIndex].DataPropertyName);
+                e.Value = value;
+            }
+            base.OnCellFormatting(e);
         }
 
         #region action
@@ -128,6 +181,13 @@ namespace SOAFramework.Client.Controls
             this.CurrentCell = dgvrow.Cells[firstDisplayColumnIndex];
             this.FirstDisplayedScrollingRowIndex = dgvrow.Index;
             return dgvrow;
+        }
+
+        public void Reset()
+        {
+            var datasource = this.DataSource;
+            this.DataSource = null;
+            this.DataSource = datasource;
         }
         #endregion
 

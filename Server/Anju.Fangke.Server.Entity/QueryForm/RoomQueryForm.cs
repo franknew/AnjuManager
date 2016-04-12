@@ -12,9 +12,11 @@ namespace Anju.Fangke.Server.Form
         public string HouseID { get; set; }
         
         public List<String> HouseIDs { get; set;}
-        public DateTime? Area_Start { get; set; }
+        public Decimal? Area { get; set; }
         
-        public DateTime? Area_End { get; set; }
+        public Decimal? Area_Start { get; set; }
+        
+        public Decimal? Area_End { get; set; }
         
         public string Remark { get; set; }
         

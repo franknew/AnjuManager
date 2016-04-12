@@ -33,6 +33,7 @@ namespace SOAFramework.Client.Controls
         [DefaultValue("")]
         public string BindingRequestPropertyName { get; set; }
 
+
         [Category(ControlCategory.Category)]
         [DefaultValue("")]
         public string BindingResponsePropertyName { get; set; }
@@ -45,6 +46,10 @@ namespace SOAFramework.Client.Controls
         #endregion
 
         #region control bindable
+        [Category(ControlCategory.Category)]
+        [DefaultValue(false)]
+        public bool Bindable { get; set; }
+
         private string bindingSelfPropertyName = "Checked";
 
         [Category(ControlCategory.Category)]
@@ -93,7 +98,7 @@ namespace SOAFramework.Client.Controls
 
         [Category(ControlCategory.Category)]
         [DefaultValue(null)]
-        public object Value { get; set; }
+        public string Value { get; set; }
         #endregion
 
         #region property

@@ -26,33 +26,13 @@ namespace SOAFramework.Client.Controls
             Dictionary<string, object> data = new Dictionary<string, object>();
             var bindingcontrols = form.GetAllControls().OfType<IServiceBindable>();
             BaseForm baseform = null;
-            if (form is BaseForm)
-            {
-                baseform = form as BaseForm;
-            }
+            if (form is BaseForm) baseform = form as BaseForm;
             foreach (var binding in bindingcontrols)
             {
-                if (string.IsNullOrEmpty(binding.BindingRequestPropertyName))
-                {
-                    continue;
-                }
+                if (string.IsNullOrEmpty(binding.BindingRequestPropertyName)) continue;
                 Control control = binding as Control;
                 IControlBindable controlbind = control as IControlBindable;
-                if (control.Visible)
-                {
-                    data[binding.BindingRequestPropertyName] = binding.CollectBindingData();
-                }
-                else
-                {
-                    if (baseform != null)
-                    {
-                        object value = baseform.Binding.Current.GetValue(controlbind.BindingSourcePropertyName);
-                        if (value != null)
-                        {
-                            data[binding.BindingRequestPropertyName] = value;
-                        }
-                    }
-                }
+                data[binding.BindingRequestPropertyName] = binding.CollectBindingData();
             }
             return data;
         }

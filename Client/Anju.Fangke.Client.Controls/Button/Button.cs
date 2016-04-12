@@ -86,10 +86,7 @@ namespace SOAFramework.Client.Controls
             if (CheckFormEmpty)
             {
                 //检查窗体输入项为空情况
-                if (CheckFormInputEmpty(form))
-                {
-                    return;
-                }
+                if (CheckFormInputEmpty(form)) return;
             }
             if (EnableSyncClick)
             {
@@ -109,18 +106,12 @@ namespace SOAFramework.Client.Controls
                 _worker.DoWork += worker_DoWork;
                 _worker.RunWorkerCompleted += worker_RunWorkerCompleted;
                 Form parent = form;
-                if (form.MdiParent != null)
-                {
-                    parent = form.MdiParent;
-                }
+                if (form.MdiParent != null) parent = form.MdiParent;
                 form.ShowSpinner();
                 //将异步处理传递给窗体以支持取消异步
                 //dynamic dyForm = parentForm;
                 //dyForm.Worker = worker;
-                if (BeforeRunSyncClick != null)
-                {
-                    BeforeRunSyncClick.Invoke(this, e);
-                }
+                if (BeforeRunSyncClick != null) BeforeRunSyncClick.Invoke(this, e);
                 _worker.RunWorkerAsync();
             }
             else
@@ -137,6 +128,8 @@ namespace SOAFramework.Client.Controls
         {
             BaseForm form = this.FindForm() as BaseForm;
 
+            form.HideSpinner();
+
             if (_handler.IsError)
             {
                 SOAFramework.Client.Controls.MessageBox.Show(form, _handler.Message, "错误");
@@ -147,17 +140,10 @@ namespace SOAFramework.Client.Controls
             if (!IngoreCallbackOnce)
             {
                 BindingResponse();
-                if (ClickCallback != null)
-                {
-                    ClickCallback.Invoke(this, e);
-                }
+                if (ClickCallback != null) ClickCallback.Invoke(this, e);
                 IngoreCallbackOnce = false;
             }
-            form.HideSpinner();
-            if (EnableClickOnceOnAction)
-            {
-                this.Enabled = _status;
-            }
+            if (EnableClickOnceOnAction) this.Enabled = _status;
             ShowClickedMessage(form);
             DisposeWorkder(sender);
             CloseParentForm(form);
@@ -173,19 +159,10 @@ namespace SOAFramework.Client.Controls
                     ContainerForm container = null;
                     if (form is PopupForm)
                     {
-                        if (form.Owner is ContainerForm)
-                        {
-                            container = form.Owner as ContainerForm;
-                        }
-                        else if (form.Owner != null)
-                        {
-                            container = form.Owner.MdiParent as ContainerForm;
-                        }
+                        if (form.Owner is ContainerForm) container = form.Owner as ContainerForm; 
+                        else if (form.Owner != null) container = form.Owner.MdiParent as ContainerForm; 
                     }
-                    else
-                    {
-                        container = form.MdiParent as ContainerForm;
-                    }
+                    else container = form.MdiParent as ContainerForm;
                     var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
                     if (sdk == null)
                     {
@@ -211,7 +188,7 @@ namespace SOAFramework.Client.Controls
                     var request = Activator.CreateInstance(requestType);
                     foreach (var key in data.Keys)
                     {
-                        request.SetValue(key, data[key]);
+                        request.TrySetValue(key, data[key]);
                     }
                     request.SetValue("token", container.Token);
                     var responseType = requestType.BaseType.GetGenericArguments()[0];
@@ -245,14 +222,8 @@ namespace SOAFramework.Client.Controls
                 };
                 return;
             }
-            if (this.InvokeRequired)
-            {
-                this.Invoke(new ButtonClickInvoker(base.OnClick), e);
-            }
-            else
-            {
-                base.OnClick(e);
-            }
+            if (this.InvokeRequired) this.Invoke(new ButtonClickInvoker(base.OnClick), e);
+            else base.OnClick(e);
         }
         #endregion
 
@@ -260,61 +231,27 @@ namespace SOAFramework.Client.Controls
         private void DisposeWorkder(object sender)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            if (worker != null)
-            {
-                worker.Dispose();
-            }
+            if (worker != null) worker.Dispose();
         }
 
         private void BindingResponse()
         {
-            if (Response == null)
-            {
-                return;
-            }
+            if (Response == null) return;
             //绑定数据
             var controls = this.FindForm().GetAllControls().OfType<IServiceBindable>();
             foreach (var i in controls)
             {
                 Control c = i as Control;
-                if (string.IsNullOrEmpty(i.BindingResponsePropertyName))
-                {
-                    continue;
-                }
+                if (string.IsNullOrEmpty(i.BindingResponsePropertyName)) continue;
                 object value = Response.TryGetValue(i.BindingResponsePropertyName);
-                if (c is DataGridView)
-                {
-                    BaseForm form = this.FindForm() as BaseForm;
-                    form.Binding.DataSource = value;
-                    value = form.Binding;
-                }
-                c.SetValue(i.BindingControlPropertyName, value);
+                //if (c is DataGridView)
+                //{
+                //    BaseForm form = this.FindForm() as BaseForm;
+                //    form.Binding.DataSource = value;
+                //    value = form.Binding;
+                //}
+                c.TrySetValue(i.BindingControlPropertyName, value);
             }
-        }
-
-        private void InitSpinner(Form parentForm)
-        {
-            if (!enableSyncSpinner)
-            {
-                return;
-            }
-            if (parentForm.Controls.Contains(spinner))
-            {
-                spinner = parentForm.Controls["spnProgressSpinner"] as MetroProgressSpinner;
-            }
-            else
-            {
-                spinner = new MetroProgressSpinner();
-                spinner.Name = "spnProgressSpinner";
-                spinner.Hide();
-                parentForm.Controls.Add(spinner);
-            }
-            spinner.BringToFront();
-            spinner.Size = new System.Drawing.Size(40, 40);
-            spinner.Value = 50;
-            spinner.Maximum = 100;
-            spinner.Location = new Point(parentForm.Width / 2 - spinner.Width / 2, parentForm.Height / 2 - spinner.Height / 2);
-            spinner.Show();
         }
 
         private bool CheckFormInputEmpty(Form form)
@@ -344,13 +281,13 @@ namespace SOAFramework.Client.Controls
 
         private void ShowClickedMessage(Form form)
         {
-            if (!string.IsNullOrEmpty( this.ClickedMessage))
+            if (!string.IsNullOrEmpty(this.ClickedMessage))
             {
                 SOAFramework.Client.Controls.MessageBox.Show(form, ClickedMessage, "信息");
             }
         }
 
-        private void CloseParentForm (Form form)
+        private void CloseParentForm(Form form)
         {
             if (CloseFormAfterInvoke)
             {
@@ -360,7 +297,7 @@ namespace SOAFramework.Client.Controls
             }
         }
         #endregion
-        private delegate void ButtonClickInvoker(EventArgs e); 
+        private delegate void ButtonClickInvoker(EventArgs e);
     }
 
 

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Anju.Fangke.Server.Model;
 
 namespace Anju.Fangke.Client.SDK
 {
-    public class AddHouseRequest : FangkeRequest<AddModelResponse>
+    public class AddHouseRequest : FangkeRequest<AddHouseResponse>
     {
-        public House form { get; set; }
+        public FullHouse form { get; set; }
 
         public override string GetApi()
         {

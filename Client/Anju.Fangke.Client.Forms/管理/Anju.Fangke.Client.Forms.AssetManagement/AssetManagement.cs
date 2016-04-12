@@ -174,12 +174,27 @@ namespace Anju.Fangke.Client.Forms
             if (_selectedNode == null || tabFloor.SelectedTab == null) return;
             FullBuilding building = _selectedNode.Tag as FullBuilding;
             _currentFloor = tabFloor.SelectedIndex + 1;
-            dgvHouse.DataSource = building.House?.FindAll(t => t.Floor == _currentFloor);
+            var datasource = (from h in building.House
+                                   where h.House.Floor.Equals(_currentFloor)
+                                   select h).ToList();
+            dgvHouse.DataSource = datasource;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            if (dgvHouse.SelectedRows.Count == 0)
+            {
+                SOAFramework.Client.Controls.MessageBox.Show(this, "请先选择房间");
+                return;
+            }
+            EditHouse form = new EditHouse();
+            form.Token = this.Token;
+            form.Building = _selectedNode.Tag as FullBuilding;
+            var currentHouse = dgvHouse.SelectedRows[0].DataBoundItem as FullHouse;
+            form.Building.CurrentHouse = form.Building.House.Find(t => t.House.ID.Equals(currentHouse.House.ID));
+            form.Floor = _currentFloor;
+            form.ShowDialog(this);
+            //tabFloor_SelectedIndexChanged(null, null);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

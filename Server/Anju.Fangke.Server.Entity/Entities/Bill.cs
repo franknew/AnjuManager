@@ -41,7 +41,7 @@ namespace Anju.Fangke.Server.Model
         /// <summary>
         /// 
         /// </summary>
-        public  PayDay { get; set; }
+        public DateTime? PayDay { get; set; }
         
         /// <summary>
         /// 

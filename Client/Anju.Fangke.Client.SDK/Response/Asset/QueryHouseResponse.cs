@@ -8,6 +8,6 @@ namespace Anju.Fangke.Client.SDK
 {
     public class QueryHouseResponse : BaseResponse
     {
-        public List<House> List { get; set; }
+        public List<FullHouse> List { get; set; }
     }
 }

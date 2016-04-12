@@ -14,11 +14,15 @@ namespace Anju.Fangke.Server.Form
         public List<String> UserIDs { get; set;}
         public string Token { get; set; }
         
+        public DateTime? LogonTime { get; set; }
+        
         public DateTime? LogonTime_Start { get; set; }
         
         public DateTime? LogonTime_End { get; set; }
         
         public string IP { get; set; }
+        
+        public DateTime? ActiveTime { get; set; }
         
         public DateTime? ActiveTime_Start { get; set; }
         

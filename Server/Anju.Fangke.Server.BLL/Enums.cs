@@ -11,4 +11,10 @@ namespace Anju.Fangke.Server.BLL
         Room = 2,
     }
 
+    public enum RentType
+    {
+        合租 = 0,
+        整租 = 1,
+    }
+
 }

@@ -16,4 +16,13 @@ namespace SOAFramework.Client.Controls
         Add,
         Edit
     }
+
+    public enum InputType
+    {
+        文本,
+        整数,
+        小数,
+        正整数,
+        正小数,
+    }
 }

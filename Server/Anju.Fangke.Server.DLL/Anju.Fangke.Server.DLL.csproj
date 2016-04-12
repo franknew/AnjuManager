@@ -65,6 +65,7 @@
     <Compile Include="Dao\MenuDao.cs" />
     <Compile Include="Dao\Menu_RoleDao.cs" />
     <Compile Include="Dao\ModuleDao.cs" />
+    <Compile Include="Dao\OtherFeeBillDao.cs" />
     <Compile Include="Dao\OtherFeeDao.cs" />
     <Compile Include="Dao\RentFeeDao.cs" />
     <Compile Include="Dao\RentPeriodTypeDao.cs" />
@@ -74,11 +75,13 @@
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Dao\UserInfoDao.cs" />
     <Compile Include="Dao\User_RoleDao.cs" />
+    <Compile Include="Dao_ex\BillDao_ex.cs" />
     <Compile Include="Dao_ex\HouseDao_ex.cs" />
     <Compile Include="Dao_ex\RoleDao_ex.cs" />
     <Compile Include="Dao_ex\UserDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SqlMapping\Action.xml" />
+    <Content Include="SqlMapping\Bill_ex.xml" />
     <Content Include="SqlMapping\Bill.xml" />
     <Content Include="SqlMapping\Building.xml" />
     <Content Include="SqlMapping\ChargeFee.xml" />
@@ -98,6 +101,7 @@
     <Content Include="SqlMapping\Menu_Role.xml" />
     <Content Include="SqlMapping\Module.xml" />
     <Content Include="SqlMapping\OtherFee.xml" />
+    <Content Include="SqlMapping\OtherFeeBill.xml" />
     <Content Include="SqlMapping\RentFee.xml" />
     <Content Include="SqlMapping\RentPeriodType.xml" />
     <Content Include="SqlMapping\Role.xml" />

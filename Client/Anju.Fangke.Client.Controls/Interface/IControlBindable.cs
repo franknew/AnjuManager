@@ -15,5 +15,7 @@ namespace SOAFramework.Client.Controls
         DataSourceUpdateMode DataSourceUpdateMode { get; set; }
 
         object DBNullValue { get; set; }
+
+        bool Bindable { get; set; }
     }
 }

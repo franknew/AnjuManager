@@ -293,6 +293,19 @@ namespace MetroFramework.Controls
             set { baseTextBox.Multiline = value; }
         }
 
+        [DefaultValue(0)]
+        public int SelectionStart
+        {
+            get { return baseTextBox.SelectionStart; }
+            set { baseTextBox.SelectionStart = value; }
+        }
+
+        public int SelectionLength
+        {
+            get { return baseTextBox.SelectionLength; }
+            set { baseTextBox.SelectionLength = value; }
+        }
+
          [DefaultValue(true)]
         public bool WordWrap
         {
