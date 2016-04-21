@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="OtherFee" type="Anju.Fangke.Server.Model.OtherFee" />
+    <typeAlias alias="OtherFeeQueryForm" type="Anju.Fangke.Server.Form.OtherFeeQueryForm" />
+    <typeAlias alias="OtherFeeUpdateForm" type="Anju.Fangke.Server.Form.OtherFeeUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryOtherFee" resultClass="OtherFee" parameterClass="OtherFeeQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `OtherFee`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="FeeType_Start">
+        `FeeType`&gt;=#FeeType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FeeType_End">
+        `FeeType`&lt;=#FeeType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FeeType">
+        `FeeType`=#FeeType#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="UnitPrice_Start">
+        `UnitPrice`&gt;=#UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_End">
+        `UnitPrice`&lt;=#UnitPrice_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="UnitPrice">
+        `UnitPrice`=#UnitPrice#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsShared">
+        `IsShared`=#IsShared#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddOtherFee" parameterClass="OtherFee">
+  INSERT INTO `OtherFee`
+  (
+    `ID`,
+    `FeeType`,
+    `UnitPrice`,
+    `Name`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `Remark`,
+    `Enabled`,
+    `IsDeleted`,
+    `IsShared`
+  )
+  VALUES
+  (
+        #ID#,
+        #FeeType#,
+        #UnitPrice#,
+        #Name#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #Remark#,
+        #Enabled#,
+        #IsDeleted#,
+        #IsShared#
+  )
+  </insert>
+  <update id="UpdateOtherFee" parameterClass="OtherFeeUpdateForm">
+  UPDATE `OtherFee`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.FeeType">
+        `FeeType`=#Entity.FeeType#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.UnitPrice">
+        `UnitPrice`=#Entity.UnitPrice#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Enabled">
+        `Enabled`=#Entity.Enabled#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsDeleted">
+        `IsDeleted`=#Entity.IsDeleted#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsShared">
+        `IsShared`=#Entity.IsShared#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.ID">
+        `ID`=#OtherFeeQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeQueryForm.IDs">
+        <iterate property="OtherFeeQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#OtherFeeQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.FeeType_Start">
+        `FeeType`&gt;=#OtherFeeQueryForm.FeeType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.FeeType_End">
+        `FeeType`&lt;=#OtherFeeQueryForm.FeeType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.UnitPrice_Start">
+        `UnitPrice`&gt;=#OtherFeeQueryForm.UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.UnitPrice_End">
+        `UnitPrice`&lt;=#OtherFeeQueryForm.UnitPrice_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.Name">
+        `Name`=#OtherFeeQueryForm.Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.Creator">
+        `Creator`=#OtherFeeQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeQueryForm.Creators">
+        <iterate property="OtherFeeQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#OtherFeeQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#OtherFeeQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#OtherFeeQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.LastUpdator">
+        `LastUpdator`=#OtherFeeQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#OtherFeeQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#OtherFeeQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.Remark">
+        `Remark` LIKE '%$OtherFeeQueryForm.Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.Enabled">
+        `Enabled`=#OtherFeeQueryForm.Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.IsDeleted">
+        `IsDeleted`=#OtherFeeQueryForm.IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeQueryForm.IsShared">
+        `IsShared`=#OtherFeeQueryForm.IsShared#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteOtherFee" parameterClass="OtherFeeQueryForm">
+    DELETE FROM `OtherFee` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="FeeType_Start">
+        `FeeType`&gt;=#FeeType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FeeType_End">
+        `FeeType`&lt;=#FeeType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="UnitPrice_Start">
+        `UnitPrice`&gt;=#UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_End">
+        `UnitPrice`&lt;=#UnitPrice_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsShared">
+        `IsShared`=#IsShared#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryOtherFeeLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `OtherFee`
+   </select>
+   <select id="QueryOtherFeeRecordCount" resultClass="int" parameterClass="OtherFeeQueryForm">
+   SELECT COUNT(*) FROM `OtherFee` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="FeeType_Start">
+        `FeeType`&gt;=#FeeType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FeeType_End">
+        `FeeType`&lt;=#FeeType_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_Start">
+        `UnitPrice`&gt;=#UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_End">
+        `UnitPrice`&lt;=#UnitPrice_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsShared">
+        `IsShared`=#IsShared#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

@@ -12,6 +12,7 @@ using SOAFramework.Service.SDK.Core;
 using MetroFramework.Controls;
 using SOAFramework.Client.Controls;
 using Anju.Fangke.Client.SDK.Entity;
+using SOAFramework.Library;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -131,11 +132,16 @@ namespace Anju.Fangke.Client.Forms
             if (e.Node.Tag == null) return;
             FullBuilding building = e.Node.Tag as FullBuilding;
             _selectedNode = e.Node;
+            MetroTabPage pageAll = new MetroTabPage();
+            pageAll.Text = "所有";
+            pageAll.Name = "pageFloorAll";
+            pageAll.Tag = -1;
+            tabFloor.TabPages.Add(pageAll);
             if (building.FloorCount > tabFloor.TabPages.Count)
             {
                 for (int i = tabFloor.TabPages.Count; i < building.FloorCount; i++)
                 {
-                    int floor = i + 1;
+                    int floor = i;
                     MetroTabPage page = new MetroTabPage();
                     page.Text = string.Format("第{0}层", floor);
                     page.Name = string.Format("pageFloor" + floor);
@@ -173,8 +179,10 @@ namespace Anju.Fangke.Client.Forms
         {
             if (_selectedNode == null || tabFloor.SelectedTab == null) return;
             FullBuilding building = _selectedNode.Tag as FullBuilding;
-            _currentFloor = tabFloor.SelectedIndex + 1;
-            var datasource = (from h in building.House
+            _currentFloor = tabFloor.SelectedIndex;
+            var datasource = building.House;
+            if (_currentFloor > 0)
+                datasource = (from h in building.House
                                    where h.House.Floor.Equals(_currentFloor)
                                    select h).ToList();
             dgvHouse.DataSource = datasource;
@@ -205,6 +213,21 @@ namespace Anju.Fangke.Client.Forms
                 return;
             }
             if (SOAFramework.Client.Controls.MessageBox.Show(this, "是否删除该房间？", "删除", MessageBoxButtons.YesNo) == DialogResult.No) return;
+            FullHouse house = dgvHouse.SelectedRows[0].DataBoundItem as FullHouse;
+            string id = house.House.ID;
+            DeleteHouseRequest request = new DeleteHouseRequest();
+            request.token = this.Token;
+            request.form = new HouseQueryForm { ID = id };
+            SDKSync<CommonResponse>.CreateInstance(this).Execute(request, Delete_Callback);
+        }
+
+        private void Delete_Callback(CommonResponse response)
+        {
+            //var datasource = dgvHouse.DataSource as List<FullHouse>;
+            //datasource.Remove(dgvHouse.SelectedRows[0].DataBoundItem as FullHouse);
+            //dgvHouse.Reset();
+            dgvHouse.RemoveRow<FullHouse>(dgvHouse.SelectedRows[0].DataBoundItem as FullHouse);
+            SOAFramework.Client.Controls.MessageBox.Show(this, "删除成功");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

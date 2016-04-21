@@ -88,5 +88,30 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public int? IsDeleted { get; set; }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal? Cost { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal? SalePrice { get; set; }
+        
+        /// <summary>
+        /// 钥匙编号
+        /// </summary>
+        public string KeyCode { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Status { get; set; }
+        
+        /// <summary>
+        /// 装修类型
+        /// </summary>
+        public int? DecorationType { get; set; }
+        
     }
 }

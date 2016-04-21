@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="House" type="Anju.Fangke.Server.Model.House" />
+    <typeAlias alias="HouseQueryForm" type="Anju.Fangke.Server.Form.HouseQueryForm" />
+    <typeAlias alias="HouseUpdateForm" type="Anju.Fangke.Server.Form.HouseUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryHouse" resultClass="House" parameterClass="HouseQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `House`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingID">
+        `BuildingID`=#BuildingID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingIDs">
+        <iterate property="BuildingIDs" open="(" close=")" conjunction="OR">
+         `BuildingID`=#BuildingIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Floor_Start">
+        `Floor`&gt;=#Floor_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Floor_End">
+        `Floor`&lt;=#Floor_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Floor">
+        `Floor`=#Floor#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomCount_Start">
+        `RoomCount`&gt;=#RoomCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomCount_End">
+        `RoomCount`&lt;=#RoomCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomCount">
+        `RoomCount`=#RoomCount#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HallCount_Start">
+        `HallCount`&gt;=#HallCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallCount_End">
+        `HallCount`&lt;=#HallCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HallCount">
+        `HallCount`=#HallCount#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ToiletCount_Start">
+        `ToiletCount`&gt;=#ToiletCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletCount_End">
+        `ToiletCount`&lt;=#ToiletCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ToiletCount">
+        `ToiletCount`=#ToiletCount#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentType_Start">
+        `RentType`&gt;=#RentType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentType_End">
+        `RentType`&lt;=#RentType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentType">
+        `RentType`=#RentType#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomNumber_Start">
+        `RoomNumber`&gt;=#RoomNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomNumber_End">
+        `RoomNumber`&lt;=#RoomNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomNumber">
+        `RoomNumber`=#RoomNumber#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HallNumber_Start">
+        `HallNumber`&gt;=#HallNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallNumber_End">
+        `HallNumber`&lt;=#HallNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HallNumber">
+        `HallNumber`=#HallNumber#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ToiletNumber_Start">
+        `ToiletNumber`&gt;=#ToiletNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletNumber_End">
+        `ToiletNumber`&lt;=#ToiletNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ToiletNumber">
+        `ToiletNumber`=#ToiletNumber#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="KitchenNumber_Start">
+        `KitchenNumber`&gt;=#KitchenNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="KitchenNumber_End">
+        `KitchenNumber`&lt;=#KitchenNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="KitchenNumber">
+        `KitchenNumber`=#KitchenNumber#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OwnerID">
+        `OwnerID`=#OwnerID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OwnerIDs">
+        <iterate property="OwnerIDs" open="(" close=")" conjunction="OR">
+         `OwnerID`=#OwnerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_Start">
+        `Area`&gt;=#Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_End">
+        `Area`&lt;=#Area_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Area">
+        `Area`=#Area#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsRented">
+        `IsRented`=#IsRented#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Cost_Start">
+        `Cost`&gt;=#Cost_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cost_End">
+        `Cost`&lt;=#Cost_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Cost">
+        `Cost`=#Cost#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="SalePrice_Start">
+        `SalePrice`&gt;=#SalePrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="SalePrice_End">
+        `SalePrice`&lt;=#SalePrice_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="SalePrice">
+        `SalePrice`=#SalePrice#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="KeyCode">
+        `KeyCode`=#KeyCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Status_Start">
+        `Status`&gt;=#Status_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Status_End">
+        `Status`&lt;=#Status_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Status">
+        `Status`=#Status#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DecorationType_Start">
+        `DecorationType`&gt;=#DecorationType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DecorationType_End">
+        `DecorationType`&lt;=#DecorationType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DecorationType">
+        `DecorationType`=#DecorationType#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddHouse" parameterClass="House">
+  INSERT INTO `House`
+  (
+    `ID`,
+    `BuildingID`,
+    `Name`,
+    `Floor`,
+    `RoomCount`,
+    `HallCount`,
+    `ToiletCount`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `Remark`,
+    `RentType`,
+    `RoomNumber`,
+    `HallNumber`,
+    `ToiletNumber`,
+    `KitchenNumber`,
+    `OwnerID`,
+    `Area`,
+    `IsRented`,
+    `Enabled`,
+    `IsDeleted`,
+    `Cost`,
+    `SalePrice`,
+    `KeyCode`,
+    `Status`,
+    `DecorationType`
+  )
+  VALUES
+  (
+        #ID#,
+        #BuildingID#,
+        #Name#,
+        #Floor#,
+        #RoomCount#,
+        #HallCount#,
+        #ToiletCount#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #Remark#,
+        #RentType#,
+        #RoomNumber#,
+        #HallNumber#,
+        #ToiletNumber#,
+        #KitchenNumber#,
+        #OwnerID#,
+        #Area#,
+        #IsRented#,
+        #Enabled#,
+        #IsDeleted#,
+        #Cost#,
+        #SalePrice#,
+        #KeyCode#,
+        #Status#,
+        #DecorationType#
+  )
+  </insert>
+  <update id="UpdateHouse" parameterClass="HouseUpdateForm">
+  UPDATE `House`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.BuildingID">
+        `BuildingID`=#Entity.BuildingID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Floor">
+        `Floor`=#Entity.Floor#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RoomCount">
+        `RoomCount`=#Entity.RoomCount#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.HallCount">
+        `HallCount`=#Entity.HallCount#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.ToiletCount">
+        `ToiletCount`=#Entity.ToiletCount#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentType">
+        `RentType`=#Entity.RentType#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RoomNumber">
+        `RoomNumber`=#Entity.RoomNumber#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.HallNumber">
+        `HallNumber`=#Entity.HallNumber#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.ToiletNumber">
+        `ToiletNumber`=#Entity.ToiletNumber#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.KitchenNumber">
+        `KitchenNumber`=#Entity.KitchenNumber#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.OwnerID">
+        `OwnerID`=#Entity.OwnerID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Area">
+        `Area`=#Entity.Area#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsRented">
+        `IsRented`=#Entity.IsRented#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Enabled">
+        `Enabled`=#Entity.Enabled#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsDeleted">
+        `IsDeleted`=#Entity.IsDeleted#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Cost">
+        `Cost`=#Entity.Cost#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.SalePrice">
+        `SalePrice`=#Entity.SalePrice#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.KeyCode">
+        `KeyCode`=#Entity.KeyCode#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Status">
+        `Status`=#Entity.Status#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.DecorationType">
+        `DecorationType`=#Entity.DecorationType#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="HouseQueryForm.ID">
+        `ID`=#HouseQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseQueryForm.IDs">
+        <iterate property="HouseQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#HouseQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.BuildingID">
+        `BuildingID`=#HouseQueryForm.BuildingID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseQueryForm.BuildingIDs">
+        <iterate property="HouseQueryForm.BuildingIDs" open="(" close=")" conjunction="OR">
+         `BuildingID`=#HouseQueryForm.BuildingIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.Name">
+        `Name`=#HouseQueryForm.Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.Floor_Start">
+        `Floor`&gt;=#HouseQueryForm.Floor_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.Floor_End">
+        `Floor`&lt;=#HouseQueryForm.Floor_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RoomCount_Start">
+        `RoomCount`&gt;=#HouseQueryForm.RoomCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.RoomCount_End">
+        `RoomCount`&lt;=#HouseQueryForm.RoomCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.HallCount_Start">
+        `HallCount`&gt;=#HouseQueryForm.HallCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.HallCount_End">
+        `HallCount`&lt;=#HouseQueryForm.HallCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.ToiletCount_Start">
+        `ToiletCount`&gt;=#HouseQueryForm.ToiletCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.ToiletCount_End">
+        `ToiletCount`&lt;=#HouseQueryForm.ToiletCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.Creator">
+        `Creator`=#HouseQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseQueryForm.Creators">
+        <iterate property="HouseQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#HouseQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#HouseQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#HouseQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.LastUpdator">
+        `LastUpdator`=#HouseQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#HouseQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#HouseQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.Remark">
+        `Remark` LIKE '%$HouseQueryForm.Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RentType_Start">
+        `RentType`&gt;=#HouseQueryForm.RentType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.RentType_End">
+        `RentType`&lt;=#HouseQueryForm.RentType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RoomNumber_Start">
+        `RoomNumber`&gt;=#HouseQueryForm.RoomNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.RoomNumber_End">
+        `RoomNumber`&lt;=#HouseQueryForm.RoomNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.HallNumber_Start">
+        `HallNumber`&gt;=#HouseQueryForm.HallNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.HallNumber_End">
+        `HallNumber`&lt;=#HouseQueryForm.HallNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.ToiletNumber_Start">
+        `ToiletNumber`&gt;=#HouseQueryForm.ToiletNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.ToiletNumber_End">
+        `ToiletNumber`&lt;=#HouseQueryForm.ToiletNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.KitchenNumber_Start">
+        `KitchenNumber`&gt;=#HouseQueryForm.KitchenNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.KitchenNumber_End">
+        `KitchenNumber`&lt;=#HouseQueryForm.KitchenNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.OwnerID">
+        `OwnerID`=#HouseQueryForm.OwnerID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseQueryForm.OwnerIDs">
+        <iterate property="HouseQueryForm.OwnerIDs" open="(" close=")" conjunction="OR">
+         `OwnerID`=#HouseQueryForm.OwnerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.Area_Start">
+        `Area`&gt;=#HouseQueryForm.Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.Area_End">
+        `Area`&lt;=#HouseQueryForm.Area_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.IsRented">
+        `IsRented`=#HouseQueryForm.IsRented#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.Enabled">
+        `Enabled`=#HouseQueryForm.Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.IsDeleted">
+        `IsDeleted`=#HouseQueryForm.IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.Cost_Start">
+        `Cost`&gt;=#HouseQueryForm.Cost_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.Cost_End">
+        `Cost`&lt;=#HouseQueryForm.Cost_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.SalePrice_Start">
+        `SalePrice`&gt;=#HouseQueryForm.SalePrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.SalePrice_End">
+        `SalePrice`&lt;=#HouseQueryForm.SalePrice_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.KeyCode">
+        `KeyCode`=#HouseQueryForm.KeyCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.Status_Start">
+        `Status`&gt;=#HouseQueryForm.Status_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.Status_End">
+        `Status`&lt;=#HouseQueryForm.Status_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.DecorationType_Start">
+        `DecorationType`&gt;=#HouseQueryForm.DecorationType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.DecorationType_End">
+        `DecorationType`&lt;=#HouseQueryForm.DecorationType_End#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteHouse" parameterClass="HouseQueryForm">
+    DELETE FROM `House` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingID">
+        `BuildingID`=#BuildingID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingIDs">
+        <iterate property="BuildingIDs" open="(" close=")" conjunction="OR">
+         `BuildingID`=#BuildingIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Floor_Start">
+        `Floor`&gt;=#Floor_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Floor_End">
+        `Floor`&lt;=#Floor_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomCount_Start">
+        `RoomCount`&gt;=#RoomCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomCount_End">
+        `RoomCount`&lt;=#RoomCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HallCount_Start">
+        `HallCount`&gt;=#HallCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallCount_End">
+        `HallCount`&lt;=#HallCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ToiletCount_Start">
+        `ToiletCount`&gt;=#ToiletCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletCount_End">
+        `ToiletCount`&lt;=#ToiletCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentType_Start">
+        `RentType`&gt;=#RentType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentType_End">
+        `RentType`&lt;=#RentType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomNumber_Start">
+        `RoomNumber`&gt;=#RoomNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomNumber_End">
+        `RoomNumber`&lt;=#RoomNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HallNumber_Start">
+        `HallNumber`&gt;=#HallNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallNumber_End">
+        `HallNumber`&lt;=#HallNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ToiletNumber_Start">
+        `ToiletNumber`&gt;=#ToiletNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletNumber_End">
+        `ToiletNumber`&lt;=#ToiletNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="KitchenNumber_Start">
+        `KitchenNumber`&gt;=#KitchenNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="KitchenNumber_End">
+        `KitchenNumber`&lt;=#KitchenNumber_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OwnerID">
+        `OwnerID`=#OwnerID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OwnerIDs">
+        <iterate property="OwnerIDs" open="(" close=")" conjunction="OR">
+         `OwnerID`=#OwnerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_Start">
+        `Area`&gt;=#Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_End">
+        `Area`&lt;=#Area_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsRented">
+        `IsRented`=#IsRented#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Cost_Start">
+        `Cost`&gt;=#Cost_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cost_End">
+        `Cost`&lt;=#Cost_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="SalePrice_Start">
+        `SalePrice`&gt;=#SalePrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="SalePrice_End">
+        `SalePrice`&lt;=#SalePrice_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="KeyCode">
+        `KeyCode`=#KeyCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Status_Start">
+        `Status`&gt;=#Status_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Status_End">
+        `Status`&lt;=#Status_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DecorationType_Start">
+        `DecorationType`&gt;=#DecorationType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DecorationType_End">
+        `DecorationType`&lt;=#DecorationType_End#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryHouseLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `House`
+   </select>
+   <select id="QueryHouseRecordCount" resultClass="int" parameterClass="HouseQueryForm">
+   SELECT COUNT(*) FROM `House` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingID">
+        `BuildingID`=#BuildingID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="BuildingIDs">
+        <iterate property="BuildingIDs" open="(" close=")" conjunction="OR">
+         `BuildingID`=#BuildingIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Floor_Start">
+        `Floor`&gt;=#Floor_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Floor_End">
+        `Floor`&lt;=#Floor_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomCount_Start">
+        `RoomCount`&gt;=#RoomCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomCount_End">
+        `RoomCount`&lt;=#RoomCount_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallCount_Start">
+        `HallCount`&gt;=#HallCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallCount_End">
+        `HallCount`&lt;=#HallCount_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletCount_Start">
+        `ToiletCount`&gt;=#ToiletCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletCount_End">
+        `ToiletCount`&lt;=#ToiletCount_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentType_Start">
+        `RentType`&gt;=#RentType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentType_End">
+        `RentType`&lt;=#RentType_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomNumber_Start">
+        `RoomNumber`&gt;=#RoomNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomNumber_End">
+        `RoomNumber`&lt;=#RoomNumber_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallNumber_Start">
+        `HallNumber`&gt;=#HallNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HallNumber_End">
+        `HallNumber`&lt;=#HallNumber_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletNumber_Start">
+        `ToiletNumber`&gt;=#ToiletNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ToiletNumber_End">
+        `ToiletNumber`&lt;=#ToiletNumber_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="KitchenNumber_Start">
+        `KitchenNumber`&gt;=#KitchenNumber_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="KitchenNumber_End">
+        `KitchenNumber`&lt;=#KitchenNumber_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OwnerID">
+        `OwnerID`=#OwnerID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="OwnerIDs">
+        <iterate property="OwnerIDs" open="(" close=")" conjunction="OR">
+         `OwnerID`=#OwnerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_Start">
+        `Area`&gt;=#Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_End">
+        `Area`&lt;=#Area_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsRented">
+        `IsRented`=#IsRented#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cost_Start">
+        `Cost`&gt;=#Cost_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cost_End">
+        `Cost`&lt;=#Cost_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="SalePrice_Start">
+        `SalePrice`&gt;=#SalePrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="SalePrice_End">
+        `SalePrice`&lt;=#SalePrice_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="KeyCode">
+        `KeyCode`=#KeyCode#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Status_Start">
+        `Status`&gt;=#Status_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Status_End">
+        `Status`&lt;=#Status_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DecorationType_Start">
+        `DecorationType`&gt;=#DecorationType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DecorationType_End">
+        `DecorationType`&lt;=#DecorationType_End#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

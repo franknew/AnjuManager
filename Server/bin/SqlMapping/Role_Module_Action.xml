@@ -88,22 +88,48 @@
     <isNotNull prepend="AND" property="Role_Module_ActionQueryForm.ID">
         `ID`=#Role_Module_ActionQueryForm.ID#
     </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Role_Module_ActionQueryForm.IDs">
+        <iterate property="Role_Module_ActionQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#Role_Module_ActionQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
     <isNotNull prepend="AND" property="Role_Module_ActionQueryForm.RoleID">
         `RoleID`=#Role_Module_ActionQueryForm.RoleID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Role_Module_ActionQueryForm.RoleIDs">
+        <iterate property="Role_Module_ActionQueryForm.RoleIDs" open="(" close=")" conjunction="OR">
+         `RoleID`=#Role_Module_ActionQueryForm.RoleIDs[]#
+        </iterate>
     </isNotNull>
     <isNotNull prepend="AND" property="Role_Module_ActionQueryForm.ModuleID">
         `ModuleID`=#Role_Module_ActionQueryForm.ModuleID#
     </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Role_Module_ActionQueryForm.ModuleIDs">
+        <iterate property="Role_Module_ActionQueryForm.ModuleIDs" open="(" close=")" conjunction="OR">
+         `ModuleID`=#Role_Module_ActionQueryForm.ModuleIDs[]#
+        </iterate>
+    </isNotNull>
     <isNotNull prepend="AND" property="Role_Module_ActionQueryForm.ActionID">
         `ActionID`=#Role_Module_ActionQueryForm.ActionID#
     </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Role_Module_ActionQueryForm.ActionIDs">
+        <iterate property="Role_Module_ActionQueryForm.ActionIDs" open="(" close=")" conjunction="OR">
+         `ActionID`=#Role_Module_ActionQueryForm.ActionIDs[]#
+        </iterate>
+    </isNotNull>
     </dynamic>
   </update>
+  
   <delete id="DeleteRole_Module_Action" parameterClass="Role_Module_ActionQueryForm">
     DELETE FROM `Role_Module_Action` WHERE 1=1
     <isNotNull prepend="AND" property="ID">
         `ID`=#ID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="IDs">
         <iterate property="IDs" open="(" close=")" conjunction="OR">
          `ID`=#IDs[]#
@@ -112,6 +138,7 @@
     <isNotNull prepend="AND" property="RoleID">
         `RoleID`=#RoleID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="RoleIDs">
         <iterate property="RoleIDs" open="(" close=")" conjunction="OR">
          `RoleID`=#RoleIDs[]#
@@ -120,6 +147,7 @@
     <isNotNull prepend="AND" property="ModuleID">
         `ModuleID`=#ModuleID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="ModuleIDs">
         <iterate property="ModuleIDs" open="(" close=")" conjunction="OR">
          `ModuleID`=#ModuleIDs[]#
@@ -128,6 +156,7 @@
     <isNotNull prepend="AND" property="ActionID">
         `ActionID`=#ActionID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="ActionIDs">
         <iterate property="ActionIDs" open="(" close=")" conjunction="OR">
          `ActionID`=#ActionIDs[]#

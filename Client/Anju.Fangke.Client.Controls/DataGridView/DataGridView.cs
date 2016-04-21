@@ -189,6 +189,26 @@ namespace SOAFramework.Client.Controls
             this.DataSource = null;
             this.DataSource = datasource;
         }
+
+        public void RemoveRow<T>(T row)
+        {
+            var datasource = this.DataSource as List<T>;
+            this.DataSource = null;
+            datasource.Remove(row);
+            this.DataSource = datasource;
+        }
+
+        public void RemoveRow<T>(DataGridViewRow row)
+        {
+            var t = (T)row.DataBoundItem;
+            RemoveRow(t);
+        }
+
+        public void RemoveRow<T>(int index)
+        {
+            var t = (T)this.Rows[index].DataBoundItem;
+            RemoveRow(t);
+        }
         #endregion
 
         #region helper

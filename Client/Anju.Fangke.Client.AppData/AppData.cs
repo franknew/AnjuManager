@@ -11,6 +11,8 @@ namespace Anju.Fangke.Client
     {
         public static string token { get; set; }
 
-        public static FullUser User { get; set; }
+        public static User User { get; set; }
+
+        public static UserInfo UserInfo { get; set; }
     }
 }

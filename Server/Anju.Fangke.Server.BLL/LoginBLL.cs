@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
+using SOAFramework.Library;
 
 namespace Anju.Fangke.Server.BLL
 {
@@ -32,34 +33,19 @@ namespace Anju.Fangke.Server.BLL
                 if (user.Enabled == 0) throw new Exception("该用户已被禁用，请联系管理员！"); 
                 string token = Guid.NewGuid().ToString().Replace("-", "");
                 var userinfo = userInfoDao.Query(new UserInfoQueryForm { ID = user.ID }).FirstOrDefault();
-                UserFullInfo u = new UserFullInfo
-                {
-                    User = new FullUser
-                    {
-                        Name = user.Name,
-                        ID = user.ID,
-                        Enabled = user.Enabled,
-                    },
-                };
-                if (userinfo != null)
-                {
-                    u.User.Address = userinfo.Address;
-                    u.User.Identity = userinfo.Identity;
-                    u.User.Mobile = userinfo.Mobile;
-                    u.User.QQ = userinfo.QQ;
-                    u.User.Remark = userinfo.Remark;
-                    u.User.WX = userinfo.WX;
-                    u.User.CnName = userinfo.CnName;
-                }
                 var ur = urdao.Query(new User_RoleQueryForm { UserID = user.ID });
                 List<string> roleidlist = new List<string>();
                 ur.ForEach(t =>
                 {
                     roleidlist.Add(t.RoleID);
                 });
-
                 var roles = roleDao.Query(new RoleQueryForm { IDs = roleidlist });
-                u.Roles = roles;
+                UserEntireInfo u = new UserEntireInfo
+                {
+                    User = user,
+                    UserInfo = userinfo,
+                    Role = roles,
+                };
 
                 CacheItem item = new CacheItem(token, u);
                 LogonHistory history = new LogonHistory
@@ -72,7 +58,8 @@ namespace Anju.Fangke.Server.BLL
                 historyDao.Add(history);
                 result.User = u;
                 result.token = token;
-                cache.AddItem(item, 30 * 60);
+                cache.AddItem(item, 1800);
+                //MonitorCache.GetInstance().PushMessage(new CacheMessage { Message = "login user:" + username + ",token:" + token }, SOAFramework.Library.CacheEnum.FormMonitor);
                 return result;
             }
             else

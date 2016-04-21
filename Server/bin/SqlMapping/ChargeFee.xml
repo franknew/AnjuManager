@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="ChargeFee" type="Anju.Fangke.Server.Model.ChargeFee" />
+    <typeAlias alias="ChargeFeeQueryForm" type="Anju.Fangke.Server.Form.ChargeFeeQueryForm" />
+    <typeAlias alias="ChargeFeeUpdateForm" type="Anju.Fangke.Server.Form.ChargeFeeUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryChargeFee" resultClass="ChargeFee" parameterClass="ChargeFeeQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `ChargeFee`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="UnitPrice_Start">
+        `UnitPrice`&gt;=#UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_End">
+        `UnitPrice`&lt;=#UnitPrice_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CalType">
+        `CalType`=#CalType#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Unit">
+        `Unit`=#Unit#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="PeriodTypeID">
+        `PeriodTypeID`=#PeriodTypeID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="PeriodTypeIDs">
+        <iterate property="PeriodTypeIDs" open="(" close=")" conjunction="OR">
+         `PeriodTypeID`=#PeriodTypeIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsShared">
+        `IsShared`=#IsShared#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomID">
+        `RoomID`=#RoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="RoomIDs">
+        <iterate property="RoomIDs" open="(" close=")" conjunction="OR">
+         `RoomID`=#RoomIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddChargeFee" parameterClass="ChargeFee">
+  INSERT INTO `ChargeFee`
+  (
+    `ID`,
+    `Name`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `UnitPrice`,
+    `Remark`,
+    `CalType`,
+    `Unit`,
+    `PeriodTypeID`,
+    `IsShared`,
+    `RoomID`
+  )
+  VALUES
+  (
+        #ID#,
+        #Name#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #UnitPrice#,
+        #Remark#,
+        #CalType#,
+        #Unit#,
+        #PeriodTypeID#,
+        #IsShared#,
+        #RoomID#
+  )
+  </insert>
+  <update id="UpdateChargeFee" parameterClass="ChargeFeeUpdateForm">
+  UPDATE `ChargeFee`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.UnitPrice">
+        `UnitPrice`=#Entity.UnitPrice#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CalType">
+        `CalType`=#Entity.CalType#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Unit">
+        `Unit`=#Entity.Unit#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.PeriodTypeID">
+        `PeriodTypeID`=#Entity.PeriodTypeID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsShared">
+        `IsShared`=#Entity.IsShared#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RoomID">
+        `RoomID`=#Entity.RoomID#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.ID">
+        `ID`=#ChargeFeeQueryForm.ID#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.Name">
+        `Name`=#ChargeFeeQueryForm.Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.Creator">
+        `Creator`=#ChargeFeeQueryForm.Creator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#ChargeFeeQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#ChargeFeeQueryForm.CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.LastUpdator">
+        `LastUpdator`=#ChargeFeeQueryForm.LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#ChargeFeeQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#ChargeFeeQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.UnitPrice_Start">
+        `UnitPrice`&gt;=#ChargeFeeQueryForm.UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.UnitPrice_End">
+        `UnitPrice`&lt;=#ChargeFeeQueryForm.UnitPrice_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.Remark">
+        `Remark` LIKE '%$ChargeFeeQueryForm.Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.CalType">
+        `CalType`=#ChargeFeeQueryForm.CalType#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.Unit">
+        `Unit`=#ChargeFeeQueryForm.Unit#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.PeriodTypeID">
+        `PeriodTypeID`=#ChargeFeeQueryForm.PeriodTypeID#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.IsShared">
+        `IsShared`=#ChargeFeeQueryForm.IsShared#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ChargeFeeQueryForm.RoomID">
+        `RoomID`=#ChargeFeeQueryForm.RoomID#
+    </isNotNull>
+    </dynamic>
+  </update>
+  <delete id="DeleteChargeFee" parameterClass="ChargeFeeQueryForm">
+    DELETE FROM `ChargeFee` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_Start">
+        `UnitPrice`&gt;=#UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_End">
+        `UnitPrice`&lt;=#UnitPrice_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark`=#Remark#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CalType">
+        `CalType`=#CalType#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Unit">
+        `Unit`=#Unit#
+    </isNotNull>
+    <isNotNull prepend="AND" property="PeriodTypeID">
+        `PeriodTypeID`=#PeriodTypeID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="PeriodTypeIDs">
+        <iterate property="PeriodTypeIDs" open="(" close=")" conjunction="OR">
+         `PeriodTypeID`=#PeriodTypeIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsShared">
+        `IsShared`=#IsShared#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomID">
+        `RoomID`=#RoomID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="RoomIDs">
+        <iterate property="RoomIDs" open="(" close=")" conjunction="OR">
+         `RoomID`=#RoomIDs[]#
+        </iterate>
+    </isNotNull>
+  </delete>
+   <select id="QueryChargeFeeLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `ChargeFee`
+   </select>
+   <select id="QueryChargeFeeRecordCount" resultClass="int" parameterClass="ChargeFeeQueryForm">
+   SELECT COUNT(*) FROM `ChargeFee` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_Start">
+        `UnitPrice`&gt;=#UnitPrice_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="UnitPrice_End">
+        `UnitPrice`&lt;=#UnitPrice_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="CalType">
+        `CalType`=#CalType#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Unit">
+        `Unit`=#Unit#
+    </isNotNull>
+    <isNotNull prepend="AND" property="PeriodTypeID">
+        `PeriodTypeID`=#PeriodTypeID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="PeriodTypeIDs">
+        <iterate property="PeriodTypeIDs" open="(" close=")" conjunction="OR">
+         `PeriodTypeID`=#PeriodTypeIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsShared">
+        `IsShared`=#IsShared#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomID">
+        `RoomID`=#RoomID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="RoomIDs">
+        <iterate property="RoomIDs" open="(" close=")" conjunction="OR">
+         `RoomID`=#RoomIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

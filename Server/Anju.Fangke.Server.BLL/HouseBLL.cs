@@ -39,5 +39,12 @@ namespace Anju.Fangke.Server.BLL
             HouseDao dao = new HouseDao(mapper);
             return dao.Delete(form);
         }
+
+        public List<House> QueryFullHouse(QueryHouseServiceForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            HouseDao dao = new HouseDao(mapper);
+            return dao.QueryFullHouse(form);
+        }
     }
 }

@@ -12,7 +12,8 @@ namespace Anju.Fangke.Client.Forms
 {
     public partial class ChangePassword : PopupForm
     {
-        public List<string> UserNameList { get; set; }
+        public string UserName { get; set; }
+        public string UserID { get; set; }
 
         public ChangePassword()
         {
@@ -27,6 +28,11 @@ namespace Anju.Fangke.Client.Forms
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ChangePassword_Load(object sender, EventArgs e)
+        {
+            txbUserName.Text = UserName;
         }
     }
 }

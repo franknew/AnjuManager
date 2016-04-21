@@ -29,22 +29,27 @@
         private void InitializeComponent()
         {
             this.btnSave = new SOAFramework.Client.Controls.Button();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCost)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numRentDay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCycle)).BeginInit();
             this.SuspendLayout();
             // 
-            // txbRemark
+            // groupBox2
             // 
-            this.txbRemark.Lines = new string[0];
+            this.groupBox2.Controls.Add(this.btnSave);
+            this.groupBox2.Location = new System.Drawing.Point(1, 437);
+            this.groupBox2.Size = new System.Drawing.Size(367, 56);
+            this.groupBox2.Controls.SetChildIndex(this.btnSave, 0);
             // 
-            // txbHouseName
+            // groupBox1
             // 
-            this.txbHouseName.Lines = new string[0];
-            this.txbHouseName.UseStyleColors = true;
+            this.groupBox1.Size = new System.Drawing.Size(367, 311);
+            // 
+            // txbArea
+            // 
+            this.txbArea.Lines = new string[0];
+            this.txbArea.Text = "";
             // 
             // txbFloor
             // 
@@ -56,56 +61,33 @@
             this.txbBuildingName.Enabled = false;
             this.txbBuildingName.Lines = new string[0];
             // 
-            // groupBox1
+            // txbRemark
             // 
-            this.groupBox1.Size = new System.Drawing.Size(362, 270);
+            this.txbRemark.Lines = new string[0];
             // 
-            // groupBox2
+            // txbHouseName
             // 
-            this.groupBox2.Controls.Add(this.btnSave);
-            this.groupBox2.Location = new System.Drawing.Point(1, 455);
-            this.groupBox2.Size = new System.Drawing.Size(778, 56);
-            this.groupBox2.Controls.SetChildIndex(this.btnSave, 0);
+            this.txbHouseName.Lines = new string[0];
+            this.txbHouseName.UseStyleColors = true;
             // 
-            // txbDeposit
+            // textBox1
             // 
-            this.txbDeposit.Lines = new string[0];
-            this.txbDeposit.Text = "";
-            // 
-            // txbRentFee
-            // 
-            this.txbRentFee.Lines = new string[0];
-            this.txbRentFee.Text = "";
+            this.textBox1.Lines = new string[0];
             // 
             // groupBox3
             // 
-            this.groupBox3.Location = new System.Drawing.Point(362, 0);
+            this.groupBox3.Location = new System.Drawing.Point(1, 341);
+            this.groupBox3.Size = new System.Drawing.Size(367, 96);
             // 
-            // txbRentRemark
+            // txbMobile
             // 
-            this.txbRentRemark.Lines = new string[0];
-            // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(778, 270);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Size = new System.Drawing.Size(778, 155);
-            // 
-            // txbArea
-            // 
-            this.txbArea.Lines = new string[0];
-            // 
-            // dtExpiredTime
-            // 
-            this.dtExpiredTime.MinimumSize = new System.Drawing.Size(0, 25);
+            this.txbMobile.Lines = new string[0];
             // 
             // btnSave
             // 
             this.btnSave.ClickedMessage = null;
             this.btnSave.IngoreCallbackOnce = false;
-            this.btnSave.Location = new System.Drawing.Point(232, 20);
+            this.btnSave.Location = new System.Drawing.Point(86, 20);
             this.btnSave.Name = "btnSave";
             this.btnSave.Response = null;
             this.btnSave.Size = new System.Drawing.Size(75, 23);
@@ -118,19 +100,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 512);
-            this.Location = new System.Drawing.Point(0, 0);
+            this.ClientSize = new System.Drawing.Size(369, 494);
             this.Name = "EditHouse";
-            this.Text = "编辑房间";
+            this.Text = "编辑房间信息";
             this.InitControl += new System.EventHandler(this.EditHouse_InitControl);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numCost)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numRentDay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCycle)).EndInit();
             this.ResumeLayout(false);
 
         }

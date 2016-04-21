@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="OtherFeeBill" type="Anju.Fangke.Server.Model.OtherFeeBill" />
+    <typeAlias alias="OtherFeeBillQueryForm" type="Anju.Fangke.Server.Form.OtherFeeBillQueryForm" />
+    <typeAlias alias="OtherFeeBillUpdateForm" type="Anju.Fangke.Server.Form.OtherFeeBillUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryOtherFeeBill" resultClass="OtherFeeBill" parameterClass="OtherFeeBillQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `OtherFeeBill`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillID">
+        `BillID`=#BillID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BillIDs">
+        <iterate property="BillIDs" open="(" close=")" conjunction="OR">
+         `BillID`=#BillIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="StartValue_Start">
+        `StartValue`&gt;=#StartValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="StartValue_End">
+        `StartValue`&lt;=#StartValue_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="StartValue">
+        `StartValue`=#StartValue#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="EndValue_Start">
+        `EndValue`&gt;=#EndValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="EndValue_End">
+        `EndValue`&lt;=#EndValue_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="EndValue">
+        `EndValue`=#EndValue#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeID">
+        `OtherFeeID`=#OtherFeeID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeIDs">
+        <iterate property="OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Fee_Start">
+        `Fee`&gt;=#Fee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Fee_End">
+        `Fee`&lt;=#Fee_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Fee">
+        `Fee`=#Fee#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddOtherFeeBill" parameterClass="OtherFeeBill">
+  INSERT INTO `OtherFeeBill`
+  (
+    `ID`,
+    `BillID`,
+    `StartValue`,
+    `EndValue`,
+    `OtherFeeID`,
+    `Fee`,
+    `CreateTime`,
+    `Creator`,
+    `LastUpdator`,
+    `LastUpdateTime`
+  )
+  VALUES
+  (
+        #ID#,
+        #BillID#,
+        #StartValue#,
+        #EndValue#,
+        #OtherFeeID#,
+        #Fee#,
+        #CreateTime#,
+        #Creator#,
+        #LastUpdator#,
+        #LastUpdateTime#
+  )
+  </insert>
+  <update id="UpdateOtherFeeBill" parameterClass="OtherFeeBillUpdateForm">
+  UPDATE `OtherFeeBill`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.BillID">
+        `BillID`=#Entity.BillID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.StartValue">
+        `StartValue`=#Entity.StartValue#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.EndValue">
+        `EndValue`=#Entity.EndValue#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.OtherFeeID">
+        `OtherFeeID`=#Entity.OtherFeeID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Fee">
+        `Fee`=#Entity.Fee#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.ID">
+        `ID`=#OtherFeeBillQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeBillQueryForm.IDs">
+        <iterate property="OtherFeeBillQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#OtherFeeBillQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.BillID">
+        `BillID`=#OtherFeeBillQueryForm.BillID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeBillQueryForm.BillIDs">
+        <iterate property="OtherFeeBillQueryForm.BillIDs" open="(" close=")" conjunction="OR">
+         `BillID`=#OtherFeeBillQueryForm.BillIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.StartValue_Start">
+        `StartValue`&gt;=#OtherFeeBillQueryForm.StartValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.StartValue_End">
+        `StartValue`&lt;=#OtherFeeBillQueryForm.StartValue_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.EndValue_Start">
+        `EndValue`&gt;=#OtherFeeBillQueryForm.EndValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.EndValue_End">
+        `EndValue`&lt;=#OtherFeeBillQueryForm.EndValue_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.OtherFeeID">
+        `OtherFeeID`=#OtherFeeBillQueryForm.OtherFeeID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeBillQueryForm.OtherFeeIDs">
+        <iterate property="OtherFeeBillQueryForm.OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#OtherFeeBillQueryForm.OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.Fee_Start">
+        `Fee`&gt;=#OtherFeeBillQueryForm.Fee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.Fee_End">
+        `Fee`&lt;=#OtherFeeBillQueryForm.Fee_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#OtherFeeBillQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#OtherFeeBillQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.Creator">
+        `Creator`=#OtherFeeBillQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeBillQueryForm.Creators">
+        <iterate property="OtherFeeBillQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#OtherFeeBillQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.LastUpdator">
+        `LastUpdator`=#OtherFeeBillQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#OtherFeeBillQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeBillQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#OtherFeeBillQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteOtherFeeBill" parameterClass="OtherFeeBillQueryForm">
+    DELETE FROM `OtherFeeBill` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillID">
+        `BillID`=#BillID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BillIDs">
+        <iterate property="BillIDs" open="(" close=")" conjunction="OR">
+         `BillID`=#BillIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="StartValue_Start">
+        `StartValue`&gt;=#StartValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="StartValue_End">
+        `StartValue`&lt;=#StartValue_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="EndValue_Start">
+        `EndValue`&gt;=#EndValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="EndValue_End">
+        `EndValue`&lt;=#EndValue_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeID">
+        `OtherFeeID`=#OtherFeeID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeIDs">
+        <iterate property="OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Fee_Start">
+        `Fee`&gt;=#Fee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Fee_End">
+        `Fee`&lt;=#Fee_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryOtherFeeBillLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `OtherFeeBill`
+   </select>
+   <select id="QueryOtherFeeBillRecordCount" resultClass="int" parameterClass="OtherFeeBillQueryForm">
+   SELECT COUNT(*) FROM `OtherFeeBill` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillID">
+        `BillID`=#BillID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="BillIDs">
+        <iterate property="BillIDs" open="(" close=")" conjunction="OR">
+         `BillID`=#BillIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="StartValue_Start">
+        `StartValue`&gt;=#StartValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="StartValue_End">
+        `StartValue`&lt;=#StartValue_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="EndValue_Start">
+        `EndValue`&gt;=#EndValue_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="EndValue_End">
+        `EndValue`&lt;=#EndValue_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeID">
+        `OtherFeeID`=#OtherFeeID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="OtherFeeIDs">
+        <iterate property="OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Fee_Start">
+        `Fee`&gt;=#Fee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Fee_End">
+        `Fee`&lt;=#Fee_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

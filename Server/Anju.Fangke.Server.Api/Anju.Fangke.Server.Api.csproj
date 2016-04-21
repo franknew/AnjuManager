@@ -70,12 +70,14 @@
   <ItemGroup>
     <Compile Include="AssetManagerApi.cs" />
     <Compile Include="BillApi.cs" />
+    <Compile Include="CustomerApi.cs" />
     <Compile Include="Filter\AuthFilter.cs" />
     <Compile Include="DataDictionaryApi.cs" />
     <Compile Include="Filter\DataAuthorityFilter.cs" />
     <Compile Include="Filter\InitDBFilter.cs" />
     <Compile Include="LoginApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleApi.cs" />
     <Compile Include="UserApi.cs" />
     <Compile Include="VersionApi.cs" />
   </ItemGroup>

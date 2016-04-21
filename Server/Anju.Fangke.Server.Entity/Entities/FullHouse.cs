@@ -12,5 +12,11 @@ namespace Anju.Fangke.Server.Model
         public RentFee RentFee { get; set; }
 
         public List<OtherFee> OtherFees { get; set; }
+
+        public Customer Customer { get; set; }
+
+        public Building Building { get; set; }
+
+        public FullUser Owner { get; set; }
     }
 }

@@ -32,7 +32,6 @@
             this.cmbArea = new SOAFramework.Client.Controls.ComboBox();
             this.cmbcity = new SOAFramework.Client.Controls.ComboBox();
             this.cmbProvince = new SOAFramework.Client.Controls.ComboBox();
-            this.txbFloor = new SOAFramework.Client.Controls.TextBox();
             this.label7 = new SOAFramework.Client.Controls.Label();
             this.txbRemark = new SOAFramework.Client.Controls.TextBox();
             this.txbStreet = new SOAFramework.Client.Controls.TextBox();
@@ -45,16 +44,18 @@
             this.label1 = new SOAFramework.Client.Controls.Label();
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
             this.btnClose = new SOAFramework.Client.Controls.Button();
+            this.numFloorCount = new SOAFramework.Client.Controls.NumbericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloorCount)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numFloorCount);
             this.groupBox1.Controls.Add(this.cmbArea);
             this.groupBox1.Controls.Add(this.cmbcity);
             this.groupBox1.Controls.Add(this.cmbProvince);
-            this.groupBox1.Controls.Add(this.txbFloor);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txbRemark);
             this.groupBox1.Controls.Add(this.txbStreet);
@@ -76,14 +77,15 @@
             // 
             this.cmbArea.BindingRequestPropertyName = null;
             this.cmbArea.BindingResponsePropertyName = null;
-            this.cmbArea.BindingSourcePropertyName = null;
+            this.cmbArea.BindingSourcePropertyName = "AreaID";
             this.cmbArea.DisplayMember = "Name";
+            this.cmbArea.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.cmbArea.FormattingEnabled = true;
             this.cmbArea.InitableBindingGroupName = "深圳市";
-            this.cmbArea.ItemHeight = 23;
-            this.cmbArea.Location = new System.Drawing.Point(295, 103);
+            this.cmbArea.ItemHeight = 19;
+            this.cmbArea.Location = new System.Drawing.Point(295, 108);
             this.cmbArea.Name = "cmbArea";
-            this.cmbArea.Size = new System.Drawing.Size(152, 29);
+            this.cmbArea.Size = new System.Drawing.Size(152, 25);
             this.cmbArea.TabIndex = 13;
             this.cmbArea.UseSelectable = true;
             this.cmbArea.Value = null;
@@ -93,14 +95,15 @@
             // 
             this.cmbcity.BindingRequestPropertyName = null;
             this.cmbcity.BindingResponsePropertyName = null;
-            this.cmbcity.BindingSourcePropertyName = null;
+            this.cmbcity.BindingSourcePropertyName = "CityID";
             this.cmbcity.DisplayMember = "Name";
+            this.cmbcity.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.cmbcity.FormattingEnabled = true;
             this.cmbcity.InitableBindingGroupName = "广东省";
-            this.cmbcity.ItemHeight = 23;
-            this.cmbcity.Location = new System.Drawing.Point(90, 103);
+            this.cmbcity.ItemHeight = 19;
+            this.cmbcity.Location = new System.Drawing.Point(90, 108);
             this.cmbcity.Name = "cmbcity";
-            this.cmbcity.Size = new System.Drawing.Size(156, 29);
+            this.cmbcity.Size = new System.Drawing.Size(156, 25);
             this.cmbcity.TabIndex = 12;
             this.cmbcity.UseSelectable = true;
             this.cmbcity.Value = null;
@@ -110,34 +113,19 @@
             // 
             this.cmbProvince.BindingRequestPropertyName = null;
             this.cmbProvince.BindingResponsePropertyName = null;
-            this.cmbProvince.BindingSourcePropertyName = null;
+            this.cmbProvince.BindingSourcePropertyName = "ProvinceID";
             this.cmbProvince.DisplayMember = "Name";
+            this.cmbProvince.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.cmbProvince.FormattingEnabled = true;
             this.cmbProvince.InitableBindingGroupName = "省份";
-            this.cmbProvince.ItemHeight = 23;
-            this.cmbProvince.Location = new System.Drawing.Point(295, 44);
+            this.cmbProvince.ItemHeight = 19;
+            this.cmbProvince.Location = new System.Drawing.Point(295, 48);
             this.cmbProvince.Name = "cmbProvince";
-            this.cmbProvince.Size = new System.Drawing.Size(152, 29);
+            this.cmbProvince.Size = new System.Drawing.Size(152, 25);
             this.cmbProvince.TabIndex = 11;
             this.cmbProvince.UseSelectable = true;
             this.cmbProvince.Value = null;
             this.cmbProvince.ValueMember = "Value";
-            // 
-            // txbFloor
-            // 
-            this.txbFloor.BindingRequestPropertyName = null;
-            this.txbFloor.BindingResponsePropertyName = null;
-            this.txbFloor.BindingSourcePropertyName = null;
-            this.txbFloor.EmptyWarning = null;
-            this.txbFloor.Lines = new string[0];
-            this.txbFloor.Location = new System.Drawing.Point(90, 154);
-            this.txbFloor.MaxLength = 32767;
-            this.txbFloor.Name = "txbFloor";
-            this.txbFloor.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txbFloor.SelectedText = "";
-            this.txbFloor.Size = new System.Drawing.Size(156, 23);
-            this.txbFloor.TabIndex = 10;
-            this.txbFloor.UseSelectable = true;
             // 
             // label7
             // 
@@ -152,7 +140,7 @@
             // 
             this.txbRemark.BindingRequestPropertyName = null;
             this.txbRemark.BindingResponsePropertyName = null;
-            this.txbRemark.BindingSourcePropertyName = null;
+            this.txbRemark.BindingSourcePropertyName = "Remark";
             this.txbRemark.EmptyWarning = null;
             this.txbRemark.Lines = new string[0];
             this.txbRemark.Location = new System.Drawing.Point(90, 284);
@@ -161,6 +149,8 @@
             this.txbRemark.Name = "txbRemark";
             this.txbRemark.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRemark.SelectedText = "";
+            this.txbRemark.SelectionLength = 0;
+            this.txbRemark.SelectionStart = 0;
             this.txbRemark.Size = new System.Drawing.Size(357, 84);
             this.txbRemark.TabIndex = 8;
             this.txbRemark.UseSelectable = true;
@@ -169,7 +159,7 @@
             // 
             this.txbStreet.BindingRequestPropertyName = null;
             this.txbStreet.BindingResponsePropertyName = null;
-            this.txbStreet.BindingSourcePropertyName = null;
+            this.txbStreet.BindingSourcePropertyName = "Street";
             this.txbStreet.EmptyWarning = null;
             this.txbStreet.Lines = new string[0];
             this.txbStreet.Location = new System.Drawing.Point(90, 204);
@@ -178,6 +168,8 @@
             this.txbStreet.Name = "txbStreet";
             this.txbStreet.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbStreet.SelectedText = "";
+            this.txbStreet.SelectionLength = 0;
+            this.txbStreet.SelectionStart = 0;
             this.txbStreet.Size = new System.Drawing.Size(357, 74);
             this.txbStreet.TabIndex = 7;
             this.txbStreet.UseSelectable = true;
@@ -186,7 +178,7 @@
             // 
             this.txbName.BindingRequestPropertyName = null;
             this.txbName.BindingResponsePropertyName = null;
-            this.txbName.BindingSourcePropertyName = null;
+            this.txbName.BindingSourcePropertyName = "Name";
             this.txbName.CanbeEmpty = false;
             this.txbName.EmptyWarning = "请输入楼盘名称";
             this.txbName.Lines = new string[0];
@@ -195,6 +187,8 @@
             this.txbName.Name = "txbName";
             this.txbName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbName.SelectedText = "";
+            this.txbName.SelectionLength = 0;
+            this.txbName.SelectionStart = 0;
             this.txbName.Size = new System.Drawing.Size(156, 23);
             this.txbName.TabIndex = 6;
             this.txbName.UseSelectable = true;
@@ -277,6 +271,17 @@
             this.btnClose.UseSelectable = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // numFloorCount
+            // 
+            this.numFloorCount.BindingRequestPropertyName = null;
+            this.numFloorCount.BindingResponsePropertyName = null;
+            this.numFloorCount.BindingSourcePropertyName = "FloorCount";
+            this.numFloorCount.EmptyWarning = null;
+            this.numFloorCount.Location = new System.Drawing.Point(90, 158);
+            this.numFloorCount.Name = "numFloorCount";
+            this.numFloorCount.Size = new System.Drawing.Size(156, 21);
+            this.numFloorCount.TabIndex = 14;
+            // 
             // BaseEditBuilding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -289,6 +294,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numFloorCount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -300,7 +306,6 @@
         public SOAFramework.Client.Controls.TextBox txbRemark;
         public SOAFramework.Client.Controls.TextBox txbStreet;
         public SOAFramework.Client.Controls.TextBox txbName;
-        public SOAFramework.Client.Controls.TextBox txbFloor;
         public SOAFramework.Client.Controls.ComboBox cmbArea;
         public SOAFramework.Client.Controls.ComboBox cmbcity;
         public SOAFramework.Client.Controls.ComboBox cmbProvince;
@@ -311,5 +316,6 @@
         public SOAFramework.Client.Controls.Label label2;
         public SOAFramework.Client.Controls.Label label1;
         public SOAFramework.Client.Controls.Label label7;
+        protected SOAFramework.Client.Controls.NumbericUpDown numFloorCount;
     }
 }

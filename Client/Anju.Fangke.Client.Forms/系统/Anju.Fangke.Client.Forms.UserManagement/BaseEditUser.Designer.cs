@@ -56,7 +56,7 @@
             // groupBox1
             // 
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(1, 383);
+            this.groupBox1.Location = new System.Drawing.Point(1, 475);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(573, 47);
             this.groupBox1.TabIndex = 102;
@@ -90,7 +90,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(1, 91);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(573, 292);
+            this.groupBox2.Size = new System.Drawing.Size(573, 384);
             this.groupBox2.TabIndex = 101;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "详细信息";
@@ -110,6 +110,7 @@
             this.txbRemark.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRemark.SelectedText = "";
             this.txbRemark.SelectionLength = 0;
+            this.txbRemark.SelectionStart = 0;
             this.txbRemark.Size = new System.Drawing.Size(452, 55);
             this.txbRemark.TabIndex = 8;
             this.txbRemark.UseSelectable = true;
@@ -129,6 +130,7 @@
             this.txbAddress.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbAddress.SelectedText = "";
             this.txbAddress.SelectionLength = 0;
+            this.txbAddress.SelectionStart = 0;
             this.txbAddress.Size = new System.Drawing.Size(452, 48);
             this.txbAddress.TabIndex = 7;
             this.txbAddress.UseSelectable = true;
@@ -147,6 +149,7 @@
             this.txbIdentity.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbIdentity.SelectedText = "";
             this.txbIdentity.SelectionLength = 0;
+            this.txbIdentity.SelectionStart = 0;
             this.txbIdentity.Size = new System.Drawing.Size(452, 23);
             this.txbIdentity.TabIndex = 6;
             this.txbIdentity.UseSelectable = true;
@@ -165,6 +168,7 @@
             this.txbWX.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbWX.SelectedText = "";
             this.txbWX.SelectionLength = 0;
+            this.txbWX.SelectionStart = 0;
             this.txbWX.Size = new System.Drawing.Size(173, 23);
             this.txbWX.TabIndex = 5;
             this.txbWX.UseSelectable = true;
@@ -183,6 +187,7 @@
             this.txbQQ.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbQQ.SelectedText = "";
             this.txbQQ.SelectionLength = 0;
+            this.txbQQ.SelectionStart = 0;
             this.txbQQ.Size = new System.Drawing.Size(173, 23);
             this.txbQQ.TabIndex = 4;
             this.txbQQ.UseSelectable = true;
@@ -201,6 +206,7 @@
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
             this.txbMobile.SelectionLength = 0;
+            this.txbMobile.SelectionStart = 0;
             this.txbMobile.Size = new System.Drawing.Size(173, 23);
             this.txbMobile.TabIndex = 3;
             this.txbMobile.UseSelectable = true;
@@ -219,6 +225,7 @@
             this.txbCnName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbCnName.SelectedText = "";
             this.txbCnName.SelectionLength = 0;
+            this.txbCnName.SelectionStart = 0;
             this.txbCnName.Size = new System.Drawing.Size(173, 23);
             this.txbCnName.TabIndex = 2;
             this.txbCnName.UseSelectable = true;
@@ -314,6 +321,7 @@
             this.txbID.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbID.SelectedText = "";
             this.txbID.SelectionLength = 0;
+            this.txbID.SelectionStart = 0;
             this.txbID.Size = new System.Drawing.Size(172, 23);
             this.txbID.TabIndex = 2;
             this.txbID.UseSelectable = true;
@@ -353,6 +361,7 @@
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
             this.txbUserName.SelectionLength = 0;
+            this.txbUserName.SelectionStart = 0;
             this.txbUserName.Size = new System.Drawing.Size(173, 23);
             this.txbUserName.TabIndex = 0;
             this.txbUserName.UseSelectable = true;
@@ -361,7 +370,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 431);
+            this.ClientSize = new System.Drawing.Size(575, 523);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);

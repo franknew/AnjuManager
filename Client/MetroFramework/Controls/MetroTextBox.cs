@@ -170,7 +170,7 @@ namespace MetroFramework.Controls
 
         #region Fields
 
-        private PromptedTextBox baseTextBox;
+        public PromptedTextBox baseTextBox;
 
         private MetroTextBoxSize metroTextBoxSize = MetroTextBoxSize.Small;
         [DefaultValue(MetroTextBoxSize.Small)]
@@ -293,13 +293,14 @@ namespace MetroFramework.Controls
             set { baseTextBox.Multiline = value; }
         }
 
-        [DefaultValue(0)]
+        [Browsable(false)]
         public int SelectionStart
         {
             get { return baseTextBox.SelectionStart; }
             set { baseTextBox.SelectionStart = value; }
         }
 
+        [Browsable(false)]
         public int SelectionLength
         {
             get { return baseTextBox.SelectionLength; }
@@ -401,7 +402,7 @@ namespace MetroFramework.Controls
             SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
 
             base.TabStop = false;
-            base.GotFocus += MetroTextBox_GotFocus;
+            this.GotFocus += MetroTextBox_GotFocus;
             CreateBaseTextBox();
             UpdateBaseTextBox();
             AddEventHandler();       
@@ -465,22 +466,22 @@ namespace MetroFramework.Controls
 
         private void BaseTextBoxKeyUp(object sender, KeyEventArgs e)
         {
-            base.OnKeyUp(e);
+            this.OnKeyUp(e);
         }
 
         private void BaseTextBoxKeyPress(object sender, KeyPressEventArgs e)
         {
-            base.OnKeyPress(e);
+            this.OnKeyPress(e);
         }
 
         private void BaseTextBoxKeyDown(object sender, KeyEventArgs e)
         {
-            base.OnKeyDown(e);
+            this.OnKeyDown(e);
         }
 
         private void BaseTextBoxTextChanged(object sender, EventArgs e)
         {
-            base.OnTextChanged(e);
+            this.OnTextChanged(e);
         }
 
         public void Select(int start, int length)
@@ -690,7 +691,7 @@ namespace MetroFramework.Controls
 
         #region PromptedTextBox
 
-        private class PromptedTextBox : TextBox
+        public class PromptedTextBox : TextBox
         {
             private const int OCM_COMMAND = 0x2111;
             private const int WM_PAINT = 15;
@@ -768,6 +769,11 @@ namespace MetroFramework.Controls
             {
                 base.OnTextChanged(e);
                 drawPrompt = (Text.Trim().Length == 0);
+            }
+
+            protected override void OnGotFocus(EventArgs e)
+            {
+                base.OnGotFocus(e);
             }
 
             protected override void WndProc(ref Message m)

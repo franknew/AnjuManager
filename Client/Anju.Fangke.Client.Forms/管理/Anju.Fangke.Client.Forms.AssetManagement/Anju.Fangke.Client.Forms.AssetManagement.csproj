@@ -7,7 +7,7 @@
     <ProjectGuid>{1F23DA0F-1907-46CC-9A71-2EB02C04B2C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Anju.Fangke.Client.Forms.AssetManagement</RootNamespace>
+    <RootNamespace>Anju.Fangke.Client.Forms</RootNamespace>
     <AssemblyName>Anju.Fangke.Client.Forms.AssetManagement</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -34,6 +34,10 @@
     <Reference Include="SOAFramework.Library.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\CommonDll\SOAFramework.Library.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\SOAFramework.Library.Json.dll</HintPath>
     </Reference>
     <Reference Include="SOAFramework.Library.Lib">
       <HintPath>..\..\..\CommonDll\SOAFramework.Library.Lib.dll</HintPath>
@@ -76,6 +80,12 @@
     <Compile Include="AddOtherFee.Designer.cs">
       <DependentUpon>AddOtherFee.cs</DependentUpon>
     </Compile>
+    <Compile Include="AllocatePopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllocatePopup.Designer.cs">
+      <DependentUpon>AllocatePopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="AssetManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +104,12 @@
     <Compile Include="BaseEditHouse.Designer.cs">
       <DependentUpon>BaseEditHouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseQueryHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseQueryHouse.Designer.cs">
+      <DependentUpon>BaseQueryHouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditBuilding.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +121,18 @@
     </Compile>
     <Compile Include="EditHouse.Designer.cs">
       <DependentUpon>EditHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HouseAllocate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HouseAllocate.Designer.cs">
+      <DependentUpon>HouseAllocate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HouseManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HouseManagement.Designer.cs">
+      <DependentUpon>HouseManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,6 +161,10 @@
       <Project>{028f8695-f2d0-4a96-8f48-feeab758c717}</Project>
       <Name>MetroFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Anju.Fangke.Client.Forms.CustomerManagement\Anju.Fangke.Client.Forms.CustomerManagement.csproj">
+      <Project>{942a1d7a-148d-4844-818c-71dff8c2b5ae}</Project>
+      <Name>Anju.Fangke.Client.Forms.CustomerManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddBuilding.resx">
@@ -144,6 +176,9 @@
     <EmbeddedResource Include="AddOtherFee.resx">
       <DependentUpon>AddOtherFee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AllocatePopup.resx">
+      <DependentUpon>AllocatePopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssetManagement.resx">
       <DependentUpon>AssetManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,11 +188,20 @@
     <EmbeddedResource Include="BaseEditHouse.resx">
       <DependentUpon>BaseEditHouse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaseQueryHouse.resx">
+      <DependentUpon>BaseQueryHouse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditBuilding.resx">
       <DependentUpon>EditBuilding.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditHouse.resx">
       <DependentUpon>EditHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HouseAllocate.resx">
+      <DependentUpon>HouseAllocate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HouseManagement.resx">
+      <DependentUpon>HouseManagement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

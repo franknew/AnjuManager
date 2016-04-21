@@ -31,5 +31,8 @@ namespace Anju.Fangke.Server.Form
         
         public UInt64? Enabled { get; set; }
         
+        public string DistrictID { get; set; }
+        
+        public List<String> DistrictIDs { get; set;}
     }
 }

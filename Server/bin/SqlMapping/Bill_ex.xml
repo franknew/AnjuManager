@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="FullBill" type="Anju.Fangke.Server.Model.FullBill" />
+    <typeAlias alias="FullBillQueryForm" type="Anju.Fangke.Server.Form.QueryFullBillServiceForm" />
+  </alias>
+  <statements>
+  <select id="QueryFullBill" resultClass="FullBill" parameterClass="FullBillQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT bill.*,house.ID AS HouseID,house.Name As HouseName,building.ID AS BuildingID,building.Name AS BuildingName,
+    rf.ID AS RentFeeID,rf.RentMoney AS RentFee,rf.RentDay
+    FROM `Bill` bill
+    LEFT JOIN House house ON bill.HouseOrRoomID=house.ID AND house.Enabled=1 AND house.IsDeleted=0 AND house.RentType=1
+    LEFT JOIN Building building ON house.buildingID=building.ID AND building.Enabled=1 AND building.IsDeleted=0
+    LEFT JOIN RentFee rf ON bill.HouseOrRoomID=rf.HouseOrRoomID AND rf.Enabled=1 AND rf.IsDeleted=0
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+      bill.`ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+          bill.`ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+      <isNotNull prepend="AND" property="BuildingID">
+        building.`ID`=#BuildingID#
+      </isNotNull>
+      <isNotNull prepend="AND" property="HouseID">
+        house.`ID`=#HouseID#
+      </isNotNull>
+      <isNotNull prepend="AND" property="RentDay">
+        rf.`RentDay`=#RentDay#
+      </isNotNull>
+    
+    </dynamic>
+        ORDER BY bill.LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  </statements>
+</sqlMap>

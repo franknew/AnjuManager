@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Customer" type="Anju.Fangke.Server.Model.Customer" />
+    <typeAlias alias="CustomerQueryForm" type="Anju.Fangke.Server.Form.CustomerQueryForm" />
+    <typeAlias alias="CustomerUpdateForm" type="Anju.Fangke.Server.Form.CustomerUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryCustomer" resultClass="Customer" parameterClass="CustomerQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `Customer`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Mobile">
+        `Mobile`=#Mobile#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="WX">
+        `WX`=#WX#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IdentityCode">
+        `IdentityCode`=#IdentityCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type">
+        `Type`=#Type#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddCustomer" parameterClass="Customer">
+  INSERT INTO `Customer`
+  (
+    `ID`,
+    `Name`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `Remark`,
+    `Mobile`,
+    `WX`,
+    `IdentityCode`,
+    `Type`,
+    `Enabled`,
+    `IsDeleted`
+  )
+  VALUES
+  (
+        #ID#,
+        #Name#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #Remark#,
+        #Mobile#,
+        #WX#,
+        #IdentityCode#,
+        #Type#,
+        #Enabled#,
+        #IsDeleted#
+  )
+  </insert>
+  <update id="UpdateCustomer" parameterClass="CustomerUpdateForm">
+  UPDATE `Customer`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Mobile">
+        `Mobile`=#Entity.Mobile#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.WX">
+        `WX`=#Entity.WX#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IdentityCode">
+        `IdentityCode`=#Entity.IdentityCode#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Type">
+        `Type`=#Entity.Type#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Enabled">
+        `Enabled`=#Entity.Enabled#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsDeleted">
+        `IsDeleted`=#Entity.IsDeleted#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="CustomerQueryForm.ID">
+        `ID`=#CustomerQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="CustomerQueryForm.IDs">
+        <iterate property="CustomerQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#CustomerQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerQueryForm.Name">
+        `Name`=#CustomerQueryForm.Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.Creator">
+        `Creator`=#CustomerQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="CustomerQueryForm.Creators">
+        <iterate property="CustomerQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#CustomerQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#CustomerQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#CustomerQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.LastUpdator">
+        `LastUpdator`=#CustomerQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#CustomerQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#CustomerQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.Remark">
+        `Remark` LIKE '%$CustomerQueryForm.Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.Mobile">
+        `Mobile`=#CustomerQueryForm.Mobile#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.WX">
+        `WX`=#CustomerQueryForm.WX#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.IdentityCode">
+        `IdentityCode`=#CustomerQueryForm.IdentityCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.Type_Start">
+        `Type`&gt;=#CustomerQueryForm.Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerQueryForm.Type_End">
+        `Type`&lt;=#CustomerQueryForm.Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.Enabled">
+        `Enabled`=#CustomerQueryForm.Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CustomerQueryForm.IsDeleted">
+        `IsDeleted`=#CustomerQueryForm.IsDeleted#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteCustomer" parameterClass="CustomerQueryForm">
+    DELETE FROM `Customer` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Mobile">
+        `Mobile`=#Mobile#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="WX">
+        `WX`=#WX#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IdentityCode">
+        `IdentityCode`=#IdentityCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryCustomerLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Customer`
+   </select>
+   <select id="QueryCustomerRecordCount" resultClass="int" parameterClass="CustomerQueryForm">
+   SELECT COUNT(*) FROM `Customer` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="Mobile">
+        `Mobile`=#Mobile#
+    </isNotNull>
+    <isNotNull prepend="AND" property="WX">
+        `WX`=#WX#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IdentityCode">
+        `IdentityCode`=#IdentityCode#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

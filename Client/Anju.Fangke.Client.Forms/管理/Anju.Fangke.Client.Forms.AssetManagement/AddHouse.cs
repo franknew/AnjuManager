@@ -40,6 +40,7 @@ namespace Anju.Fangke.Client.Forms
             request.token = this.Token;
             var house = this.CollectData<FullHouse>();
             this.Building.CurrentHouse = house;
+            house.House.BuildingID = this.Building.ID;
             request.form = house;
             var response = SDKSync<AddHouseResponse>.CreateInstance(this).Execute(request, AddHouse_Callback);
         }
@@ -47,15 +48,10 @@ namespace Anju.Fangke.Client.Forms
         private void AddHouse_Callback(AddHouseResponse response)
         {
             this.Building.CurrentHouse.House.ID = response.Result.HouseID;
-            this.Building.CurrentHouse.RentFee.ID = response.Result.RentFeeID;
+            //this.Building.CurrentHouse.RentFee.ID = response.Result.RentFeeID;
             Building?.House?.Add(this.Building.CurrentHouse);
             SOAFramework.Client.Controls.MessageBox.Show(this, "新增房间成功");
             this.Close();
-        }
-
-        private void btnSave_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

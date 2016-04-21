@@ -10,6 +10,8 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using SOAFramework.Library;
+using DreamWorkflow.Engine;
+using SOAFramework.Service.Core;
 
 namespace Anju.Fangke.Server.BLL
 {
@@ -146,10 +148,7 @@ namespace Anju.Fangke.Server.BLL
         public UserEntireInfo GetCurrentUser(string token = null)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
-            if (string.IsNullOrEmpty(token))
-            {
-                token = ServiceSession.Current.Context.Parameters["token"].ToString();
-            }
+            if (string.IsNullOrEmpty(token)) token = ServiceSession.Current.Context.Parameters["token"].ToString();
             var u = GetUserEntireInfoFromCache(token);
             if (u == null)
             {
@@ -159,6 +158,7 @@ namespace Anju.Fangke.Server.BLL
                 UserInfoDao uidao = new UserInfoDao(mapper);
                 LogonHistoryDao lhdao = new LogonHistoryDao(mapper);
                 var logonhistory = lhdao.Query(new LogonHistoryQueryForm { Token = token }).FirstOrDefault();
+                if (logonhistory == null) throw new Exception("获取当前用户信息时发生错误，用户不存在");
                 string userid = logonhistory.UserID;
                 var user = userdao.Query(new UserQueryForm { ID = userid }).FirstOrDefault();
                 var userinfo = uidao.Query(new UserInfoQueryForm { ID = userid }).FirstOrDefault();
@@ -179,6 +179,76 @@ namespace Anju.Fangke.Server.BLL
             UserEntireInfo u = null;
             if (item != null) u = item.Value as UserEntireInfo;
             return u;
+        }
+
+        public int CheckUserAuth(string token)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            //验证有没有登录
+            UserEntireInfo user = GetUserEntireInfoFromCache(token);
+
+            //MonitorCache.GetInstance().PushMessage(new CacheMessage { Message = "check token:" + token }, SOAFramework.Library.CacheEnum.FormMonitor);
+            if (user == null) return 3;
+            LogonHistoryDao logonhistorydao = new LogonHistoryDao(mapper);
+            var logonList = logonhistorydao.Query(new LogonHistoryQueryForm { Token = token });
+            //登录超时
+            if (logonList.Count == 0 || DateTime.Now - logonList[0].ActiveTime > new TimeSpan(0, 30, 0)) return 3;
+            logonhistorydao.Update(new LogonHistoryUpdateForm
+            {
+                Entity = new LogonHistory { ActiveTime = DateTime.Now },
+                LogonHistoryQueryForm = new LogonHistoryQueryForm { Token = token },
+            });
+            if (ServiceSession.Current != null) return CheckAuth(user.Role);
+            return -1;
+        }
+
+        public int CheckAuth(List<Role> roles)
+        {
+            //验证有没有权限访问
+            var attr = ServiceSession.Current.Method.GetCustomAttribute<BaseActionAttribute>(true);
+            if (attr != null)
+            {
+                ISqlMapper mapper = MapperHelper.GetMapper();
+                string actionName = attr.Action;
+                var servicelayer = ServiceSession.Current.Method.DeclaringType.GetCustomAttribute<ServiceLayer>(true);
+                if (servicelayer != null)
+                {
+                    string moduleName = servicelayer.Module;
+                    var modules = TableCacheHelper.GetDataFromCache<Module>(typeof(ModuleDao));
+                    var actions = TableCacheHelper.GetDataFromCache<Model.Action>(typeof(ActionDao));
+                    Role_Module_ActionDao dao = new Role_Module_ActionDao(mapper);
+                    var module = modules.Find(t => t.Name == moduleName);
+                    var action = actions.Find(t => t.Name == actionName);
+                    if (module == null || action == null) return -1;
+                    string actionID = action.ID;
+                    string moduleID = module.ID;
+                    Role_Module_ActionQueryForm query = new Role_Module_ActionQueryForm
+                    {
+                        ActionID = actionID,
+                        ModuleID = moduleID
+                    };
+                    //MonitorCache.GetInstance().PushMessage(new CacheMessage { Message = "action id:" + actionID + ";module id:" + moduleID }, SOAFramework.Library.CacheEnum.FormMonitor);
+                    var role_module_action = dao.Query(query);
+                    bool hasRight = false;
+                    foreach (var item in role_module_action)
+                    {
+                        if (roles != null && roles.Exists(t => t.ID == item.RoleID))
+                        {
+                            hasRight = true;
+                            break;
+                        }
+                    }
+                    if (!hasRight) return 4;
+                }
+            }
+            return -1;
+        }
+
+        public string GetCurrentUserID()
+        {
+            var u = GetCurrentUser();
+            if (u == null) throw new Exception("获取当前用户信息时发生错误，用户不存在");
+            return u.User?.ID;
         }
     }
 }

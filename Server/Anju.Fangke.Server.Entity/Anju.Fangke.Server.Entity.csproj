@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Action.cs" />
+    <Compile Include="Entities\Attribute.cs" />
     <Compile Include="Entities\AuthorityItem.cs" />
     <Compile Include="Entities\AuthorityMapping.cs" />
     <Compile Include="Entities\AuthorityMappingNode.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Entities\Building.cs" />
     <Compile Include="Entities\CacheEntity.cs" />
     <Compile Include="Entities\ChargeFee.cs" />
+    <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\DataDictionary.cs" />
     <Compile Include="Entities\DataDictionaryGroup.cs" />
     <Compile Include="Entities\FileVersion.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="Entities\FullRoleInfo.cs" />
     <Compile Include="Entities\FullUser.cs" />
     <Compile Include="Entities\House.cs" />
+    <Compile Include="Entities\House_Customer.cs" />
     <Compile Include="Entities\House_OtherFee.cs" />
     <Compile Include="Entities\Level.cs" />
     <Compile Include="Entities\LogonHistory.cs" />
@@ -85,10 +88,12 @@
     <Compile Include="QueryForm\BillQueryForm.cs" />
     <Compile Include="QueryForm\BuildingQueryForm.cs" />
     <Compile Include="QueryForm\ChargeFeeQueryForm.cs" />
+    <Compile Include="QueryForm\CustomerQueryForm.cs" />
     <Compile Include="QueryForm\DataDictionaryGroupQueryForm.cs" />
     <Compile Include="QueryForm\DataDictionaryQueryForm.cs" />
     <Compile Include="QueryForm\FullUserQueryForm.cs" />
     <Compile Include="QueryForm\HouseQueryForm.cs" />
+    <Compile Include="QueryForm\House_CustomerQueryForm.cs" />
     <Compile Include="QueryForm\House_OtherFeeQueryForm.cs" />
     <Compile Include="QueryForm\LevelQueryForm.cs" />
     <Compile Include="QueryForm\LogonHistoryQueryForm.cs" />
@@ -113,14 +118,17 @@
     <Compile Include="ServiceForm\AddHouseServiceForm.cs" />
     <Compile Include="ServiceForm\AddRoleServiceForm.cs" />
     <Compile Include="ServiceForm\QueryFullBillServiceForm.cs" />
+    <Compile Include="ServiceForm\QueryHouseServiceForm.cs" />
     <Compile Include="UpdateForm\ActionUpdateForm.cs" />
     <Compile Include="UpdateForm\BillUpdateForm.cs" />
     <Compile Include="UpdateForm\BuildingUpdateForm.cs" />
     <Compile Include="UpdateForm\ChargeFeeUpdateForm.cs" />
+    <Compile Include="UpdateForm\CustomerUpdateForm.cs" />
     <Compile Include="UpdateForm\DataDictionaryGroupUpdateForm.cs" />
     <Compile Include="UpdateForm\DataDictionaryUpdateForm.cs" />
     <Compile Include="UpdateForm\FullUserUpdateForm.cs" />
     <Compile Include="UpdateForm\HouseUpdateForm.cs" />
+    <Compile Include="UpdateForm\House_CustomerUpdateForm.cs" />
     <Compile Include="UpdateForm\House_OtherFeeUpdateForm.cs" />
     <Compile Include="UpdateForm\LevelUpdateForm.cs" />
     <Compile Include="UpdateForm\LogonHistoryUpdateForm.cs" />

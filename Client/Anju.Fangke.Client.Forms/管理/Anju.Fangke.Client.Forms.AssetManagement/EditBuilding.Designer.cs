@@ -31,6 +31,7 @@
             this.btnSave = new SOAFramework.Client.Controls.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloorCount)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -57,10 +58,6 @@
             this.txbName.Lines = new string[0];
             this.txbName.UseStyleColors = true;
             // 
-            // txbFloor
-            // 
-            this.txbFloor.Lines = new string[0];
-            // 
             // btnSave
             // 
             this.btnSave.ClickedMessage = null;
@@ -80,9 +77,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 465);
             this.Name = "EditBuilding";
+            this.InitControl += new System.EventHandler(this.EditBuilding_InitControl);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numFloorCount)).EndInit();
             this.ResumeLayout(false);
 
         }

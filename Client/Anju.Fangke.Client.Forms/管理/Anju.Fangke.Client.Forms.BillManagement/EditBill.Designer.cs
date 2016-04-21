@@ -103,6 +103,7 @@
             this.txbRentFee.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRentFee.SelectedText = "";
             this.txbRentFee.SelectionLength = 0;
+            this.txbRentFee.SelectionStart = 0;
             this.txbRentFee.Size = new System.Drawing.Size(261, 23);
             this.txbRentFee.TabIndex = 8;
             this.txbRentFee.UseSelectable = true;
@@ -154,7 +155,6 @@
             // 
             this.txbRentDay.BindingRequestPropertyName = null;
             this.txbRentDay.BindingResponsePropertyName = null;
-            this.txbRentDay.BindingSourcePropertyName = "Bill.RentDay";
             this.txbRentDay.EmptyWarning = null;
             this.txbRentDay.Enabled = false;
             this.txbRentDay.Lines = new string[0];
@@ -164,6 +164,7 @@
             this.txbRentDay.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRentDay.SelectedText = "";
             this.txbRentDay.SelectionLength = 0;
+            this.txbRentDay.SelectionStart = 0;
             this.txbRentDay.Size = new System.Drawing.Size(261, 23);
             this.txbRentDay.TabIndex = 4;
             this.txbRentDay.UseSelectable = true;
@@ -182,6 +183,7 @@
             this.txbBillName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbBillName.SelectedText = "";
             this.txbBillName.SelectionLength = 0;
+            this.txbBillName.SelectionStart = 0;
             this.txbBillName.Size = new System.Drawing.Size(261, 23);
             this.txbBillName.TabIndex = 3;
             this.txbBillName.UseSelectable = true;
@@ -200,6 +202,7 @@
             this.txbHouseName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbHouseName.SelectedText = "";
             this.txbHouseName.SelectionLength = 0;
+            this.txbHouseName.SelectionStart = 0;
             this.txbHouseName.Size = new System.Drawing.Size(261, 23);
             this.txbHouseName.TabIndex = 2;
             this.txbHouseName.UseSelectable = true;
@@ -218,6 +221,7 @@
             this.txbBuildingName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbBuildingName.SelectedText = "";
             this.txbBuildingName.SelectionLength = 0;
+            this.txbBuildingName.SelectionStart = 0;
             this.txbBuildingName.Size = new System.Drawing.Size(261, 23);
             this.txbBuildingName.TabIndex = 1;
             this.txbBuildingName.UseSelectable = true;

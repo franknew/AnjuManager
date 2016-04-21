@@ -53,12 +53,6 @@ namespace Anju.Fangke.Client.SDK
         /// </summary>
         public int? HallNumber { get; set; }
 
-        public decimal? Area { get; set; }
-
-        public string OwnerID { get; set; }
-
-        public int? IsRented { get; set; }
-
         /// <summary>
         /// 
         /// </summary>
@@ -68,6 +62,56 @@ namespace Anju.Fangke.Client.SDK
         /// 
         /// </summary>
         public int? KitchenNumber { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string OwnerID { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal? Area { get; set; }
+
+        /// <summary>
+        /// 是否出租
+        /// </summary>
+        public int? IsRented { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Enabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? IsDeleted { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal? Cost { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal? SalePrice { get; set; }
+
+        /// <summary>
+        /// 钥匙编号
+        /// </summary>
+        public string KeyCode { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Status { get; set; }
+
+        /// <summary>
+        /// 装修类型
+        /// </summary>
+        public int? DecorationType { get; set; }
 
         public string HouseTypeName
         {
@@ -81,6 +125,7 @@ namespace Anju.Fangke.Client.SDK
         {
             get
             {
+                if (!RentType.HasValue) return "";
                 return Enum.GetName(typeof(RentType), this.RentType);
             }
         }

@@ -21,6 +21,11 @@ namespace Anju.Fangke.Client.Main
             InitializeComponent();
             this.ShowInTaskbar = true;
             this.ShowIcon = true;
+            this.FormClosed += Login_FormClosed;
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -40,17 +45,18 @@ namespace Anju.Fangke.Client.Main
             var response = SDKFactory.Client.Execute(request);
             if (!response.IsError)
             {
-                AppData.token = response.Result.token;
-                AppData.User = response.Result.User.User;
+                AppData.token = response.Result?.token;
+                AppData.User = response.Result?.User?.User;
+                AppData.UserInfo = response.Result?.User?.UserInfo;
                 Startup form = this.Owner as Startup;
                 form.Token = AppData.token;
-                form.SetInfo(AppData.User.CnName);
+                form.SetInfo(AppData.UserInfo?.CnName);
                 form.Show();
                 this.Close();
             }
             else
             {
-                SOAFramework.Client.Controls.MessageBox.Show(this, response.ErrorMessage, "Error", MessageBoxButtons.YesNo);
+                SOAFramework.Client.Controls.MessageBox.Show(this, response.ErrorMessage, "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -64,7 +70,9 @@ namespace Anju.Fangke.Client.Main
 
         private void Login_Load(object sender, EventArgs e)
         {
-            btnLogin.PerformClick();
+            //btnLogin.PerformClick();
+            this.Activate();
+            txbUserName.baseTextBox.Focus();
         }
     }
 }

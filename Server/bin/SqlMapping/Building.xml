@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Building" type="Anju.Fangke.Server.Model.Building" />
+    <typeAlias alias="BuildingQueryForm" type="Anju.Fangke.Server.Form.BuildingQueryForm" />
+    <typeAlias alias="BuildingUpdateForm" type="Anju.Fangke.Server.Form.BuildingUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryBuilding" resultClass="Building" parameterClass="BuildingQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `Building`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ProvinceID">
+        `ProvinceID`=#ProvinceID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="ProvinceIDs">
+        <iterate property="ProvinceIDs" open="(" close=")" conjunction="OR">
+         `ProvinceID`=#ProvinceIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CityID">
+        `CityID`=#CityID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="CityIDs">
+        <iterate property="CityIDs" open="(" close=")" conjunction="OR">
+         `CityID`=#CityIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="AreaID">
+        `AreaID`=#AreaID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="AreaIDs">
+        <iterate property="AreaIDs" open="(" close=")" conjunction="OR">
+         `AreaID`=#AreaIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Street">
+        `Street`=#Street#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FloorCount_Start">
+        `FloorCount`&gt;=#FloorCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FloorCount_End">
+        `FloorCount`&lt;=#FloorCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FloorCount">
+        `FloorCount`=#FloorCount#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DistrictID">
+        `DistrictID`=#DistrictID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="DistrictIDs">
+        <iterate property="DistrictIDs" open="(" close=")" conjunction="OR">
+         `DistrictID`=#DistrictIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddBuilding" parameterClass="Building">
+  INSERT INTO `Building`
+  (
+    `ID`,
+    `Name`,
+    `ProvinceID`,
+    `CityID`,
+    `AreaID`,
+    `Street`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `IsDeleted`,
+    `FloorCount`,
+    `Enabled`,
+    `DistrictID`
+  )
+  VALUES
+  (
+        #ID#,
+        #Name#,
+        #ProvinceID#,
+        #CityID#,
+        #AreaID#,
+        #Street#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #IsDeleted#,
+        #FloorCount#,
+        #Enabled#,
+        #DistrictID#
+  )
+  </insert>
+  <update id="UpdateBuilding" parameterClass="BuildingUpdateForm">
+  UPDATE `Building`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.ProvinceID">
+        `ProvinceID`=#Entity.ProvinceID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CityID">
+        `CityID`=#Entity.CityID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.AreaID">
+        `AreaID`=#Entity.AreaID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Street">
+        `Street`=#Entity.Street#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsDeleted">
+        `IsDeleted`=#Entity.IsDeleted#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.FloorCount">
+        `FloorCount`=#Entity.FloorCount#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Enabled">
+        `Enabled`=#Entity.Enabled#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.DistrictID">
+        `DistrictID`=#Entity.DistrictID#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="BuildingQueryForm.ID">
+        `ID`=#BuildingQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingQueryForm.IDs">
+        <iterate property="BuildingQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#BuildingQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.Name">
+        `Name`=#BuildingQueryForm.Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.ProvinceID">
+        `ProvinceID`=#BuildingQueryForm.ProvinceID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingQueryForm.ProvinceIDs">
+        <iterate property="BuildingQueryForm.ProvinceIDs" open="(" close=")" conjunction="OR">
+         `ProvinceID`=#BuildingQueryForm.ProvinceIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.CityID">
+        `CityID`=#BuildingQueryForm.CityID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingQueryForm.CityIDs">
+        <iterate property="BuildingQueryForm.CityIDs" open="(" close=")" conjunction="OR">
+         `CityID`=#BuildingQueryForm.CityIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.AreaID">
+        `AreaID`=#BuildingQueryForm.AreaID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingQueryForm.AreaIDs">
+        <iterate property="BuildingQueryForm.AreaIDs" open="(" close=")" conjunction="OR">
+         `AreaID`=#BuildingQueryForm.AreaIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.Street">
+        `Street`=#BuildingQueryForm.Street#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.Creator">
+        `Creator`=#BuildingQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingQueryForm.Creators">
+        <iterate property="BuildingQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#BuildingQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#BuildingQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#BuildingQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.LastUpdator">
+        `LastUpdator`=#BuildingQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#BuildingQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#BuildingQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.IsDeleted">
+        `IsDeleted`=#BuildingQueryForm.IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.FloorCount_Start">
+        `FloorCount`&gt;=#BuildingQueryForm.FloorCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BuildingQueryForm.FloorCount_End">
+        `FloorCount`&lt;=#BuildingQueryForm.FloorCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.Enabled">
+        `Enabled`=#BuildingQueryForm.Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BuildingQueryForm.DistrictID">
+        `DistrictID`=#BuildingQueryForm.DistrictID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BuildingQueryForm.DistrictIDs">
+        <iterate property="BuildingQueryForm.DistrictIDs" open="(" close=")" conjunction="OR">
+         `DistrictID`=#BuildingQueryForm.DistrictIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteBuilding" parameterClass="BuildingQueryForm">
+    DELETE FROM `Building` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ProvinceID">
+        `ProvinceID`=#ProvinceID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="ProvinceIDs">
+        <iterate property="ProvinceIDs" open="(" close=")" conjunction="OR">
+         `ProvinceID`=#ProvinceIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CityID">
+        `CityID`=#CityID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="CityIDs">
+        <iterate property="CityIDs" open="(" close=")" conjunction="OR">
+         `CityID`=#CityIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="AreaID">
+        `AreaID`=#AreaID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="AreaIDs">
+        <iterate property="AreaIDs" open="(" close=")" conjunction="OR">
+         `AreaID`=#AreaIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Street">
+        `Street`=#Street#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FloorCount_Start">
+        `FloorCount`&gt;=#FloorCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FloorCount_End">
+        `FloorCount`&lt;=#FloorCount_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DistrictID">
+        `DistrictID`=#DistrictID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="DistrictIDs">
+        <iterate property="DistrictIDs" open="(" close=")" conjunction="OR">
+         `DistrictID`=#DistrictIDs[]#
+        </iterate>
+    </isNotNull>
+  </delete>
+   <select id="QueryBuildingLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Building`
+   </select>
+   <select id="QueryBuildingRecordCount" resultClass="int" parameterClass="BuildingQueryForm">
+   SELECT COUNT(*) FROM `Building` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ProvinceID">
+        `ProvinceID`=#ProvinceID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="ProvinceIDs">
+        <iterate property="ProvinceIDs" open="(" close=")" conjunction="OR">
+         `ProvinceID`=#ProvinceIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CityID">
+        `CityID`=#CityID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="CityIDs">
+        <iterate property="CityIDs" open="(" close=")" conjunction="OR">
+         `CityID`=#CityIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="AreaID">
+        `AreaID`=#AreaID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="AreaIDs">
+        <iterate property="AreaIDs" open="(" close=")" conjunction="OR">
+         `AreaID`=#AreaIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Street">
+        `Street`=#Street#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FloorCount_Start">
+        `FloorCount`&gt;=#FloorCount_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FloorCount_End">
+        `FloorCount`&lt;=#FloorCount_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DistrictID">
+        `DistrictID`=#DistrictID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="DistrictIDs">
+        <iterate property="DistrictIDs" open="(" close=")" conjunction="OR">
+         `DistrictID`=#DistrictIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

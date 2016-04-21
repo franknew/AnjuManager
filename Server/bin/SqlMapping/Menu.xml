@@ -41,6 +41,10 @@
         `CreateTime`&lt;=#CreateTime_End#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
     <isNotNull prepend="AND" property="Page">
         `Page`=#Page#
     </isNotNull>
@@ -67,6 +71,10 @@
     </isNotNull>
     <isNotNull prepend="AND" property="LastUpdateTime_End">
         `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
     </isNotNull>
     
     <isNotNull prepend="AND" property="LastUpdator">
@@ -153,11 +161,24 @@
     <isNotNull prepend="AND" property="MenuQueryForm.ID">
         `ID`=#MenuQueryForm.ID#
     </isNotNull>
+    
+        <isNotNull prepend="AND"  property="MenuQueryForm.IDs">
+        <iterate property="MenuQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#MenuQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
     <isNotNull prepend="AND" property="MenuQueryForm.Name">
         `Name`=#MenuQueryForm.Name#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="MenuQueryForm.Creator">
         `Creator`=#MenuQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="MenuQueryForm.Creators">
+        <iterate property="MenuQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#MenuQueryForm.Creators[]#
+        </iterate>
     </isNotNull>
     <isNotNull prepend="AND" property="MenuQueryForm.CreateTime_Start">
         `CreateTime`&gt;=#MenuQueryForm.CreateTime_Start#
@@ -165,37 +186,52 @@
     <isNotNull prepend="AND" property="MenuQueryForm.CreateTime_End">
         `CreateTime`&lt;=#MenuQueryForm.CreateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="MenuQueryForm.Page">
         `Page`=#MenuQueryForm.Page#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="MenuQueryForm.ParentID">
         `ParentID`=#MenuQueryForm.ParentID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="MenuQueryForm.ParentIDs">
+        <iterate property="MenuQueryForm.ParentIDs" open="(" close=")" conjunction="OR">
+         `ParentID`=#MenuQueryForm.ParentIDs[]#
+        </iterate>
     </isNotNull>
     <isNotNull prepend="AND" property="MenuQueryForm.Enabled">
         `Enabled`=#MenuQueryForm.Enabled#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="MenuQueryForm.Remark">
         `Remark` LIKE '%$MenuQueryForm.Remark$%'
     </isNotNull>
+    
     <isNotNull prepend="AND" property="MenuQueryForm.LastUpdateTime_Start">
         `LastUpdateTime`&gt;=#MenuQueryForm.LastUpdateTime_Start#
     </isNotNull>
     <isNotNull prepend="AND" property="MenuQueryForm.LastUpdateTime_End">
         `LastUpdateTime`&lt;=#MenuQueryForm.LastUpdateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="MenuQueryForm.LastUpdator">
         `LastUpdator`=#MenuQueryForm.LastUpdator#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="MenuQueryForm.ImagePath">
         `ImagePath`=#MenuQueryForm.ImagePath#
     </isNotNull>
+    
     </dynamic>
   </update>
+  
   <delete id="DeleteMenu" parameterClass="MenuQueryForm">
     DELETE FROM `Menu` WHERE 1=1
     <isNotNull prepend="AND" property="ID">
         `ID`=#ID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="IDs">
         <iterate property="IDs" open="(" close=")" conjunction="OR">
          `ID`=#IDs[]#
@@ -204,9 +240,11 @@
     <isNotNull prepend="AND" property="Name">
         `Name`=#Name#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Creator">
         `Creator`=#Creator#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="Creators">
         <iterate property="Creators" open="(" close=")" conjunction="OR">
          `Creator`=#Creators[]#
@@ -218,12 +256,15 @@
     <isNotNull prepend="AND" property="CreateTime_End">
         `CreateTime`&lt;=#CreateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Page">
         `Page`=#Page#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="ParentID">
         `ParentID`=#ParentID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="ParentIDs">
         <iterate property="ParentIDs" open="(" close=")" conjunction="OR">
          `ParentID`=#ParentIDs[]#
@@ -232,21 +273,26 @@
     <isNotNull prepend="AND" property="Enabled">
         `Enabled`=#Enabled#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Remark">
-        `Remark`=#Remark#
+        `Remark` LIKE '%$Remark$%'
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdateTime_Start">
         `LastUpdateTime`&gt;=#LastUpdateTime_Start#
     </isNotNull>
     <isNotNull prepend="AND" property="LastUpdateTime_End">
         `LastUpdateTime`&lt;=#LastUpdateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdator">
         `LastUpdator`=#LastUpdator#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="ImagePath">
         `ImagePath`=#ImagePath#
     </isNotNull>
+    
   </delete>
    <select id="QueryMenuLastUpdateTime" resultClass="DateTime">
         SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Menu`

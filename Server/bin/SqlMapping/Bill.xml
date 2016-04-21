@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Bill" type="Anju.Fangke.Server.Model.Bill" />
+    <typeAlias alias="BillQueryForm" type="Anju.Fangke.Server.Form.BillQueryForm" />
+    <typeAlias alias="BillUpdateForm" type="Anju.Fangke.Server.Form.BillUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryBill" resultClass="Bill" parameterClass="BillQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `Bill`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type">
+        `Type`=#Type#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ShouldPay_Start">
+        `ShouldPay`&gt;=#ShouldPay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ShouldPay_End">
+        `ShouldPay`&lt;=#ShouldPay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ShouldPay">
+        `ShouldPay`=#ShouldPay#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Payed_Start">
+        `Payed`&gt;=#Payed_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Payed_End">
+        `Payed`&lt;=#Payed_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Payed">
+        `Payed`=#Payed#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="PayDay_Start">
+        `PayDay`&gt;=#PayDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="PayDay_End">
+        `PayDay`&lt;=#PayDay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="PayDay">
+        `PayDay`=#PayDay#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Year_Start">
+        `Year`&gt;=#Year_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Year_End">
+        `Year`&lt;=#Year_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Year">
+        `Year`=#Year#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Month_Start">
+        `Month`&gt;=#Month_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Month_End">
+        `Month`&lt;=#Month_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Month">
+        `Month`=#Month#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddBill" parameterClass="Bill">
+  INSERT INTO `Bill`
+  (
+    `ID`,
+    `HouseOrRoomID`,
+    `Type`,
+    `ShouldPay`,
+    `Payed`,
+    `Remark`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `IsDeleted`,
+    `PayDay`,
+    `Year`,
+    `Month`,
+    `Name`
+  )
+  VALUES
+  (
+        #ID#,
+        #HouseOrRoomID#,
+        #Type#,
+        #ShouldPay#,
+        #Payed#,
+        #Remark#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #IsDeleted#,
+        #PayDay#,
+        #Year#,
+        #Month#,
+        #Name#
+  )
+  </insert>
+  <update id="UpdateBill" parameterClass="BillUpdateForm">
+  UPDATE `Bill`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.HouseOrRoomID">
+        `HouseOrRoomID`=#Entity.HouseOrRoomID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Type">
+        `Type`=#Entity.Type#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.ShouldPay">
+        `ShouldPay`=#Entity.ShouldPay#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Payed">
+        `Payed`=#Entity.Payed#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsDeleted">
+        `IsDeleted`=#Entity.IsDeleted#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.PayDay">
+        `PayDay`=#Entity.PayDay#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Year">
+        `Year`=#Entity.Year#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Month">
+        `Month`=#Entity.Month#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="BillQueryForm.ID">
+        `ID`=#BillQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BillQueryForm.IDs">
+        <iterate property="BillQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#BillQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.HouseOrRoomID">
+        `HouseOrRoomID`=#BillQueryForm.HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BillQueryForm.HouseOrRoomIDs">
+        <iterate property="BillQueryForm.HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#BillQueryForm.HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.Type_Start">
+        `Type`&gt;=#BillQueryForm.Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.Type_End">
+        `Type`&lt;=#BillQueryForm.Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.ShouldPay_Start">
+        `ShouldPay`&gt;=#BillQueryForm.ShouldPay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.ShouldPay_End">
+        `ShouldPay`&lt;=#BillQueryForm.ShouldPay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.Payed_Start">
+        `Payed`&gt;=#BillQueryForm.Payed_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.Payed_End">
+        `Payed`&lt;=#BillQueryForm.Payed_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.Remark">
+        `Remark` LIKE '%$BillQueryForm.Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.Creator">
+        `Creator`=#BillQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="BillQueryForm.Creators">
+        <iterate property="BillQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#BillQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#BillQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#BillQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.LastUpdator">
+        `LastUpdator`=#BillQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#BillQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#BillQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.IsDeleted">
+        `IsDeleted`=#BillQueryForm.IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.PayDay_Start">
+        `PayDay`&gt;=#BillQueryForm.PayDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.PayDay_End">
+        `PayDay`&lt;=#BillQueryForm.PayDay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.Year_Start">
+        `Year`&gt;=#BillQueryForm.Year_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.Year_End">
+        `Year`&lt;=#BillQueryForm.Year_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.Month_Start">
+        `Month`&gt;=#BillQueryForm.Month_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="BillQueryForm.Month_End">
+        `Month`&lt;=#BillQueryForm.Month_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="BillQueryForm.Name">
+        `Name`=#BillQueryForm.Name#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteBill" parameterClass="BillQueryForm">
+    DELETE FROM `Bill` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ShouldPay_Start">
+        `ShouldPay`&gt;=#ShouldPay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ShouldPay_End">
+        `ShouldPay`&lt;=#ShouldPay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Payed_Start">
+        `Payed`&gt;=#Payed_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Payed_End">
+        `Payed`&lt;=#Payed_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="PayDay_Start">
+        `PayDay`&gt;=#PayDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="PayDay_End">
+        `PayDay`&lt;=#PayDay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Year_Start">
+        `Year`&gt;=#Year_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Year_End">
+        `Year`&lt;=#Year_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Month_Start">
+        `Month`&gt;=#Month_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Month_End">
+        `Month`&lt;=#Month_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryBillLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Bill`
+   </select>
+   <select id="QueryBillRecordCount" resultClass="int" parameterClass="BillQueryForm">
+   SELECT COUNT(*) FROM `Bill` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ShouldPay_Start">
+        `ShouldPay`&gt;=#ShouldPay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ShouldPay_End">
+        `ShouldPay`&lt;=#ShouldPay_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Payed_Start">
+        `Payed`&gt;=#Payed_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Payed_End">
+        `Payed`&lt;=#Payed_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    <isNotNull prepend="AND" property="PayDay_Start">
+        `PayDay`&gt;=#PayDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="PayDay_End">
+        `PayDay`&lt;=#PayDay_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Year_Start">
+        `Year`&gt;=#Year_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Year_End">
+        `Year`&lt;=#Year_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Month_Start">
+        `Month`&gt;=#Month_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Month_End">
+        `Month`&lt;=#Month_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

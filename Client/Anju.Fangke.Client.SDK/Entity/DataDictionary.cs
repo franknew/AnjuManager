@@ -11,7 +11,7 @@ namespace Anju.Fangke.Client.SDK
         /// <summary>
         /// 
         /// </summary>
-        public int? Value { get; set; }
+        public string Value { get; set; }
         
         /// <summary>
         /// 

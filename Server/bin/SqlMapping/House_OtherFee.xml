@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="House_OtherFee" type="Anju.Fangke.Server.Model.House_OtherFee" />
+    <typeAlias alias="House_OtherFeeQueryForm" type="Anju.Fangke.Server.Form.House_OtherFeeQueryForm" />
+    <typeAlias alias="House_OtherFeeUpdateForm" type="Anju.Fangke.Server.Form.House_OtherFeeUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryHouse_OtherFee" resultClass="House_OtherFee" parameterClass="House_OtherFeeQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `House_OtherFee`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type">
+        `Type`=#Type#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeID">
+        `OtherFeeID`=#OtherFeeID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeIDs">
+        <iterate property="OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddHouse_OtherFee" parameterClass="House_OtherFee">
+  INSERT INTO `House_OtherFee`
+  (
+    `ID`,
+    `HouseOrRoomID`,
+    `Type`,
+    `OtherFeeID`
+  )
+  VALUES
+  (
+        #ID#,
+        #HouseOrRoomID#,
+        #Type#,
+        #OtherFeeID#
+  )
+  </insert>
+  <update id="UpdateHouse_OtherFee" parameterClass="House_OtherFeeUpdateForm">
+  UPDATE `House_OtherFee`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.HouseOrRoomID">
+        `HouseOrRoomID`=#Entity.HouseOrRoomID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Type">
+        `Type`=#Entity.Type#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.OtherFeeID">
+        `OtherFeeID`=#Entity.OtherFeeID#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="House_OtherFeeQueryForm.ID">
+        `ID`=#House_OtherFeeQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="House_OtherFeeQueryForm.IDs">
+        <iterate property="House_OtherFeeQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#House_OtherFeeQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="House_OtherFeeQueryForm.HouseOrRoomID">
+        `HouseOrRoomID`=#House_OtherFeeQueryForm.HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="House_OtherFeeQueryForm.HouseOrRoomIDs">
+        <iterate property="House_OtherFeeQueryForm.HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#House_OtherFeeQueryForm.HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="House_OtherFeeQueryForm.Type_Start">
+        `Type`&gt;=#House_OtherFeeQueryForm.Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="House_OtherFeeQueryForm.Type_End">
+        `Type`&lt;=#House_OtherFeeQueryForm.Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="House_OtherFeeQueryForm.OtherFeeID">
+        `OtherFeeID`=#House_OtherFeeQueryForm.OtherFeeID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="House_OtherFeeQueryForm.OtherFeeIDs">
+        <iterate property="House_OtherFeeQueryForm.OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#House_OtherFeeQueryForm.OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteHouse_OtherFee" parameterClass="House_OtherFeeQueryForm">
+    DELETE FROM `House_OtherFee` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="OtherFeeID">
+        `OtherFeeID`=#OtherFeeID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="OtherFeeIDs">
+        <iterate property="OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+  </delete>
+   <select id="QueryHouse_OtherFeeRecordCount" resultClass="int" parameterClass="House_OtherFeeQueryForm">
+   SELECT COUNT(*) FROM `House_OtherFee` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="OtherFeeID">
+        `OtherFeeID`=#OtherFeeID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="OtherFeeIDs">
+        <iterate property="OtherFeeIDs" open="(" close=")" conjunction="OR">
+         `OtherFeeID`=#OtherFeeIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

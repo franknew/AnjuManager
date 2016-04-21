@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
 using Anju.Fangke.Client.SDK.Entity;
 using SOAFramework.Client.Controls;
+using SOAFramework.Client.Forms;
 using SOAFramework.Service.SDK.Core;
 
 namespace Anju.Fangke.Client.Forms
@@ -25,13 +26,6 @@ namespace Anju.Fangke.Client.Forms
 
         private void EditBuilding_Load(object sender, EventArgs e)
         {
-            txbFloor.Text = Building.FloorCount.ToString();
-            txbName.Text = Building.Name;
-            txbRemark.Text = Building.Name;
-            txbStreet.Text = Building.Street;
-            cmbArea.Value = Building.AreaID;
-            cmbcity.Value = Building.CityID;
-            cmbProvince.Value = Building.ProvinceID;
         }
 
         private void BtnSave_ClickCallback(CommonResponse response)
@@ -47,20 +41,14 @@ namespace Anju.Fangke.Client.Forms
         {
             EditBuildingRequest request = new EditBuildingRequest();
             request.token = this.Token;
-            FullBuilding building = new FullBuilding
-            {
-                AreaID = cmbArea.SelectedValue.ToString() == "-1" ? null : cmbArea.SelectedValue.ToString(),
-                CityID = cmbcity.SelectedValue.ToString() == "-1" ? null : cmbcity.SelectedValue.ToString(),
-                FloorCount = Convert.ToInt16(txbFloor.Text),
-                Name = txbName.Text,
-                ProvinceID = cmbProvince.SelectedValue.ToString() == "-1" ? null : cmbProvince.SelectedValue.ToString(),
-                Remark = txbRemark.Text,
-                Street = txbStreet.Text,
-                ID = Building.ID,
-            };
-            Building = building;
-            request.form = building;
+            this.CollectData(Building);
+            request.form = Building;
             SDKSync<CommonResponse>.CreateInstance(this).Execute(request, BtnSave_ClickCallback);
+        }
+
+        private void EditBuilding_InitControl(object sender, EventArgs e)
+        {
+            this.SetForm(this.Building);
         }
     }
 }

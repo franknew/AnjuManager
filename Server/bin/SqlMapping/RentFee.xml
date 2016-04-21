@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="RentFee" type="Anju.Fangke.Server.Model.RentFee" />
+    <typeAlias alias="RentFeeQueryForm" type="Anju.Fangke.Server.Form.RentFeeQueryForm" />
+    <typeAlias alias="RentFeeUpdateForm" type="Anju.Fangke.Server.Form.RentFeeUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryRentFee" resultClass="RentFee" parameterClass="RentFeeQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `RentFee`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type">
+        `Type`=#Type#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentMoney_Start">
+        `RentMoney`&gt;=#RentMoney_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentMoney_End">
+        `RentMoney`&lt;=#RentMoney_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentMoney">
+        `RentMoney`=#RentMoney#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Cycle_Start">
+        `Cycle`&gt;=#Cycle_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cycle_End">
+        `Cycle`&lt;=#Cycle_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Cycle">
+        `Cycle`=#Cycle#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CycleType_Start">
+        `CycleType`&gt;=#CycleType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CycleType_End">
+        `CycleType`&lt;=#CycleType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CycleType">
+        `CycleType`=#CycleType#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Deposit_Start">
+        `Deposit`&gt;=#Deposit_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Deposit_End">
+        `Deposit`&lt;=#Deposit_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Deposit">
+        `Deposit`=#Deposit#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDay_Start">
+        `RentDay`&gt;=#RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_End">
+        `RentDay`&lt;=#RentDay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDay">
+        `RentDay`=#RentDay#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ExpiredTime_Start">
+        `ExpiredTime`&gt;=#ExpiredTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ExpiredTime_End">
+        `ExpiredTime`&lt;=#ExpiredTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ExpiredTime">
+        `ExpiredTime`=#ExpiredTime#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddRentFee" parameterClass="RentFee">
+  INSERT INTO `RentFee`
+  (
+    `ID`,
+    `HouseOrRoomID`,
+    `Type`,
+    `RentMoney`,
+    `Cycle`,
+    `CycleType`,
+    `Remark`,
+    `Deposit`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `RentDay`,
+    `Enabled`,
+    `IsDeleted`,
+    `ExpiredTime`
+  )
+  VALUES
+  (
+        #ID#,
+        #HouseOrRoomID#,
+        #Type#,
+        #RentMoney#,
+        #Cycle#,
+        #CycleType#,
+        #Remark#,
+        #Deposit#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #RentDay#,
+        #Enabled#,
+        #IsDeleted#,
+        #ExpiredTime#
+  )
+  </insert>
+  <update id="UpdateRentFee" parameterClass="RentFeeUpdateForm">
+  UPDATE `RentFee`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.HouseOrRoomID">
+        `HouseOrRoomID`=#Entity.HouseOrRoomID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Type">
+        `Type`=#Entity.Type#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentMoney">
+        `RentMoney`=#Entity.RentMoney#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Cycle">
+        `Cycle`=#Entity.Cycle#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CycleType">
+        `CycleType`=#Entity.CycleType#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Deposit">
+        `Deposit`=#Entity.Deposit#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentDay">
+        `RentDay`=#Entity.RentDay#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Enabled">
+        `Enabled`=#Entity.Enabled#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsDeleted">
+        `IsDeleted`=#Entity.IsDeleted#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.ExpiredTime">
+        `ExpiredTime`=#Entity.ExpiredTime#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="RentFeeQueryForm.ID">
+        `ID`=#RentFeeQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="RentFeeQueryForm.IDs">
+        <iterate property="RentFeeQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#RentFeeQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.HouseOrRoomID">
+        `HouseOrRoomID`=#RentFeeQueryForm.HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="RentFeeQueryForm.HouseOrRoomIDs">
+        <iterate property="RentFeeQueryForm.HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#RentFeeQueryForm.HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Type_Start">
+        `Type`&gt;=#RentFeeQueryForm.Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Type_End">
+        `Type`&lt;=#RentFeeQueryForm.Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentMoney_Start">
+        `RentMoney`&gt;=#RentFeeQueryForm.RentMoney_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentMoney_End">
+        `RentMoney`&lt;=#RentFeeQueryForm.RentMoney_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Cycle_Start">
+        `Cycle`&gt;=#RentFeeQueryForm.Cycle_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Cycle_End">
+        `Cycle`&lt;=#RentFeeQueryForm.Cycle_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.CycleType_Start">
+        `CycleType`&gt;=#RentFeeQueryForm.CycleType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.CycleType_End">
+        `CycleType`&lt;=#RentFeeQueryForm.CycleType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Remark">
+        `Remark` LIKE '%$RentFeeQueryForm.Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Deposit_Start">
+        `Deposit`&gt;=#RentFeeQueryForm.Deposit_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Deposit_End">
+        `Deposit`&lt;=#RentFeeQueryForm.Deposit_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Creator">
+        `Creator`=#RentFeeQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="RentFeeQueryForm.Creators">
+        <iterate property="RentFeeQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#RentFeeQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#RentFeeQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#RentFeeQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.LastUpdator">
+        `LastUpdator`=#RentFeeQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#RentFeeQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#RentFeeQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentDay_Start">
+        `RentDay`&gt;=#RentFeeQueryForm.RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentDay_End">
+        `RentDay`&lt;=#RentFeeQueryForm.RentDay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.Enabled">
+        `Enabled`=#RentFeeQueryForm.Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.IsDeleted">
+        `IsDeleted`=#RentFeeQueryForm.IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.ExpiredTime_Start">
+        `ExpiredTime`&gt;=#RentFeeQueryForm.ExpiredTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.ExpiredTime_End">
+        `ExpiredTime`&lt;=#RentFeeQueryForm.ExpiredTime_End#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteRentFee" parameterClass="RentFeeQueryForm">
+    DELETE FROM `RentFee` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentMoney_Start">
+        `RentMoney`&gt;=#RentMoney_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentMoney_End">
+        `RentMoney`&lt;=#RentMoney_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Cycle_Start">
+        `Cycle`&gt;=#Cycle_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cycle_End">
+        `Cycle`&lt;=#Cycle_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CycleType_Start">
+        `CycleType`&gt;=#CycleType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CycleType_End">
+        `CycleType`&lt;=#CycleType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Deposit_Start">
+        `Deposit`&gt;=#Deposit_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Deposit_End">
+        `Deposit`&lt;=#Deposit_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDay_Start">
+        `RentDay`&gt;=#RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_End">
+        `RentDay`&lt;=#RentDay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ExpiredTime_Start">
+        `ExpiredTime`&gt;=#ExpiredTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ExpiredTime_End">
+        `ExpiredTime`&lt;=#ExpiredTime_End#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryRentFeeLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `RentFee`
+   </select>
+   <select id="QueryRentFeeRecordCount" resultClass="int" parameterClass="RentFeeQueryForm">
+   SELECT COUNT(*) FROM `RentFee` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentMoney_Start">
+        `RentMoney`&gt;=#RentMoney_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentMoney_End">
+        `RentMoney`&lt;=#RentMoney_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cycle_Start">
+        `Cycle`&gt;=#Cycle_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Cycle_End">
+        `Cycle`&lt;=#Cycle_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CycleType_Start">
+        `CycleType`&gt;=#CycleType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CycleType_End">
+        `CycleType`&lt;=#CycleType_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="Deposit_Start">
+        `Deposit`&gt;=#Deposit_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Deposit_End">
+        `Deposit`&lt;=#Deposit_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_Start">
+        `RentDay`&gt;=#RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_End">
+        `RentDay`&lt;=#RentDay_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ExpiredTime_Start">
+        `ExpiredTime`&gt;=#ExpiredTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ExpiredTime_End">
+        `ExpiredTime`&lt;=#ExpiredTime_End#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

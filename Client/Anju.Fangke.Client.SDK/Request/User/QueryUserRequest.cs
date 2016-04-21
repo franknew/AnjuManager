@@ -14,6 +14,6 @@ namespace Anju.Fangke.Client.SDK
         }
 
         [ArgMapping("form")]
-        public FullUserQueryForm Form { get; set; }
+        public FullUserQueryForm form { get; set; }
     }
 }

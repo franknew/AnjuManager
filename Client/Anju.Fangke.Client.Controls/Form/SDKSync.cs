@@ -75,12 +75,19 @@ namespace SOAFramework.Client.Controls
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var param = e.Argument as SDKSyncParam<T>;
-            t = SDKFactory.Client.Execute(param.Request);
-            e.Result = new SDKSyncParam<T> { CallBack = param.CallBack, Response = t };
+            try
+            {
+                var param = e.Argument as SDKSyncParam<T>;
+                t = SDKFactory.Client.Execute(param.Request);
+                e.Result = new SDKSyncParam<T> { CallBack = param.CallBack, Response = t };
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
-        private ChildForm GetCurrentActiveChildForm()
+        private static ChildForm GetCurrentActiveChildForm()
         {
             if (Form.ActiveForm != null)
             {

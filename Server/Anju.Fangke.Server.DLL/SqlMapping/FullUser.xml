@@ -16,7 +16,7 @@
           u.`ID`=#ID#
         </isNotNull>
         <isNotNull prepend="AND" property="Name">
-          u.`Name`=#Name#
+          u.`Name` like '%$Name$%'
         </isNotNull>
         <isNotNull prepend="AND" property="Creator">
           u.`Creator`=#Creator#
@@ -49,13 +49,13 @@
           ui.`QQ` LIKE '%QQ%'
         </isNotNull>
         <isNotNull prepend="AND" property="Mobile">
-          ui.`Mobile` LIKE '%Mobile%'
+          ui.`Mobile` LIKE '%$Mobile$%'
         </isNotNull>
         <isNotNull prepend="AND" property="WX">
           ui.`WX` LIKE '%WX%'
         </isNotNull>
         <isNotNull prepend="AND" property="Address">
-          ui.`Address` LIKE '%Address%'
+          ui.`Address` LIKE '%A$ddress$%'
         </isNotNull>
         <isNotNull prepend="AND" property="Identity">
           ui.`Identity`=#Identity#
@@ -66,7 +66,7 @@
         <isNotNull prepend="AND" property="Remark">
           ui.`Remark` LIKE '%$Remark$%'
         </isNotNull>
-        <isNotNull property="IDs">
+        <isNotNull prepend="AND" property="IDs">
           <iterate property="IDs" open="(" close=")" conjunction="OR">
             u.ID=#IDs[]#
           </iterate>

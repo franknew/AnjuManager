@@ -33,5 +33,10 @@ namespace Anju.Fangke.Client.SDK
         /// </summary>
         public string LevelID { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Enabled { get; set; }
+
     }
 }

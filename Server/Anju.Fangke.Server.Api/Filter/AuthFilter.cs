@@ -16,6 +16,7 @@ namespace Anju.Fangke.Server.Api
         {
             int result = 0;
             LoginBLL logonbll = new LoginBLL();
+            UserBLL userbll = new UserBLL();
             //验证没有token
             if (!context.Parameters.ContainsKey("token") || context.Parameters["token"] == null)
             {
@@ -26,7 +27,7 @@ namespace Anju.Fangke.Server.Api
             //验证有没有登录
             string token = context.Parameters["token"].ToString();
 
-            //int result = userbll.CheckUserAuth(token);
+            result = userbll.CheckUserAuth(token);
             switch (result)
             {
                 case 3:

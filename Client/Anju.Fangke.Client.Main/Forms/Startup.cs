@@ -71,6 +71,7 @@ namespace Anju.Fangke.Client.Main
 
         private void InitWatcher()
         {
+            _watcher.Clear();
             _watcher.AddNoticer(new TabNoticer("tabMenu", this));
             _watcher.AddNoticer(new FormNoticer(this.Name, this));
         }
@@ -115,6 +116,35 @@ namespace Anju.Fangke.Client.Main
         private void 账单管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form form = AddMdiChild("Anju.Fangke.Client.Forms.BillManagement.dll", "Anju.Fangke.Client.Forms.BillManagement");
+            _watcher.Add(form.Name, form.Text);
+        }
+
+        private void 退出ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            this.ShowLogin();
+        }
+
+        private void 角色管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = AddMdiChild("Anju.Fangke.Client.Forms.RoleManagement.dll", "Anju.Fangke.Client.Forms.RoleManagement");
+            _watcher.Add(form.Name, form.Text);
+        }
+
+        private void 房东管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = AddMdiChild("Anju.Fangke.Client.Forms.CustomerManagement.dll", "Anju.Fangke.Client.Forms.CustomerManagement");
+            _watcher.Add(form.Name, form.Text);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form form = AddMdiChild("Anju.Fangke.Client.Forms.AssetManagement.dll", "Anju.Fangke.Client.Forms.HouseManagement");
+            _watcher.Add(form.Name, form.Text);
+        }
+
+        private void 房源分配ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = AddMdiChild("Anju.Fangke.Client.Forms.AssetManagement.dll", "Anju.Fangke.Client.Forms.HouseAllocate");
             _watcher.Add(form.Name, form.Text);
         }
     }

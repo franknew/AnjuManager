@@ -88,6 +88,7 @@
             this.btnPassword.Name = "btnPassword";
             this.btnPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.btnPassword.SelectedText = "";
+            this.btnPassword.SelectionLength = 0;
             this.btnPassword.Size = new System.Drawing.Size(218, 23);
             this.btnPassword.TabIndex = 0;
             this.btnPassword.UseSelectable = true;
@@ -105,6 +106,7 @@
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
+            this.txbUserName.SelectionLength = 0;
             this.txbUserName.Size = new System.Drawing.Size(218, 23);
             this.txbUserName.TabIndex = 3;
             this.txbUserName.TabStop = false;
@@ -132,6 +134,7 @@
             this.Controls.Add(this.btnChangePassword);
             this.Name = "ChangePassword";
             this.Text = "修改密码";
+            this.Load += new System.EventHandler(this.ChangePassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

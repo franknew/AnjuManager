@@ -19,7 +19,7 @@ namespace Anju.Fangke.Server.BLL
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
-        public List<FullRoleInfo> Query(RoleQueryForm form)
+        public List<FullRoleInfo> QueryFullRole(RoleQueryForm form)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             RoleDao dao = new RoleDao(mapper);
@@ -52,6 +52,13 @@ namespace Anju.Fangke.Server.BLL
             return result;
         }
 
+        public List<Role> Query(RoleQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            RoleDao dao = new RoleDao(mapper);
+            return dao.Query(form);
+        }
+
         public List<AuthorityNodeForCheck> QueryAuthority()
         {
             AuthorityMapping mapping = XMLHelper.DeserializeFromFile<AuthorityMapping>(Common.AuthorityMappingFile);
@@ -80,10 +87,7 @@ namespace Anju.Fangke.Server.BLL
             var roles = roledao.QueryRoleByUserID(userid);
             foreach (var role in roles)
             {
-                if (role.DataAccessType == (int)DataAccesssEnum.All)
-                {
-                    return null;
-                }
+                if (role.DataAccessType == (int)DataAccesssEnum.All) return null; 
             }
 
             useridlist.Add(userid);
@@ -93,10 +97,7 @@ namespace Anju.Fangke.Server.BLL
                 list.AddRange(GetAllSubRoles(ur.RoleID));
             }
             var roleids = (from r in list select r.ID).ToList();
-            if (roleids.Count == 0)
-            {
-                return useridlist;
-            }
+            if (roleids.Count == 0) return useridlist; 
             var users = urdao.Query(new User_RoleQueryForm { RoleIDs = roleids });
             useridlist.AddRange((from u in users select u.UserID).ToList());
             return useridlist;

@@ -76,9 +76,11 @@
     <Compile Include="BuildingBLL.cs" />
     <Compile Include="ChargeFeeBLL.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="CustomerBLL.cs" />
     <Compile Include="DataDictionaryBLL.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="HouseBLL.cs" />
+    <Compile Include="House_CustomerBLL.cs" />
     <Compile Include="House_OtherFeeBLL.cs" />
     <Compile Include="LoginBLL.cs" />
     <Compile Include="MapperHelper.cs" />

@@ -41,6 +41,10 @@
         `CreateTime`&lt;=#CreateTime_End#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
     <isNotNull prepend="AND" property="Remark">
         `Remark` LIKE '%$Remark$%'
     </isNotNull>
@@ -50,6 +54,10 @@
     </isNotNull>
     <isNotNull prepend="AND" property="LastUpdateTime_End">
         `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
     </isNotNull>
     
     <isNotNull prepend="AND" property="LastUpdator">
@@ -112,11 +120,24 @@
     <isNotNull prepend="AND" property="ActionQueryForm.ID">
         `ID`=#ActionQueryForm.ID#
     </isNotNull>
+    
+        <isNotNull prepend="AND"  property="ActionQueryForm.IDs">
+        <iterate property="ActionQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#ActionQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
     <isNotNull prepend="AND" property="ActionQueryForm.Name">
         `Name`=#ActionQueryForm.Name#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="ActionQueryForm.Creator">
         `Creator`=#ActionQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="ActionQueryForm.Creators">
+        <iterate property="ActionQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#ActionQueryForm.Creators[]#
+        </iterate>
     </isNotNull>
     <isNotNull prepend="AND" property="ActionQueryForm.CreateTime_Start">
         `CreateTime`&gt;=#ActionQueryForm.CreateTime_Start#
@@ -124,25 +145,31 @@
     <isNotNull prepend="AND" property="ActionQueryForm.CreateTime_End">
         `CreateTime`&lt;=#ActionQueryForm.CreateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="ActionQueryForm.Remark">
         `Remark` LIKE '%$ActionQueryForm.Remark$%'
     </isNotNull>
+    
     <isNotNull prepend="AND" property="ActionQueryForm.LastUpdateTime_Start">
         `LastUpdateTime`&gt;=#ActionQueryForm.LastUpdateTime_Start#
     </isNotNull>
     <isNotNull prepend="AND" property="ActionQueryForm.LastUpdateTime_End">
         `LastUpdateTime`&lt;=#ActionQueryForm.LastUpdateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="ActionQueryForm.LastUpdator">
         `LastUpdator`=#ActionQueryForm.LastUpdator#
     </isNotNull>
+    
     </dynamic>
   </update>
+  
   <delete id="DeleteAction" parameterClass="ActionQueryForm">
     DELETE FROM `Action` WHERE 1=1
     <isNotNull prepend="AND" property="ID">
         `ID`=#ID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="IDs">
         <iterate property="IDs" open="(" close=")" conjunction="OR">
          `ID`=#IDs[]#
@@ -151,9 +178,11 @@
     <isNotNull prepend="AND" property="Name">
         `Name`=#Name#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Creator">
         `Creator`=#Creator#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="Creators">
         <iterate property="Creators" open="(" close=")" conjunction="OR">
          `Creator`=#Creators[]#
@@ -165,18 +194,22 @@
     <isNotNull prepend="AND" property="CreateTime_End">
         `CreateTime`&lt;=#CreateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="Remark">
-        `Remark`=#Remark#
+        `Remark` LIKE '%$Remark$%'
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdateTime_Start">
         `LastUpdateTime`&gt;=#LastUpdateTime_Start#
     </isNotNull>
     <isNotNull prepend="AND" property="LastUpdateTime_End">
         `LastUpdateTime`&lt;=#LastUpdateTime_End#
     </isNotNull>
+    
     <isNotNull prepend="AND" property="LastUpdator">
         `LastUpdator`=#LastUpdator#
     </isNotNull>
+    
   </delete>
    <select id="QueryActionLastUpdateTime" resultClass="DateTime">
         SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Action`

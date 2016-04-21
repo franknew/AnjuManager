@@ -10,6 +10,7 @@ using Anju.Fangke.Client.SDK;
 using Anju.Fangke.Client.SDK.Entity;
 using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
+using SOAFramework.Library;
 using SOAFramework.Service.SDK.Core;
 
 namespace Anju.Fangke.Client.Forms
@@ -22,11 +23,6 @@ namespace Anju.Fangke.Client.Forms
         }
 
         private QueryBuildingResponse _buildingResponse = null;
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void BillManagement_InitControl(object sender, EventArgs e)
         {
@@ -72,6 +68,31 @@ namespace Anju.Fangke.Client.Forms
         {
             SOAFramework.Client.Controls.MessageBox.Show(this, "产生了" + response.Count.ToString() + "条账单，请点击查询按钮进行查询");
             btnQuery.Focus();
+        }
+
+        private void cmbBuilding_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbBuilding.SelectedIndex == 0) return;
+            string buildingID = cmbBuilding.SelectedValue?.ToString();
+            QueryHouseRequest request = new QueryHouseRequest();
+            request.token = Token;
+            request.form = new HouseQueryForm { BuildingID = buildingID };
+            SDKSync<QueryHouseResponse>.CreateInstance(this).Execute(request, Building_Callback);
+        }
+
+        private void Building_Callback(QueryHouseResponse response)
+        {
+            List<ReadEnum> datasource = new List<ReadEnum>();
+            foreach (var house in response.List)
+            {
+                datasource.Add(new ReadEnum
+                {
+                    Text = house.House.Name,
+                    Value = house.House.ID,
+                });
+            }
+            datasource.Insert(0, new ReadEnum { Value = "-1", Text = "全部" });
+            cmbHouse.DataSource = datasource;
         }
     }
 }

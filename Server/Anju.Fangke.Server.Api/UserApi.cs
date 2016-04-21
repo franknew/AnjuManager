@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SOAFramework.Service.Core;
 
 namespace Anju.Fangke.Server.Api
 {
+    [ServiceLayer(Module = "Anju.Fangke.Server.UserApi")]
     [AuthFilter]
     public class UserApi
     {
@@ -15,7 +17,6 @@ namespace Anju.Fangke.Server.Api
 
         public List<FullUser> Query(FullUserQueryForm form)
         {
-            form.Enabled = 1;
             form.IsDeleted = 0;
             return bll.Query(form);
         }
@@ -28,6 +29,7 @@ namespace Anju.Fangke.Server.Api
                 Enabled = form.Enabled,
                 Password = form.Password,
                 Name = form.Name,
+                IsDeleted = 0,
             };
             UserInfo ui = new UserInfo
             {

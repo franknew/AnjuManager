@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("房客易租");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("房客易租");
             this.groupBox3 = new SOAFramework.Client.Controls.GroupBox();
             this.dgvHouse = new SOAFramework.Client.Controls.DataGridView();
-            this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
-            this.btnEditRoom = new SOAFramework.Client.Controls.Button();
-            this.btnDelete = new SOAFramework.Client.Controls.Button();
-            this.btnEdit = new SOAFramework.Client.Controls.Button();
-            this.btnAdd = new SOAFramework.Client.Controls.Button();
-            this.tabFloor = new MetroFramework.Controls.MetroTabControl();
-            this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
-            this.tvBuilding = new SOAFramework.Client.Controls.TreeView();
             this.房屋名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.所在楼层 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.房型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +40,14 @@
             this.租金 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.已出租 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
+            this.btnEditRoom = new SOAFramework.Client.Controls.Button();
+            this.btnDelete = new SOAFramework.Client.Controls.Button();
+            this.btnEdit = new SOAFramework.Client.Controls.Button();
+            this.btnAdd = new SOAFramework.Client.Controls.Button();
+            this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
+            this.tvBuilding = new SOAFramework.Client.Controls.TreeView();
+            this.tabFloor = new MetroFramework.Controls.MetroTabControl();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHouse)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -74,14 +74,15 @@
             this.dgvHouse.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvHouse.BindingRequestPropertyName = null;
             this.dgvHouse.BindingResponsePropertyName = null;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHouse.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvHouse.BindingSourcePropertyName = null;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHouse.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHouse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.房屋名称,
@@ -91,14 +92,14 @@
             this.租金,
             this.已出租,
             this.备注});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHouse.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHouse.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHouse.Location = new System.Drawing.Point(3, 109);
             this.dgvHouse.Name = "dgvHouse";
@@ -107,105 +108,6 @@
             this.dgvHouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHouse.Size = new System.Drawing.Size(853, 312);
             this.dgvHouse.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnEditRoom);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.btnEdit);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(3, 56);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(853, 53);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            // 
-            // btnEditRoom
-            // 
-            this.btnEditRoom.ClickedMessage = null;
-            this.btnEditRoom.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnEditRoom.IngoreCallbackOnce = false;
-            this.btnEditRoom.Location = new System.Drawing.Point(249, 20);
-            this.btnEditRoom.Name = "btnEditRoom";
-            this.btnEditRoom.Response = null;
-            this.btnEditRoom.Size = new System.Drawing.Size(75, 23);
-            this.btnEditRoom.TabIndex = 3;
-            this.btnEditRoom.Text = "配置房间";
-            this.btnEditRoom.UseSelectable = true;
-            this.btnEditRoom.Click += new System.EventHandler(this.btnEditRoom_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.ClickedMessage = null;
-            this.btnDelete.IngoreCallbackOnce = false;
-            this.btnDelete.Location = new System.Drawing.Point(168, 20);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Response = null;
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.UseSelectable = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.ClickedMessage = null;
-            this.btnEdit.IngoreCallbackOnce = false;
-            this.btnEdit.Location = new System.Drawing.Point(87, 20);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Response = null;
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "编辑";
-            this.btnEdit.UseSelectable = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.ClickedMessage = null;
-            this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAdd.IngoreCallbackOnce = false;
-            this.btnAdd.Location = new System.Drawing.Point(6, 20);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Response = null;
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "新增";
-            this.btnAdd.UseSelectable = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // tabFloor
-            // 
-            this.tabFloor.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabFloor.Location = new System.Drawing.Point(3, 17);
-            this.tabFloor.Name = "tabFloor";
-            this.tabFloor.Size = new System.Drawing.Size(853, 39);
-            this.tabFloor.TabIndex = 0;
-            this.tabFloor.UseSelectable = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.tvBuilding);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox2.Location = new System.Drawing.Point(5, 30);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(228, 424);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            // 
-            // tvBuilding
-            // 
-            this.tvBuilding.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvBuilding.Location = new System.Drawing.Point(3, 17);
-            this.tvBuilding.Name = "tvBuilding";
-            treeNode1.Name = "nodeRoot";
-            treeNode1.Text = "房客易租";
-            this.tvBuilding.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.tvBuilding.Size = new System.Drawing.Size(222, 404);
-            this.tvBuilding.TabIndex = 0;
-            this.tvBuilding.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBuilding_NodeMouseClick);
             // 
             // 房屋名称
             // 
@@ -262,6 +164,106 @@
             this.备注.Name = "备注";
             this.备注.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnEditRoom);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.btnEdit);
+            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(3, 56);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(853, 53);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnEditRoom
+            // 
+            this.btnEditRoom.ClickedMessage = null;
+            this.btnEditRoom.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEditRoom.IngoreCallbackOnce = false;
+            this.btnEditRoom.Location = new System.Drawing.Point(249, 20);
+            this.btnEditRoom.Name = "btnEditRoom";
+            this.btnEditRoom.Response = null;
+            this.btnEditRoom.Size = new System.Drawing.Size(75, 23);
+            this.btnEditRoom.TabIndex = 3;
+            this.btnEditRoom.Text = "配置房间";
+            this.btnEditRoom.UseSelectable = true;
+            this.btnEditRoom.Visible = false;
+            this.btnEditRoom.Click += new System.EventHandler(this.btnEditRoom_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.ClickedMessage = null;
+            this.btnDelete.IngoreCallbackOnce = false;
+            this.btnDelete.Location = new System.Drawing.Point(168, 20);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Response = null;
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.ClickedMessage = null;
+            this.btnEdit.IngoreCallbackOnce = false;
+            this.btnEdit.Location = new System.Drawing.Point(87, 20);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Response = null;
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "编辑";
+            this.btnEdit.UseSelectable = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.ClickedMessage = null;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAdd.IngoreCallbackOnce = false;
+            this.btnAdd.Location = new System.Drawing.Point(6, 20);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Response = null;
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "新增";
+            this.btnAdd.UseSelectable = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tvBuilding);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox2.Location = new System.Drawing.Point(5, 30);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(228, 424);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            // 
+            // tvBuilding
+            // 
+            this.tvBuilding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvBuilding.Location = new System.Drawing.Point(3, 17);
+            this.tvBuilding.Name = "tvBuilding";
+            treeNode2.Name = "nodeRoot";
+            treeNode2.Text = "房客易租";
+            this.tvBuilding.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2});
+            this.tvBuilding.Size = new System.Drawing.Size(222, 404);
+            this.tvBuilding.TabIndex = 0;
+            this.tvBuilding.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBuilding_NodeMouseClick);
+            // 
+            // tabFloor
+            // 
+            this.tabFloor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabFloor.Location = new System.Drawing.Point(3, 17);
+            this.tabFloor.Name = "tabFloor";
+            this.tabFloor.Size = new System.Drawing.Size(853, 39);
+            this.tabFloor.TabIndex = 0;
+            this.tabFloor.UseSelectable = true;
+            // 
             // AssetManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -285,7 +287,6 @@
         private SOAFramework.Client.Controls.GroupBox groupBox3;
         private SOAFramework.Client.Controls.GroupBox groupBox2;
         private SOAFramework.Client.Controls.TreeView tvBuilding;
-        private MetroFramework.Controls.MetroTabControl tabFloor;
         private SOAFramework.Client.Controls.DataGridView dgvHouse;
         private SOAFramework.Client.Controls.GroupBox groupBox1;
         private SOAFramework.Client.Controls.Button btnDelete;
@@ -299,5 +300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 租金;
         private System.Windows.Forms.DataGridViewCheckBoxColumn 已出租;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
+        private MetroFramework.Controls.MetroTabControl tabFloor;
     }
 }

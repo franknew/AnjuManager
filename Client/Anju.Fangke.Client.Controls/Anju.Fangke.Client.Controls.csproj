@@ -128,6 +128,9 @@
     <Compile Include="Label\Label.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LinkLabel\LinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MessageBox\ClientMessageBox.cs" />
     <Compile Include="NumbericUpDown\NumbericUpDown.cs">
       <SubType>Component</SubType>

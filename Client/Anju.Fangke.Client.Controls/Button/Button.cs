@@ -97,10 +97,7 @@ namespace SOAFramework.Client.Controls
                     _status = this.Enabled;
                     this.Enabled = false;
                 }
-                if (InitClick != null)
-                {
-                    InitClick.Invoke(this, e);
-                }
+                if (InitClick != null) InitClick.Invoke(this, e); 
                 //收集窗体数据
                 data = form.CollectData();
                 _worker.DoWork += worker_DoWork;
@@ -127,7 +124,26 @@ namespace SOAFramework.Client.Controls
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             BaseForm form = this.FindForm() as BaseForm;
-
+            BaseResponse baseresponse = Response as BaseResponse;
+            if (baseresponse.IsError)
+            {
+                switch (baseresponse.Code)
+                {
+                    case 3:
+                        dynamic mainform = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle);
+                        mainform.ShowLogin();
+                        form?.Activate();
+                        form?.ActiveControl?.Focus();
+                        break;
+                    default:
+                        _handler = new ErrorHandler
+                        {
+                            IsError = true,
+                            Message = baseresponse.ErrorMessage,
+                        };
+                        break; 
+                }
+            }
             form.HideSpinner();
 
             if (_handler.IsError)
@@ -156,13 +172,7 @@ namespace SOAFramework.Client.Controls
                 if (!string.IsNullOrEmpty(RequestName))
                 {
                     Form form = this.FindForm();
-                    ContainerForm container = null;
-                    if (form is PopupForm)
-                    {
-                        if (form.Owner is ContainerForm) container = form.Owner as ContainerForm; 
-                        else if (form.Owner != null) container = form.Owner.MdiParent as ContainerForm; 
-                    }
-                    else container = form.MdiParent as ContainerForm;
+                    ContainerForm container = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle) as ContainerForm;
                     var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
                     if (sdk == null)
                     {
@@ -194,23 +204,8 @@ namespace SOAFramework.Client.Controls
                     var responseType = requestType.BaseType.GetGenericArguments()[0];
 
                     Response = SDKFactory.Client.Execute(request, responseType);
-                    dynamic dyresponse = Response;
-                    if (dyresponse.IsError)
-                    {
-                        _handler = new ErrorHandler
-                        {
-                            IsError = true,
-                            Message = dyresponse.ErrorMessage,
-                        };
-                        return;
-                    }
-                    //没有token或者token失效，需要重新登录
-                    if (dyresponse.Code == -1)
-                    {
-                        dynamic mdiparent = this.FindForm().MdiParent;
-                        mdiparent.ShowLogin();
-                        IngoreCallbackOnce = true;
-                    }
+                    BaseResponse baseresponse = Response as BaseResponse;
+                    //dynamic dyresponse = Response;
                 }
             }
             catch (Exception ex)

@@ -74,19 +74,39 @@
     <isNotNull prepend="AND" property="User_RoleQueryForm.ID">
         `ID`=#User_RoleQueryForm.ID#
     </isNotNull>
+    
+        <isNotNull prepend="AND"  property="User_RoleQueryForm.IDs">
+        <iterate property="User_RoleQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#User_RoleQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
     <isNotNull prepend="AND" property="User_RoleQueryForm.UserID">
         `UserID`=#User_RoleQueryForm.UserID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="User_RoleQueryForm.UserIDs">
+        <iterate property="User_RoleQueryForm.UserIDs" open="(" close=")" conjunction="OR">
+         `UserID`=#User_RoleQueryForm.UserIDs[]#
+        </iterate>
     </isNotNull>
     <isNotNull prepend="AND" property="User_RoleQueryForm.RoleID">
         `RoleID`=#User_RoleQueryForm.RoleID#
     </isNotNull>
+    
+        <isNotNull prepend="AND"  property="User_RoleQueryForm.RoleIDs">
+        <iterate property="User_RoleQueryForm.RoleIDs" open="(" close=")" conjunction="OR">
+         `RoleID`=#User_RoleQueryForm.RoleIDs[]#
+        </iterate>
+    </isNotNull>
     </dynamic>
   </update>
+  
   <delete id="DeleteUser_Role" parameterClass="User_RoleQueryForm">
     DELETE FROM `User_Role` WHERE 1=1
     <isNotNull prepend="AND" property="ID">
         `ID`=#ID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="IDs">
         <iterate property="IDs" open="(" close=")" conjunction="OR">
          `ID`=#IDs[]#
@@ -95,6 +115,7 @@
     <isNotNull prepend="AND" property="UserID">
         `UserID`=#UserID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="UserIDs">
         <iterate property="UserIDs" open="(" close=")" conjunction="OR">
          `UserID`=#UserIDs[]#
@@ -103,6 +124,7 @@
     <isNotNull prepend="AND" property="RoleID">
         `RoleID`=#RoleID#
     </isNotNull>
+    
         <isNotNull prepend="AND"  property="RoleIDs">
         <iterate property="RoleIDs" open="(" close=")" conjunction="OR">
          `RoleID`=#RoleIDs[]#

@@ -28,7 +28,7 @@ namespace Anju.Fangke.Server.BLL
 
         public bool Update(RentFee fee)
         {
-            if (string.IsNullOrEmpty(fee.ID)) throw new Exception("房租ID不能为空");
+            //if (string.IsNullOrEmpty(fee.ID)) throw new Exception("房租ID不能为空");
             ISqlMapper mapper = MapperHelper.GetMapper();
             RentFeeDao dao = new RentFeeDao(mapper);
             return dao.Update(new RentFeeUpdateForm

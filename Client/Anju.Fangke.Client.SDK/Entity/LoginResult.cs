@@ -10,7 +10,7 @@ namespace Anju.Fangke.Client.SDK
     {
         public string token { get; set; }
 
-        public UserFullInfo User { get; set; }
+        public UserEntireInfo User { get; set; }
 
         public List<Menu> Menu { get; set; }
     }

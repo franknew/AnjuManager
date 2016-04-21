@@ -43,5 +43,10 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public int? Enabled { get; set; }
         
+        /// <summary>
+        /// 片区ID
+        /// </summary>
+        public string DistrictID { get; set; }
+        
     }
 }

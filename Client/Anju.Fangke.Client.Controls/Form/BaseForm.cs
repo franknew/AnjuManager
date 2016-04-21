@@ -61,6 +61,7 @@ namespace SOAFramework.Client.Forms
 
         public event EventHandler AfterLoaded;
         public event EventHandler InitControl;
+        public event EventHandler ShownOnSync;
 
         public Dictionary<string, object> DataDictionary = new Dictionary<string, object>();
 
@@ -166,10 +167,9 @@ namespace SOAFramework.Client.Forms
             BackgroundWorker worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
             worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-
             this.ShowSpinner();
             _allcontrols = this.GetAllControls();
-            worker.RunWorkerAsync(_allcontrols);
+            worker.RunWorkerAsync(new WorkParam { Data = this.CollectData(), Controls = _allcontrols });
         }
 
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -212,7 +212,7 @@ namespace SOAFramework.Client.Forms
                         }
                         dynamic datadictionary = Activator.CreateInstance(modelType);
                         datadictionary.Name = "全部";
-                        datadictionary.Value = -1;
+                        datadictionary.Value = "-1";
                         result.Items.Insert(0, datadictionary);
                     }
                     property.SetValue(c, result.Items, null);
@@ -226,7 +226,8 @@ namespace SOAFramework.Client.Forms
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             #region 绑定数据字典
-            _allcontrols = e.Argument as List<Control>;
+            WorkParam param = e.Argument as WorkParam;
+            _allcontrols = param.Controls;
             var initablebindings = _allcontrols.OfType<IInitableBinding>();
             List<string> groups = new List<string>();
             foreach (var binding in initablebindings)
@@ -245,15 +246,16 @@ namespace SOAFramework.Client.Forms
             var responseType = requestType.BaseType.GetGenericArguments()[0];
             object Response = SDKFactory.Client.Execute(request, responseType);
             e.Result = Response;
-            
+
+            if (ShownOnSync != null) ShownOnSync(param.Data, e);
             #endregion
         }
         #endregion
     }
 
-    public class WorkResult
+    public class WorkParam
     {
-        public object Response { get; set; }
+        public Dictionary<string, object> Data { get; set; }
 
         public List<Control> Controls { get; set; }
     }

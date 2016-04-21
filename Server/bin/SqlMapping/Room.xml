@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Room" type="Anju.Fangke.Server.Model.Room" />
+    <typeAlias alias="RoomQueryForm" type="Anju.Fangke.Server.Form.RoomQueryForm" />
+    <typeAlias alias="RoomUpdateForm" type="Anju.Fangke.Server.Form.RoomUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryRoom" resultClass="Room" parameterClass="RoomQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `Room`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseID">
+        `HouseID`=#HouseID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseIDs">
+        <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_Start">
+        `Area`&gt;=#Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_End">
+        `Area`&lt;=#Area_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Area">
+        `Area`=#Area#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddRoom" parameterClass="Room">
+  INSERT INTO `Room`
+  (
+    `ID`,
+    `HouseID`,
+    `Area`,
+    `Name`,
+    `Remark`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`,
+    `Enabled`,
+    `IsDeleted`
+  )
+  VALUES
+  (
+        #ID#,
+        #HouseID#,
+        #Area#,
+        #Name#,
+        #Remark#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#,
+        #Enabled#,
+        #IsDeleted#
+  )
+  </insert>
+  <update id="UpdateRoom" parameterClass="RoomUpdateForm">
+  UPDATE `Room`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.HouseID">
+        `HouseID`=#Entity.HouseID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Area">
+        `Area`=#Entity.Area#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Enabled">
+        `Enabled`=#Entity.Enabled#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsDeleted">
+        `IsDeleted`=#Entity.IsDeleted#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="RoomQueryForm.ID">
+        `ID`=#RoomQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="RoomQueryForm.IDs">
+        <iterate property="RoomQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#RoomQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomQueryForm.HouseID">
+        `HouseID`=#RoomQueryForm.HouseID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="RoomQueryForm.HouseIDs">
+        <iterate property="RoomQueryForm.HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#RoomQueryForm.HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomQueryForm.Area_Start">
+        `Area`&gt;=#RoomQueryForm.Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomQueryForm.Area_End">
+        `Area`&lt;=#RoomQueryForm.Area_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomQueryForm.Name">
+        `Name`=#RoomQueryForm.Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomQueryForm.Remark">
+        `Remark` LIKE '%$RoomQueryForm.Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomQueryForm.Creator">
+        `Creator`=#RoomQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="RoomQueryForm.Creators">
+        <iterate property="RoomQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#RoomQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#RoomQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#RoomQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomQueryForm.LastUpdator">
+        `LastUpdator`=#RoomQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#RoomQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RoomQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#RoomQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomQueryForm.Enabled">
+        `Enabled`=#RoomQueryForm.Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RoomQueryForm.IsDeleted">
+        `IsDeleted`=#RoomQueryForm.IsDeleted#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteRoom" parameterClass="RoomQueryForm">
+    DELETE FROM `Room` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseID">
+        `HouseID`=#HouseID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseIDs">
+        <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_Start">
+        `Area`&gt;=#Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_End">
+        `Area`&lt;=#Area_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryRoomLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Room`
+   </select>
+   <select id="QueryRoomRecordCount" resultClass="int" parameterClass="RoomQueryForm">
+   SELECT COUNT(*) FROM `Room` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseID">
+        `HouseID`=#HouseID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="HouseIDs">
+        <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_Start">
+        `Area`&gt;=#Area_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Area_End">
+        `Area`&lt;=#Area_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Enabled">
+        `Enabled`=#Enabled#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsDeleted">
+        `IsDeleted`=#IsDeleted#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

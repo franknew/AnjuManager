@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Level" type="Anju.Fangke.Server.Model.Level" />
+    <typeAlias alias="LevelQueryForm" type="Anju.Fangke.Server.Form.LevelQueryForm" />
+    <typeAlias alias="LevelUpdateForm" type="Anju.Fangke.Server.Form.LevelUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryLevel" resultClass="Level" parameterClass="LevelQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `Level`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DataAccessType_Start">
+        `DataAccessType`&gt;=#DataAccessType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DataAccessType_End">
+        `DataAccessType`&lt;=#DataAccessType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DataAccessType">
+        `DataAccessType`=#DataAccessType#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddLevel" parameterClass="Level">
+  INSERT INTO `Level`
+  (
+    `ID`,
+    `Name`,
+    `DataAccessType`,
+    `Creator`,
+    `CreateTime`,
+    `LastUpdator`,
+    `LastUpdateTime`
+  )
+  VALUES
+  (
+        #ID#,
+        #Name#,
+        #DataAccessType#,
+        #Creator#,
+        #CreateTime#,
+        #LastUpdator#,
+        #LastUpdateTime#
+  )
+  </insert>
+  <update id="UpdateLevel" parameterClass="LevelUpdateForm">
+  UPDATE `Level`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.DataAccessType">
+        `DataAccessType`=#Entity.DataAccessType#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="LevelQueryForm.ID">
+        `ID`=#LevelQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="LevelQueryForm.IDs">
+        <iterate property="LevelQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#LevelQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelQueryForm.Name">
+        `Name`=#LevelQueryForm.Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LevelQueryForm.DataAccessType_Start">
+        `DataAccessType`&gt;=#LevelQueryForm.DataAccessType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelQueryForm.DataAccessType_End">
+        `DataAccessType`&lt;=#LevelQueryForm.DataAccessType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LevelQueryForm.Creator">
+        `Creator`=#LevelQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="LevelQueryForm.Creators">
+        <iterate property="LevelQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#LevelQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#LevelQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#LevelQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LevelQueryForm.LastUpdator">
+        `LastUpdator`=#LevelQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LevelQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LevelQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LevelQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LevelQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteLevel" parameterClass="LevelQueryForm">
+    DELETE FROM `Level` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="DataAccessType_Start">
+        `DataAccessType`&gt;=#DataAccessType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DataAccessType_End">
+        `DataAccessType`&lt;=#DataAccessType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryLevelLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Level`
+   </select>
+   <select id="QueryLevelRecordCount" resultClass="int" parameterClass="LevelQueryForm">
+   SELECT COUNT(*) FROM `Level` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DataAccessType_Start">
+        `DataAccessType`&gt;=#DataAccessType_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="DataAccessType_End">
+        `DataAccessType`&lt;=#DataAccessType_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

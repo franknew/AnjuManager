@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
+using SOAFramework.Service.Core.Model;
 
 namespace Anju.Fangke.Server.BLL
 {
@@ -78,6 +79,16 @@ namespace Anju.Fangke.Server.BLL
             }
             object result = method.Invoke(dao, new object[] { paramIn });
             List<T> list = result as List<T>;
+            return list;
+        }
+
+        public static List<string> GetDataAuthorityUserIDList()
+        {
+            List<string> list = null;
+            if (ServiceSession.Current != null && ServiceSession.Current.Context.Parameters.ContainsKey(DataAuthorityKey))
+            {
+                list = ServiceSession.Current.Context.Parameters[DataAuthorityKey] as List<string>;
+            }
             return list;
         }
     }

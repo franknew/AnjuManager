@@ -1,0 +1,1 @@
+ILMerge /t:winexe /out:fangke.exe Anju.Fangke.Client.Launcher.exe SOAFramework.Library.Extension.dll SOAFramework.Library.Http.dll Interop.IWshRuntimeLibrary.dll SOAFramework.Library.Json.dll SOAFramework.Service.SDK.Core.dll /targetplatform:v4

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Data;
 
 namespace SOAFramework.Client.Controls
 {
@@ -162,6 +163,20 @@ namespace SOAFramework.Client.Controls
                     }
                 }
             }
+        }
+        #endregion
+
+        #region action
+        public void Reset()
+        {
+            string valuemember = this.ValueMember;
+            string displaymember = this.DisplayMember;
+            DataTable tmptable = new DataTable();
+            tmptable.Columns.Add(valuemember);
+            tmptable.Columns.Add(displaymember);
+            var datasource = this.DataSource;
+            this.DataSource = tmptable;
+            this.DataSource = datasource;
         }
         #endregion
     }

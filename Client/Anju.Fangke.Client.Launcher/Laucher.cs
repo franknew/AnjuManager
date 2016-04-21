@@ -75,17 +75,11 @@ namespace Anju.Fangke.Client.Launcher
                 _value = 0;
                 foreach (var file in files)
                 {
-                    if (!file.NeedUpdate)
-                    {
-                        continue;
-                    }
+                    if (!file.NeedUpdate) continue; 
                     _value++;
                     string fullfilename = _managerPath.TrimEnd('\\') + "\\" + file.FileName.TrimStart('\\');
                     FileInfo saveFile = new FileInfo(fullfilename);
-                    if (!saveFile.Directory.Exists)
-                    {
-                        saveFile.Directory.Create();
-                    }
+                    if (!saveFile.Directory.Exists) saveFile.Directory.Create(); 
                     DownloadFileRequest request = new DownloadFileRequest();
                     request.FileName = file.FileName;
                     var response = SDKFactory.Client.Execute(request);
@@ -155,10 +149,7 @@ namespace Anju.Fangke.Client.Launcher
                 FileInfo saveFile = new FileInfo(fullfilename);
 
                 var version = versionFiles.Find(t => t.FileName == file.FileName);
-                if (version == null || version.LastModifyTime < file.LastModifyTime || !saveFile.Exists)
-                {
-                    file.NeedUpdate = true;
-                }
+                if (version == null || version.LastModifyTime < file.LastModifyTime || !saveFile.Exists) file.NeedUpdate = true; 
                 files.Add(file);
             }
             progress.Maximum = files.Count(t => t.NeedUpdate);

@@ -14,10 +14,7 @@ namespace Anju.Fangke.Server.BLL
         {
             List<FileVersion> list = new List<FileVersion>();
             DirectoryInfo directory = new DirectoryInfo(Common.NecessaryFilePath);
-            if (!directory.Exists)
-            {
-                return list;
-            }
+            if (!directory.Exists) return list; 
             var files = directory.GetFiles("*.*");
             foreach (var file in files)
             {

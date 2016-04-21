@@ -20,6 +20,7 @@ namespace Anju.Fangke.Server.BLL
 
         public string Add(Building building)
         {
+            building.Enabled = 1;
             building.IsDeleted = 0;
             ISqlMapper mapper = MapperHelper.GetMapper();
             BuildingDao dao = new BuildingDao(mapper);

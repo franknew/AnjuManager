@@ -101,7 +101,8 @@ namespace Anju.Fangke.Client.Forms
             if (dgvUsers.SelectedRows.Count > 0)
             {
                 ChangePassword form = new ChangePassword();
-                form.Binding = this.Binding;
+                FullUser user = dgvUsers.SelectedRows[0].DataBoundItem as FullUser;
+                form.UserName = user.Name;
                 form.ShowDialog(this);
             }
             else

@@ -17,4 +17,10 @@ namespace Anju.Fangke.Server.BLL
         整租 = 1,
     }
 
+    public enum CustomerType
+    {
+        业主=1,
+        租客=2,
+    }
+
 }

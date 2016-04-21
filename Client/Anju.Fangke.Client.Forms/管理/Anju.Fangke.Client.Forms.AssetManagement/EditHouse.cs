@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
 using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
+using SOAFramework.Library;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -28,7 +29,7 @@ namespace Anju.Fangke.Client.Forms
                 this.btnSave.IngoreCallbackOnce = true;
                 return;
             }
-            FullHouse house = this.CollectData<FullHouse>(this.Building.CurrentHouse);
+            var house = this.CollectData<FullHouse>(this.Building.CurrentHouse.Clone<FullHouse>());
             EditHouseRequest request = new EditHouseRequest();
             request.token = this.Token;
             request.form = house;
@@ -37,7 +38,7 @@ namespace Anju.Fangke.Client.Forms
 
         private void UpdateCallBack(CommonResponse response)
         {
-            this.Building.CurrentHouse.House.RentFee = this.Building.CurrentHouse.RentFee.RentMoney;
+            this.CollectData<FullHouse>(this.Building.CurrentHouse);
             //this.Building.CurrentHouse.House.IsRented = this.Building.CurrentHouse
             SOAFramework.Client.Controls.MessageBox.Show(this, "更新成功");
             this.Close();
@@ -47,7 +48,8 @@ namespace Anju.Fangke.Client.Forms
         {
             if (DesignMode) return;
             this.txbBuildingName.Text = this.Building.Name;
-            this.SetForm(this.Building.CurrentHouse);
+            var currentHouse = this.Building.CurrentHouse.Clone<FullHouse>();
+            this.SetForm(currentHouse);
         }
     }
 }

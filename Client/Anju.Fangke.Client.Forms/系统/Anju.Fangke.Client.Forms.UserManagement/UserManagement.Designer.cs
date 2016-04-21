@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAuthority = new SOAFramework.Client.Controls.Button();
             this.btnChangePassword = new SOAFramework.Client.Controls.Button();
@@ -194,7 +194,7 @@
             // 
             // cmbEnabled
             // 
-            this.cmbEnabled.BindingRequestPropertyName = "Enabled";
+            this.cmbEnabled.BindingRequestPropertyName = "form.Enabled";
             this.cmbEnabled.BindingResponsePropertyName = null;
             this.cmbEnabled.BindingSourcePropertyName = null;
             this.cmbEnabled.DisplayMember = "Name";
@@ -213,7 +213,7 @@
             // 
             // txbMobile
             // 
-            this.txbMobile.BindingRequestPropertyName = "Mobile";
+            this.txbMobile.BindingRequestPropertyName = "form.Mobile";
             this.txbMobile.BindingResponsePropertyName = null;
             this.txbMobile.BindingSourcePropertyName = null;
             this.txbMobile.EmptyToNull = true;
@@ -225,13 +225,14 @@
             this.txbMobile.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbMobile.SelectedText = "";
             this.txbMobile.SelectionLength = 0;
+            this.txbMobile.SelectionStart = 0;
             this.txbMobile.Size = new System.Drawing.Size(156, 23);
             this.txbMobile.TabIndex = 8;
             this.txbMobile.UseSelectable = true;
             // 
             // txbName
             // 
-            this.txbName.BindingRequestPropertyName = "CnName";
+            this.txbName.BindingRequestPropertyName = "form.CnName";
             this.txbName.BindingResponsePropertyName = null;
             this.txbName.BindingSourcePropertyName = null;
             this.txbName.EmptyToNull = true;
@@ -243,13 +244,14 @@
             this.txbName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbName.SelectedText = "";
             this.txbName.SelectionLength = 0;
+            this.txbName.SelectionStart = 0;
             this.txbName.Size = new System.Drawing.Size(156, 23);
             this.txbName.TabIndex = 7;
             this.txbName.UseSelectable = true;
             // 
             // txbId
             // 
-            this.txbId.BindingRequestPropertyName = "Identity";
+            this.txbId.BindingRequestPropertyName = "form.Identity";
             this.txbId.BindingResponsePropertyName = null;
             this.txbId.BindingSourcePropertyName = null;
             this.txbId.EmptyToNull = true;
@@ -261,13 +263,14 @@
             this.txbId.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbId.SelectedText = "";
             this.txbId.SelectionLength = 0;
+            this.txbId.SelectionStart = 0;
             this.txbId.Size = new System.Drawing.Size(156, 23);
             this.txbId.TabIndex = 9;
             this.txbId.UseSelectable = true;
             // 
             // txbUserName
             // 
-            this.txbUserName.BindingRequestPropertyName = "Form.CnName";
+            this.txbUserName.BindingRequestPropertyName = "form.Name";
             this.txbUserName.BindingResponsePropertyName = null;
             this.txbUserName.BindingSourcePropertyName = null;
             this.txbUserName.EmptyToNull = true;
@@ -279,6 +282,7 @@
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
             this.txbUserName.SelectionLength = 0;
+            this.txbUserName.SelectionStart = 0;
             this.txbUserName.Size = new System.Drawing.Size(156, 23);
             this.txbUserName.TabIndex = 6;
             this.txbUserName.UseSelectable = true;
@@ -336,14 +340,15 @@
             this.dgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvUsers.BindingRequestPropertyName = null;
             this.dgvUsers.BindingResponsePropertyName = "Users";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvUsers.BindingSourcePropertyName = null;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.用户名,

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.label1 = new SOAFramework.Client.Controls.Label();
             this.label2 = new SOAFramework.Client.Controls.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -72,16 +73,16 @@
             this.txbUserName.BindingSourcePropertyName = null;
             this.txbUserName.CanbeEmpty = false;
             this.txbUserName.EmptyWarning = "请输入用户名";
-            this.txbUserName.Lines = new string[] {
-        "admin"};
+            this.txbUserName.Lines = new string[0];
             this.txbUserName.Location = new System.Drawing.Point(97, 158);
             this.txbUserName.MaxLength = 32767;
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbUserName.SelectedText = "";
+            this.txbUserName.SelectionLength = 0;
+            this.txbUserName.SelectionStart = 0;
             this.txbUserName.Size = new System.Drawing.Size(179, 23);
             this.txbUserName.TabIndex = 1;
-            this.txbUserName.Text = "admin";
             this.txbUserName.UseSelectable = true;
             // 
             // txbPassword
@@ -91,17 +92,18 @@
             this.txbPassword.BindingSourcePropertyName = null;
             this.txbPassword.CanbeEmpty = false;
             this.txbPassword.EmptyWarning = "请输入密码";
-            this.txbPassword.Lines = new string[] {
-        "admin"};
+            this.txbPassword.Lines = new string[0];
             this.txbPassword.Location = new System.Drawing.Point(97, 189);
             this.txbPassword.MaxLength = 32767;
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbPassword.SelectedText = "";
+            this.txbPassword.SelectionLength = 0;
+            this.txbPassword.SelectionStart = 0;
             this.txbPassword.Size = new System.Drawing.Size(179, 23);
             this.txbPassword.TabIndex = 2;
-            this.txbPassword.Text = "admin";
             this.txbPassword.UseSelectable = true;
+            this.txbPassword.UseSystemPasswordChar = true;
             this.txbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPassword_KeyPress);
             // 
             // btnLogin
@@ -144,6 +146,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Opacity = 0.9D;
             this.Resizable = false;

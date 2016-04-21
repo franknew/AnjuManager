@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="House_Customer" type="Anju.Fangke.Server.Model.House_Customer" />
+    <typeAlias alias="House_CustomerQueryForm" type="Anju.Fangke.Server.Form.House_CustomerQueryForm" />
+    <typeAlias alias="House_CustomerUpdateForm" type="Anju.Fangke.Server.Form.House_CustomerUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryHouse_Customer" resultClass="House_Customer" parameterClass="House_CustomerQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `House_Customer`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerID">
+        `CustomerID`=#CustomerID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="CustomerIDs">
+        <iterate property="CustomerIDs" open="(" close=")" conjunction="OR">
+         `CustomerID`=#CustomerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type">
+        `Type`=#Type#
+    </isNotNull>
+    
+    </dynamic>
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddHouse_Customer" parameterClass="House_Customer">
+  INSERT INTO `House_Customer`
+  (
+    `ID`,
+    `CustomerID`,
+    `HouseOrRoomID`,
+    `Type`
+  )
+  VALUES
+  (
+        #ID#,
+        #CustomerID#,
+        #HouseOrRoomID#,
+        #Type#
+  )
+  </insert>
+  <update id="UpdateHouse_Customer" parameterClass="House_CustomerUpdateForm">
+  UPDATE `House_Customer`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.CustomerID">
+        `CustomerID`=#Entity.CustomerID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.HouseOrRoomID">
+        `HouseOrRoomID`=#Entity.HouseOrRoomID#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Type">
+        `Type`=#Entity.Type#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="House_CustomerQueryForm.ID">
+        `ID`=#House_CustomerQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="House_CustomerQueryForm.IDs">
+        <iterate property="House_CustomerQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#House_CustomerQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="House_CustomerQueryForm.CustomerID">
+        `CustomerID`=#House_CustomerQueryForm.CustomerID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="House_CustomerQueryForm.CustomerIDs">
+        <iterate property="House_CustomerQueryForm.CustomerIDs" open="(" close=")" conjunction="OR">
+         `CustomerID`=#House_CustomerQueryForm.CustomerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="House_CustomerQueryForm.HouseOrRoomID">
+        `HouseOrRoomID`=#House_CustomerQueryForm.HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="House_CustomerQueryForm.HouseOrRoomIDs">
+        <iterate property="House_CustomerQueryForm.HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#House_CustomerQueryForm.HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="House_CustomerQueryForm.Type_Start">
+        `Type`&gt;=#House_CustomerQueryForm.Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="House_CustomerQueryForm.Type_End">
+        `Type`&lt;=#House_CustomerQueryForm.Type_End#
+    </isNotNull>
+    
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteHouse_Customer" parameterClass="House_CustomerQueryForm">
+    DELETE FROM `House_Customer` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerID">
+        `CustomerID`=#CustomerID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="CustomerIDs">
+        <iterate property="CustomerIDs" open="(" close=")" conjunction="OR">
+         `CustomerID`=#CustomerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    
+  </delete>
+   <select id="QueryHouse_CustomerRecordCount" resultClass="int" parameterClass="House_CustomerQueryForm">
+   SELECT COUNT(*) FROM `House_Customer` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CustomerID">
+        `CustomerID`=#CustomerID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="CustomerIDs">
+        <iterate property="CustomerIDs" open="(" close=")" conjunction="OR">
+         `CustomerID`=#CustomerIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseOrRoomID">
+        `HouseOrRoomID`=#HouseOrRoomID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="HouseOrRoomIDs">
+        <iterate property="HouseOrRoomIDs" open="(" close=")" conjunction="OR">
+         `HouseOrRoomID`=#HouseOrRoomIDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_Start">
+        `Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+        `Type`&lt;=#Type_End#
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

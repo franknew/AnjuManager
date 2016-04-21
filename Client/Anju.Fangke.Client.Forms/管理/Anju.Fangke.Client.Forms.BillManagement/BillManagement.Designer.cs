@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
             this.btnEdit = new SOAFramework.Client.Controls.Button();
             this.btnGenerate = new SOAFramework.Client.Controls.Button();
@@ -139,9 +139,10 @@
             // 
             // cmbHouse
             // 
-            this.cmbHouse.BindingRequestPropertyName = "form.HouseName";
+            this.cmbHouse.BindingRequestPropertyName = "form.HouseID";
             this.cmbHouse.BindingResponsePropertyName = null;
             this.cmbHouse.BindingSourcePropertyName = null;
+            this.cmbHouse.DisplayMember = "Text";
             this.cmbHouse.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.cmbHouse.FormattingEnabled = true;
             this.cmbHouse.InitableBindingGroupName = null;
@@ -152,7 +153,7 @@
             this.cmbHouse.TabIndex = 6;
             this.cmbHouse.UseSelectable = true;
             this.cmbHouse.Value = null;
-            this.cmbHouse.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.cmbHouse.ValueMember = "Value";
             // 
             // label4
             // 
@@ -165,7 +166,7 @@
             // 
             // cmbBuilding
             // 
-            this.cmbBuilding.BindingRequestPropertyName = "form.BuildingName";
+            this.cmbBuilding.BindingRequestPropertyName = "form.BuildingID";
             this.cmbBuilding.BindingResponsePropertyName = null;
             this.cmbBuilding.BindingSourcePropertyName = null;
             this.cmbBuilding.DisplayMember = "Name";
@@ -180,6 +181,7 @@
             this.cmbBuilding.UseSelectable = true;
             this.cmbBuilding.Value = null;
             this.cmbBuilding.ValueMember = "ID";
+            this.cmbBuilding.SelectedIndexChanged += new System.EventHandler(this.cmbBuilding_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -198,6 +200,7 @@
             this.label2.Size = new System.Drawing.Size(23, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "至";
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -207,6 +210,7 @@
             this.label1.Size = new System.Drawing.Size(65, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "租房日期";
+            this.label1.Visible = false;
             // 
             // dateTimeComboPicker1
             // 
@@ -219,6 +223,7 @@
             this.dateTimeComboPicker1.Name = "dateTimeComboPicker1";
             this.dateTimeComboPicker1.Size = new System.Drawing.Size(104, 25);
             this.dateTimeComboPicker1.TabIndex = 0;
+            this.dateTimeComboPicker1.Visible = false;
             // 
             // dgvBill
             // 
@@ -230,14 +235,14 @@
             this.dgvBill.BindingRequestPropertyName = null;
             this.dgvBill.BindingResponsePropertyName = "Table";
             this.dgvBill.BindingSourcePropertyName = null;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -301,8 +306,8 @@
             // 交租日期
             // 
             this.交租日期.DataPropertyName = "交租日期";
-            dataGridViewCellStyle2.Format = "\\yyyy-MM-dd";
-            this.交租日期.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "\\yyyy-MM-dd";
+            this.交租日期.DefaultCellStyle = dataGridViewCellStyle10;
             this.交租日期.HeaderText = "交租日期";
             this.交租日期.Name = "交租日期";
             this.交租日期.ReadOnly = true;
@@ -324,18 +329,20 @@
             // 
             // txbRentDay
             // 
-            this.txbRentDay.BindingRequestPropertyName = null;
+            this.txbRentDay.BindingRequestPropertyName = "form.RentDay";
             this.txbRentDay.BindingResponsePropertyName = null;
             this.txbRentDay.BindingSourcePropertyName = null;
+            this.txbRentDay.EmptyToNull = true;
             this.txbRentDay.EmptyWarning = null;
             this.txbRentDay.InputType = SOAFramework.Client.Controls.InputType.整数;
             this.txbRentDay.Lines = new string[0];
-            this.txbRentDay.Location = new System.Drawing.Point(430, 13);
+            this.txbRentDay.Location = new System.Drawing.Point(430, 14);
             this.txbRentDay.MaxLength = 32767;
             this.txbRentDay.Name = "txbRentDay";
             this.txbRentDay.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbRentDay.SelectedText = "";
             this.txbRentDay.SelectionLength = 0;
+            this.txbRentDay.SelectionStart = 0;
             this.txbRentDay.Size = new System.Drawing.Size(117, 23);
             this.txbRentDay.TabIndex = 8;
             this.txbRentDay.UseSelectable = true;

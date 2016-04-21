@@ -43,6 +43,7 @@ namespace Anju.Fangke.Client.Forms
                 return;
             }
             this.SetForm(_response.Bill);
+            txbRentDay.Text = new DateTime(_response.Bill.Bill.Year.Value, _response.Bill.Bill.Month.Value, _response.Bill.Bill.RentDay).ToString("yyyy-MM-dd");
         }
 
         private void dgvList_CellLeave(object sender, DataGridViewCellEventArgs e)

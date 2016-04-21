@@ -84,5 +84,31 @@ namespace Anju.Fangke.Server.Form
         
         public UInt64? IsDeleted { get; set; }
         
+        public Decimal? Cost { get; set; }
+        
+        public Decimal? Cost_Start { get; set; }
+        
+        public Decimal? Cost_End { get; set; }
+        
+        public Decimal? SalePrice { get; set; }
+        
+        public Decimal? SalePrice_Start { get; set; }
+        
+        public Decimal? SalePrice_End { get; set; }
+        
+        public string KeyCode { get; set; }
+        
+        public Int32? Status { get; set; }
+        
+        public Int32? Status_Start { get; set; }
+        
+        public Int32? Status_End { get; set; }
+        
+        public Int32? DecorationType { get; set; }
+        
+        public Int32? DecorationType_Start { get; set; }
+        
+        public Int32? DecorationType_End { get; set; }
+        
     }
 }
