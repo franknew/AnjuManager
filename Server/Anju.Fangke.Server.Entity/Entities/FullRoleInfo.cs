@@ -16,5 +16,7 @@ namespace Anju.Fangke.Server.Model
         /// 权限列表
         /// </summary>
         public List<AuthorityNodeForCheck> Authority { get; set; }
+
+        public List<Menu> Menus { get; set; }
     }
 }

@@ -11,7 +11,6 @@ using Anju.Fangke.Client.SDK;
 using SOAFramework.Service.SDK.Core;
 using MetroFramework.Controls;
 using SOAFramework.Client.Controls;
-using Anju.Fangke.Client.SDK.Entity;
 using SOAFramework.Library;
 
 namespace Anju.Fangke.Client.Forms
@@ -28,6 +27,7 @@ namespace Anju.Fangke.Client.Forms
 
         private TreeNode _selectedNode = null;
         private int _currentFloor = 1;
+        private List<FullBuilding> _buildings = null;
 
         private void AssetManagement_Shown(object sender, EventArgs e)
         {
@@ -50,6 +50,7 @@ namespace Anju.Fangke.Client.Forms
                 tvBuilding.TopNode.Nodes.Add(node);
             }
             tvBuilding.TopNode.ExpandAll();
+            _buildings = response.List;
         }
 
         private void tvBuilding_Add(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace Anju.Fangke.Client.Forms
             FullBuilding building = sender as FullBuilding;
             if (building == null) return;
             tvBuilding.TopNode.Nodes.Add(new TreeNode { Name = building.ID, Text = building.Name, Tag = building });
+            _buildings.Add(building);
         }
 
         private void EditSave_Callback(object sender, EventArgs e)
@@ -74,6 +76,8 @@ namespace Anju.Fangke.Client.Forms
             if (building == null) return;
             _selectedNode.Tag = building;
             _selectedNode.Text = building.Name;
+            var tmp = _buildings.Find(t => t.ID.Equals(building.ID));
+            if (tmp != null) tmp = building;
             tvBuilding_AfterSelect(sender, new TreeViewEventArgs(_selectedNode));
         }
 
@@ -103,6 +107,8 @@ namespace Anju.Fangke.Client.Forms
         private void DeleteBuilding_Callback(CommonResponse response)
         {
             tvBuilding.TopNode.Nodes.Remove(_selectedNode);
+            var building = _selectedNode.Tag as FullBuilding;
+            _buildings.Remove(building);
             _selectedNode = null;
         }
 
@@ -132,14 +138,17 @@ namespace Anju.Fangke.Client.Forms
             if (e.Node.Tag == null) return;
             FullBuilding building = e.Node.Tag as FullBuilding;
             _selectedNode = e.Node;
-            MetroTabPage pageAll = new MetroTabPage();
-            pageAll.Text = "所有";
-            pageAll.Name = "pageFloorAll";
-            pageAll.Tag = -1;
-            tabFloor.TabPages.Add(pageAll);
-            if (building.FloorCount > tabFloor.TabPages.Count)
+            if (!tabFloor.TabPages.ContainsKey("pageFloorAll"))
             {
-                for (int i = tabFloor.TabPages.Count; i < building.FloorCount; i++)
+                MetroTabPage pageAll = new MetroTabPage();
+                pageAll.Text = "所有";
+                pageAll.Name = "pageFloorAll";
+                pageAll.Tag = -1;
+                tabFloor.TabPages.Add(pageAll);
+            }
+            if (building.FloorCount >= tabFloor.TabPages.Count)
+            {
+                for (int i = tabFloor.TabPages.Count; i <= building.FloorCount; i++)
                 {
                     int floor = i;
                     MetroTabPage page = new MetroTabPage();
@@ -151,14 +160,14 @@ namespace Anju.Fangke.Client.Forms
             }
             else if (building.FloorCount < tabFloor.TabPages.Count)
             {
-                for (int i = tabFloor.TabPages.Count; i > building.FloorCount; i--)
+                for (int i = tabFloor.TabPages.Count; i > building.FloorCount + 1; i--)
                 {
                     int floor = i - 1;
                     tabFloor.TabPages.RemoveAt(floor);
                 }
             }
             groupBox3.Text = building.Name;
-            QueryHouseRequest request = new QueryHouseRequest();
+            QuerySelfAndUnallocateHouseRequest request = new QuerySelfAndUnallocateHouseRequest();
             request.token = this.Token;
             request.form = new HouseQueryForm
             {
@@ -183,8 +192,8 @@ namespace Anju.Fangke.Client.Forms
             var datasource = building.House;
             if (_currentFloor > 0)
                 datasource = (from h in building.House
-                                   where h.House.Floor.Equals(_currentFloor)
-                                   select h).ToList();
+                              where h.House.Floor.Equals(_currentFloor)
+                              select h).ToList();
             dgvHouse.DataSource = datasource;
         }
 
@@ -195,14 +204,22 @@ namespace Anju.Fangke.Client.Forms
                 SOAFramework.Client.Controls.MessageBox.Show(this, "请先选择房间");
                 return;
             }
+            var building = _selectedNode.Tag as FullBuilding;
             EditHouse form = new EditHouse();
             form.Token = this.Token;
-            form.Building = _selectedNode.Tag as FullBuilding;
+            form.Buildings = _buildings;
             var currentHouse = dgvHouse.SelectedRows[0].DataBoundItem as FullHouse;
-            form.Building.CurrentHouse = form.Building.House.Find(t => t.House.ID.Equals(currentHouse.House.ID));
+            form.House = currentHouse;
+            form.BuildingID = building.ID;
             form.Floor = _currentFloor;
+            form.Update_Callback += EditHouse_Callback;
             form.ShowDialog(this);
             //tabFloor_SelectedIndexChanged(null, null);
+        }
+
+        private void EditHouse_Callback(object sender, EventArgs e)
+        {
+            dgvHouse.Reset();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -237,12 +254,46 @@ namespace Anju.Fangke.Client.Forms
                 SOAFramework.Client.Controls.MessageBox.Show(this, "请先选择一个楼盘");
                 return;
             }
+            var building = _selectedNode.Tag as FullBuilding;
             AddHouse form = new AddHouse();
             form.Token = this.Token;
-            form.Building = _selectedNode.Tag as FullBuilding;
+            form.Buildings = _buildings;
+            form.BuildingID = building.ID;
             form.Floor = _currentFloor;
+            form.Add_Callback += AddHouse_Callback;
             form.ShowDialog(this);
-            tabFloor_SelectedIndexChanged(null, null);
+        }
+
+        private void AddHouse_Callback(object sender, EventArgs e)
+        {
+            FullHouse house = sender as FullHouse;
+            var datasource = dgvHouse.DataSource as List<FullHouse>;
+            if (datasource == null) datasource = new List<FullHouse>();
+            datasource.Add(house);
+            dgvHouse.Reset();
+        }
+
+        private void dgvHouse_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvHouse.CurrentRow == null) return;
+            FullHouse house = dgvHouse.CurrentRow.DataBoundItem as FullHouse;
+            switch (dgvHouse.Columns[e.ColumnIndex].Name)
+            {
+                case "业主信息":
+                    ViewCustomer customer = new ViewCustomer();
+                    customer.Customer = house.Customer;
+                    customer.Show();
+                    break;
+                case "房间名称":
+                    var building = _selectedNode.Tag as FullBuilding;
+                    ViewHouse viewhouse = new ViewHouse();
+                    viewhouse.Token = Token;
+                    viewhouse.BuildingID = building.ID;
+                    viewhouse.Buildings = _buildings;
+                    viewhouse.House = house;
+                    viewhouse.Show();
+                    break;
+            }
         }
     }
 }

@@ -23,9 +23,10 @@ namespace Anju.Fangke.Client.Forms
             this.Shown += AddHouse_Shown;
         }
 
+        public event EventHandler Add_Callback;
+
         private void AddHouse_Shown(object sender, EventArgs e)
         {
-            this.txbBuildingName.Text = this.Building.Name;
             this.txbFloor.Text = this.Floor.ToString();
         }
         
@@ -38,18 +39,17 @@ namespace Anju.Fangke.Client.Forms
             }
             AddHouseRequest request = new AddHouseRequest();
             request.token = this.Token;
-            var house = this.CollectData<FullHouse>();
-            this.Building.CurrentHouse = house;
-            house.House.BuildingID = this.Building.ID;
-            request.form = house;
+            House = this.CollectData<FullHouse>();
+            request.form = House;
             var response = SDKSync<AddHouseResponse>.CreateInstance(this).Execute(request, AddHouse_Callback);
         }
 
         private void AddHouse_Callback(AddHouseResponse response)
         {
-            this.Building.CurrentHouse.House.ID = response.Result.HouseID;
+            House.House.ID = response.Result.HouseID;
+            House.Building = cmbBuilding.SelectedItem as Building;
             //this.Building.CurrentHouse.RentFee.ID = response.Result.RentFeeID;
-            Building?.House?.Add(this.Building.CurrentHouse);
+            if (Add_Callback != null) Add_Callback.Invoke(House, null);
             SOAFramework.Client.Controls.MessageBox.Show(this, "新增房间成功");
             this.Close();
         }

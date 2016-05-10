@@ -27,6 +27,8 @@ namespace Anju.Fangke.Server.BLL
             RoleDao roleDao = new RoleDao(mapper);
             User_RoleDao urdao = new User_RoleDao(mapper);
             LogonHistoryDao historyDao = new LogonHistoryDao(mapper);
+            MenuDao menudao = new MenuDao(mapper);
+            Menu_RoleDao mrdao = new Menu_RoleDao(mapper);
             var user = userdao.Query(new UserQueryForm { Name = username, Password = password }).FirstOrDefault();
             if (user != null)
             {
@@ -40,6 +42,12 @@ namespace Anju.Fangke.Server.BLL
                     roleidlist.Add(t.RoleID);
                 });
                 var roles = roleDao.Query(new RoleQueryForm { IDs = roleidlist });
+
+                var mrs = mrdao.Query(new Menu_RoleQueryForm { RoleIDs = roleidlist });
+                var menuids = (from mr in mrs select mr.MenuID).Distinct().ToList();
+
+                result.Menu = menudao.Query(new MenuQueryForm { IDs = menuids, Enabled = 1 });
+
                 UserEntireInfo u = new UserEntireInfo
                 {
                     User = user,

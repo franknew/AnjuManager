@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
-using Anju.Fangke.Client.SDK.Entity;
 using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
 using SOAFramework.Library;
 using SOAFramework.Library.Validator;
+using SOAFramework.Service.SDK.Core;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -21,15 +21,19 @@ namespace Anju.Fangke.Client.Forms
         {
             InitializeComponent();
         }
-        public FullBuilding Building { get; set; }
-        public int Floor { get; set; }
-        public SOAFramework.Client.Controls.DataGridView Grid { get; set; }
 
-        private List<OtherFee> _otherfee = null;
+        public int Floor { get; set; }
+
+        public List<FullBuilding> Buildings { get; set; }
+
+        public FullHouse House { get; set; }
+
+        public string BuildingID { get; set; }
+
+        private QueryOwnerResponse _ownerResponse = null;
 
         private void BaseEditHouse_Load(object sender, EventArgs e)
         {
-            if (DesignMode) return;
             cmbHall.SelectedIndex = 0;
             cmbRoom.SelectedIndex = 0;
             cmbToilet.SelectedIndex = 0;
@@ -42,25 +46,14 @@ namespace Anju.Fangke.Client.Forms
 
         private void BaseEditHouse_Shown(object sender, EventArgs e)
         {
-            if (DesignMode) return;
-            cmbCustomer.BindingContext = new BindingContext();
-            QueryOtherFeeRequest request = new QueryOtherFeeRequest();
-            request.token = this.Token;
-            SDKSync<QueryOtherFeeResponse>.CreateInstance(this).Execute(request, QueryOtherFee_CallBack);
-
-            QueryOwnerRequest ownerrequest = new QueryOwnerRequest();
-            ownerrequest.token = this.Token;
-            SDKSync<QueryOwnerResponse>.CreateInstance(this).Execute(ownerrequest, QueryOwner_Callback);
         }
         
         private void QueryOwner_Callback(QueryOwnerResponse response)
         {
-            cmbCustomer.DataSource = response.Customer;
         }
 
         private void QueryOtherFee_CallBack(QueryOtherFeeResponse response)
         {
-            _otherfee = response.List;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -92,7 +85,37 @@ namespace Anju.Fangke.Client.Forms
 
         private void BaseEditHouse_ShownOnSync(object sender, EventArgs e)
         {
+            QueryOwnerRequest ownerrequest = new QueryOwnerRequest();
+            ownerrequest.token = this.Token;
+            _ownerResponse = SDKFactory.Client.Execute(ownerrequest);
+            //SDKSync<QueryOwnerResponse>.CreateInstance(this).Execute(ownerrequest, QueryOwner_Callback);
+        }
 
+        private void BaseEditHouse_InitControl(object sender, EventArgs e)
+        {
+            if (!this.CheckLoginValid(_ownerResponse)) return;
+            cmbCustomer.DataSource = _ownerResponse.Customer;
+            cmbBuilding.DataSource = Buildings;
+            cmbBuilding.Enabled = string.IsNullOrEmpty(BuildingID);
+            if(House != null) this.SetForm(House);
+            if (!string.IsNullOrEmpty(BuildingID)) cmbBuilding.SelectedValue = BuildingID;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddFollowup form = new AddFollowup();
+            form.House = House;
+            form.Add_Callback += AddFollowup_Callback;
+            form.ShowDialog(this);
+        }
+
+        private void AddFollowup_Callback(object sender, EventArgs e)
+        {
+            if (dgvFollowup.DataSource == null) dgvFollowup.DataSource = new List<Followup>();
+            var list = dgvFollowup.DataSource as List<Followup>;
+            var data = sender as Followup;
+            list.Add(data);
+            dgvFollowup.Reset();
         }
     }
 }

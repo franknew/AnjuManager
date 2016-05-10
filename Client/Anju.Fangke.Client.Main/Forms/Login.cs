@@ -11,6 +11,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SOAFramework.Library;
+using System.IO;
 
 namespace Anju.Fangke.Client.Main
 {
@@ -23,6 +25,8 @@ namespace Anju.Fangke.Client.Main
             this.ShowIcon = true;
             this.FormClosed += Login_FormClosed;
         }
+
+        private static string _loginfilepath = AppDomain.CurrentDomain.BaseDirectory.TrimEnd('\\') + @"\Config\LoginInfo.xml";
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -48,31 +52,48 @@ namespace Anju.Fangke.Client.Main
                 AppData.token = response.Result?.token;
                 AppData.User = response.Result?.User?.User;
                 AppData.UserInfo = response.Result?.User?.UserInfo;
+
+                LoginInfo info = new LoginInfo { RemberMe = chkRemberMe.Checked, UserName = txbUserName.Text };
+                string xml = XMLHelper.Serialize(info);
+                FileInfo file = new FileInfo(_loginfilepath);
+                if (!file.Directory.Exists) file.Directory.Create();
+                File.WriteAllText(file.FullName, xml);
+
                 Startup form = this.Owner as Startup;
                 form.Token = AppData.token;
                 form.SetInfo(AppData.UserInfo?.CnName);
+                form.CreateMenu(response.Result.Menu);
                 form.Show();
                 this.Close();
             }
-            else
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, response.ErrorMessage, "Error", MessageBoxButtons.OK);
-            }
+            else SOAFramework.Client.Controls.MessageBox.Show(this, response.ErrorMessage, "Error", MessageBoxButtons.OK);
         }
 
         private void txbPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
-            {
-                btnLogin.PerformClick();
-            }
+            if (e.KeyChar == 13) btnLogin.PerformClick();
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             //btnLogin.PerformClick();
             this.Activate();
-            txbUserName.baseTextBox.Focus();
+        }
+
+        private void Login_Shown(object sender, EventArgs e)
+        {
+            FileInfo file = new FileInfo(_loginfilepath);
+            if (!file.Directory.Exists) file.Directory.Create();
+            if (!file.Exists) return;
+            string xml = File.ReadAllText(file.FullName);
+            var info = XMLHelper.Deserialize<LoginInfo>(xml);
+            chkRemberMe.Checked = info.RemberMe;
+            if (info.RemberMe)
+            {
+                txbUserName.Text = info.UserName;
+                txbPassword.Focus();
+            }
+            else txbUserName.Focus();
         }
     }
 }

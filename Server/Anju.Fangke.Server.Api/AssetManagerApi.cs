@@ -11,7 +11,6 @@ using SOAFramework.Service.Core;
 
 namespace Anju.Fangke.Server.Api
 {
-    [ServiceLayer(Module = "Anju.Fangke.Server.AssetManagerApi")]
     [AuthFilter]
     public class AssetManagerApi
     {
@@ -24,47 +23,14 @@ namespace Anju.Fangke.Server.Api
         private House_CustomerBLL hcbll = new House_CustomerBLL();
         private CustomerBLL customerbll = new CustomerBLL();
         private UserBLL userbll = new UserBLL();
+        private FollowupBLL followupbll = new FollowupBLL();
 
         [QueryAction]
         [DataAuthorityFilter]
         public List<FullHouse> QueryHouse(QueryHouseServiceForm form)
         {
-            List<FullHouse> list = new List<FullHouse>();
             form.IsDeleted = 0;
-            var house = housebll.QueryFullHouse(form);
-            var houseids = (from h in house select h.ID).ToList();
-            var hos = hcbll.Query(new House_CustomerQueryForm { HouseOrRoomIDs = houseids });
-            var customerids = (from ho in hos select ho.CustomerID).Distinct().ToList();
-            var customers = customerbll.Query(new CustomerQueryForm { IDs = customerids, Enabled = 1, IsDeleted = 0 });
-            var buildingids = (from h in house select h.BuildingID).Distinct().ToList();
-            var buidlings = buildingbll.Query(new BuildingQueryForm { IDs = buildingids });
-            var ownerids = (from h in house where !string.IsNullOrEmpty(h.OwnerID.Trim()) select h.OwnerID).Distinct().ToList();
-            var userss = userbll.Query(new FullUserQueryForm { IDs = ownerids, Enabled = 1, IsDeleted = 0 });
-            //var rentfee = rentfeebll.Query(new RentFeeQueryForm { HouseOrRoomIDs = houseids, Type = (int)HouseOrRoomType.House, Enabled = 1, IsDeleted = 0 });
-            //var house_otherfee = hobll.Query(new House_OtherFeeQueryForm { HouseOrRoomIDs = houseids, Type = (int)HouseOrRoomType.House });
-            //var otherfee = ofbll.Query(new OtherFeeQueryForm { Enabled = 1, IsDeleted = 0 });
-            foreach (var h in house)
-            {
-                FullHouse fh = new FullHouse
-                {
-                    House = h,
-                    //RentFee = rentfee.Find(t => t.HouseOrRoomID.Equals(h.ID)),
-                    //OtherFees = (from ho in house_otherfee
-                    //join of in otherfee on ho.OtherFeeID equals of.ID
-                    //where ho.HouseOrRoomID.Equals(h.ID)
-                    //select of).ToList(),
-                    Customer = (from ho in hos
-                                join c in customers on ho.CustomerID equals c.ID
-                                where ho.HouseOrRoomID.Equals(h.ID)
-                                select c).FirstOrDefault(),
-                    Building = buidlings.Find(t => t.ID.Equals(h.BuildingID)),
-                    Owner = userss.Find(t => t.ID.Equals(h.OwnerID)),
-                };
-                //rentfee.Remove(fh.RentFee);
-                //house_otherfee.RemoveAll(t => t.HouseOrRoomID.Equals(fh.House.ID));
-                list.Add(fh);
-            }
-            return list;
+            return housebll.QueryFullHouse(form);
         }
 
         [QueryAction]
@@ -84,6 +50,18 @@ namespace Anju.Fangke.Server.Api
             form.Enabled = 1;
             return QueryHouse(form);
         }
+
+        [QueryAction]
+        [DataAuthorityFilter]
+        public List<FullHouse> QuerySelfAndUnallocateHouse(QueryHouseServiceForm form)
+        {
+            var ids = Common.GetDataAuthorityUserIDList();
+            if (ids != null) ids.Add("");
+            form.OwnerIDs = ids;
+            form.Enabled = 1;
+            return QueryHouse(form);
+        }
+
 
         [QueryAction]
         public InitAssetManagerResultForm InitAssetManagement()
@@ -123,6 +101,15 @@ namespace Anju.Fangke.Server.Api
                 }
             }
             if (!string.IsNullOrEmpty(form.Customer?.ID)) hcbll.Add(new House_Customer { HouseOrRoomID = form.House.ID, CustomerID = form.Customer.ID });
+            if (form.Followups != null)
+            {
+                foreach (var f in form.Followups)
+                {
+                    f.HouseID = form.House.ID;
+                    f.Creator = userid;
+                    followupbll.Add(f);
+                }
+            }
             return new AddHouseServiceForm { HouseID = houseid, };
         }
 
@@ -144,6 +131,17 @@ namespace Anju.Fangke.Server.Api
             }
             hcbll.Delete(new House_CustomerQueryForm { HouseOrRoomID = form.House.ID });
             if (!string.IsNullOrEmpty(form.Customer?.ID)) hcbll.Add(new House_Customer { HouseOrRoomID = form.House.ID, CustomerID = form.Customer.ID });
+            followupbll.Delete(new FollowupQueryForm { HouseID = form.House.ID });
+            if (form.Followups != null)
+            {
+                foreach (var f in form.Followups)
+                {
+                    f.HouseID = form.House.ID;
+                    f.LastUpdator = userid;
+                    f.Creator = userid;
+                    followupbll.Add(f);
+                }
+            }
             return true;
         }
 

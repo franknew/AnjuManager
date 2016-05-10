@@ -196,10 +196,10 @@ namespace SOAFramework.Client.Controls
             switch (inputType)
             {
                 case InputType.整数:
-                    if (e.KeyChar > 57 || e.KeyChar < 48) e.Handled = true;
+                    if ((e.KeyChar > 57 || e.KeyChar < 48) && e.KeyChar != 8) e.Handled = true;
                     break;
                 case InputType.小数:
-                    if ((e.KeyChar <= 57 && e.KeyChar >= 48) || e.KeyChar == 46 || e.KeyChar == 45)
+                    if (((e.KeyChar <= 57 && e.KeyChar >= 48) || e.KeyChar == 46 || e.KeyChar == 45) && e.KeyChar != 8)
                     {
                         if (e.KeyChar == 46 && (this.Text.Contains(".") || this.SelectionStart == 0)) e.Handled = true;
                         else if (e.KeyChar == 45 && (this.Text.Contains("-") || this.SelectionStart > 0)) e.Handled = true;

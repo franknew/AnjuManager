@@ -34,9 +34,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.ClientSize = new System.Drawing.Size(303, 304);
+            this.ControlBox = false;
+            this.DisplayHeader = false;
+            this.Movable = false;
             this.Name = "ChildForm";
-            this.Padding = new System.Windows.Forms.Padding(10, 30, 10, 5);
+            this.Padding = new System.Windows.Forms.Padding(5);
+            this.ShowInTaskbar = false;
             this.Text = "ChildForm";
             this.ResumeLayout(false);
 

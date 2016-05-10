@@ -33,23 +33,18 @@ namespace Anju.Fangke.Client.Controls
         public virtual void Remove(string name)
         {
             ChildForm form = listForm.Find(t => t.Name == name) as ChildForm;
-            if (form == null)
-            {
-                return;
-            }
-            if (!form.FormClosing)
-            {
-                form.Close();
-            }
+            if (form == null) return; 
+            if (!form.FormClosing) form.Close(); 
             listForm.Remove(form);
         }
 
         public virtual void Clear()
         {
-            foreach (var form in listForm)
+            foreach (var form in containerForm.MdiChildren)
             {
-                Remove(form.Name);
+                form.Close();
             }
+            listForm.Clear();
         }
 
         public virtual void Activate(string name)
@@ -59,26 +54,17 @@ namespace Anju.Fangke.Client.Controls
                 t.AutoValidate = AutoValidate.Disable;
             });
             Form form = listForm.Find(t => t.Name == name);
-            if (form == null)
-            {
-                return;
-            }
+            if (form == null) return;
             form.Activate();
             form.AutoValidate = AutoValidate.EnablePreventFocusChange;
-            if (form.ActiveControl != null)
-            {
-                form.ActiveControl.Focus();
-            }
+            if (form.ActiveControl != null) form.ActiveControl.Focus();
         }
 
         private void ActivateForm(object sender, EventArgs e)
         {
             ToolStripMenuItem item = sender as ToolStripMenuItem;
             Form form = containerForm.MdiChildren.First(t => t.Name == item.Name);
-            if (form == null)
-            {
-                return;
-            }
+            if (form == null) return;
             Activate(item.Name);
         }
     }

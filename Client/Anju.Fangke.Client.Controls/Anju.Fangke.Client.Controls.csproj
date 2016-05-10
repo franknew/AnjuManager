@@ -74,6 +74,9 @@
     <Compile Include="CheckBox\CheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CheckBox\CheckBoxList.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ComboBox\ComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,7 +111,6 @@
     <Compile Include="Form\ContainerForm.Designer.cs">
       <DependentUpon>ContainerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\FormExtension.cs" />
     <Compile Include="Form\PopupForm.cs">
       <SubType>Form</SubType>
     </Compile>

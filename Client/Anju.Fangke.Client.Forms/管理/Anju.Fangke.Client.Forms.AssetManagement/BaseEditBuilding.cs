@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
-using Anju.Fangke.Client.SDK.Entity;
+using SOAFramework.Client.Controls;
 
 namespace Anju.Fangke.Client.Forms
 {
@@ -19,7 +19,7 @@ namespace Anju.Fangke.Client.Forms
             InitializeComponent();
         }
 
-        public FullBuilding Building { get; set; }
+        public Building Building { get; set; }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -27,5 +27,10 @@ namespace Anju.Fangke.Client.Forms
         }
 
         public EventHandler SaveClickCallBack { get; set; }
+
+        private void BaseEditBuilding_InitControl(object sender, EventArgs e)
+        {
+            if (Building != null) this.SetForm(Building);
+        }
     }
 }

@@ -110,5 +110,27 @@ namespace Anju.Fangke.Server.Form
         
         public Int32? DecorationType_End { get; set; }
         
+        public Decimal? RentFee { get; set; }
+        
+        public Decimal? RentFee_Start { get; set; }
+        
+        public Decimal? RentFee_End { get; set; }
+        
+        public DateTime? RentDateStart { get; set; }
+        
+        public DateTime? RentDateStart_Start { get; set; }
+        
+        public DateTime? RentDateStart_End { get; set; }
+        
+        public DateTime? RentDateEnd { get; set; }
+        
+        public DateTime? RentDateEnd_Start { get; set; }
+        
+        public DateTime? RentDateEnd_End { get; set; }
+        
+        public string RentRemark { get; set; }
+        
+        public string ContractCode { get; set; }
+        
     }
 }

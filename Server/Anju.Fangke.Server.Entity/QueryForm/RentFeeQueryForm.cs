@@ -61,5 +61,19 @@ namespace Anju.Fangke.Server.Form
         
         public DateTime? ExpiredTime_End { get; set; }
         
+        public string ContractCode { get; set; }
+        
+        public DateTime? RentDateStart { get; set; }
+        
+        public DateTime? RentDateStart_Start { get; set; }
+        
+        public DateTime? RentDateStart_End { get; set; }
+        
+        public DateTime? RentDateEnd { get; set; }
+        
+        public DateTime? RentDateEnd_Start { get; set; }
+        
+        public DateTime? RentDateEnd_End { get; set; }
+        
     }
 }

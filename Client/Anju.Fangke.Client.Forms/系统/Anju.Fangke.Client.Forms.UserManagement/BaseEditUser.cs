@@ -23,41 +23,37 @@ namespace Anju.Fangke.Client.Forms
 
         public FullUser User { get; set; }
 
+        public List<Role> Roles { get; set; }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void BeforeClick(object sender, EventArgs e)
+        private void BaseEditUser_OnShown(object sender, EventArgs e)
         {
-            //switch (Mode)
-            //{
-            //    case EditMode.Add:
-            //        btnSave.RequestName = "AddUserRequest";
-            //        break;
-            //    default:
-            //        btnSave.RequestName = "UpdateUserRequest";
-            //        break;
-            //}
+            chkRole.ValueMember = "ID";
+            chkRole.DisplayMember = "Remark";
+            if (Roles != null)
+            {
+                for (int i = 0; i < Roles.Count; i++)
+                {
+                    var role = Roles[i];
+                    chkRole.Items.Add(role);
+                    if (User != null && User.Roles != null) if (User.Roles.Exists(t => t.ID.Equals(role.ID))) chkRole.SetItemChecked(i, true);
+                }
+            }
         }
 
-        private void EditUser_Load(object sender, EventArgs e)
+        public List<Role> GetCheckedRoles()
         {
-            //txbUserName.Enabled = Mode == EditMode.Add;
-            //switch (Mode)
-            //{
-            //    case EditMode.Add:
-            //        txbUserName.Focus();
-            //        break;
-            //    case EditMode.Edit:
-            //        txbCnName.Focus();
-            //        _needRemoveCurrent = false;
-            //        break;
-            //}
-        }
-
-        private void BaseEditUser_FormClosing(object sender, FormClosingEventArgs e)
-        {
+            List<Role> list = new List<Role>();
+            for (int i = 0; i < chkRole.Items.Count; i++)
+            {
+                var Role = chkRole.Items[i] as Role;
+                if (chkRole.GetItemChecked(i)) list.Add(Role);
+            }
+            return list;
         }
     }
 }

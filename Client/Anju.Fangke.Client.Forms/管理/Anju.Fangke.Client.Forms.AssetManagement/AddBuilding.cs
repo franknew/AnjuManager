@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
-using Anju.Fangke.Client.SDK.Entity;
 using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
 using SOAFramework.Service.SDK.Core;
@@ -19,7 +18,6 @@ namespace Anju.Fangke.Client.Forms
         public AddBuilding()
         {
             InitializeComponent();
-            btnSave.EnableSyncClick = true;
             btnSave.Click += btnSave_Click;
         }
 
@@ -27,6 +25,8 @@ namespace Anju.Fangke.Client.Forms
         {
             AddBuildingRequest request = new AddBuildingRequest();
             Building = this.CollectData<FullBuilding>();
+            request.form = Building;
+            request.token = this.Token;
             SDKSync<AddModelResponse>.CreateInstance(this).Execute(request, btnSave_Callback);
         }
 

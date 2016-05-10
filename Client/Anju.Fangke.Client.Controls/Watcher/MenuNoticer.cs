@@ -87,10 +87,8 @@ namespace Anju.Fangke.Client.Controls
 
         public void Clear()
         {
-            foreach (var name in listForm)
-            {
-                Remove(name);
-            }
+            mainMenu.Items.Clear();
+            listForm.Clear();
         }
 
         public void Activate(string name)

@@ -59,6 +59,7 @@
     <Compile Include="Dao\CustomerDao.cs" />
     <Compile Include="Dao\DataDictionaryDao.cs" />
     <Compile Include="Dao\DataDictionaryGroupDao.cs" />
+    <Compile Include="Dao\FollowupDao.cs" />
     <Compile Include="Dao\HouseDao.cs" />
     <Compile Include="Dao\House_CustomerDao.cs" />
     <Compile Include="Dao\House_OtherFeeDao.cs" />
@@ -90,6 +91,7 @@
     <Content Include="SqlMapping\Customer.xml" />
     <Content Include="SqlMapping\DataDictionary.xml" />
     <Content Include="SqlMapping\DataDictionaryGroup.xml" />
+    <Content Include="SqlMapping\Followup.xml" />
     <Content Include="SqlMapping\FullUser.xml" />
     <Content Include="SqlMapping\House_Customer.xml" />
     <Content Include="SqlMapping\House_ex.xml">
@@ -106,6 +108,7 @@
     <Content Include="SqlMapping\Module.xml" />
     <Content Include="SqlMapping\OtherFee.xml" />
     <Content Include="SqlMapping\OtherFeeBill.xml" />
+    <Content Include="SqlMapping\RentFee_ex.xml" />
     <Content Include="SqlMapping\RentFee.xml" />
     <Content Include="SqlMapping\RentPeriodType.xml" />
     <Content Include="SqlMapping\Role.xml" />

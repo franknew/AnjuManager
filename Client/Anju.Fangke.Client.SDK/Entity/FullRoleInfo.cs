@@ -16,5 +16,18 @@ namespace Anju.Fangke.Client.SDK
         /// 权限列表
         /// </summary>
         public List<AuthorityNodeForCheck> Authority { get; set; }
+
+        public List<Menu> Menus { get; set; }
+
+        public string DataAccessTypeName
+        {
+            get
+            {
+                string text = "";
+                if (!DataAccessType.HasValue) return text;
+                text = Enum.GetName(typeof(DataAccessType), DataAccessType);
+                return text;
+            }
+        }
     }
 }

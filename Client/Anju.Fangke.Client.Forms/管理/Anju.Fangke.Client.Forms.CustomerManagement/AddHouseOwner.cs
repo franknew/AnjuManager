@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
+using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
 
 namespace Anju.Fangke.Client.Forms

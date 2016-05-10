@@ -9,7 +9,6 @@ using SOAFramework.Service.Core;
 
 namespace Anju.Fangke.Server.Api
 {
-    [ServiceLayer(Module = "Anju.Fangke.Server.CustomerApi")]
     [AuthFilter]
     public class CustomerApi
     {
@@ -87,6 +86,12 @@ namespace Anju.Fangke.Server.Api
             List<string> userids = Common.GetDataAuthorityUserIDList();
             form.Creators = userids;
             return bll.Query(form);
+        }
+
+        [QueryAction]
+        public List<Customer> QueryAll()
+        {
+            return bll.Query(new CustomerQueryForm { Enabled = 1, IsDeleted = 0 });
         }
     }
 }

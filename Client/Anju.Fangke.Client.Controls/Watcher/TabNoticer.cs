@@ -57,10 +57,8 @@ namespace Anju.Fangke.Client.Controls
 
         public void Clear()
         {
-            foreach (var name in listForm)
-            {
-                Remove(name);
-            }
+            mainPage.TabPages.Clear();
+            listForm.Clear();
         }
 
         public void Activate(string name)

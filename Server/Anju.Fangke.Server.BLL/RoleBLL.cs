@@ -24,11 +24,16 @@ namespace Anju.Fangke.Server.BLL
             ISqlMapper mapper = MapperHelper.GetMapper();
             RoleDao dao = new RoleDao(mapper);
             Role_Module_ActionDao rmadao = new Role_Module_ActionDao(mapper);
+            Menu_RoleDao mrdao = new Menu_RoleDao(mapper);
+            MenuDao menudao = new MenuDao(mapper);
             List<FullRoleInfo> result = new List<FullRoleInfo>();
             form.IsDeleted = 0;
             var roles = dao.Query(form);
             var roleids = (from r in roles select r.ID).ToList();
             var rmas = rmadao.Query(new Role_Module_ActionQueryForm { RoleIDs = roleids });
+            var mrs = mrdao.Query(new Menu_RoleQueryForm { RoleIDs = roleids });
+            var menuids = (from mr in mrs select mr.MenuID).Distinct().ToList();
+            var menus = menudao.Query(new MenuQueryForm { IDs = menuids, Enabled = 1 });
             AuthorityMapping mapping = XMLHelper.DeserializeFromFile<AuthorityMapping>(Common.AuthorityMappingFile);
             foreach (var role in roles)
             {
@@ -46,6 +51,10 @@ namespace Anju.Fangke.Server.BLL
                                     select au).Count() == auth.Item.Count;
                     data.Authority.Add(new AuthorityNodeForCheck { ID = auth.ID, Checked = auth.Checked, Name = auth.Name });
                 }
+                #endregion
+
+                #region 查询菜单
+                data.Menus = (from mr in mrs join m in menus on mr.MenuID equals m.ID where mr.RoleID.Equals(role.ID) select m).ToList();
                 #endregion
                 result.Add(data);
             }
@@ -146,11 +155,23 @@ namespace Anju.Fangke.Server.BLL
             //新增角色
             ISqlMapper mapper = MapperHelper.GetMapper();
             RoleDao dao = new RoleDao(mapper);
+            Menu_RoleDao mrdao = new Menu_RoleDao(mapper);
 
             #region risk role
             string id = dao.Add(role);
             AddRoleAuth(mapper, form, id);
             #endregion
+
+            #region menu
+            if (form.Menus != null)
+            {
+                foreach (var mr in form.Menus)
+                {
+                    mrdao.Add(new Menu_Role { RoleID = id, MenuID = mr.ID });
+                }
+            }
+            #endregion
+
             return id;
         }
 
@@ -160,8 +181,17 @@ namespace Anju.Fangke.Server.BLL
             ISqlMapper mapper = MapperHelper.GetMapper();
             RoleDao dao = new RoleDao(mapper);
             Role_Module_ActionDao rmadao = new Role_Module_ActionDao(mapper);
+            Menu_RoleDao mrdao = new Menu_RoleDao(mapper);
             rmadao.Delete(new Role_Module_ActionQueryForm { RoleID = form.ID });
             AddRoleAuth(mapper, form, form.ID);
+            mrdao.Delete(new Menu_RoleQueryForm { RoleID = form.ID });
+            if (form.Menus != null)
+            {
+                foreach (var menu in form.Menus)
+                {
+                    mrdao.Add(new Menu_Role { RoleID = form.ID, MenuID = menu.ID });
+                }
+            }
 
             return dao.Update(new RoleUpdateForm
             {

@@ -23,8 +23,23 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnSave_ClickCallback(object sender, EventArgs e)
         {
-            var user = this.CollectData<FullUser>();
-            if (SaveCallback != null) SaveCallback.Invoke(user, e);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            User = this.CollectData<FullUser>(User);
+            AddUserRequest request = new AddUserRequest();
+            request.token = Token;
+            request.Form = User;
+            request.Form.Roles = GetCheckedRoles();
+            SDKSync<AddUserResponse>.CreateInstance(this).Execute(request, Add_Callback);
+        }
+
+        private void Add_Callback(AddUserResponse response)
+        {
+            if (SaveCallback != null) SaveCallback.Invoke(User, null);
+            SOAFramework.Client.Controls.MessageBox.Show(this, "保存成功");
+            this.Close();
         }
     }
 }

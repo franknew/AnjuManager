@@ -28,21 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
             this.btnClose = new SOAFramework.Client.Controls.Button();
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
+            this.cmbBuilding = new SOAFramework.Client.Controls.ComboBox();
             this.cmbDecorationType = new SOAFramework.Client.Controls.ComboBox();
             this.label13 = new SOAFramework.Client.Controls.Label();
             this.cmbStatus = new SOAFramework.Client.Controls.ComboBox();
             this.label10 = new SOAFramework.Client.Controls.Label();
-            this.textBox1 = new SOAFramework.Client.Controls.TextBox();
-            this.label9 = new SOAFramework.Client.Controls.Label();
             this.numCost = new SOAFramework.Client.Controls.NumbericUpDown();
             this.label17 = new SOAFramework.Client.Controls.Label();
             this.txbArea = new SOAFramework.Client.Controls.TextBox();
             this.label14 = new SOAFramework.Client.Controls.Label();
             this.txbFloor = new SOAFramework.Client.Controls.TextBox();
-            this.txbBuildingName = new SOAFramework.Client.Controls.TextBox();
             this.txbRemark = new SOAFramework.Client.Controls.TextBox();
             this.txbHouseName = new SOAFramework.Client.Controls.TextBox();
             this.cmbToilet = new SOAFramework.Client.Controls.ComboBox();
@@ -62,19 +61,30 @@
             this.cmbCustomer = new SOAFramework.Client.Controls.ComboBox();
             this.label12 = new SOAFramework.Client.Controls.Label();
             this.label11 = new SOAFramework.Client.Controls.Label();
+            this.panel1 = new SOAFramework.Client.Controls.Panel();
+            this.groupBox4 = new SOAFramework.Client.Controls.GroupBox();
+            this.dgvFollowup = new SOAFramework.Client.Controls.DataGridView();
+            this.跟进信息 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.跟进人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new SOAFramework.Client.Controls.Panel();
+            this.button1 = new SOAFramework.Client.Controls.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCost)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFollowup)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnClose);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(1, 440);
+            this.groupBox2.Location = new System.Drawing.Point(1, 432);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(355, 56);
+            this.groupBox2.Size = new System.Drawing.Size(918, 56);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -94,18 +104,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbBuilding);
             this.groupBox1.Controls.Add(this.cmbDecorationType);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.cmbStatus);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.numCost);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.txbArea);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txbFloor);
-            this.groupBox1.Controls.Add(this.txbBuildingName);
             this.groupBox1.Controls.Add(this.txbRemark);
             this.groupBox1.Controls.Add(this.txbHouseName);
             this.groupBox1.Controls.Add(this.cmbToilet);
@@ -120,12 +128,30 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(1, 30);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(355, 314);
+            this.groupBox1.Size = new System.Drawing.Size(367, 306);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "房间信息";
+            // 
+            // cmbBuilding
+            // 
+            this.cmbBuilding.BindingRequestPropertyName = null;
+            this.cmbBuilding.BindingResponsePropertyName = null;
+            this.cmbBuilding.BindingSourcePropertyName = "House.BuildingID";
+            this.cmbBuilding.DisplayMember = "Name";
+            this.cmbBuilding.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.cmbBuilding.FormattingEnabled = true;
+            this.cmbBuilding.InitableBindingGroupName = null;
+            this.cmbBuilding.ItemHeight = 19;
+            this.cmbBuilding.Location = new System.Drawing.Point(87, 28);
+            this.cmbBuilding.Name = "cmbBuilding";
+            this.cmbBuilding.Size = new System.Drawing.Size(264, 25);
+            this.cmbBuilding.TabIndex = 25;
+            this.cmbBuilding.UseSelectable = true;
+            this.cmbBuilding.Value = null;
+            this.cmbBuilding.ValueMember = "ID";
             // 
             // cmbDecorationType
             // 
@@ -137,9 +163,9 @@
             this.cmbDecorationType.FormattingEnabled = true;
             this.cmbDecorationType.InitableBindingGroupName = "装修类型";
             this.cmbDecorationType.ItemHeight = 19;
-            this.cmbDecorationType.Location = new System.Drawing.Point(86, 189);
+            this.cmbDecorationType.Location = new System.Drawing.Point(86, 185);
             this.cmbDecorationType.Name = "cmbDecorationType";
-            this.cmbDecorationType.Size = new System.Drawing.Size(251, 25);
+            this.cmbDecorationType.Size = new System.Drawing.Size(265, 25);
             this.cmbDecorationType.TabIndex = 24;
             this.cmbDecorationType.UseSelectable = true;
             this.cmbDecorationType.Value = null;
@@ -148,7 +174,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(17, 191);
+            this.label13.Location = new System.Drawing.Point(15, 187);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 19);
             this.label13.TabIndex = 23;
@@ -164,7 +190,7 @@
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.InitableBindingGroupName = "房间状态";
             this.cmbStatus.ItemHeight = 19;
-            this.cmbStatus.Location = new System.Drawing.Point(243, 158);
+            this.cmbStatus.Location = new System.Drawing.Point(257, 57);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(94, 25);
             this.cmbStatus.TabIndex = 22;
@@ -175,47 +201,20 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(200, 161);
+            this.label10.Location = new System.Drawing.Point(214, 59);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 19);
             this.label10.TabIndex = 21;
             this.label10.Text = "状态";
             // 
-            // textBox1
-            // 
-            this.textBox1.BindingRequestPropertyName = null;
-            this.textBox1.BindingResponsePropertyName = null;
-            this.textBox1.BindingSourcePropertyName = "House.Name";
-            this.textBox1.EmptyWarning = null;
-            this.textBox1.Lines = new string[0];
-            this.textBox1.Location = new System.Drawing.Point(86, 158);
-            this.textBox1.MaxLength = 32767;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.textBox1.SelectedText = "";
-            this.textBox1.SelectionLength = 0;
-            this.textBox1.SelectionStart = 0;
-            this.textBox1.Size = new System.Drawing.Size(93, 23);
-            this.textBox1.TabIndex = 20;
-            this.textBox1.UseSelectable = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 161);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 19);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "钥匙编号";
-            // 
             // numCost
             // 
             this.numCost.BindingRequestPropertyName = null;
             this.numCost.BindingResponsePropertyName = null;
-            this.numCost.BindingSourcePropertyName = "House.Cost";
+            this.numCost.BindingSourcePropertyName = "House.SalePrice";
             this.numCost.DecimalPlaces = 2;
             this.numCost.EmptyWarning = null;
-            this.numCost.Location = new System.Drawing.Point(244, 129);
+            this.numCost.Location = new System.Drawing.Point(257, 157);
             this.numCost.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -228,7 +227,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(200, 129);
+            this.label17.Location = new System.Drawing.Point(213, 157);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(37, 19);
             this.label17.TabIndex = 17;
@@ -243,7 +242,7 @@
             this.txbArea.InputType = SOAFramework.Client.Controls.InputType.小数;
             this.txbArea.Lines = new string[] {
         "0"};
-            this.txbArea.Location = new System.Drawing.Point(86, 129);
+            this.txbArea.Location = new System.Drawing.Point(86, 157);
             this.txbArea.MaxLength = 32767;
             this.txbArea.Name = "txbArea";
             this.txbArea.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -258,7 +257,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(16, 129);
+            this.label14.Location = new System.Drawing.Point(16, 157);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 19);
             this.label14.TabIndex = 15;
@@ -273,36 +272,17 @@
             this.txbFloor.InputType = SOAFramework.Client.Controls.InputType.整数;
             this.txbFloor.Lines = new string[] {
         "1"};
-            this.txbFloor.Location = new System.Drawing.Point(243, 30);
+            this.txbFloor.Location = new System.Drawing.Point(88, 59);
             this.txbFloor.MaxLength = 32767;
             this.txbFloor.Name = "txbFloor";
             this.txbFloor.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbFloor.SelectedText = "";
             this.txbFloor.SelectionLength = 0;
             this.txbFloor.SelectionStart = 0;
-            this.txbFloor.Size = new System.Drawing.Size(94, 23);
+            this.txbFloor.Size = new System.Drawing.Size(91, 23);
             this.txbFloor.TabIndex = 14;
             this.txbFloor.Text = "1";
             this.txbFloor.UseSelectable = true;
-            // 
-            // txbBuildingName
-            // 
-            this.txbBuildingName.BindingRequestPropertyName = null;
-            this.txbBuildingName.BindingResponsePropertyName = null;
-            this.txbBuildingName.BindingSourcePropertyName = null;
-            this.txbBuildingName.EmptyWarning = null;
-            this.txbBuildingName.Lines = new string[0];
-            this.txbBuildingName.Location = new System.Drawing.Point(86, 30);
-            this.txbBuildingName.MaxLength = 32767;
-            this.txbBuildingName.Name = "txbBuildingName";
-            this.txbBuildingName.ReadOnly = true;
-            this.txbBuildingName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txbBuildingName.SelectedText = "";
-            this.txbBuildingName.SelectionLength = 0;
-            this.txbBuildingName.SelectionStart = 0;
-            this.txbBuildingName.Size = new System.Drawing.Size(94, 23);
-            this.txbBuildingName.TabIndex = 13;
-            this.txbBuildingName.UseSelectable = true;
             // 
             // txbRemark
             // 
@@ -311,7 +291,7 @@
             this.txbRemark.BindingSourcePropertyName = "House.Remark";
             this.txbRemark.EmptyWarning = null;
             this.txbRemark.Lines = new string[0];
-            this.txbRemark.Location = new System.Drawing.Point(88, 220);
+            this.txbRemark.Location = new System.Drawing.Point(87, 214);
             this.txbRemark.MaxLength = 32767;
             this.txbRemark.Multiline = true;
             this.txbRemark.Name = "txbRemark";
@@ -319,7 +299,7 @@
             this.txbRemark.SelectedText = "";
             this.txbRemark.SelectionLength = 0;
             this.txbRemark.SelectionStart = 0;
-            this.txbRemark.Size = new System.Drawing.Size(250, 83);
+            this.txbRemark.Size = new System.Drawing.Size(264, 83);
             this.txbRemark.TabIndex = 7;
             this.txbRemark.UseSelectable = true;
             // 
@@ -330,14 +310,14 @@
             this.txbHouseName.BindingSourcePropertyName = "House.Name";
             this.txbHouseName.EmptyWarning = null;
             this.txbHouseName.Lines = new string[0];
-            this.txbHouseName.Location = new System.Drawing.Point(87, 61);
+            this.txbHouseName.Location = new System.Drawing.Point(87, 89);
             this.txbHouseName.MaxLength = 32767;
             this.txbHouseName.Name = "txbHouseName";
             this.txbHouseName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbHouseName.SelectedText = "";
             this.txbHouseName.SelectionLength = 0;
             this.txbHouseName.SelectionStart = 0;
-            this.txbHouseName.Size = new System.Drawing.Size(250, 23);
+            this.txbHouseName.Size = new System.Drawing.Size(264, 23);
             this.txbHouseName.TabIndex = 1;
             this.txbHouseName.UseSelectable = true;
             // 
@@ -357,7 +337,7 @@
             "3",
             "4",
             "5"});
-            this.cmbToilet.Location = new System.Drawing.Point(257, 93);
+            this.cmbToilet.Location = new System.Drawing.Point(257, 121);
             this.cmbToilet.Name = "cmbToilet";
             this.cmbToilet.Size = new System.Drawing.Size(52, 25);
             this.cmbToilet.TabIndex = 4;
@@ -380,7 +360,7 @@
             "3",
             "4",
             "5"});
-            this.cmbHall.Location = new System.Drawing.Point(174, 93);
+            this.cmbHall.Location = new System.Drawing.Point(174, 121);
             this.cmbHall.Name = "cmbHall";
             this.cmbHall.Size = new System.Drawing.Size(52, 25);
             this.cmbHall.TabIndex = 3;
@@ -408,7 +388,7 @@
             "8",
             "9",
             "10"});
-            this.cmbRoom.Location = new System.Drawing.Point(86, 93);
+            this.cmbRoom.Location = new System.Drawing.Point(86, 121);
             this.cmbRoom.Name = "cmbRoom";
             this.cmbRoom.Size = new System.Drawing.Size(52, 25);
             this.cmbRoom.TabIndex = 2;
@@ -418,7 +398,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(315, 97);
+            this.label8.Location = new System.Drawing.Point(315, 125);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 19);
             this.label8.TabIndex = 7;
@@ -427,7 +407,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(232, 97);
+            this.label7.Location = new System.Drawing.Point(232, 125);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(23, 19);
             this.label7.TabIndex = 6;
@@ -436,7 +416,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(145, 97);
+            this.label6.Location = new System.Drawing.Point(145, 125);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 19);
             this.label6.TabIndex = 5;
@@ -445,7 +425,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 99);
+            this.label5.Location = new System.Drawing.Point(17, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 19);
             this.label5.TabIndex = 4;
@@ -463,7 +443,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 61);
+            this.label3.Location = new System.Drawing.Point(17, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 19);
             this.label3.TabIndex = 2;
@@ -472,7 +452,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 220);
+            this.label2.Location = new System.Drawing.Point(45, 214);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 19);
             this.label2.TabIndex = 1;
@@ -481,7 +461,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(186, 30);
+            this.label1.Location = new System.Drawing.Point(31, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 19);
             this.label1.TabIndex = 0;
@@ -495,9 +475,9 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(1, 344);
+            this.groupBox3.Location = new System.Drawing.Point(0, 306);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(355, 96);
+            this.groupBox3.Size = new System.Drawing.Size(367, 96);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "业主信息";
@@ -506,7 +486,7 @@
             // 
             this.btnAddCustomer.ClickedMessage = null;
             this.btnAddCustomer.IngoreCallbackOnce = false;
-            this.btnAddCustomer.Location = new System.Drawing.Point(303, 27);
+            this.btnAddCustomer.Location = new System.Drawing.Point(317, 27);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Response = null;
             this.btnAddCustomer.Size = new System.Drawing.Size(34, 25);
@@ -530,13 +510,13 @@
             this.txbMobile.SelectedText = "";
             this.txbMobile.SelectionLength = 0;
             this.txbMobile.SelectionStart = 0;
-            this.txbMobile.Size = new System.Drawing.Size(249, 23);
+            this.txbMobile.Size = new System.Drawing.Size(263, 23);
             this.txbMobile.TabIndex = 21;
             this.txbMobile.UseSelectable = true;
             // 
             // cmbCustomer
             // 
-            this.cmbCustomer.BindingRequestPropertyName = null;
+            this.cmbCustomer.BindingRequestPropertyName = "Customer.ID";
             this.cmbCustomer.BindingResponsePropertyName = null;
             this.cmbCustomer.BindingSourcePropertyName = "Customer.ID";
             this.cmbCustomer.DisplayMember = "Name";
@@ -546,7 +526,7 @@
             this.cmbCustomer.ItemHeight = 19;
             this.cmbCustomer.Location = new System.Drawing.Point(88, 27);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(209, 25);
+            this.cmbCustomer.Size = new System.Drawing.Size(223, 25);
             this.cmbCustomer.TabIndex = 4;
             this.cmbCustomer.UseSelectable = true;
             this.cmbCustomer.Value = null;
@@ -571,16 +551,105 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "名称";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(1, 30);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(367, 402);
+            this.panel1.TabIndex = 4;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dgvFollowup);
+            this.groupBox4.Controls.Add(this.panel2);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(368, 30);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(551, 402);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "跟进信息";
+            // 
+            // dgvFollowup
+            // 
+            this.dgvFollowup.AllowUserToAddRows = false;
+            this.dgvFollowup.AllowUserToDeleteRows = false;
+            this.dgvFollowup.AutoGenerateColumns = false;
+            this.dgvFollowup.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvFollowup.BindingRequestPropertyName = null;
+            this.dgvFollowup.BindingResponsePropertyName = null;
+            this.dgvFollowup.BindingSourcePropertyName = "Followups";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFollowup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvFollowup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFollowup.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.跟进信息,
+            this.跟进人});
+            this.dgvFollowup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFollowup.Location = new System.Drawing.Point(3, 53);
+            this.dgvFollowup.Name = "dgvFollowup";
+            this.dgvFollowup.ReadOnly = true;
+            this.dgvFollowup.RowTemplate.Height = 23;
+            this.dgvFollowup.Size = new System.Drawing.Size(545, 346);
+            this.dgvFollowup.TabIndex = 1;
+            // 
+            // 跟进信息
+            // 
+            this.跟进信息.DataPropertyName = "Remark";
+            this.跟进信息.HeaderText = "跟进信息";
+            this.跟进信息.Name = "跟进信息";
+            this.跟进信息.ReadOnly = true;
+            this.跟进信息.Width = 400;
+            // 
+            // 跟进人
+            // 
+            this.跟进人.DataPropertyName = "CreatorName";
+            this.跟进人.HeaderText = "跟进人";
+            this.跟进人.Name = "跟进人";
+            this.跟进人.ReadOnly = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(3, 17);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(545, 36);
+            this.panel2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.ClickedMessage = null;
+            this.button1.IngoreCallbackOnce = false;
+            this.button1.Location = new System.Drawing.Point(3, 7);
+            this.button1.Name = "button1";
+            this.button1.Response = null;
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "增加跟进";
+            this.button1.UseSelectable = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BaseEditHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 497);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(920, 489);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Name = "BaseEditHouse";
             this.Text = "BaseEditHouse";
+            this.InitControl += new System.EventHandler(this.BaseEditHouse_InitControl);
             this.ShownOnSync += new System.EventHandler(this.BaseEditHouse_ShownOnSync);
             this.Load += new System.EventHandler(this.BaseEditHouse_Load);
             this.Shown += new System.EventHandler(this.BaseEditHouse_Shown);
@@ -590,21 +659,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.numCost)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFollowup)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private SOAFramework.Client.Controls.Button btnClose;
         protected SOAFramework.Client.Controls.GroupBox groupBox2;
         protected SOAFramework.Client.Controls.GroupBox groupBox1;
-        private SOAFramework.Client.Controls.Label label9;
         protected SOAFramework.Client.Controls.NumbericUpDown numCost;
         private SOAFramework.Client.Controls.Label label17;
         protected SOAFramework.Client.Controls.TextBox txbArea;
         private SOAFramework.Client.Controls.Label label14;
         protected SOAFramework.Client.Controls.TextBox txbFloor;
-        protected SOAFramework.Client.Controls.TextBox txbBuildingName;
         protected SOAFramework.Client.Controls.TextBox txbRemark;
         protected SOAFramework.Client.Controls.TextBox txbHouseName;
         protected SOAFramework.Client.Controls.ComboBox cmbToilet;
@@ -618,7 +688,6 @@
         private SOAFramework.Client.Controls.Label label3;
         private SOAFramework.Client.Controls.Label label2;
         private SOAFramework.Client.Controls.Label label1;
-        protected SOAFramework.Client.Controls.TextBox textBox1;
         protected SOAFramework.Client.Controls.ComboBox cmbStatus;
         private SOAFramework.Client.Controls.Label label10;
         protected SOAFramework.Client.Controls.GroupBox groupBox3;
@@ -629,5 +698,14 @@
         private SOAFramework.Client.Controls.Label label13;
         protected SOAFramework.Client.Controls.TextBox txbMobile;
         protected SOAFramework.Client.Controls.Button btnAddCustomer;
+        protected SOAFramework.Client.Controls.ComboBox cmbBuilding;
+        private SOAFramework.Client.Controls.Panel panel1;
+        private SOAFramework.Client.Controls.GroupBox groupBox4;
+        protected SOAFramework.Client.Controls.DataGridView dgvFollowup;
+        protected SOAFramework.Client.Controls.Panel panel2;
+        protected SOAFramework.Client.Controls.Button button1;
+        protected SOAFramework.Client.Controls.Button btnClose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 跟进信息;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 跟进人;
     }
 }

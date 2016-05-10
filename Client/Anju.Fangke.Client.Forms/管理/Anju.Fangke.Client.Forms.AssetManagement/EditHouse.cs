@@ -29,7 +29,7 @@ namespace Anju.Fangke.Client.Forms
                 this.btnSave.IngoreCallbackOnce = true;
                 return;
             }
-            var house = this.CollectData<FullHouse>(this.Building.CurrentHouse.Clone<FullHouse>());
+            var house = this.CollectData<FullHouse>(House.Clone<FullHouse>());
             EditHouseRequest request = new EditHouseRequest();
             request.token = this.Token;
             request.form = house;
@@ -38,18 +38,16 @@ namespace Anju.Fangke.Client.Forms
 
         private void UpdateCallBack(CommonResponse response)
         {
-            this.CollectData<FullHouse>(this.Building.CurrentHouse);
+            this.CollectData<FullHouse>(House);
             //this.Building.CurrentHouse.House.IsRented = this.Building.CurrentHouse
+            House.Building = cmbBuilding.SelectedItem as Building;
+            if (Update_Callback != null) Update_Callback.Invoke(House, null);
             SOAFramework.Client.Controls.MessageBox.Show(this, "更新成功");
             this.Close();
         }
 
         private void EditHouse_InitControl(object sender, EventArgs e)
         {
-            if (DesignMode) return;
-            this.txbBuildingName.Text = this.Building.Name;
-            var currentHouse = this.Building.CurrentHouse.Clone<FullHouse>();
-            this.SetForm(currentHouse);
         }
     }
 }

@@ -38,6 +38,7 @@ namespace Anju.Fangke.Client.Controls
             {
                 noticer.Clear();
             }
+            noticeList.Clear();
         }
 
         public void Activate(string name)

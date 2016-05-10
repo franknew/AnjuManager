@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CommonDll\SOAFramework.Library.DAL.dll</HintPath>
     </Reference>
+    <Reference Include="SOAFramework.Library.XML">
+      <HintPath>..\CommonDll\SOAFramework.Library.XML.dll</HintPath>
+    </Reference>
     <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CommonDll\SOAFramework.Service.SDK.Core.dll</HintPath>
@@ -55,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\LoginInfo.cs" />
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +109,10 @@
       <Project>{c8e5aebe-7431-444a-8342-9164be7b06c2}</Project>
       <Name>Anju.Fangke.Client.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Anju.Fangke.Client.MenuHandler\Anju.Fangke.Client.MenuHandler.csproj">
+      <Project>{4ee2ee3f-3fce-4fab-8c7a-0e2f3d95288f}</Project>
+      <Name>Anju.Fangke.Client.MenuHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Anju.Fangke.Client.SDK\Anju.Fangke.Client.SDK.csproj">
       <Project>{b09c10d0-6c53-41fa-8ef0-f04075235beb}</Project>
       <Name>Anju.Fangke.Client.SDK</Name>
@@ -128,9 +136,7 @@
   <ItemGroup>
     <None Include="Resources\房客易租图标.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="房客易租.ico" />
   </ItemGroup>

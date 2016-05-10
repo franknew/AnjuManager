@@ -85,6 +85,17 @@
         `ImagePath`=#ImagePath#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="Index_Start">
+        `Index`&gt;=#Index_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Index_End">
+        `Index`&lt;=#Index_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Index">
+        `Index`=#Index#
+    </isNotNull>
+    
     </dynamic>
         ORDER BY LastUpdateTime DESC
     <isNotNull property="PageSize">
@@ -96,31 +107,85 @@
   <insert id="AddMenu" parameterClass="Menu">
   INSERT INTO `Menu`
   (
-    `ID`,
-    `Name`,
-    `Creator`,
-    `CreateTime`,
-    `Page`,
-    `ParentID`,
-    `Enabled`,
-    `Remark`,
-    `LastUpdateTime`,
-    `LastUpdator`,
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    `ID`
+    </isNotNull>
+    <isNotNull prepend="," property="Name">
+    `Name`
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    `Creator`
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    `CreateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="Page">
+    `Page`
+    </isNotNull>
+    <isNotNull prepend="," property="ParentID">
+    `ParentID`
+    </isNotNull>
+    <isNotNull prepend="," property="Enabled">
+    `Enabled`
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    `Remark`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    `LastUpdateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    `LastUpdator`
+    </isNotNull>
+    <isNotNull prepend="," property="ImagePath">
     `ImagePath`
+    </isNotNull>
+    <isNotNull prepend="," property="Index">
+    `Index`
+    </isNotNull>
+  </dynamic>
   )
   VALUES
   (
-        #ID#,
-        #Name#,
-        #Creator#,
-        #CreateTime#,
-        #Page#,
-        #ParentID#,
-        #Enabled#,
-        #Remark#,
-        #LastUpdateTime#,
-        #LastUpdator#,
-        #ImagePath#
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    #ID#
+    </isNotNull>
+    <isNotNull prepend="," property="Name">
+    #Name#
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    #Creator#
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    #CreateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="Page">
+    #Page#
+    </isNotNull>
+    <isNotNull prepend="," property="ParentID">
+    #ParentID#
+    </isNotNull>
+    <isNotNull prepend="," property="Enabled">
+    #Enabled#
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    #Remark#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    #LastUpdateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    #LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="," property="ImagePath">
+    #ImagePath#
+    </isNotNull>
+    <isNotNull prepend="," property="Index">
+    #Index#
+    </isNotNull>
+  </dynamic>
   )
   </insert>
   <update id="UpdateMenu" parameterClass="MenuUpdateForm">
@@ -155,6 +220,9 @@
         </isNotNull>
         <isNotNull prepend="," property="Entity.ImagePath">
         `ImagePath`=#Entity.ImagePath#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Index">
+        `Index`=#Entity.Index#
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
@@ -221,6 +289,13 @@
     
     <isNotNull prepend="AND" property="MenuQueryForm.ImagePath">
         `ImagePath`=#MenuQueryForm.ImagePath#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="MenuQueryForm.Index_Start">
+        `Index`&gt;=#MenuQueryForm.Index_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="MenuQueryForm.Index_End">
+        `Index`&lt;=#MenuQueryForm.Index_End#
     </isNotNull>
     
     </dynamic>
@@ -293,6 +368,13 @@
         `ImagePath`=#ImagePath#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="Index_Start">
+        `Index`&gt;=#Index_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Index_End">
+        `Index`&lt;=#Index_End#
+    </isNotNull>
+    
   </delete>
    <select id="QueryMenuLastUpdateTime" resultClass="DateTime">
         SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Menu`
@@ -353,6 +435,12 @@
     </isNotNull>
     <isNotNull prepend="AND" property="ImagePath">
         `ImagePath`=#ImagePath#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Index_Start">
+        `Index`&gt;=#Index_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Index_End">
+        `Index`&lt;=#Index_End#
     </isNotNull>
     </dynamic>
    </select>

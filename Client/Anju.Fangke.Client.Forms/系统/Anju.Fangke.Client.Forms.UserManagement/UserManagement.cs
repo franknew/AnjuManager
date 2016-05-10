@@ -18,10 +18,10 @@ namespace Anju.Fangke.Client.Forms
         public UserManagement()
         {
             InitializeComponent();
-            this.btnDelete.Click += this.btnDelete_Click;
         }
 
         private CommonResponse deleteResponse;
+        private QueryRoleResponse _roleResponse;
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -30,14 +30,14 @@ namespace Anju.Fangke.Client.Forms
 
         private void UserManagement_Load(object sender, EventArgs e)
         {
-            this.Binding.DataSource = new List<FullUser>();
-            dgvUsers.DataSource = this.Binding;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddUser form = new AddUser();
             form.SaveCallback += btnAddClick_Callback;
+            form.Token = Token;
+            form.Roles = _roleResponse?.Roles;
             form.ShowDialog(this);
             this.dgvUsers.Reset();
         }
@@ -45,22 +45,22 @@ namespace Anju.Fangke.Client.Forms
         private void btnAddClick_Callback(object sender, EventArgs e)
         {
             var user = sender as FullUser;
+            if (dgvUsers.DataSource == null) dgvUsers.DataSource = new List<FullUser>();
             List<FullUser> list = dgvUsers.DataSource as List<FullUser>;
-            if (list == null)
-            {
-                list = new List<FullUser>();
-                dgvUsers.DataSource = list;
-            }
             list.Add(user);
+            dgvUsers.Reset();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgvUsers.SelectedRows.Count > 0)
             {
+                var user = dgvUsers.SelectedRows[0].DataBoundItem as FullUser;
                 EditUser form = new EditUser();
-                form.User = dgvUsers.SelectedRows[0].DataBoundItem as FullUser;
+                form.User = user;
+                form.Token = Token;
                 form.SaveCallback += btnEdit_Callback;
+                form.Roles = _roleResponse?.Roles;
                 form.ShowDialog(this);
             }
             else SOAFramework.Client.Controls.MessageBox.Show(this, "没有选择数据！", "警告");
@@ -73,22 +73,17 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvUsers.SelectedRows.Count > 0)
+            if (dgvUsers.CurrentRow == null) SOAFramework.Client.Controls.MessageBox.Show(this, "请选择一条数据");
+            else if (SOAFramework.Client.Controls.MessageBox.Show(this, "是否删除选中数据？", "警告", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (SOAFramework.Client.Controls.MessageBox.Show(this, "是否删除选中数据？", "警告", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    List<string> list = new List<string>();
-                    foreach (DataGridViewRow row in dgvUsers.SelectedRows)
-                    {
-                        list.Add(row.Cells["ID"].Value.ToString());
-                    }
-                    DeleteUserRequest request = new DeleteUserRequest();
-                    request.token = AppData.token;
-                    request.IDs = list;
-                    deleteResponse = SDKFactory.Client.Execute(request);
-                }
+                List<string> list = new List<string>();
+                var user = dgvUsers.CurrentRow.DataBoundItem as FullUser;
+                list.Add(user.ID);
+                DeleteUserRequest request = new DeleteUserRequest();
+                request.token = AppData.token;
+                request.IDs = list;
+                SDKSync<CommonResponse>.CreateInstance(this).Execute(request, btnDelete_ClickCallback);
             }
-            else SOAFramework.Client.Controls.MessageBox.Show(this, "请选择数据！", "警告");
         }
 
         private void btnAuthority_Click(object sender, EventArgs e)
@@ -98,36 +93,33 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            if (dgvUsers.SelectedRows.Count > 0)
+            if (dgvUsers.CurrentRow != null)
             {
                 ChangePassword form = new ChangePassword();
-                FullUser user = dgvUsers.SelectedRows[0].DataBoundItem as FullUser;
+                FullUser user = dgvUsers.CurrentRow.DataBoundItem as FullUser;
                 form.UserName = user.Name;
                 form.ShowDialog(this);
             }
-            else
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(this, "没有选择数据！", "警告");
-            }
+            else SOAFramework.Client.Controls.MessageBox.Show(this, "没有选择数据", "警告");
         }
 
-        private void btnDelete_ClickCallback(object sender, EventArgs e)
+        private void btnDelete_ClickCallback(CommonResponse response)
         {
-            if (deleteResponse == null)  return;
-
-            if (deleteResponse.IsError) SOAFramework.Client.Controls.MessageBox.Show(this, deleteResponse.ErrorMessage, "错误");
-            else
-            {
-                var list = dgvUsers.DataSource as List<FullUser>;
-                list.Remove(dgvUsers.SelectedRows[0].DataBoundItem as FullUser);
-                dgvUsers.Reset();
-                SOAFramework.Client.Controls.MessageBox.Show(this, "操作成功！", "信息");
-            }
+            dgvUsers.RemoveRow<FullUser>(dgvUsers.CurrentRow);
+            SOAFramework.Client.Controls.MessageBox.Show(this, "删除成功！", "信息");
         }
 
         private void UserManagement_InitControl(object sender, EventArgs e)
         {
 
+        }
+
+        private void UserManagement_ShownOnSync(object sender, EventArgs e)
+        {
+            QueryRoleRequest request = new QueryRoleRequest();
+            request.token = Token;
+            request.form = new RoleQueryForm { };
+            _roleResponse = SDKFactory.Client.Execute(request);
         }
     }
 }

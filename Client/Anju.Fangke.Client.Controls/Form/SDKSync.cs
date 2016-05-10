@@ -26,19 +26,18 @@ namespace SOAFramework.Client.Controls
 
         private BaseForm _currentform = null;
         private T t = default(T);
-        public T Execute(IRequest<T> request, ExecuteCallBackDelegate<T> callBack = null) 
+        public T Execute(IRequest<T> request, ExecuteCallBackDelegate<T> callBack = null)
         {
             T t = default(T);
-            if (callBack == null)
-            {
-                t = SDKFactory.Client.Execute(request);
-            }
+            if (callBack == null) t = SDKFactory.Client.Execute(request);
             else
             {
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.DoWork += Worker_DoWork;
                 worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
                 _currentform?.ShowSpinner();
+                dynamic r = request;
+                r.token = _currentform.Token;
                 worker.RunWorkerAsync(new SDKSyncParam<T> { CallBack = callBack, Request = request });
             }
             return t;
@@ -48,27 +47,8 @@ namespace SOAFramework.Client.Controls
         {
             _currentform?.HideSpinner();
             var param = e.Result as SDKSyncParam<T>;
-            if (param.Response.IsError)
-            {
-                if (param.Response.Code == 3)
-                {
-                    SOAFramework.Client.Controls.MessageBox.Show(_currentform, "登录由于长时间没有操作而失效，请重新登录");
-                    dynamic mainform = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle);
-                    mainform.ShowLogin();
-                    _currentform?.Activate();
-                    _currentform?.ActiveControl?.Focus();
-                    return;
-                }
-                else
-                {
-                    SOAFramework.Client.Controls.MessageBox.Show(_currentform, param.Response.ResponseBody);
-                    _currentform?.Activate();
-                    _currentform?.ActiveControl?.Focus();
-                    return;
-                }
-            }
+            if (!_currentform.CheckLoginValid(param.Response)) return; ;
             param.CallBack?.Invoke(param.Response);
-
             _currentform?.Activate();
             _currentform?.ActiveControl?.Focus();
         }
@@ -83,7 +63,7 @@ namespace SOAFramework.Client.Controls
             }
             catch (Exception ex)
             {
-
+                SOAFramework.Client.Controls.MessageBox.Show(null, ex.Message);
             }
         }
 
@@ -109,6 +89,6 @@ namespace SOAFramework.Client.Controls
 
         public T Response { get; set; }
     }
-    
+
     public delegate void ExecuteCallBackDelegate<T>(T t) where T : BaseResponse;
 }

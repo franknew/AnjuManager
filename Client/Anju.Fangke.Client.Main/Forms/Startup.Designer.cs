@@ -34,6 +34,7 @@ namespace Anju.Fangke.Client.Main
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Startup));
             this.menu = new System.Windows.Forms.MenuStrip();
             this.系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.角色管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +49,7 @@ namespace Anju.Fangke.Client.Main
             this.维护管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.其他费用管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.账单管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.房源分配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.报表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabMenu = new SOAFramework.Client.Controls.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -58,7 +60,6 @@ namespace Anju.Fangke.Client.Main
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerNow = new System.Windows.Forms.Timer(this.components);
             this.nIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.房源分配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@ namespace Anju.Fangke.Client.Main
             // 系统ToolStripMenuItem
             // 
             this.系统ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.修改密码ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.角色管理ToolStripMenuItem,
             this.退出ToolStripMenuItem,
@@ -86,6 +88,13 @@ namespace Anju.Fangke.Client.Main
             this.系统ToolStripMenuItem.Name = "系统ToolStripMenuItem";
             this.系统ToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.系统ToolStripMenuItem.Text = "系统";
+            // 
+            // 修改密码ToolStripMenuItem
+            // 
+            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.修改密码ToolStripMenuItem.Text = "修改密码";
+            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -195,6 +204,13 @@ namespace Anju.Fangke.Client.Main
             this.账单管理ToolStripMenuItem.Text = "账单管理";
             this.账单管理ToolStripMenuItem.Click += new System.EventHandler(this.账单管理ToolStripMenuItem_Click);
             // 
+            // 房源分配ToolStripMenuItem
+            // 
+            this.房源分配ToolStripMenuItem.Name = "房源分配ToolStripMenuItem";
+            this.房源分配ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.房源分配ToolStripMenuItem.Text = "房源分配";
+            this.房源分配ToolStripMenuItem.Click += new System.EventHandler(this.房源分配ToolStripMenuItem_Click);
+            // 
             // 报表ToolStripMenuItem
             // 
             this.报表ToolStripMenuItem.Name = "报表ToolStripMenuItem";
@@ -253,13 +269,6 @@ namespace Anju.Fangke.Client.Main
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(11, 18);
             this.toolStripStatusLabel2.Text = "|";
             // 
-            // 房源分配ToolStripMenuItem
-            // 
-            this.房源分配ToolStripMenuItem.Name = "房源分配ToolStripMenuItem";
-            this.房源分配ToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
-            this.房源分配ToolStripMenuItem.Text = "房源分配";
-            this.房源分配ToolStripMenuItem.Click += new System.EventHandler(this.房源分配ToolStripMenuItem_Click);
-            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -311,6 +320,7 @@ namespace Anju.Fangke.Client.Main
         private System.Windows.Forms.ToolStripMenuItem 账单管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 房源分配ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
     }
 }
 

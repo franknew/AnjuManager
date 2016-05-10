@@ -6,12 +6,8 @@ using System.Text;
 
 namespace Anju.Fangke.Server.Model
 { 
-    public class FullUser : SimpleEntity
+    public class FullUser : User
     {
-        public string Password { get; set; }
-
-        public int? Enabled { get; set; }
-
         public string QQ { get; set; }
 
         public string Mobile { get; set; }
@@ -25,5 +21,7 @@ namespace Anju.Fangke.Server.Model
         public string CnName { get; set; }
 
         public string Remark { get; set; }
+
+        public List<Role> Roles { get; set; }
     }
 }

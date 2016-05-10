@@ -83,11 +83,8 @@ namespace SOAFramework.Client.Controls
         protected override void OnClick(EventArgs e)
         {
             BaseForm form = this.FindForm() as BaseForm;
-            if (CheckFormEmpty)
-            {
-                //检查窗体输入项为空情况
+            if (CheckFormEmpty) //检查窗体输入项为空情况 
                 if (CheckFormInputEmpty(form)) return;
-            }
             if (EnableSyncClick)
             {
                 _worker = new BackgroundWorker();
@@ -125,25 +122,12 @@ namespace SOAFramework.Client.Controls
         {
             BaseForm form = this.FindForm() as BaseForm;
             BaseResponse baseresponse = Response as BaseResponse;
-            if (baseresponse.IsError)
+            if (baseresponse == null)
             {
-                switch (baseresponse.Code)
-                {
-                    case 3:
-                        dynamic mainform = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle);
-                        mainform.ShowLogin();
-                        form?.Activate();
-                        form?.ActiveControl?.Focus();
-                        break;
-                    default:
-                        _handler = new ErrorHandler
-                        {
-                            IsError = true,
-                            Message = baseresponse.ErrorMessage,
-                        };
-                        break; 
-                }
+                form.HideSpinner();
+                return;
             }
+            form.CheckLoginValid(baseresponse);
             form.HideSpinner();
 
             if (_handler.IsError)

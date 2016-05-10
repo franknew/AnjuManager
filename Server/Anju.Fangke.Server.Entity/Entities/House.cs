@@ -113,5 +113,30 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public int? DecorationType { get; set; }
         
+        /// <summary>
+        /// 收房租金
+        /// </summary>
+        public decimal? RentFee { get; set; }
+        
+        /// <summary>
+        /// 收房租期
+        /// </summary>
+        public DateTime? RentDateStart { get; set; }
+        
+        /// <summary>
+        /// 收房租期
+        /// </summary>
+        public DateTime? RentDateEnd { get; set; }
+        
+        /// <summary>
+        /// 收房备注
+        /// </summary>
+        public string RentRemark { get; set; }
+        
+        /// <summary>
+        /// 合同编号
+        /// </summary>
+        public string ContractCode { get; set; }
+        
     }
 }

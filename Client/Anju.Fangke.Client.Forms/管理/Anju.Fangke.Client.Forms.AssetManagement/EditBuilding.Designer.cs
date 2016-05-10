@@ -36,11 +36,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Size = new System.Drawing.Size(468, 374);
+            this.groupBox1.Size = new System.Drawing.Size(468, 293);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnSave);
+            this.groupBox2.Location = new System.Drawing.Point(1, 323);
             this.groupBox2.Size = new System.Drawing.Size(468, 60);
             this.groupBox2.Controls.SetChildIndex(this.btnSave, 0);
             this.groupBox2.Controls.SetChildIndex(this.btnClose, 0);
@@ -48,15 +49,62 @@
             // txbRemark
             // 
             this.txbRemark.Lines = new string[0];
+            this.txbRemark.Location = new System.Drawing.Point(90, 192);
             // 
             // txbStreet
             // 
             this.txbStreet.Lines = new string[0];
+            this.txbStreet.Location = new System.Drawing.Point(90, 112);
             // 
             // txbName
             // 
             this.txbName.Lines = new string[0];
+            this.txbName.Location = new System.Drawing.Point(90, 20);
             this.txbName.UseStyleColors = true;
+            // 
+            // cmbArea
+            // 
+            this.cmbArea.Location = new System.Drawing.Point(295, 51);
+            // 
+            // cmbcity
+            // 
+            this.cmbcity.Location = new System.Drawing.Point(90, 51);
+            // 
+            // cmbProvince
+            // 
+            this.cmbProvince.Location = new System.Drawing.Point(295, 20);
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(47, 192);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(47, 112);
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(252, 54);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(47, 54);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(252, 24);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(19, 24);
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(47, 84);
+            // 
+            // numFloorCount
+            // 
+            this.numFloorCount.Location = new System.Drawing.Point(90, 84);
             // 
             // btnSave
             // 
@@ -75,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 465);
+            this.ClientSize = new System.Drawing.Size(470, 384);
             this.Name = "EditBuilding";
             this.InitControl += new System.EventHandler(this.EditBuilding_InitControl);
             this.groupBox1.ResumeLayout(false);

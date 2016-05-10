@@ -32,6 +32,8 @@ namespace Anju.Fangke.Client.SDK
         /// 
         /// </summary>
         public string ImagePath { get; set; }
+
+        public int? Index { get; set; }
         
     }
 }

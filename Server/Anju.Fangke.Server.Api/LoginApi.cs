@@ -8,7 +8,6 @@ using Anju.Fangke.Server.Forms;
 
 namespace Anju.Fangke.Server.Api
 {
-    [ServiceLayer(Module = "Anju.Fangke.Server.Api")]
     public class LoginApi
     {
         LoginBLL bll = new LoginBLL();

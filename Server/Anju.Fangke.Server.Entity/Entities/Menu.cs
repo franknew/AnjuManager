@@ -33,5 +33,10 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public string ImagePath { get; set; }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? Index { get; set; }
+        
     }
 }

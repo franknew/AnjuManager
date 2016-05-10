@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
-using Anju.Fangke.Client.SDK.Entity;
 using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
 using SOAFramework.Service.SDK.Core;
@@ -19,7 +18,6 @@ namespace Anju.Fangke.Client.Forms
         public EditBuilding()
         {
             InitializeComponent();
-            btnSave.EnableSyncClick = true;
             btnSave.Click += BtnSave_Click;
             this.AfterLoaded += EditBuilding_Load;
         }
@@ -48,7 +46,6 @@ namespace Anju.Fangke.Client.Forms
 
         private void EditBuilding_InitControl(object sender, EventArgs e)
         {
-            this.SetForm(this.Building);
         }
     }
 }

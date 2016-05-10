@@ -179,5 +179,27 @@ namespace SOAFramework.Client.Controls
             this.DataSource = datasource;
         }
         #endregion
+
+        #region overriden
+        public new object SelectedValue
+        {
+            get { return base.SelectedValue; }
+            set
+            {
+                if (Items.Count == 0) base.SelectedValue = value;
+                else
+                {
+                    object item = Items[0];
+                    var type = item.GetType();
+                    var property = type.GetProperty(ValueMember);
+                    var safeType = Nullable.GetUnderlyingType(property.PropertyType)
+                           ?? property.PropertyType;
+                    object safeValue = (value == null || value == DBNull.Value) ? value
+                                                                   : Convert.ChangeType(value, safeType);
+                    base.SelectedValue = safeValue;
+                }
+            }
+        }
+        #endregion
     }
 }

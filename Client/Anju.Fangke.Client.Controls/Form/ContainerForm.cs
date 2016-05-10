@@ -54,11 +54,14 @@ namespace SOAFramework.Client.Forms
                 child.ControlBox = false;
                 child.Resizable = false;
                 child.Movable = false;
-                child.WindowState = FormWindowState.Maximized;
+                MdiClient client = this.Controls.OfType<MdiClient>().FirstOrDefault();
+                //child.WindowState = FormWindowState.Normal;
+                child.TopLevel = true;
                 child.MdiParent = this;
                 child.ShowIcon = false;
                 child.ShowInTaskbar = false;
                 child.Token = this.Token;
+                child.Dock = DockStyle.Fill;
                 child.Show();
             }
             return child;

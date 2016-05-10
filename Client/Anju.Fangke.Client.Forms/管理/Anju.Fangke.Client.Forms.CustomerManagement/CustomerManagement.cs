@@ -26,6 +26,7 @@ namespace Anju.Fangke.Client.Forms
             form.Token = this.Token;
             form.Add_Callback += Add_Callback;
             form.ShowDialog(this);
+            this.Activate();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace Anju.Fangke.Client.Forms
             form.Customer = dgvList.SelectedRows[0].DataBoundItem as Customer;
             form.Edit_Callback += Edit_Callback;
             form.ShowDialog(this);
+            this.Activate();
         }
 
         private void CustomerManagement_InitControl(object sender, EventArgs e)
@@ -50,14 +52,15 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvList.SelectedRows.Count == 0)
+            if (dgvList.CurrentRow == null)
             {
                 SOAFramework.Client.Controls.MessageBox.Show(this, "请选择一条数据");
                 return;
             }
+            if (SOAFramework.Client.Controls.MessageBox.Show(this, "确认删除选中的数据吗？", "删除", MessageBoxButtons.YesNo) == DialogResult.No) return;
             DeleteCustomerRequest request = new DeleteCustomerRequest();
             request.token = this.Token;
-            var customer = dgvList.SelectedRows[0].DataBoundItem as Customer;
+            var customer = dgvList.CurrentRow.DataBoundItem as Customer;
             request.id = customer.ID;
             SDKSync<CommonResponse>.CreateInstance(this).Execute(request, Delete_Callback);
         }

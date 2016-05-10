@@ -356,6 +356,82 @@ namespace MetroFramework.Controls
                 ControlPaint.DrawFocusRectangle(e.Graphics, ClientRectangle);
         }
 
+        public void Paint(Graphics e)
+        {
+            Color borderColor, foreColor;
+
+            if (useCustomForeColor)
+            {
+                foreColor = ForeColor;
+
+                if (isHovered && !isPressed && Enabled)
+                {
+                    borderColor = MetroPaint.BorderColor.CheckBox.Hover(Theme);
+                }
+                else if (isHovered && isPressed && Enabled)
+                {
+                    borderColor = MetroPaint.BorderColor.CheckBox.Press(Theme);
+                }
+                else if (!Enabled)
+                {
+                    borderColor = MetroPaint.BorderColor.CheckBox.Disabled(Theme);
+                }
+                else
+                {
+                    borderColor = MetroPaint.BorderColor.CheckBox.Normal(Theme);
+                }
+            }
+            else
+            {
+                if (isHovered && !isPressed && Enabled)
+                {
+                    foreColor = MetroPaint.ForeColor.CheckBox.Hover(Theme);
+                    borderColor = MetroPaint.BorderColor.CheckBox.Hover(Theme);
+                }
+                else if (isHovered && isPressed && Enabled)
+                {
+                    foreColor = MetroPaint.ForeColor.CheckBox.Press(Theme);
+                    borderColor = MetroPaint.BorderColor.CheckBox.Press(Theme);
+                }
+                else if (!Enabled)
+                {
+                    foreColor = MetroPaint.ForeColor.CheckBox.Disabled(Theme);
+                    borderColor = MetroPaint.BorderColor.CheckBox.Disabled(Theme);
+                }
+                else
+                {
+                    foreColor = !useStyleColors ? MetroPaint.ForeColor.CheckBox.Normal(Theme) : MetroPaint.GetStyleColor(Style);
+                    borderColor = MetroPaint.BorderColor.CheckBox.Normal(Theme);
+                }
+            }
+
+            using (Pen p = new Pen(borderColor))
+            {
+                Rectangle boxRect = new Rectangle(0, Height / 2 - 6, 12, 12);
+                e.DrawRectangle(p, boxRect);
+            }
+
+            if (Checked)
+            {
+
+                Color fillColor = CheckState == CheckState.Indeterminate ? borderColor : MetroPaint.GetStyleColor(Style);
+
+                using (SolidBrush b = new SolidBrush(fillColor))
+                {
+                    Rectangle boxRect = new Rectangle(2, Height / 2 - 4, 9, 9);
+                    e.FillRectangle(b, boxRect);
+                }
+            }
+
+            Rectangle textRect = new Rectangle(16, 0, Width - 16, Height);
+            TextRenderer.DrawText(e, Text, MetroFonts.CheckBox(metroCheckBoxSize, metroCheckBoxWeight), textRect, foreColor, MetroPaint.GetTextFormatFlags(TextAlign));
+
+            OnCustomPaintForeground(new MetroPaintEventArgs(Color.Empty, foreColor, e));
+
+            if (displayFocusRectangle && isFocused)
+                ControlPaint.DrawFocusRectangle(e, ClientRectangle);
+        }
+
         #endregion
 
         #region Focus Methods

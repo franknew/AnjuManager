@@ -49,8 +49,11 @@
             this.txbID = new SOAFramework.Client.Controls.TextBox();
             this.chkEnabled = new SOAFramework.Client.Controls.CheckBox();
             this.txbUserName = new SOAFramework.Client.Controls.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkRole = new SOAFramework.Client.Controls.CheckBoxList();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -87,10 +90,10 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(1, 91);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(573, 384);
+            this.groupBox2.Size = new System.Drawing.Size(573, 281);
             this.groupBox2.TabIndex = 101;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "详细信息";
@@ -366,22 +369,43 @@
             this.txbUserName.TabIndex = 0;
             this.txbUserName.UseSelectable = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.chkRole);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(1, 372);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(573, 103);
+            this.groupBox4.TabIndex = 103;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "权限信息";
+            // 
+            // chkRole
+            // 
+            this.chkRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkRole.FormattingEnabled = true;
+            this.chkRole.Location = new System.Drawing.Point(3, 17);
+            this.chkRole.Name = "chkRole";
+            this.chkRole.Size = new System.Drawing.Size(567, 83);
+            this.chkRole.TabIndex = 0;
+            // 
             // BaseEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(575, 523);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "BaseEditUser";
             this.Text = "编辑用户";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BaseEditUser_FormClosing);
-            this.Load += new System.EventHandler(this.EditUser_Load);
+            this.OnShown += new System.EventHandler(this.BaseEditUser_OnShown);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -408,5 +432,7 @@
         protected SOAFramework.Client.Controls.TextBox txbMobile;
         protected SOAFramework.Client.Controls.TextBox txbCnName;
         protected SOAFramework.Client.Controls.TextBox txbID;
+        protected System.Windows.Forms.GroupBox groupBox4;
+        private SOAFramework.Client.Controls.CheckBoxList chkRole;
     }
 }

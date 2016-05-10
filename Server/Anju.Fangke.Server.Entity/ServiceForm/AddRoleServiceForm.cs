@@ -9,5 +9,7 @@ namespace Anju.Fangke.Server.Form
     public class AddRoleServiceForm : Role
     {
         public List<AuthorityNodeForCheck> Authority { get; set; }
+
+        public List<Menu> Menus { get; set; }
     }
 }

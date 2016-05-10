@@ -29,5 +29,7 @@ namespace Anju.Fangke.Client.SDK
         public string CnName { get; set; }
 
         public string Remark { get; set; }
+
+        public List<Role> Roles { get; set; }
     }
 }

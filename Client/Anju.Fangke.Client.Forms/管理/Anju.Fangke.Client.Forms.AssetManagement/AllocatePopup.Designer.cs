@@ -52,7 +52,8 @@
             // 
             this.cmbEmployee.BindingRequestPropertyName = "userID";
             this.cmbEmployee.BindingResponsePropertyName = null;
-            this.cmbEmployee.DisplayMember = "Name";
+            this.cmbEmployee.BindingSourcePropertyName = null;
+            this.cmbEmployee.DisplayMember = "CnName";
             this.cmbEmployee.FormattingEnabled = true;
             this.cmbEmployee.InitableBindingGroupName = null;
             this.cmbEmployee.ItemHeight = 23;
@@ -105,6 +106,7 @@
             // 
             this.txbHouseID.BindingRequestPropertyName = "houseID";
             this.txbHouseID.BindingResponsePropertyName = null;
+            this.txbHouseID.BindingSourcePropertyName = null;
             this.txbHouseID.EmptyWarning = null;
             this.txbHouseID.Lines = new string[0];
             this.txbHouseID.Location = new System.Drawing.Point(6, 4);

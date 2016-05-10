@@ -57,7 +57,9 @@
     <Compile Include="Entities\DataDictionary.cs" />
     <Compile Include="Entities\DataDictionaryGroup.cs" />
     <Compile Include="Entities\FileVersion.cs" />
+    <Compile Include="Entities\Followup.cs" />
     <Compile Include="Entities\FullBill.cs" />
+    <Compile Include="Entities\FullFollowup.cs" />
     <Compile Include="Entities\FullHouse.cs" />
     <Compile Include="Entities\FullOtherFeeBill.cs" />
     <Compile Include="Entities\FullRoleInfo.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="QueryForm\CustomerQueryForm.cs" />
     <Compile Include="QueryForm\DataDictionaryGroupQueryForm.cs" />
     <Compile Include="QueryForm\DataDictionaryQueryForm.cs" />
+    <Compile Include="QueryForm\FollowupQueryForm.cs" />
     <Compile Include="QueryForm\FullUserQueryForm.cs" />
     <Compile Include="QueryForm\HouseQueryForm.cs" />
     <Compile Include="QueryForm\House_CustomerQueryForm.cs" />
@@ -126,6 +129,7 @@
     <Compile Include="UpdateForm\CustomerUpdateForm.cs" />
     <Compile Include="UpdateForm\DataDictionaryGroupUpdateForm.cs" />
     <Compile Include="UpdateForm\DataDictionaryUpdateForm.cs" />
+    <Compile Include="UpdateForm\FollowupUpdateForm.cs" />
     <Compile Include="UpdateForm\FullUserUpdateForm.cs" />
     <Compile Include="UpdateForm\HouseUpdateForm.cs" />
     <Compile Include="UpdateForm\House_CustomerUpdateForm.cs" />

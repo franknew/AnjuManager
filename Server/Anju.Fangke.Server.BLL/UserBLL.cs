@@ -23,14 +23,27 @@ namespace Anju.Fangke.Server.BLL
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             UserDao dao = new UserDao(mapper);
-            return dao.QueryFullUser(form);
+            User_RoleDao urdao = new User_RoleDao(mapper);
+            RoleDao roledao = new RoleDao(mapper);
+            var users = dao.QueryFullUser(form);
+            var userids = (from u in users select u.ID).ToList();
+            var urs = urdao.Query(new User_RoleQueryForm { UserIDs = userids });
+            var roleids = (from ur in urs select ur.RoleID).Distinct().ToList();
+            var roles = roledao.Query(new RoleQueryForm { IDs = roleids });
+            foreach (var u in users)
+            {
+                u.Roles = (from ur in urs join role in roles on ur.RoleID equals role.ID
+                           where ur.UserID.Equals(u.ID) select role).ToList();
+            }
+            return users;
         }
 
-        public string Add(User user, UserInfo ui)
+        public string Add(User user, UserInfo ui, List<Role> roles)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             UserDao dao = new UserDao(mapper);
             UserInfoDao uidao = new UserInfoDao(mapper);
+            User_RoleDao urdao = new User_RoleDao(mapper);
 
             string id = dao.Add(user);
             if (ui != null)
@@ -38,14 +51,22 @@ namespace Anju.Fangke.Server.BLL
                 ui.ID = id;
                 uidao.Add(ui);
             }
+            if (roles != null)
+            {
+                foreach (var role in roles)
+                {
+                    urdao.Add(new User_Role { UserID = id, RoleID = role.ID });
+                }
+            }
             return id;
         }
 
-        public bool Update(User user, UserInfo ui)
+        public bool Update(User user, UserInfo ui, List<Role> roles)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             UserDao dao = new UserDao(mapper);
             UserInfoDao uidao = new UserInfoDao(mapper);
+            User_RoleDao urdao = new User_RoleDao(mapper);
             var updateuser = GetUserFormCache();
             dao.Update(new UserUpdateForm
             {
@@ -53,7 +74,7 @@ namespace Anju.Fangke.Server.BLL
                 {
                     Enabled = user.Enabled,
                     LastUpdateTime = DateTime.Now,
-                    LastUpdator = updateuser.User.ID,
+                    LastUpdator = updateuser?.User.ID,
                 },
                 UserQueryForm = new UserQueryForm { ID = user.ID }
             });
@@ -71,6 +92,14 @@ namespace Anju.Fangke.Server.BLL
                         Entity = ui,
                         UserInfoQueryForm = new UserInfoQueryForm { ID = user.ID }
                     });
+                }
+            }
+            urdao.Delete(new User_RoleQueryForm { UserID = user.ID });
+            if (roles != null)
+            {
+                foreach (var role in roles)
+                {
+                    urdao.Add(new User_Role { UserID = user.ID, RoleID = role.ID });
                 }
             }
             return true;

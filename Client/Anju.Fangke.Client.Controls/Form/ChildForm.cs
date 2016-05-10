@@ -17,11 +17,12 @@ namespace SOAFramework.Client.Forms
         public ChildForm()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            this.Padding = new Padding(5, 5, 5, 5);
+            //this.Padding = new Padding(5, 5, 5, 5);
             this.DisplayHeader = false;
             base.OnLoad(e);
         }

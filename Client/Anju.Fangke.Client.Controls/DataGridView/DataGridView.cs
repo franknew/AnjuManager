@@ -105,7 +105,7 @@ namespace SOAFramework.Client.Controls
 
         protected override void OnCellFormatting(DataGridViewCellFormattingEventArgs e)
         {
-            if (this.Rows[e.RowIndex].DataBoundItem != null &&
+            if (e.RowIndex > -1 && e.ColumnIndex > -1 && this.Rows[e.RowIndex].DataBoundItem != null &&
                 this.Columns[e.ColumnIndex].DataPropertyName.Contains("."))
             {
                 object item = this.Rows[e.RowIndex].DataBoundItem;
@@ -190,7 +190,7 @@ namespace SOAFramework.Client.Controls
             this.DataSource = datasource;
         }
 
-        public void RemoveRow<T>(T row)
+        public void RemoveRow<T>(T row) 
         {
             var datasource = this.DataSource as List<T>;
             this.DataSource = null;

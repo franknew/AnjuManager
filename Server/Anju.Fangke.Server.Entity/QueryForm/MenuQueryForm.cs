@@ -21,5 +21,11 @@ namespace Anju.Fangke.Server.Form
         
         public string ImagePath { get; set; }
         
+        public Int32? Index { get; set; }
+        
+        public Int32? Index_Start { get; set; }
+        
+        public Int32? Index_End { get; set; }
+        
     }
 }

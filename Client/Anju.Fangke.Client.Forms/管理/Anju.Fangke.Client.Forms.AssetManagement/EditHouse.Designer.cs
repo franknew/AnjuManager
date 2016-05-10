@@ -33,13 +33,14 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCost)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnSave);
             this.groupBox2.Location = new System.Drawing.Point(1, 437);
-            this.groupBox2.Size = new System.Drawing.Size(367, 56);
+            this.groupBox2.Size = new System.Drawing.Size(917, 56);
             this.groupBox2.Controls.SetChildIndex(this.btnSave, 0);
             // 
             // groupBox1
@@ -54,12 +55,7 @@
             // txbFloor
             // 
             this.txbFloor.Lines = new string[0];
-            this.txbFloor.ReadOnly = false;
-            // 
-            // txbBuildingName
-            // 
-            this.txbBuildingName.Enabled = false;
-            this.txbBuildingName.Lines = new string[0];
+            this.txbFloor.Text = "";
             // 
             // txbRemark
             // 
@@ -70,18 +66,17 @@
             this.txbHouseName.Lines = new string[0];
             this.txbHouseName.UseStyleColors = true;
             // 
-            // textBox1
-            // 
-            this.textBox1.Lines = new string[0];
-            // 
             // groupBox3
             // 
-            this.groupBox3.Location = new System.Drawing.Point(1, 341);
-            this.groupBox3.Size = new System.Drawing.Size(367, 96);
+            this.groupBox3.Location = new System.Drawing.Point(0, 311);
             // 
             // txbMobile
             // 
             this.txbMobile.Lines = new string[0];
+            // 
+            // panel2
+            // 
+            this.panel2.Size = new System.Drawing.Size(544, 36);
             // 
             // btnSave
             // 
@@ -100,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 494);
+            this.ClientSize = new System.Drawing.Size(919, 494);
             this.Name = "EditHouse";
             this.Text = "编辑房间信息";
             this.InitControl += new System.EventHandler(this.EditHouse_InitControl);
@@ -110,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numCost)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

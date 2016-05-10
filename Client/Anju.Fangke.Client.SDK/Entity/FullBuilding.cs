@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Anju.Fangke.Client.SDK.Entity
+namespace Anju.Fangke.Client.SDK
 {
     public class FullBuilding : Building
     {

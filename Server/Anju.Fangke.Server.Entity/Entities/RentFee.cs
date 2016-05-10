@@ -63,5 +63,20 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public DateTime? ExpiredTime { get; set; }
         
+        /// <summary>
+        /// 合同编号
+        /// </summary>
+        public string ContractCode { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? RentDateStart { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime? RentDateEnd { get; set; }
+        
     }
 }

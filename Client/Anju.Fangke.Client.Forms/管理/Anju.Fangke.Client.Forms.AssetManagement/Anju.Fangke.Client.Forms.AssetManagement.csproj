@@ -68,17 +68,23 @@
     <Compile Include="AddBuilding.Designer.cs">
       <DependentUpon>AddBuilding.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddFollowup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFollowup.Designer.cs">
+      <DependentUpon>AddFollowup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseEditFollowup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseEditFollowup.Designer.cs">
+      <DependentUpon>BaseEditFollowup.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddHouse.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddHouse.Designer.cs">
       <DependentUpon>AddHouse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddOtherFee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddOtherFee.Designer.cs">
-      <DependentUpon>AddOtherFee.cs</DependentUpon>
     </Compile>
     <Compile Include="AllocatePopup.cs">
       <SubType>Form</SubType>
@@ -135,6 +141,18 @@
       <DependentUpon>HouseManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewBuilding.Designer.cs">
+      <DependentUpon>ViewBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewHouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewHouse.Designer.cs">
+      <DependentUpon>ViewHouse.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Anju.Fangke.Client.AppData\Anju.Fangke.Client.AppData.csproj">
@@ -170,11 +188,14 @@
     <EmbeddedResource Include="AddBuilding.resx">
       <DependentUpon>AddBuilding.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddFollowup.resx">
+      <DependentUpon>AddFollowup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseEditFollowup.resx">
+      <DependentUpon>BaseEditFollowup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddHouse.resx">
       <DependentUpon>AddHouse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddOtherFee.resx">
-      <DependentUpon>AddOtherFee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AllocatePopup.resx">
       <DependentUpon>AllocatePopup.cs</DependentUpon>
@@ -202,6 +223,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HouseManagement.resx">
       <DependentUpon>HouseManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewBuilding.resx">
+      <DependentUpon>ViewBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewHouse.resx">
+      <DependentUpon>ViewHouse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

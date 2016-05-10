@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAuthority = new SOAFramework.Client.Controls.Button();
             this.btnChangePassword = new SOAFramework.Client.Controls.Button();
             this.btnDelete = new SOAFramework.Client.Controls.Button();
             this.btnEdit = new SOAFramework.Client.Controls.Button();
@@ -64,7 +63,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnAuthority);
             this.groupBox1.Controls.Add(this.btnChangePassword);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnEdit);
@@ -77,19 +75,6 @@
             this.groupBox1.Size = new System.Drawing.Size(1184, 54);
             this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
-            // 
-            // btnAuthority
-            // 
-            this.btnAuthority.ClickedMessage = null;
-            this.btnAuthority.IngoreCallbackOnce = false;
-            this.btnAuthority.Location = new System.Drawing.Point(412, 17);
-            this.btnAuthority.Name = "btnAuthority";
-            this.btnAuthority.Response = null;
-            this.btnAuthority.Size = new System.Drawing.Size(75, 23);
-            this.btnAuthority.TabIndex = 6;
-            this.btnAuthority.Text = "配置权限";
-            this.btnAuthority.UseSelectable = true;
-            this.btnAuthority.Click += new System.EventHandler(this.btnAuthority_Click);
             // 
             // btnChangePassword
             // 
@@ -107,8 +92,6 @@
             // btnDelete
             // 
             this.btnDelete.ClickedMessage = null;
-            this.btnDelete.EnableClickOnceOnAction = true;
-            this.btnDelete.EnableSyncClick = true;
             this.btnDelete.IngoreCallbackOnce = false;
             this.btnDelete.Location = new System.Drawing.Point(249, 17);
             this.btnDelete.Name = "btnDelete";
@@ -117,7 +100,7 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseSelectable = true;
-            this.btnDelete.ClickCallback += new System.EventHandler(this.btnDelete_ClickCallback);
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -149,7 +132,7 @@
             // 
             this.btnClose.ClickedMessage = null;
             this.btnClose.IngoreCallbackOnce = false;
-            this.btnClose.Location = new System.Drawing.Point(493, 17);
+            this.btnClose.Location = new System.Drawing.Point(412, 17);
             this.btnClose.Name = "btnClose";
             this.btnClose.Response = null;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
@@ -341,14 +324,14 @@
             this.dgvUsers.BindingRequestPropertyName = null;
             this.dgvUsers.BindingResponsePropertyName = "Users";
             this.dgvUsers.BindingSourcePropertyName = null;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.用户名,
@@ -446,6 +429,7 @@
             this.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
             this.Text = "员工管理";
             this.InitControl += new System.EventHandler(this.UserManagement_InitControl);
+            this.ShownOnSync += new System.EventHandler(this.UserManagement_ShownOnSync);
             this.Load += new System.EventHandler(this.UserManagement_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -475,7 +459,6 @@
         private SOAFramework.Client.Controls.TextBox txbUserName;
         private SOAFramework.Client.Controls.ComboBox cmbEnabled;
         private SOAFramework.Client.Controls.DataGridView dgvUsers;
-        private SOAFramework.Client.Controls.Button btnAuthority;
         private SOAFramework.Client.Controls.Button btnChangePassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn 用户名;
         private System.Windows.Forms.DataGridViewTextBoxColumn 姓名;

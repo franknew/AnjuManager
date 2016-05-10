@@ -32,6 +32,7 @@
             this.btnEdit = new SOAFramework.Client.Controls.Button();
             this.btnDelete = new SOAFramework.Client.Controls.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -52,11 +53,45 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.RequestName = "QuerySelfHouseRequest";
+            this.btnQuery.RequestName = "QuerySelfAndUnallocateHouseRequest";
             // 
             // groupBox2
             // 
             this.groupBox2.Location = new System.Drawing.Point(5, 46);
+            // 
+            // cmbDecorationType
+            // 
+            this.cmbDecorationType.DisplayMember = "Name";
+            this.cmbDecorationType.ValueMember = "Value";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.DisplayMember = "Name";
+            this.cmbStatus.ValueMember = "Value";
+            // 
+            // txbFloor_End
+            // 
+            this.txbFloor_End.Lines = new string[0];
+            // 
+            // txbFloor_Start
+            // 
+            this.txbFloor_Start.Lines = new string[0];
+            // 
+            // txbKeyCode
+            // 
+            this.txbKeyCode.Lines = new string[0];
+            // 
+            // txbHouseName
+            // 
+            this.txbHouseName.Lines = new string[0];
+            // 
+            // txbBuildingName
+            // 
+            this.txbBuildingName.Lines = new string[0];
+            // 
+            // txbContractCode
+            // 
+            this.txbContractCode.Lines = new string[0];
             // 
             // btnAdd
             // 
@@ -82,6 +117,7 @@
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "编辑";
             this.btnEdit.UseSelectable = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -94,16 +130,20 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "删除";
             this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // HouseManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1269, 640);
+            this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Name = "HouseManagement";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "房源管理";
+            this.OnShown += new System.EventHandler(this.HouseManagement_OnShown);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
+            this.numFloorCount = new SOAFramework.Client.Controls.NumbericUpDown();
             this.cmbArea = new SOAFramework.Client.Controls.ComboBox();
             this.cmbcity = new SOAFramework.Client.Controls.ComboBox();
             this.cmbProvince = new SOAFramework.Client.Controls.ComboBox();
@@ -44,10 +45,9 @@
             this.label1 = new SOAFramework.Client.Controls.Label();
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
             this.btnClose = new SOAFramework.Client.Controls.Button();
-            this.numFloorCount = new SOAFramework.Client.Controls.NumbericUpDown();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFloorCount)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -69,9 +69,20 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(1, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(475, 374);
+            this.groupBox1.Size = new System.Drawing.Size(475, 320);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // numFloorCount
+            // 
+            this.numFloorCount.BindingRequestPropertyName = null;
+            this.numFloorCount.BindingResponsePropertyName = null;
+            this.numFloorCount.BindingSourcePropertyName = "FloorCount";
+            this.numFloorCount.EmptyWarning = null;
+            this.numFloorCount.Location = new System.Drawing.Point(90, 112);
+            this.numFloorCount.Name = "numFloorCount";
+            this.numFloorCount.Size = new System.Drawing.Size(156, 21);
+            this.numFloorCount.TabIndex = 14;
             // 
             // cmbArea
             // 
@@ -83,7 +94,7 @@
             this.cmbArea.FormattingEnabled = true;
             this.cmbArea.InitableBindingGroupName = "深圳市";
             this.cmbArea.ItemHeight = 19;
-            this.cmbArea.Location = new System.Drawing.Point(295, 108);
+            this.cmbArea.Location = new System.Drawing.Point(295, 81);
             this.cmbArea.Name = "cmbArea";
             this.cmbArea.Size = new System.Drawing.Size(152, 25);
             this.cmbArea.TabIndex = 13;
@@ -101,7 +112,7 @@
             this.cmbcity.FormattingEnabled = true;
             this.cmbcity.InitableBindingGroupName = "广东省";
             this.cmbcity.ItemHeight = 19;
-            this.cmbcity.Location = new System.Drawing.Point(90, 108);
+            this.cmbcity.Location = new System.Drawing.Point(90, 81);
             this.cmbcity.Name = "cmbcity";
             this.cmbcity.Size = new System.Drawing.Size(156, 25);
             this.cmbcity.TabIndex = 12;
@@ -130,7 +141,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(47, 158);
+            this.label7.Location = new System.Drawing.Point(47, 112);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 19);
             this.label7.TabIndex = 9;
@@ -143,7 +154,7 @@
             this.txbRemark.BindingSourcePropertyName = "Remark";
             this.txbRemark.EmptyWarning = null;
             this.txbRemark.Lines = new string[0];
-            this.txbRemark.Location = new System.Drawing.Point(90, 284);
+            this.txbRemark.Location = new System.Drawing.Point(90, 221);
             this.txbRemark.MaxLength = 32767;
             this.txbRemark.Multiline = true;
             this.txbRemark.Name = "txbRemark";
@@ -162,7 +173,7 @@
             this.txbStreet.BindingSourcePropertyName = "Street";
             this.txbStreet.EmptyWarning = null;
             this.txbStreet.Lines = new string[0];
-            this.txbStreet.Location = new System.Drawing.Point(90, 204);
+            this.txbStreet.Location = new System.Drawing.Point(90, 141);
             this.txbStreet.MaxLength = 32767;
             this.txbStreet.Multiline = true;
             this.txbStreet.Name = "txbStreet";
@@ -196,7 +207,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 284);
+            this.label6.Location = new System.Drawing.Point(47, 221);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 19);
             this.label6.TabIndex = 5;
@@ -205,7 +216,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 204);
+            this.label5.Location = new System.Drawing.Point(47, 141);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 19);
             this.label5.TabIndex = 4;
@@ -214,7 +225,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(252, 111);
+            this.label4.Location = new System.Drawing.Point(252, 84);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 19);
             this.label4.TabIndex = 3;
@@ -223,7 +234,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 111);
+            this.label3.Location = new System.Drawing.Point(47, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 19);
             this.label3.TabIndex = 2;
@@ -251,7 +262,7 @@
             // 
             this.groupBox2.Controls.Add(this.btnClose);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(1, 404);
+            this.groupBox2.Location = new System.Drawing.Point(1, 350);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(475, 60);
             this.groupBox2.TabIndex = 1;
@@ -271,30 +282,20 @@
             this.btnClose.UseSelectable = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // numFloorCount
-            // 
-            this.numFloorCount.BindingRequestPropertyName = null;
-            this.numFloorCount.BindingResponsePropertyName = null;
-            this.numFloorCount.BindingSourcePropertyName = "FloorCount";
-            this.numFloorCount.EmptyWarning = null;
-            this.numFloorCount.Location = new System.Drawing.Point(90, 158);
-            this.numFloorCount.Name = "numFloorCount";
-            this.numFloorCount.Size = new System.Drawing.Size(156, 21);
-            this.numFloorCount.TabIndex = 14;
-            // 
             // BaseEditBuilding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 465);
+            this.ClientSize = new System.Drawing.Size(477, 411);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "BaseEditBuilding";
             this.Text = "编辑楼盘";
+            this.InitControl += new System.EventHandler(this.BaseEditBuilding_InitControl);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numFloorCount)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

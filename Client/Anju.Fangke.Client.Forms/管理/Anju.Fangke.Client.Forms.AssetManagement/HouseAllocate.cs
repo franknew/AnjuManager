@@ -49,7 +49,7 @@ namespace Anju.Fangke.Client.Forms
 
         private void QueryUser_Callback(QueryUserResponse response)
         {
-            if (response.Users != null) response.Users.Insert(0, new FullUser { ID = "-1", Name = "全部" });
+            if (response.Users != null) response.Users.Insert(0, new FullUser { ID = "-1", CnName = "全部" });
             cmbOwner.DataSource = response.Users;
         }
     }

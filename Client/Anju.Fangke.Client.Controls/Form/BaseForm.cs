@@ -13,6 +13,7 @@ using System.Reflection;
 using SOAFramework.Service.SDK.Core;
 using MetroFramework.Controls;
 using SOAFramework.Library.Validator;
+using System.Diagnostics;
 
 namespace SOAFramework.Client.Forms
 {
@@ -62,6 +63,7 @@ namespace SOAFramework.Client.Forms
         public event EventHandler AfterLoaded;
         public event EventHandler InitControl;
         public event EventHandler ShownOnSync;
+        public event EventHandler OnShown;
 
         public Dictionary<string, object> DataDictionary = new Dictionary<string, object>();
 
@@ -158,12 +160,38 @@ namespace SOAFramework.Client.Forms
         {
             return validationManager.ValidateInForm(this).IsValid;
         }
+
+        public bool CheckLoginValid(BaseResponse response)
+        {
+            if (response.IsError)
+            {
+                if (response.Code == 3)
+                {
+                    SOAFramework.Client.Controls.MessageBox.Show(this, "登录由于长时间没有操作而失效，请重新登录");
+                    dynamic mainform = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle);
+                    //mainform.ShowLogin();
+                    //this.Activate();
+                    //this?.ActiveControl?.Focus();
+                    Application.Restart();
+                    return false;
+                }
+                else
+                {
+                    SOAFramework.Client.Controls.MessageBox.Show(this, response.ResponseBody);
+                    this?.Activate();
+                    this?.ActiveControl?.Focus();
+                    return false;
+                }
+            }
+            return true;
+        }
         #endregion
 
         #region events
         private void BaseForm_Shown(object sender, EventArgs e)
         {
             if (DesignMode) return;
+            if (OnShown != null) OnShown.Invoke(sender, e);
             BackgroundWorker worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
             worker.RunWorkerCompleted += Worker_RunWorkerCompleted;

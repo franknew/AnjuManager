@@ -47,8 +47,8 @@
             this.dgvList = new SOAFramework.Client.Controls.DataGridView();
             this.名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.数据访问类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.父级 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.层级 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.上级 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.级别 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.启用 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -96,6 +96,7 @@
             this.btnDelete.Tag = "";
             this.btnDelete.Text = "删除";
             this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -109,6 +110,7 @@
             this.btnEdit.Tag = "";
             this.btnEdit.Text = "编辑";
             this.btnEdit.UseSelectable = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -122,6 +124,7 @@
             this.btnAdd.Tag = "新增";
             this.btnAdd.Text = "新增";
             this.btnAdd.UseSelectable = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnQuery
             // 
@@ -130,7 +133,7 @@
             this.btnQuery.IngoreCallbackOnce = false;
             this.btnQuery.Location = new System.Drawing.Point(6, 14);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.RequestName = "QueryRoleRequest";
+            this.btnQuery.RequestName = "QueryFullRoleRequest";
             this.btnQuery.Response = null;
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 0;
@@ -166,7 +169,7 @@
             this.cmbEnabled.HasAll = true;
             this.cmbEnabled.InitableBindingGroupName = "启用状态";
             this.cmbEnabled.ItemHeight = 19;
-            this.cmbEnabled.Location = new System.Drawing.Point(731, 18);
+            this.cmbEnabled.Location = new System.Drawing.Point(703, 18);
             this.cmbEnabled.Name = "cmbEnabled";
             this.cmbEnabled.Size = new System.Drawing.Size(150, 25);
             this.cmbEnabled.TabIndex = 4;
@@ -177,7 +180,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(688, 20);
+            this.label4.Location = new System.Drawing.Point(660, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 19);
             this.label4.TabIndex = 6;
@@ -193,7 +196,7 @@
             this.cmbParentID.FormattingEnabled = true;
             this.cmbParentID.InitableBindingGroupName = null;
             this.cmbParentID.ItemHeight = 19;
-            this.cmbParentID.Location = new System.Drawing.Point(532, 18);
+            this.cmbParentID.Location = new System.Drawing.Point(504, 18);
             this.cmbParentID.Name = "cmbParentID";
             this.cmbParentID.Size = new System.Drawing.Size(150, 25);
             this.cmbParentID.TabIndex = 3;
@@ -244,9 +247,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(461, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 19);
+            this.label3.Size = new System.Drawing.Size(37, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "父级角色";
+            this.label3.Text = "上级";
             // 
             // label2
             // 
@@ -287,8 +290,8 @@
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.名称,
             this.数据访问类型,
-            this.父级,
-            this.层级,
+            this.上级,
+            this.级别,
             this.启用,
             this.备注});
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -296,6 +299,7 @@
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
             this.dgvList.RowTemplate.Height = 23;
+            this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.Size = new System.Drawing.Size(1123, 322);
             this.dgvList.TabIndex = 2;
             // 
@@ -315,20 +319,20 @@
             this.数据访问类型.ReadOnly = true;
             this.数据访问类型.Width = 150;
             // 
-            // 父级
+            // 上级
             // 
-            this.父级.DataPropertyName = "ParentIDName";
-            this.父级.HeaderText = "父级";
-            this.父级.Name = "父级";
-            this.父级.ReadOnly = true;
-            this.父级.Width = 120;
+            this.上级.DataPropertyName = "ParentRoleName";
+            this.上级.HeaderText = "上级";
+            this.上级.Name = "上级";
+            this.上级.ReadOnly = true;
+            this.上级.Width = 120;
             // 
-            // 层级
+            // 级别
             // 
-            this.层级.DataPropertyName = "LevelName";
-            this.层级.HeaderText = "层级";
-            this.层级.Name = "层级";
-            this.层级.ReadOnly = true;
+            this.级别.DataPropertyName = "LevelName";
+            this.级别.HeaderText = "级别";
+            this.级别.Name = "级别";
+            this.级别.ReadOnly = true;
             // 
             // 启用
             // 
@@ -390,8 +394,8 @@
         private SOAFramework.Client.Controls.ComboBox cmbEnabled;
         private System.Windows.Forms.DataGridViewTextBoxColumn 名称;
         private System.Windows.Forms.DataGridViewTextBoxColumn 数据访问类型;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 父级;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 层级;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 上级;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 级别;
         private System.Windows.Forms.DataGridViewCheckBoxColumn 启用;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
     }

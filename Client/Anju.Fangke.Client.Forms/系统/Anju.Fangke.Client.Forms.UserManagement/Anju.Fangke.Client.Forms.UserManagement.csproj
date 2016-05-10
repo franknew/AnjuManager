@@ -35,6 +35,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\CommonDll\SOAFramework.Library.DAL.dll</HintPath>
     </Reference>
+    <Reference Include="SOAFramework.Library.Extension, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\SOAFramework.Library.Extension.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\SOAFramework.Library.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SOAFramework.Library.Lib, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\CommonDll\SOAFramework.Library.Lib.dll</HintPath>
+    </Reference>
     <Reference Include="SOAFramework.Service.SDK.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9a50c39ae211549b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\CommonDll\SOAFramework.Service.SDK.Core.dll</HintPath>
@@ -68,6 +80,12 @@
     </Compile>
     <Compile Include="BaseEditUser.Designer.cs">
       <DependentUpon>BaseEditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeSelfPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeSelfPassword.Designer.cs">
+      <DependentUpon>ChangeSelfPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="EditUser.cs">
       <SubType>Form</SubType>
@@ -118,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseEditUser.resx">
       <DependentUpon>BaseEditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeSelfPassword.resx">
+      <DependentUpon>ChangeSelfPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditUser.resx">
       <DependentUpon>EditUser.cs</DependentUpon>

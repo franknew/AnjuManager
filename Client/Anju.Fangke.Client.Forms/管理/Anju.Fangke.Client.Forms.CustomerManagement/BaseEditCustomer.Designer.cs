@@ -107,7 +107,7 @@
             // 
             // txbMobile
             // 
-            this.txbMobile.BindingRequestPropertyName = "form.Name";
+            this.txbMobile.BindingRequestPropertyName = "form.Mobile";
             this.txbMobile.BindingResponsePropertyName = null;
             this.txbMobile.BindingSourcePropertyName = "Mobile";
             this.txbMobile.EmptyWarning = null;
@@ -125,7 +125,7 @@
             // 
             // txbIdentityCode
             // 
-            this.txbIdentityCode.BindingRequestPropertyName = "form.Name";
+            this.txbIdentityCode.BindingRequestPropertyName = "form.Identity";
             this.txbIdentityCode.BindingResponsePropertyName = null;
             this.txbIdentityCode.BindingSourcePropertyName = "IdentityCode";
             this.txbIdentityCode.EmptyWarning = null;
@@ -143,7 +143,7 @@
             // 
             // txbWX
             // 
-            this.txbWX.BindingRequestPropertyName = "form.Name";
+            this.txbWX.BindingRequestPropertyName = "form.WX";
             this.txbWX.BindingResponsePropertyName = null;
             this.txbWX.BindingSourcePropertyName = "WX";
             this.txbWX.EmptyWarning = null;
@@ -161,7 +161,7 @@
             // 
             // txbRemark
             // 
-            this.txbRemark.BindingRequestPropertyName = "form.Name";
+            this.txbRemark.BindingRequestPropertyName = "form.Remark";
             this.txbRemark.BindingResponsePropertyName = null;
             this.txbRemark.BindingSourcePropertyName = "Remark";
             this.txbRemark.EmptyWarning = null;

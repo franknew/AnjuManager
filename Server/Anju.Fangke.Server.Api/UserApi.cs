@@ -9,18 +9,19 @@ using SOAFramework.Service.Core;
 
 namespace Anju.Fangke.Server.Api
 {
-    [ServiceLayer(Module = "Anju.Fangke.Server.UserApi")]
     [AuthFilter]
     public class UserApi
     {
         private UserBLL bll = new UserBLL();
 
+        [QueryAction]
         public List<FullUser> Query(FullUserQueryForm form)
         {
             form.IsDeleted = 0;
             return bll.Query(form);
         }
 
+        [EditAction]
         public string Add(FullUser form)
         {
             User user = new User
@@ -41,9 +42,10 @@ namespace Anju.Fangke.Server.Api
                 Remark = form.Remark,
                 WX = form.WX,
             };
-            return bll.Add(user, ui);
+            return bll.Add(user, ui, form.Roles);
         }
 
+        [EditAction]
         public bool Update(FullUser form)
         {
             User user = new User
@@ -62,16 +64,17 @@ namespace Anju.Fangke.Server.Api
                 Remark = form.Remark,
                 WX = form.WX,
             };
-            bll.Update(user, ui);
-            return true;
+            return bll.Update(user, ui, form.Roles);
         }
 
+        [DeleteAction]
         public bool Delete(List<string> ids)
         {
             if (ids == null) throw new Exception("没有ID");
             return bll.Delete(new UserQueryForm { IDs = ids });
         }
 
+        [EditAction]
         public bool ChangePassword(string username, string password)
         {
             return bll.ChangePassword(username, password);

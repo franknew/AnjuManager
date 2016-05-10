@@ -36,13 +36,14 @@
             this.txbPassword = new SOAFramework.Client.Controls.TextBox();
             this.btnLogin = new SOAFramework.Client.Controls.Button();
             this.btnClose = new SOAFramework.Client.Controls.Button();
+            this.chkRemberMe = new SOAFramework.Client.Controls.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 158);
+            this.label1.Location = new System.Drawing.Point(16, 150);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 19);
             this.label1.TabIndex = 0;
@@ -51,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 193);
+            this.label2.Location = new System.Drawing.Point(30, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 19);
             this.label2.TabIndex = 1;
@@ -74,7 +75,7 @@
             this.txbUserName.CanbeEmpty = false;
             this.txbUserName.EmptyWarning = "请输入用户名";
             this.txbUserName.Lines = new string[0];
-            this.txbUserName.Location = new System.Drawing.Point(97, 158);
+            this.txbUserName.Location = new System.Drawing.Point(97, 150);
             this.txbUserName.MaxLength = 32767;
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -93,7 +94,7 @@
             this.txbPassword.CanbeEmpty = false;
             this.txbPassword.EmptyWarning = "请输入密码";
             this.txbPassword.Lines = new string[0];
-            this.txbPassword.Location = new System.Drawing.Point(97, 189);
+            this.txbPassword.Location = new System.Drawing.Point(97, 181);
             this.txbPassword.MaxLength = 32767;
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -115,7 +116,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Response = null;
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 13;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseSelectable = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -128,10 +129,25 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Response = null;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 4;
+            this.btnClose.TabIndex = 14;
             this.btnClose.Text = "退出";
             this.btnClose.UseSelectable = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // chkRemberMe
+            // 
+            this.chkRemberMe.AutoSize = true;
+            this.chkRemberMe.BindingChecked = 0;
+            this.chkRemberMe.BindingRequestPropertyName = null;
+            this.chkRemberMe.BindingResponsePropertyName = null;
+            this.chkRemberMe.BindingSourcePropertyName = null;
+            this.chkRemberMe.Group = null;
+            this.chkRemberMe.Location = new System.Drawing.Point(97, 215);
+            this.chkRemberMe.Name = "chkRemberMe";
+            this.chkRemberMe.Size = new System.Drawing.Size(59, 15);
+            this.chkRemberMe.TabIndex = 3;
+            this.chkRemberMe.Text = "记住我";
+            this.chkRemberMe.UseSelectable = true;
             // 
             // Login
             // 
@@ -139,6 +155,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 300);
             this.ControlBox = false;
+            this.Controls.Add(this.chkRemberMe);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txbPassword);
@@ -152,6 +169,7 @@
             this.Resizable = false;
             this.Text = "房客易租管理系统";
             this.Load += new System.EventHandler(this.Login_Load);
+            this.Shown += new System.EventHandler(this.Login_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -167,5 +185,6 @@
         private SOAFramework.Client.Controls.TextBox txbPassword;
         private SOAFramework.Client.Controls.Button btnLogin;
         private SOAFramework.Client.Controls.Button btnClose;
+        private SOAFramework.Client.Controls.CheckBox chkRemberMe;
     }
 }
