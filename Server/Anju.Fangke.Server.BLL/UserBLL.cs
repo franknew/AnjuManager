@@ -38,6 +38,20 @@ namespace Anju.Fangke.Server.BLL
             return users;
         }
 
+        public List<FullUser> SimpleQuery(FullUserQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            UserDao dao = new UserDao(mapper);
+            return dao.QueryFullUser(form);
+        }
+
+        public int QueryCount(FullUserQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            UserDao dao = new UserDao(mapper);
+            return dao.QueryFullUserCount(form);
+        }
+
         public string Add(User user, UserInfo ui, List<Role> roles)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
@@ -225,7 +239,7 @@ namespace Anju.Fangke.Server.BLL
             logonhistorydao.Update(new LogonHistoryUpdateForm
             {
                 Entity = new LogonHistory { ActiveTime = DateTime.Now },
-                LogonHistoryQueryForm = new LogonHistoryQueryForm { Token = token },
+                LogonHistoryQueryForm = new LogonHistoryQueryForm { ID = logonList[0].ID },
             });
             if (ServiceSession.Current != null) return CheckAuth(user.Role);
             return -1;

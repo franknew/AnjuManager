@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="FullCustomerQueryForm" type="Anju.Fangke.Server.Form.FullCustomerQueryForm" />
+  </alias>
+  <statements>
+  <select id="QueryFullCustomer" resultClass="Customer" parameterClass="FullCustomerQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT c.* FROM `Customer` c 
+    LEFT JOIN House_Customer hc ON c.ID=hc.CustomerID
+    LEFT JOIN House h ON hc.HouseOrRoomID=h.ID
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        c.`ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         c.`ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+      c.`Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+      c.`Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+          c.`Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+      c.`CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+      c.`CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+      c.`CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+      c.`LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+      c.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+      c.`LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+      c.`LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+      c.`Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Mobile">
+      c.`Mobile`=#Mobile#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="WX">
+      c.`WX`=#WX#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IdentityCode">
+      c.`IdentityCode`=#IdentityCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type_Start">
+      c.`Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+      c.`Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type">
+      c.`Type`=#Type#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+      c.`Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+      c.`IsDeleted`=#IsDeleted#
+    </isNotNull>
+      <isNotNull prepend="AND" property="IsOurs">
+        h.`IsOurs`=#IsOurs#
+      </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+    
+  <select id="QueryFullCustomerCount" resultClass="Int" parameterClass="FullCustomerQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT COUNT(c.ID) FROM `Customer` c 
+    LEFT JOIN House_Customer hc ON c.ID=hc.CustomerID
+    LEFT JOIN House h ON hc.HouseOrRoomID=h.ID
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        c.`ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         c.`ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+      c.`Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+      c.`Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+          c.`Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+      c.`CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+      c.`CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+      c.`CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+      c.`LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+      c.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+      c.`LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+      c.`LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+      c.`Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Mobile">
+      c.`Mobile`=#Mobile#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="WX">
+      c.`WX`=#WX#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IdentityCode">
+      c.`IdentityCode`=#IdentityCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type_Start">
+      c.`Type`&gt;=#Type_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Type_End">
+      c.`Type`&lt;=#Type_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Type">
+      c.`Type`=#Type#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Enabled">
+      c.`Enabled`=#Enabled#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsDeleted">
+      c.`IsDeleted`=#IsDeleted#
+    </isNotNull>
+      <isNotNull prepend="AND" property="IsOurs">
+        h.`IsOurs`=#IsOurs#
+      </isNotNull>
+    
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    
+  </select>
+  
+  </statements>
+</sqlMap>

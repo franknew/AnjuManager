@@ -137,7 +137,16 @@
     <Compile Include="NumbericUpDown\NumbericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Pager\Pager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pager\Pager.Designer.cs">
+      <DependentUpon>Pager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paint\Paint.cs" />
+    <Compile Include="Panel\FlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Panel\Panel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -178,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\PopupForm.resx">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pager\Pager.resx">
+      <DependentUpon>Pager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

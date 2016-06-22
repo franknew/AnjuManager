@@ -84,7 +84,7 @@ namespace Anju.Fangke.Server.BLL
             OtherFeeBLL otherfeebll = new OtherFeeBLL();
             House_OtherFeeBLL hobll = new House_OtherFeeBLL();
             OtherFeeBillBLL ofbbll = new OtherFeeBillBLL();
-            var houses = housebll.Query(new HouseQueryForm { IsDeleted = 0, Enabled = 1, IsRented = 1, RentType=(int)RentType.整租 });
+            var houses = housebll.Query(new HouseQueryForm { IsDeleted = 0, Enabled = 1, IsOurs = 1 });
             var houseids = (from h in houses select h.ID).ToList();
             var rentfees = rentfeebll.Query(new RentFeeQueryForm { Enabled = 1, IsDeleted = 0, RentDay_Start = 1, RentDay_End = now.Day, ExpiredTime_Start = now });
             var premonthbills = Query(new BillQueryForm { Year = premonth.Year, Month = premonth.Month, HouseOrRoomIDs = houseids });
@@ -219,6 +219,20 @@ namespace Anju.Fangke.Server.BLL
             ISqlMapper mapper = MapperHelper.GetMapper();
             BillDao dao = new BillDao(mapper);
             return dao.Add(bill);
+        }
+
+        public bool Update(BillUpdateForm bill)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            BillDao dao = new BillDao(mapper);
+            return dao.Update(bill);
+        }
+
+        public bool Delete(BillQueryForm bill)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            BillDao dao = new BillDao(mapper);
+            return dao.Delete(bill);
         }
     }
 }

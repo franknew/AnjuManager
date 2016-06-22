@@ -84,6 +84,7 @@
     <Compile Include="House_CustomerBLL.cs" />
     <Compile Include="House_OtherFeeBLL.cs" />
     <Compile Include="LoginBLL.cs" />
+    <Compile Include="LogonHistoryBLL.cs" />
     <Compile Include="MapperHelper.cs" />
     <Compile Include="MenuBLL.cs" />
     <Compile Include="OtherFeeBillBLL.cs" />

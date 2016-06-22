@@ -5,6 +5,7 @@ using System.Text;
 using Anju.Fangke.Server.BLL;
 using Anju.Fangke.Server.Form;
 using Anju.Fangke.Server.Model;
+using SOAFramework.Library;
 
 namespace Anju.Fangke.Server.Api
 {
@@ -17,9 +18,12 @@ namespace Anju.Fangke.Server.Api
         [DataAuthorityFilter]
         public List<FullHouse> Query(QueryHouseServiceForm form)
         {
+            UserBLL userbll = new UserBLL();
             var ids = Common.GetDataAuthorityUserIDList();
             form.IsDeleted = 0;
             form.OwnerIDs = ids;
+            form.IsOurs = 1;
+            //MonitorCache.GetInstance().PushMessage(new CacheMessage { Message = "ids:" + string.Join(",", ids) }, SOAFramework.Library.CacheEnum.FormMonitor);
             return bll.QueryFullHouse(form);
         }
 

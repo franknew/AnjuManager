@@ -35,6 +35,10 @@
             this.btnClose = new SOAFramework.Client.Controls.Button();
             this.btnQuery = new SOAFramework.Client.Controls.Button();
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
+            this.label10 = new SOAFramework.Client.Controls.Label();
+            this.txbAreaEnd = new SOAFramework.Client.Controls.TextBox();
+            this.txbAreaStart = new SOAFramework.Client.Controls.TextBox();
+            this.label9 = new SOAFramework.Client.Controls.Label();
             this.txbContractCode = new SOAFramework.Client.Controls.TextBox();
             this.label8 = new SOAFramework.Client.Controls.Label();
             this.cmbDecorationType = new SOAFramework.Client.Controls.ComboBox();
@@ -66,6 +70,7 @@
             this.业务员 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.业主信息 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.pager1 = new SOAFramework.Client.Controls.Pager.Pager();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
@@ -76,7 +81,7 @@
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnQuery);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(5, 30);
+            this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1290, 41);
             this.groupBox1.TabIndex = 0;
@@ -98,7 +103,6 @@
             // btnQuery
             // 
             this.btnQuery.ClickedMessage = null;
-            this.btnQuery.EnableSyncClick = true;
             this.btnQuery.IngoreCallbackOnce = false;
             this.btnQuery.Location = new System.Drawing.Point(6, 12);
             this.btnQuery.Name = "btnQuery";
@@ -108,9 +112,14 @@
             this.btnQuery.TabIndex = 0;
             this.btnQuery.Text = "查询";
             this.btnQuery.UseSelectable = true;
+            this.btnQuery.InitClick += new System.EventHandler(this.btnQuery_InitClick);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txbAreaEnd);
+            this.groupBox2.Controls.Add(this.txbAreaStart);
+            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txbContractCode);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cmbDecorationType);
@@ -128,12 +137,68 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(5, 71);
+            this.groupBox2.Location = new System.Drawing.Point(5, 46);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1290, 89);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "查询条件";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(945, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(15, 19);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "-";
+            // 
+            // txbAreaEnd
+            // 
+            this.txbAreaEnd.BindingRequestPropertyName = "form.Area_Start";
+            this.txbAreaEnd.BindingResponsePropertyName = null;
+            this.txbAreaEnd.BindingSourcePropertyName = null;
+            this.txbAreaEnd.EmptyToNull = true;
+            this.txbAreaEnd.EmptyWarning = null;
+            this.txbAreaEnd.Lines = new string[0];
+            this.txbAreaEnd.Location = new System.Drawing.Point(966, 52);
+            this.txbAreaEnd.MaxLength = 32767;
+            this.txbAreaEnd.Name = "txbAreaEnd";
+            this.txbAreaEnd.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txbAreaEnd.SelectedText = "";
+            this.txbAreaEnd.SelectionLength = 0;
+            this.txbAreaEnd.SelectionStart = 0;
+            this.txbAreaEnd.Size = new System.Drawing.Size(79, 23);
+            this.txbAreaEnd.TabIndex = 18;
+            this.txbAreaEnd.UseSelectable = true;
+            // 
+            // txbAreaStart
+            // 
+            this.txbAreaStart.BindingRequestPropertyName = "form.Area_Start";
+            this.txbAreaStart.BindingResponsePropertyName = null;
+            this.txbAreaStart.BindingSourcePropertyName = null;
+            this.txbAreaStart.EmptyToNull = true;
+            this.txbAreaStart.EmptyWarning = null;
+            this.txbAreaStart.Lines = new string[0];
+            this.txbAreaStart.Location = new System.Drawing.Point(860, 52);
+            this.txbAreaStart.MaxLength = 32767;
+            this.txbAreaStart.Name = "txbAreaStart";
+            this.txbAreaStart.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txbAreaStart.SelectedText = "";
+            this.txbAreaStart.SelectionLength = 0;
+            this.txbAreaStart.SelectionStart = 0;
+            this.txbAreaStart.Size = new System.Drawing.Size(79, 23);
+            this.txbAreaStart.TabIndex = 17;
+            this.txbAreaStart.UseSelectable = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(817, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 19);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "面积";
             // 
             // txbContractCode
             // 
@@ -359,10 +424,11 @@
             // 
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
+            this.dgvList.AllowUserToOrderColumns = true;
             this.dgvList.AutoGenerateColumns = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvList.BindingRequestPropertyName = null;
-            this.dgvList.BindingResponsePropertyName = "List";
+            this.dgvList.BindingResponsePropertyName = "List.Record";
             this.dgvList.BindingSourcePropertyName = null;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -389,12 +455,12 @@
             this.备注,
             this.业主信息});
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvList.Location = new System.Drawing.Point(5, 160);
+            this.dgvList.Location = new System.Drawing.Point(5, 135);
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
             this.dgvList.RowTemplate.Height = 23;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(1290, 352);
+            this.dgvList.Size = new System.Drawing.Size(1290, 357);
             this.dgvList.TabIndex = 2;
             this.dgvList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellContentClick);
             // 
@@ -515,16 +581,30 @@
             this.业主信息.ReadOnly = true;
             this.业主信息.Width = 80;
             // 
+            // pager1
+            // 
+            this.pager1.BindingRequestPropertyName = null;
+            this.pager1.BindingResponsePropertyName = "List.RecordCount";
+            this.pager1.CurrentPageIndex = 1;
+            this.pager1.CurrentPageIndexBindingRequestPropertyName = "form.CurrentIndex";
+            this.pager1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pager1.Location = new System.Drawing.Point(5, 492);
+            this.pager1.Name = "pager1";
+            this.pager1.PageSizeBindingRequestPropertyName = "form.PageSize";
+            this.pager1.RecordCount = 0;
+            this.pager1.Size = new System.Drawing.Size(1290, 20);
+            this.pager1.TabIndex = 3;
+            // 
             // BaseQueryHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Controls.Add(this.dgvList);
+            this.Controls.Add(this.pager1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "BaseQueryHouse";
-            this.Padding = new System.Windows.Forms.Padding(5, 30, 5, 5);
             this.Text = "BaseQueryHouse";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -570,5 +650,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 业务员;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
         private System.Windows.Forms.DataGridViewLinkColumn 业主信息;
+        protected SOAFramework.Client.Controls.Label label10;
+        protected SOAFramework.Client.Controls.TextBox txbAreaEnd;
+        protected SOAFramework.Client.Controls.TextBox txbAreaStart;
+        protected SOAFramework.Client.Controls.Label label9;
+        private SOAFramework.Client.Controls.Pager.Pager pager1;
     }
 }

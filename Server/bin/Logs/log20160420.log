@@ -1,0 +1,11 @@
+2016-04-20 11:15:16.358 - SELECT * FROM `House_Customer`       WHERE  (            `HouseOrRoomID`= ?param0           OR             `HouseOrRoomID`= ?param1           OR             `HouseOrRoomID`= ?param2           OR             `HouseOrRoomID`= ?param3           OR             `HouseOrRoomID`= ?param4           OR             `HouseOrRoomID`= ?param5           OR             `HouseOrRoomID`= ?param6           OR             `HouseOrRoomID`= ?param7           OR             `HouseOrRoomID`= ?param8           OR             `HouseOrRoomID`= ?param9           OR             `HouseOrRoomID`= ?param10           OR             `HouseOrRoomID`= ?param11           OR             `HouseOrRoomID`= ?param12           OR             `HouseOrRoomID`= ?param13           )
+2016-04-20 11:15:16.528 - SELECT * FROM `Customer`       WHERE            `Enabled`= ?param0        AND           `IsDeleted`= ?param1                  ORDER BY LastUpdateTime DESC
+2016-04-20 16:58:23.551 - SELECT * FROM `User_Role`       WHERE            `UserID`= ?param0
+2016-04-20 16:58:25.421 - SELECT * FROM `Role`       WHERE  (            `ID`= ?param0           )           ORDER BY LastUpdateTime DESC
+2016-04-20 16:59:56.666 - SELECT * FROM `User_Role`       WHERE            `UserID`= ?param0
+2016-04-20 16:59:57.050 - SELECT * FROM `Role`       WHERE  (            `ID`= ?param0           )           ORDER BY LastUpdateTime DESC
+2016-04-20 17:00:00.516 - SELECT * FROM `Role`                 ORDER BY LastUpdateTime DESC
+2016-04-20 17:04:43.406 - SELECT * FROM `User_Role`       WHERE            `UserID`= ?param0
+2016-04-20 17:04:43.805 - SELECT * FROM `Role`       WHERE  (            `ID`= ?param0           )           ORDER BY LastUpdateTime DESC
+2016-04-20 17:04:44.428 - SELECT * FROM `User_Role`       WHERE            `UserID`= ?param0
+2016-04-20 17:04:44.478 - SELECT * FROM `Role`                 ORDER BY LastUpdateTime DESC

@@ -21,7 +21,20 @@ namespace Anju.Fangke.Server.Api
         {
             form.IsDeleted = 0;
             form.Enabled = 1;
+            form.IsOurs = 1;
             return bll.Query(form);
+        }
+
+        [QueryAction]
+        public PagingEntity<FullHouse> QueryPaging(QueryHouseServiceForm form)
+        {
+            form.IsDeleted = 0;
+            form.Enabled = 1;
+            form.IsOurs = 1;
+            PagingEntity<FullHouse> result = new PagingEntity<FullHouse>();
+            result.Record = bll.Query(form);
+            result.RecordCount = bll.QueryCount(form);
+            return result;
         }
 
         [EditAction]

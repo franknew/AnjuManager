@@ -66,7 +66,7 @@
         <isNotNull prepend="AND" property="Remark">
           ui.`Remark` LIKE '%$Remark$%'
         </isNotNull>
-        <isNotNull property="IDs">
+        <isNotNull prepend="AND" property="IDs">
           <iterate property="IDs" open="(" close=")" conjunction="OR">
             u.ID=#IDs[]#
           </iterate>
@@ -77,6 +77,74 @@
           LIMIT #StartIndex#, #PageSize#
         </isGreaterThan>
       </isNotNull>
+    </select>
+    <select id="QueryFullUserCount" resultClass="Int" parameterClass="FullUserQueryForm">
+      <isGreaterThan compareProperty="PageSize" compareValue="0">
+
+      </isGreaterThan>
+      SELECT COUNT(u.ID) 
+      FROM `User` u LEFT JOIN `UserInfo` ui ON u.ID=ui.ID
+      <dynamic prepend="WHERE">
+        <isNotNull prepend="AND" property="ID">
+          u.`ID`=#ID#
+        </isNotNull>
+        <isNotNull prepend="AND" property="Name">
+          u.`Name` like '%$Name$%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="Creator">
+          u.`Creator`=#Creator#
+        </isNotNull>
+        <isNotNull prepend="AND" property="CreateTime_Start">
+          u.`CreateTime`&gt;=#CreateTime_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="CreateTime_End">
+          u.`CreateTime`&lt;=#CreateTime_End#
+        </isNotNull>
+        <isNotNull prepend="AND" property="Password">
+          u.`Password`=#Password#
+        </isNotNull>
+        <isNotNull prepend="AND" property="Enabled">
+          u.`Enabled`=#Enabled#
+        </isNotNull>
+        <isNotNull prepend="AND" property="IsDeleted">
+          u.`IsDeleted`=#IsDeleted#
+        </isNotNull>
+        <isNotNull prepend="AND" property="LastUpdateTime_Start">
+          u.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="LastUpdateTime_End">
+          u.`LastUpdateTime`&lt;=#LastUpdateTime_End#
+        </isNotNull>
+        <isNotNull prepend="AND" property="LastUpdator">
+          u.`LastUpdator`=#LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="AND" property="QQ">
+          ui.`QQ` LIKE '%QQ%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="Mobile">
+          ui.`Mobile` LIKE '%$Mobile$%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="WX">
+          ui.`WX` LIKE '%WX%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="Address">
+          ui.`Address` LIKE '%A$ddress$%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="Identity">
+          ui.`Identity`=#Identity#
+        </isNotNull>
+        <isNotNull prepend="AND" property="CnName">
+          ui.`CnName` LIKE '%CnName%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="Remark">
+          ui.`Remark` LIKE '%$Remark$%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="IDs">
+          <iterate property="IDs" open="(" close=")" conjunction="OR">
+            u.ID=#IDs[]#
+          </iterate>
+        </isNotNull>
+      </dynamic>
     </select>
   </statements>
 </sqlMap>

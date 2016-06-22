@@ -81,17 +81,23 @@
     <Compile Include="AddHouseOwner.Designer.cs">
       <DependentUpon>AddHouseOwner.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddRenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRenter.Designer.cs">
+      <DependentUpon>AddRenter.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseEditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaseEditCustomer.Designer.cs">
       <DependentUpon>BaseEditCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomerManagement.cs">
+    <Compile Include="BaseCustomerManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomerManagement.Designer.cs">
-      <DependentUpon>CustomerManagement.cs</DependentUpon>
+    <Compile Include="BaseCustomerManagement.Designer.cs">
+      <DependentUpon>BaseCustomerManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="EditHouseOwner.cs">
       <SubType>Form</SubType>
@@ -99,7 +105,25 @@
     <Compile Include="EditHouseOwner.Designer.cs">
       <DependentUpon>EditHouseOwner.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditRenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditRenter.Designer.cs">
+      <DependentUpon>EditRenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerManagement.Designer.cs">
+      <DependentUpon>OwnerManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenterManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenterManagement.Designer.cs">
+      <DependentUpon>RenterManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,14 +161,26 @@
     <EmbeddedResource Include="AddHouseOwner.resx">
       <DependentUpon>AddHouseOwner.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddRenter.resx">
+      <DependentUpon>AddRenter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseEditCustomer.resx">
       <DependentUpon>BaseEditCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomerManagement.resx">
-      <DependentUpon>CustomerManagement.cs</DependentUpon>
+    <EmbeddedResource Include="BaseCustomerManagement.resx">
+      <DependentUpon>BaseCustomerManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditHouseOwner.resx">
       <DependentUpon>EditHouseOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditRenter.resx">
+      <DependentUpon>EditRenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerManagement.resx">
+      <DependentUpon>OwnerManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RenterManagement.resx">
+      <DependentUpon>RenterManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewCustomer.resx">
       <DependentUpon>ViewCustomer.cs</DependentUpon>

@@ -1,0 +1,12 @@
+2016-06-16 11:31:11.207 - SELECT * FROM `House`       WHERE            `RentType`= ?param0        AND           `IsRented`= ?param1        AND           `Enabled`= ?param2        AND           `IsDeleted`= ?param3                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:31:18.441 - SELECT * FROM `RentFee`       WHERE            `RentDay`>= ?param0        AND           `RentDay`<= ?param1        AND           `Enabled`= ?param2        AND           `IsDeleted`= ?param3        AND           `ExpiredTime`>= ?param4                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:31:19.183 - SELECT * FROM `Bill`       WHERE            `Year`= ?param0        AND           `Month`= ?param1                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:31:19.496 - SELECT * FROM `Bill`       WHERE            `Year`= ?param0        AND           `Month`= ?param1                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:31:19.926 - SELECT * FROM `OtherFee`                 ORDER BY LastUpdateTime DESC
+2016-06-16 11:32:29.041 - SELECT * FROM `House`       WHERE            `Enabled`= ?param0        AND           `IsDeleted`= ?param1        AND           `IsOurs`= ?param2                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:32:36.020 - SELECT * FROM `RentFee`       WHERE            `RentDay`>= ?param0        AND           `RentDay`<= ?param1        AND           `Enabled`= ?param2        AND           `IsDeleted`= ?param3        AND           `ExpiredTime`>= ?param4                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:32:36.919 - SELECT * FROM `Bill`       WHERE  (            `HouseOrRoomID`= ?param0           ) AND           `Year`= ?param1        AND           `Month`= ?param2                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:32:37.541 - SELECT * FROM `Bill`       WHERE  (            `HouseOrRoomID`= ?param0           ) AND           `Year`= ?param1        AND           `Month`= ?param2                  ORDER BY LastUpdateTime DESC
+2016-06-16 11:32:38.007 - SELECT * FROM `OtherFee`                 ORDER BY LastUpdateTime DESC
+2016-06-16 11:32:40.499 - SELECT * FROM `House_OtherFee`       WHERE  (            `HouseOrRoomID`= ?param0           )
+2016-06-16 11:32:41.454 - SELECT * FROM `OtherFeeBill`                 ORDER BY LastUpdateTime DESC

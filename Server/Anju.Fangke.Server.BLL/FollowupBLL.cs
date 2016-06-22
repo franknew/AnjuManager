@@ -31,5 +31,19 @@ namespace Anju.Fangke.Server.BLL
             FollowupDao dao = new FollowupDao(mapper);
             return dao.Delete(form);
         }
+
+        public List<Followup> QueryFullFollowup(FullFollowupQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            FollowupDao dao = new FollowupDao(mapper);
+            return dao.QueryFullFollowup(form);
+        }
+
+        public int QueryFullFollowupCount(FullFollowupQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            FollowupDao dao = new FollowupDao(mapper);
+            return dao.QueryFullFollowupCount(form);
+        }
     }
 }

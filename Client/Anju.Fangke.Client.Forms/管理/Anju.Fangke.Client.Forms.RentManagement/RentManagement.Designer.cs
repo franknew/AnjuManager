@@ -55,6 +55,7 @@
             this.楼盘名称 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.房间名称 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.房间类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.租客 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.租金 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.押金 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.起租日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,6 +132,7 @@
             this.btnQuery.TabIndex = 0;
             this.btnQuery.Text = "查询";
             this.btnQuery.UseSelectable = true;
+            this.btnQuery.InitClick += new System.EventHandler(this.btnQuery_InitClick);
             // 
             // groupBox2
             // 
@@ -357,6 +359,7 @@
             // 
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
+            this.dgvList.AllowUserToOrderColumns = true;
             this.dgvList.AutoGenerateColumns = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvList.BindingRequestPropertyName = null;
@@ -375,6 +378,7 @@
             this.楼盘名称,
             this.房间名称,
             this.房间类型,
+            this.租客,
             this.租金,
             this.押金,
             this.起租日期,
@@ -417,6 +421,13 @@
             this.房间类型.HeaderText = "房间类型";
             this.房间类型.Name = "房间类型";
             this.房间类型.ReadOnly = true;
+            // 
+            // 租客
+            // 
+            this.租客.DataPropertyName = "Renter.Name";
+            this.租客.HeaderText = "租客";
+            this.租客.Name = "租客";
+            this.租客.ReadOnly = true;
             // 
             // 租金
             // 
@@ -510,6 +521,7 @@
         private System.Windows.Forms.DataGridViewLinkColumn 楼盘名称;
         private System.Windows.Forms.DataGridViewLinkColumn 房间名称;
         private System.Windows.Forms.DataGridViewTextBoxColumn 房间类型;
+        private System.Windows.Forms.DataGridViewLinkColumn 租客;
         private System.Windows.Forms.DataGridViewTextBoxColumn 租金;
         private System.Windows.Forms.DataGridViewTextBoxColumn 押金;
         private System.Windows.Forms.DataGridViewTextBoxColumn 起租日期;

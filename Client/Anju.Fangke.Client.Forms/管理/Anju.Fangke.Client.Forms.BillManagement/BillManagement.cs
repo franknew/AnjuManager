@@ -76,13 +76,13 @@ namespace Anju.Fangke.Client.Forms
             QueryHouseRequest request = new QueryHouseRequest();
             request.token = Token;
             request.form = new HouseQueryForm { BuildingID = buildingID };
-            SDKSync<QueryHouseResponse>.CreateInstance(this).Execute(request, Building_Callback);
+            SDKSync<QueryHousePagingResponse>.CreateInstance(this).Execute(request, Building_Callback);
         }
 
-        private void Building_Callback(QueryHouseResponse response)
+        private void Building_Callback(QueryHousePagingResponse response)
         {
             List<ReadEnum> datasource = new List<ReadEnum>();
-            foreach (var house in response.List)
+            foreach (var house in response.List.Record)
             {
                 datasource.Add(new ReadEnum
                 {
@@ -92,6 +92,26 @@ namespace Anju.Fangke.Client.Forms
             }
             datasource.Insert(0, new ReadEnum { Value = "-1", Text = "全部" });
             cmbHouse.DataSource = datasource;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvBill.CurrentRow == null)
+            {
+                SOAFramework.Client.Controls.MessageBox.Show(this, "请选择一条数据");
+                return;
+            }
+            if (SOAFramework.Client.Controls.MessageBox.Show(this, "是否删除选中账单？", "删除", MessageBoxButtons.YesNo) == DialogResult.No) return;
+            DeleteBillRequest request = new DeleteBillRequest();
+            request.billid = (dgvBill.CurrentRow.DataBoundItem as DataRowView).Row["ID"].ToString();
+            request.token = this.Token;
+            SDKSync<CommonResponse>.CreateInstance(this).Execute(request, Delete_Callback);
+        }
+
+        private void Delete_Callback(CommonResponse reponse)
+        {
+            dgvBill.RemoveRow<DataRowView>(dgvBill.CurrentRow);
+            SOAFramework.Client.Controls.MessageBox.Show(this, "删除账单成功！");
         }
     }
 }

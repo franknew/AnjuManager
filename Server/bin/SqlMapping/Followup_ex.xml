@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="FullFollowupQueryForm" type="Anju.Fangke.Server.Form.FullFollowupQueryForm" />
+  </alias>
+  <statements>
+  <select id="QueryFullFollowup" resultClass="Followup" parameterClass="FullFollowupQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT f.* FROM `Followup` f INNER JOIN House h ON f.HouseID=h.ID
+    INNER JOIN Building b ON h.BuildingID=b.ID 
+    LEFT JOIN Customer c ON h.OwnerID=c.ID AND c.Type=1
+    LEFT JOIN User u ON f.Creator=u.ID
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        f.`ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+          f.`ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+      f.`Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+      f.`Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+          f.`Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+      f.`CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+      f.`CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+      f.`CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+      f.`LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+      f.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+      f.`LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+      f.`LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+
+      <isNotNull prepend="AND" property="HouseName">
+        h.`Name` LIKE '%HouseName%'
+      </isNotNull>
+      <isNotNull prepend="AND" property="BuildingName">
+        b.`Name` LIKE '%BuildingName%'
+      </isNotNull>
+      <isNotNull prepend="AND" property="OwnerName">
+        c.`Name` LIKE '%OwnerName%'
+      </isNotNull>
+      <isNotNull prepend="AND" property="CreatorName">
+        u.`Name` LIKE '%CreatorName%'
+      </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+      f.`Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseID">
+      f.`HouseID`=#HouseID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseIDs">
+        <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+          f.`HouseID`=#HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+        ORDER BY f.LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+
+    <select id="QueryFullFollowupCount" resultClass="Int" parameterClass="FullFollowupQueryForm">
+
+      SELECT COUNT(f.ID) FROM `Followup` f INNER JOIN House h ON f.HouseID=h.ID
+      INNER JOIN Building b ON h.BuildingID=b.ID
+      LEFT JOIN Customer c ON h.OwnerID=c.ID AND c.Type=1
+      LEFT JOIN User u ON f.Creator=u.ID
+      <dynamic prepend="WHERE">
+        <isNotNull prepend="AND" property="ID">
+          f.`ID`=#ID#
+        </isNotNull>
+
+        <isNotNull prepend="AND"  property="IDs">
+          <iterate property="IDs" open="(" close=")" conjunction="OR">
+            f.`ID`=#IDs[]#
+          </iterate>
+        </isNotNull>
+        <isNotNull prepend="AND" property="Name">
+          f.`Name`=#Name#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="Creator">
+          f.`Creator`=#Creator#
+        </isNotNull>
+
+        <isNotNull prepend="AND"  property="Creators">
+          <iterate property="Creators" open="(" close=")" conjunction="OR">
+            f.`Creator`=#Creators[]#
+          </iterate>
+        </isNotNull>
+        <isNotNull prepend="AND" property="CreateTime_Start">
+          f.`CreateTime`&gt;=#CreateTime_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="CreateTime_End">
+          f.`CreateTime`&lt;=#CreateTime_End#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="CreateTime">
+          f.`CreateTime`=#CreateTime#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="LastUpdator">
+          f.`LastUpdator`=#LastUpdator#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="LastUpdateTime_Start">
+          f.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="LastUpdateTime_End">
+          f.`LastUpdateTime`&lt;=#LastUpdateTime_End#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="LastUpdateTime">
+          f.`LastUpdateTime`=#LastUpdateTime#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="HouseName">
+          h.`Name` LIKE '%HouseName%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="BuildingName">
+          b.`Name` LIKE '%BuildingName%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="OwnerName">
+          c.`Name` LIKE '%OwnerName%'
+        </isNotNull>
+        <isNotNull prepend="AND" property="CreatorName">
+          u.`Name` LIKE '%CreatorName%'
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="Remark">
+          f.`Remark` LIKE '%$Remark$%'
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="HouseID">
+          f.`HouseID`=#HouseID#
+        </isNotNull>
+
+        <isNotNull prepend="AND"  property="HouseIDs">
+          <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+            f.`HouseID`=#HouseIDs[]#
+          </iterate>
+        </isNotNull>
+      </dynamic>
+     
+    </select>
+  </statements>
+</sqlMap>

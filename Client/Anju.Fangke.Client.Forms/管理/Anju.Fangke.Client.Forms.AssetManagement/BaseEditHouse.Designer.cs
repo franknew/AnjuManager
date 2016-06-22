@@ -32,6 +32,7 @@
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
             this.btnClose = new SOAFramework.Client.Controls.Button();
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
+            this.chkIsOurs = new SOAFramework.Client.Controls.CheckBox();
             this.cmbBuilding = new SOAFramework.Client.Controls.ComboBox();
             this.cmbDecorationType = new SOAFramework.Client.Controls.ComboBox();
             this.label13 = new SOAFramework.Client.Controls.Label();
@@ -67,7 +68,7 @@
             this.跟进信息 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.跟进人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new SOAFramework.Client.Controls.Panel();
-            this.button1 = new SOAFramework.Client.Controls.Button();
+            this.btnAddFollowup = new SOAFramework.Client.Controls.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCost)).BeginInit();
@@ -82,7 +83,7 @@
             // 
             this.groupBox2.Controls.Add(this.btnClose);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(1, 432);
+            this.groupBox2.Location = new System.Drawing.Point(1, 433);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(918, 56);
             this.groupBox2.TabIndex = 1;
@@ -104,6 +105,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkIsOurs);
             this.groupBox1.Controls.Add(this.cmbBuilding);
             this.groupBox1.Controls.Add(this.cmbDecorationType);
             this.groupBox1.Controls.Add(this.label13);
@@ -130,10 +132,25 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 306);
+            this.groupBox1.Size = new System.Drawing.Size(367, 307);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "房间信息";
+            // 
+            // chkIsOurs
+            // 
+            this.chkIsOurs.AutoSize = true;
+            this.chkIsOurs.BindingChecked = 0;
+            this.chkIsOurs.BindingRequestPropertyName = null;
+            this.chkIsOurs.BindingResponsePropertyName = null;
+            this.chkIsOurs.BindingSourcePropertyName = "House.IsOurs";
+            this.chkIsOurs.Group = null;
+            this.chkIsOurs.Location = new System.Drawing.Point(244, 191);
+            this.chkIsOurs.Name = "chkIsOurs";
+            this.chkIsOurs.Size = new System.Drawing.Size(59, 15);
+            this.chkIsOurs.TabIndex = 26;
+            this.chkIsOurs.Text = "已承包";
+            this.chkIsOurs.UseSelectable = true;
             // 
             // cmbBuilding
             // 
@@ -165,7 +182,7 @@
             this.cmbDecorationType.ItemHeight = 19;
             this.cmbDecorationType.Location = new System.Drawing.Point(86, 185);
             this.cmbDecorationType.Name = "cmbDecorationType";
-            this.cmbDecorationType.Size = new System.Drawing.Size(265, 25);
+            this.cmbDecorationType.Size = new System.Drawing.Size(110, 25);
             this.cmbDecorationType.TabIndex = 24;
             this.cmbDecorationType.UseSelectable = true;
             this.cmbDecorationType.Value = null;
@@ -190,9 +207,9 @@
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.InitableBindingGroupName = "房间状态";
             this.cmbStatus.ItemHeight = 19;
-            this.cmbStatus.Location = new System.Drawing.Point(257, 57);
+            this.cmbStatus.Location = new System.Drawing.Point(244, 57);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(94, 25);
+            this.cmbStatus.Size = new System.Drawing.Size(107, 25);
             this.cmbStatus.TabIndex = 22;
             this.cmbStatus.UseSelectable = true;
             this.cmbStatus.Value = null;
@@ -201,7 +218,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(214, 59);
+            this.label10.Location = new System.Drawing.Point(202, 59);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 19);
             this.label10.TabIndex = 21;
@@ -214,20 +231,20 @@
             this.numCost.BindingSourcePropertyName = "House.SalePrice";
             this.numCost.DecimalPlaces = 2;
             this.numCost.EmptyWarning = null;
-            this.numCost.Location = new System.Drawing.Point(257, 157);
+            this.numCost.Location = new System.Drawing.Point(244, 157);
             this.numCost.Maximum = new decimal(new int[] {
             99999999,
             0,
             0,
             0});
             this.numCost.Name = "numCost";
-            this.numCost.Size = new System.Drawing.Size(94, 21);
+            this.numCost.Size = new System.Drawing.Size(107, 21);
             this.numCost.TabIndex = 18;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(213, 157);
+            this.label17.Location = new System.Drawing.Point(202, 157);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(37, 19);
             this.label17.TabIndex = 17;
@@ -249,7 +266,7 @@
             this.txbArea.SelectedText = "";
             this.txbArea.SelectionLength = 0;
             this.txbArea.SelectionStart = 0;
-            this.txbArea.Size = new System.Drawing.Size(93, 23);
+            this.txbArea.Size = new System.Drawing.Size(110, 23);
             this.txbArea.TabIndex = 16;
             this.txbArea.Text = "0";
             this.txbArea.UseSelectable = true;
@@ -279,7 +296,7 @@
             this.txbFloor.SelectedText = "";
             this.txbFloor.SelectionLength = 0;
             this.txbFloor.SelectionStart = 0;
-            this.txbFloor.Size = new System.Drawing.Size(91, 23);
+            this.txbFloor.Size = new System.Drawing.Size(108, 23);
             this.txbFloor.TabIndex = 14;
             this.txbFloor.Text = "1";
             this.txbFloor.UseSelectable = true;
@@ -475,7 +492,7 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(0, 306);
+            this.groupBox3.Location = new System.Drawing.Point(0, 307);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(367, 96);
             this.groupBox3.TabIndex = 3;
@@ -558,7 +575,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(1, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(367, 402);
+            this.panel1.Size = new System.Drawing.Size(367, 403);
             this.panel1.TabIndex = 4;
             // 
             // groupBox4
@@ -568,7 +585,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(368, 30);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(551, 402);
+            this.groupBox4.Size = new System.Drawing.Size(551, 403);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "跟进信息";
@@ -599,7 +616,7 @@
             this.dgvFollowup.Name = "dgvFollowup";
             this.dgvFollowup.ReadOnly = true;
             this.dgvFollowup.RowTemplate.Height = 23;
-            this.dgvFollowup.Size = new System.Drawing.Size(545, 346);
+            this.dgvFollowup.Size = new System.Drawing.Size(545, 347);
             this.dgvFollowup.TabIndex = 1;
             // 
             // 跟进信息
@@ -619,31 +636,31 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnAddFollowup);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 17);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(545, 36);
             this.panel2.TabIndex = 0;
             // 
-            // button1
+            // btnAddFollowup
             // 
-            this.button1.ClickedMessage = null;
-            this.button1.IngoreCallbackOnce = false;
-            this.button1.Location = new System.Drawing.Point(3, 7);
-            this.button1.Name = "button1";
-            this.button1.Response = null;
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "增加跟进";
-            this.button1.UseSelectable = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddFollowup.ClickedMessage = null;
+            this.btnAddFollowup.IngoreCallbackOnce = false;
+            this.btnAddFollowup.Location = new System.Drawing.Point(3, 7);
+            this.btnAddFollowup.Name = "btnAddFollowup";
+            this.btnAddFollowup.Response = null;
+            this.btnAddFollowup.Size = new System.Drawing.Size(75, 23);
+            this.btnAddFollowup.TabIndex = 1;
+            this.btnAddFollowup.Text = "增加跟进";
+            this.btnAddFollowup.UseSelectable = true;
+            this.btnAddFollowup.Click += new System.EventHandler(this.btnAddFollowup_Click);
             // 
             // BaseEditHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 489);
+            this.ClientSize = new System.Drawing.Size(920, 490);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
@@ -703,9 +720,10 @@
         private SOAFramework.Client.Controls.GroupBox groupBox4;
         protected SOAFramework.Client.Controls.DataGridView dgvFollowup;
         protected SOAFramework.Client.Controls.Panel panel2;
-        protected SOAFramework.Client.Controls.Button button1;
+        protected SOAFramework.Client.Controls.Button btnAddFollowup;
         protected SOAFramework.Client.Controls.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn 跟进信息;
         private System.Windows.Forms.DataGridViewTextBoxColumn 跟进人;
+        protected SOAFramework.Client.Controls.CheckBox chkIsOurs;
     }
 }

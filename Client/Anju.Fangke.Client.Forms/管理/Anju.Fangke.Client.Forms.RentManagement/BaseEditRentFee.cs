@@ -23,6 +23,8 @@ namespace Anju.Fangke.Client.Forms
 
         public FullHouse FullHouse { get; set; }
 
+        public List<Customer> Renters { get; set; }
+
         private void btnAddFee_Click(object sender, EventArgs e)
         {
             AddOtherFee form = new AddOtherFee();
@@ -49,11 +51,35 @@ namespace Anju.Fangke.Client.Forms
             var list = dgvOtherFee.DataSource as List<OtherFee>;
             if (!hasFee) list.Add(of);
             dgvOtherFee.Reset();
+            FullHouse.Renter = cmbRenter.SelectedItem as Customer;
         }
 
         private void BaseEditRentFee_InitControl(object sender, EventArgs e)
         {
+            if (Renters != null) cmbRenter.DataSource = Renters;
             if (FullHouse != null) this.SetForm(FullHouse);
+            cmbRenter.SelectedValue = FullHouse?.Renter?.ID;
+        }
+
+        private void BaseEditRentFee_Shown(object sender, EventArgs e)
+        {
+        }
+
+        private void btnAddRenter_Click(object sender, EventArgs e)
+        {
+            AddRenter form = new AddRenter();
+            form.DataSource = Renters;
+            form.Token = this.Token;
+            form.Add_Callback += Add_Callback;
+            form.ShowDialog(this);
+        }
+
+        public void Add_Callback(object sender, EventArgs e)
+        {
+            cmbRenter.DataSource = Renters;
+            cmbRenter.Reset();
+            AddModelResponse response = sender as AddModelResponse;
+            cmbRenter.SelectedValue = response.ID;
         }
     }
 }

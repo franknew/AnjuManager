@@ -42,6 +42,8 @@ namespace Anju.Fangke.Server.BLL
         {
             ISqlMapper mapper = MapperHelper.GetMapper();
             House_OtherFeeDao hofdao = new House_OtherFeeDao(mapper);
+            House_CustomerDao hcdao = new House_CustomerDao(mapper);
+            CustomerDao customerdao = new CustomerDao(mapper);
             RentFeeDao rfdao = new RentFeeDao(mapper);
             RentFee rf = null;
             house.RentFee.HouseOrRoomID = house.House.ID;
@@ -62,6 +64,8 @@ namespace Anju.Fangke.Server.BLL
                     hofdao.Add(new House_OtherFee { HouseOrRoomID = house.House.ID, OtherFeeID = of.ID, Type = (int)HouseOrRoomType.House });
                 }
             }
+            hcdao.Delete(new House_CustomerQueryForm { HouseOrRoomID = house.House.ID, Type = (int)CustomerType.租客 });
+            if (house.Renter != null) hcdao.Add(new House_Customer { HouseOrRoomID = house.House.ID, CustomerID = house.Renter.ID, Type = (int)CustomerType.租客 });
             return id;
         }
 
@@ -70,6 +74,7 @@ namespace Anju.Fangke.Server.BLL
             ISqlMapper mapper = MapperHelper.GetMapper();
             House_OtherFeeDao hofdao = new House_OtherFeeDao(mapper);
             RentFeeDao rfdao = new RentFeeDao(mapper);
+            House_CustomerDao hcdao = new House_CustomerDao(mapper);
             RentFee rf = null;
             house.RentFee.HouseOrRoomID = house.House.ID;
             if (!string.IsNullOrEmpty(house.RentFee.ID)) rf = rfdao.Query(new RentFeeQueryForm { HouseOrRoomID = house.House.ID, Enabled = 1, IsDeleted = 0 }).FirstOrDefault();
@@ -88,6 +93,7 @@ namespace Anju.Fangke.Server.BLL
                     hofdao.Add(new House_OtherFee { HouseOrRoomID = house.House.ID, OtherFeeID = of.ID, Type = (int)HouseOrRoomType.House });
                 }
             }
+            if (house.Renter != null) hcdao.Add(new House_Customer { HouseOrRoomID = house.House.ID, CustomerID = house.Renter.ID, Type = (int)CustomerType.租客 });
             return id;
         }
 
@@ -107,7 +113,7 @@ namespace Anju.Fangke.Server.BLL
             var houseids = (from h in house select h.ID).ToList();
             var hcs = hcdao.Query(new House_CustomerQueryForm { HouseOrRoomIDs = houseids });
             var customerids = (from ho in hcs select ho.CustomerID).Distinct().ToList();
-            var customers = customerdao.Query(new CustomerQueryForm { IDs = customerids, Enabled = 1, IsDeleted = 0 });
+            var customers = customerdao.Query(new CustomerQueryForm { IDs = customerids, Enabled = 1, IsDeleted = 0, });
             var buildingids = (from h in house select h.BuildingID).Distinct().ToList();
             var buidlings = buildingdao.Query(new BuildingQueryForm { IDs = buildingids });
             var rentfees = rfdao.Query(new RentFeeQueryForm { HouseOrRoomIDs = houseids, Enabled = 1, IsDeleted = 0 });
@@ -122,7 +128,7 @@ namespace Anju.Fangke.Server.BLL
                     House = h,
                     Customer = (from ho in hcs
                                 join c in customers on ho.CustomerID equals c.ID
-                                where ho.HouseOrRoomID.Equals(h.ID)
+                                where ho.HouseOrRoomID.Equals(h.ID) && c.Type == (int)CustomerType.业主
                                 select c).FirstOrDefault(),
                     Building = buidlings.Find(t => t.ID.Equals(h.BuildingID)),
                     RentFee = rentfees.Find(t => t.HouseOrRoomID.Equals(h.ID)),
@@ -130,6 +136,10 @@ namespace Anju.Fangke.Server.BLL
                                  join of in ofs on ho.OtherFeeID equals of.ID
                                  where ho.HouseOrRoomID.Equals(h.ID)
                                  select of).ToList(),
+                    Renter = (from ho in hcs
+                              join c in customers on ho.CustomerID equals c.ID
+                              where ho.HouseOrRoomID.Equals(h.ID) && c.Type == (int)CustomerType.租客
+                              select c).FirstOrDefault(),
                 };
                 list.Add(fh);
             }

@@ -133,6 +133,7 @@
             this.Name = "AllocatePopup";
             this.Text = "分配房源";
             this.InitControl += new System.EventHandler(this.AllocatePopup_InitControl);
+            this.ShownOnSync += new System.EventHandler(this.AllocatePopup_ShownOnSync);
             this.Shown += new System.EventHandler(this.AllocatePopup_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

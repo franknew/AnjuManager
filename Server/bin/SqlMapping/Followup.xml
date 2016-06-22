@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="post" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Followup" type="Anju.Fangke.Server.Model.Followup" />
+    <typeAlias alias="FollowupQueryForm" type="Anju.Fangke.Server.Form.FollowupQueryForm" />
+    <typeAlias alias="FollowupUpdateForm" type="Anju.Fangke.Server.Form.FollowupUpdateForm" />
+  </alias>
+  <statements>
+  <select id="QueryFollowup" resultClass="Followup" parameterClass="FollowupQueryForm">
+    <isGreaterThan compareProperty="PageSize" compareValue="0">
+    
+    </isGreaterThan>
+    SELECT * FROM `Followup`
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="CreateTime">
+        `CreateTime`=#CreateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime">
+        `LastUpdateTime`=#LastUpdateTime#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseID">
+        `HouseID`=#HouseID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseIDs">
+        <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+        ORDER BY LastUpdateTime DESC
+    <isNotNull property="PageSize">
+        <isGreaterThan property="PageSize" compareValue="0">
+         LIMIT #StartIndex#, #PageSize# 
+        </isGreaterThan>
+    </isNotNull>
+  </select>
+  <insert id="AddFollowup" parameterClass="Followup">
+  INSERT INTO `Followup`
+  (
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    `ID`
+    </isNotNull>
+    <isNotNull prepend="," property="Name">
+    `Name`
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    `Creator`
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    `CreateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    `LastUpdator`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    `LastUpdateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    `Remark`
+    </isNotNull>
+    <isNotNull prepend="," property="HouseID">
+    `HouseID`
+    </isNotNull>
+  </dynamic>
+  )
+  VALUES
+  (
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    #ID#
+    </isNotNull>
+    <isNotNull prepend="," property="Name">
+    #Name#
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    #Creator#
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    #CreateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    #LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    #LastUpdateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    #Remark#
+    </isNotNull>
+    <isNotNull prepend="," property="HouseID">
+    #HouseID#
+    </isNotNull>
+  </dynamic>
+  )
+  </insert>
+  <update id="UpdateFollowup" parameterClass="FollowupUpdateForm">
+  UPDATE `Followup`
+    <dynamic prepend="SET">
+        <isNotNull prepend="," property="Entity.Name">
+        `Name`=#Entity.Name#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Creator">
+        `Creator`=#Entity.Creator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.CreateTime">
+        `CreateTime`=#Entity.CreateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdator">
+        `LastUpdator`=#Entity.LastUpdator#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.LastUpdateTime">
+        `LastUpdateTime`=#Entity.LastUpdateTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.Remark">
+        `Remark`=#Entity.Remark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.HouseID">
+        `HouseID`=#Entity.HouseID#
+        </isNotNull>
+    </dynamic>
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="FollowupQueryForm.ID">
+        `ID`=#FollowupQueryForm.ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="FollowupQueryForm.IDs">
+        <iterate property="FollowupQueryForm.IDs" open="(" close=")" conjunction="OR">
+         `ID`=#FollowupQueryForm.IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="FollowupQueryForm.Name">
+        `Name`=#FollowupQueryForm.Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FollowupQueryForm.Creator">
+        `Creator`=#FollowupQueryForm.Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="FollowupQueryForm.Creators">
+        <iterate property="FollowupQueryForm.Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#FollowupQueryForm.Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="FollowupQueryForm.CreateTime_Start">
+        `CreateTime`&gt;=#FollowupQueryForm.CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FollowupQueryForm.CreateTime_End">
+        `CreateTime`&lt;=#FollowupQueryForm.CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FollowupQueryForm.LastUpdator">
+        `LastUpdator`=#FollowupQueryForm.LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FollowupQueryForm.LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#FollowupQueryForm.LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="FollowupQueryForm.LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#FollowupQueryForm.LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FollowupQueryForm.Remark">
+        `Remark` LIKE '%$FollowupQueryForm.Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="FollowupQueryForm.HouseID">
+        `HouseID`=#FollowupQueryForm.HouseID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="FollowupQueryForm.HouseIDs">
+        <iterate property="FollowupQueryForm.HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#FollowupQueryForm.HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+  </update>
+  
+  <delete id="DeleteFollowup" parameterClass="FollowupQueryForm">
+    DELETE FROM `Followup` WHERE 1=1
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseID">
+        `HouseID`=#HouseID#
+    </isNotNull>
+    
+        <isNotNull prepend="AND"  property="HouseIDs">
+        <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#HouseIDs[]#
+        </iterate>
+    </isNotNull>
+  </delete>
+   <select id="QueryFollowupLastUpdateTime" resultClass="DateTime">
+        SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `Followup`
+   </select>
+   <select id="QueryFollowupRecordCount" resultClass="int" parameterClass="FollowupQueryForm">
+   SELECT COUNT(*) FROM `Followup` 
+    <dynamic prepend="WHERE">
+    <isNotNull prepend="AND" property="ID">
+        `ID`=#ID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="IDs">
+        <iterate property="IDs" open="(" close=")" conjunction="OR">
+         `ID`=#IDs[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="Name">
+        `Name`=#Name#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Creator">
+        `Creator`=#Creator#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="Creators">
+        <iterate property="Creators" open="(" close=")" conjunction="OR">
+         `Creator`=#Creators[]#
+        </iterate>
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_Start">
+        `CreateTime`&gt;=#CreateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="CreateTime_End">
+        `CreateTime`&lt;=#CreateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdator">
+        `LastUpdator`=#LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_Start">
+        `LastUpdateTime`&gt;=#LastUpdateTime_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="LastUpdateTime_End">
+        `LastUpdateTime`&lt;=#LastUpdateTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="Remark">
+        `Remark` LIKE '%$Remark$%'
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseID">
+        `HouseID`=#HouseID#
+    </isNotNull>
+        <isNotNull prepend="AND"  property="HouseIDs">
+        <iterate property="HouseIDs" open="(" close=")" conjunction="OR">
+         `HouseID`=#HouseIDs[]#
+        </iterate>
+    </isNotNull>
+    </dynamic>
+   </select>
+  </statements>
+</sqlMap>

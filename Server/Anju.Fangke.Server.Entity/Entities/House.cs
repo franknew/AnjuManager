@@ -138,5 +138,15 @@ namespace Anju.Fangke.Server.Model
         /// </summary>
         public string ContractCode { get; set; }
         
+        /// <summary>
+        /// 是否自己承包
+        /// </summary>
+        public int? IsOurs { get; set; }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public int? RentDay { get; set; }
+        
     }
 }

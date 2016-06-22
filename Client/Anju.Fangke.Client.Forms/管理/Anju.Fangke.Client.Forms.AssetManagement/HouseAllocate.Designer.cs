@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAllocate = new SOAFramework.Client.Controls.Button();
-            this.label9 = new SOAFramework.Client.Controls.Label();
+            this.labelCreator = new SOAFramework.Client.Controls.Label();
             this.cmbOwner = new SOAFramework.Client.Controls.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -38,7 +38,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnAllocate);
-            this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Controls.SetChildIndex(this.btnQuery, 0);
             this.groupBox1.Controls.SetChildIndex(this.btnClose, 0);
             this.groupBox1.Controls.SetChildIndex(this.btnAllocate, 0);
@@ -46,6 +45,7 @@
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(168, 12);
+            this.btnClose.Text = "退出";
             // 
             // btnQuery
             // 
@@ -54,8 +54,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cmbOwner);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(5, 46);
+            this.groupBox2.Controls.Add(this.labelCreator);
+            this.groupBox2.Size = new System.Drawing.Size(1290, 130);
+            this.groupBox2.Controls.SetChildIndex(this.label9, 0);
+            this.groupBox2.Controls.SetChildIndex(this.txbAreaStart, 0);
+            this.groupBox2.Controls.SetChildIndex(this.txbAreaEnd, 0);
+            this.groupBox2.Controls.SetChildIndex(this.label10, 0);
             this.groupBox2.Controls.SetChildIndex(this.label8, 0);
             this.groupBox2.Controls.SetChildIndex(this.txbContractCode, 0);
             this.groupBox2.Controls.SetChildIndex(this.label1, 0);
@@ -72,12 +76,8 @@
             this.groupBox2.Controls.SetChildIndex(this.txbFloor_End, 0);
             this.groupBox2.Controls.SetChildIndex(this.cmbStatus, 0);
             this.groupBox2.Controls.SetChildIndex(this.cmbDecorationType, 0);
-            this.groupBox2.Controls.SetChildIndex(this.label9, 0);
+            this.groupBox2.Controls.SetChildIndex(this.labelCreator, 0);
             this.groupBox2.Controls.SetChildIndex(this.cmbOwner, 0);
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(837, 21);
             // 
             // cmbDecorationType
             // 
@@ -92,16 +92,16 @@
             // txbFloor_End
             // 
             this.txbFloor_End.Lines = new string[0];
-            this.txbFloor_End.Location = new System.Drawing.Point(993, 19);
+            this.txbFloor_End.Location = new System.Drawing.Point(965, 19);
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(972, 21);
+            this.label7.Location = new System.Drawing.Point(944, 21);
             // 
             // txbFloor_Start
             // 
             this.txbFloor_Start.Lines = new string[0];
-            this.txbFloor_Start.Location = new System.Drawing.Point(887, 19);
+            this.txbFloor_Start.Location = new System.Drawing.Point(859, 19);
             // 
             // txbKeyCode
             // 
@@ -119,6 +119,24 @@
             // 
             this.txbContractCode.Lines = new string[0];
             // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(944, 56);
+            // 
+            // txbAreaEnd
+            // 
+            this.txbAreaEnd.Lines = new string[0];
+            this.txbAreaEnd.Location = new System.Drawing.Point(965, 52);
+            // 
+            // txbAreaStart
+            // 
+            this.txbAreaStart.Lines = new string[0];
+            this.txbAreaStart.Location = new System.Drawing.Point(859, 52);
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(817, 54);
+            // 
             // btnAllocate
             // 
             this.btnAllocate.ClickedMessage = null;
@@ -132,14 +150,14 @@
             this.btnAllocate.UseSelectable = true;
             this.btnAllocate.Click += new System.EventHandler(this.btnAllocate_Click);
             // 
-            // label9
+            // labelCreator
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(823, 51);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 19);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "业务员";
+            this.labelCreator.AutoSize = true;
+            this.labelCreator.Location = new System.Drawing.Point(30, 87);
+            this.labelCreator.Name = "labelCreator";
+            this.labelCreator.Size = new System.Drawing.Size(51, 19);
+            this.labelCreator.TabIndex = 14;
+            this.labelCreator.Text = "业务员";
             // 
             // cmbOwner
             // 
@@ -151,7 +169,7 @@
             this.cmbOwner.FormattingEnabled = true;
             this.cmbOwner.InitableBindingGroupName = null;
             this.cmbOwner.ItemHeight = 19;
-            this.cmbOwner.Location = new System.Drawing.Point(886, 48);
+            this.cmbOwner.Location = new System.Drawing.Point(93, 84);
             this.cmbOwner.Name = "cmbOwner";
             this.cmbOwner.Size = new System.Drawing.Size(188, 25);
             this.cmbOwner.TabIndex = 15;
@@ -163,9 +181,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1269, 640);
+            this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Name = "HouseAllocate";
-            this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "房源分配";
             this.Shown += new System.EventHandler(this.HouseAllocate_Shown);
             this.groupBox1.ResumeLayout(false);
@@ -178,7 +195,7 @@
         #endregion
 
         private SOAFramework.Client.Controls.Button btnAllocate;
-        private SOAFramework.Client.Controls.Label label9;
+        private SOAFramework.Client.Controls.Label labelCreator;
         private SOAFramework.Client.Controls.ComboBox cmbOwner;
     }
 }

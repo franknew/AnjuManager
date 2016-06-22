@@ -35,10 +35,31 @@ namespace Anju.Fangke.Server.Api
 
         [QueryAction]
         [DataAuthorityFilter]
+        public PagingEntity<FullHouse> QueryHousePaging(QueryHouseServiceForm form)
+        {
+            form.IsDeleted = 0;
+            PagingEntity<FullHouse> result = new PagingEntity<FullHouse>();
+            result.Record = housebll.QueryFullHouse(form);
+            result.RecordCount = housebll.QueryFullHouseCount(form);
+            return result;
+        }
+
+        [QueryAction]
+        [DataAuthorityFilter]
         public List<FullHouse> QueryAllocateHouse(QueryHouseServiceForm form)
         {
             form.Enabled = 1;
+            form.IsOurs = 1;
             return QueryHouse(form);
+        }
+
+        [QueryAction]
+        [DataAuthorityFilter]
+        public PagingEntity<FullHouse> QueryAllocateHousePaging(QueryHouseServiceForm form)
+        {
+            form.Enabled = 1;
+            form.IsOurs = 1;
+            return QueryHousePaging(form);
         }
 
         [QueryAction]
@@ -53,6 +74,35 @@ namespace Anju.Fangke.Server.Api
 
         [QueryAction]
         [DataAuthorityFilter]
+        public PagingEntity<FullHouse> QuerySelfHousePaging(QueryHouseServiceForm form)
+        {
+            var ids = Common.GetDataAuthorityUserIDList();
+            form.OwnerIDs = ids;
+            form.Enabled = 1;
+            return QueryHousePaging(form);
+        }
+
+
+        [QueryAction]
+        public List<FullHouse> QueryUnallocateHouse(QueryHouseServiceForm form)
+        {
+            form.Enabled = 1;
+            form.OwnerID = "";
+            form.IsOurs = 0;
+            return QueryHouse(form);
+        }
+
+        [QueryAction]
+        public PagingEntity<FullHouse> QueryUnallocateHousePaging(QueryHouseServiceForm form)
+        {
+            form.Enabled = 1;
+            form.OwnerID = "";
+            form.IsOurs = 0;
+            return QueryHousePaging(form);
+        }
+
+        [QueryAction]
+        [DataAuthorityFilter]
         public List<FullHouse> QuerySelfAndUnallocateHouse(QueryHouseServiceForm form)
         {
             var ids = Common.GetDataAuthorityUserIDList();
@@ -60,6 +110,17 @@ namespace Anju.Fangke.Server.Api
             form.OwnerIDs = ids;
             form.Enabled = 1;
             return QueryHouse(form);
+        }
+
+        [QueryAction]
+        [DataAuthorityFilter]
+        public PagingEntity<FullHouse> QuerySelfAndUnallocateHousePaging(QueryHouseServiceForm form)
+        {
+            var ids = Common.GetDataAuthorityUserIDList();
+            if (ids != null) ids.Add("");
+            form.OwnerIDs = ids;
+            form.Enabled = 1;
+            return QueryHousePaging(form);
         }
 
 
@@ -100,7 +161,7 @@ namespace Anju.Fangke.Server.Api
                     hobll.Add(new House_OtherFee { HouseOrRoomID = houseid, Type = (int)HouseOrRoomType.House, OtherFeeID = ho.ID });
                 }
             }
-            if (!string.IsNullOrEmpty(form.Customer?.ID)) hcbll.Add(new House_Customer { HouseOrRoomID = form.House.ID, CustomerID = form.Customer.ID });
+            if (!string.IsNullOrEmpty(form.Customer?.ID)) hcbll.Add(new House_Customer { HouseOrRoomID = form.House.ID, CustomerID = form.Customer.ID, Type = (int)CustomerType.业主 });
             if (form.Followups != null)
             {
                 foreach (var f in form.Followups)
@@ -129,8 +190,8 @@ namespace Anju.Fangke.Server.Api
                     hobll.Add(new House_OtherFee { HouseOrRoomID = form.House.ID, Type = (int)HouseOrRoomType.House, OtherFeeID = ho.ID });
                 }
             }
-            hcbll.Delete(new House_CustomerQueryForm { HouseOrRoomID = form.House.ID });
-            if (!string.IsNullOrEmpty(form.Customer?.ID)) hcbll.Add(new House_Customer { HouseOrRoomID = form.House.ID, CustomerID = form.Customer.ID });
+            hcbll.Delete(new House_CustomerQueryForm { HouseOrRoomID = form.House.ID, Type = (int)CustomerType.业主 });
+            if (!string.IsNullOrEmpty(form.Customer?.ID)) hcbll.Add(new House_Customer { HouseOrRoomID = form.House.ID, CustomerID = form.Customer.ID, Type = (int)CustomerType.业主 });
             followupbll.Delete(new FollowupQueryForm { HouseID = form.House.ID });
             if (form.Followups != null)
             {

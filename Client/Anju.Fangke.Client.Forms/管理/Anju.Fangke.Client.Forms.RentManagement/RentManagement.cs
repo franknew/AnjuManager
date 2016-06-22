@@ -21,6 +21,7 @@ namespace Anju.Fangke.Client.Forms
         }
 
         private QueryOtherFeeResponse _otherfeeresponse;
+        private QueryOwnerResponse _renterResponse;
         protected List<FullBuilding> _buildings;
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace Anju.Fangke.Client.Forms
             form.FullHouse = house;
             form.Update_Callback += Form_Update_Callback;
             form.OtherFees = _otherfeeresponse.List;
+            form.Renters = _renterResponse.Customer;
             form.ShowDialog(this);
         }
 
@@ -72,9 +74,14 @@ namespace Anju.Fangke.Client.Forms
             _otherfeeresponse = SDKFactory.Client.Execute(request);
 
             QueryBuildingRequest buildingrequest = new QueryBuildingRequest();
-            request.token = this.Token;
+            buildingrequest.token = this.Token;
+            buildingrequest.form = new BuildingQueryForm();
             var buildingResposne = SDKSync<QueryBuildingResponse>.CreateInstance(this).Execute(buildingrequest);
             _buildings = buildingResposne.List;
+
+            QueryRenterRequest renterrequest = new QueryRenterRequest();
+            renterrequest.token = this.Token;
+            _renterResponse = SDKFactory.Client.Execute(renterrequest);
         }
 
         private void dgvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -96,8 +103,19 @@ namespace Anju.Fangke.Client.Forms
                     viewbuilding.Building = house.Building;
                     viewbuilding.Show();
                     break;
+                case "租客":
+                    ViewCustomer viewcustomer = new ViewCustomer();
+                    viewcustomer.Customer = house.Renter;
+                    viewcustomer.Token = this.Token;
+                    viewcustomer.Show();
+                    break;
 
             }
+        }
+
+        private void btnQuery_InitClick(object sender, EventArgs e)
+        {
+            
         }
     }
 }

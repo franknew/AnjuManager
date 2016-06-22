@@ -40,7 +40,7 @@ namespace Anju.Fangke.Client.Forms
         {
             this.CollectData<FullHouse>(House);
             //this.Building.CurrentHouse.House.IsRented = this.Building.CurrentHouse
-            House.Building = cmbBuilding.SelectedItem as Building;
+            House.Building = (cmbBuilding.SelectedItem as Building).Clone<Building>();
             if (Update_Callback != null) Update_Callback.Invoke(House, null);
             SOAFramework.Client.Controls.MessageBox.Show(this, "更新成功");
             this.Close();

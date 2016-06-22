@@ -13,7 +13,7 @@ namespace Anju.Fangke.Server.BLL
     {
         public List<FullHouse> Query(QueryHouseServiceForm form)
         {
-            form.OwnerID = "";
+            //form.OwnerID = "";
             List<FullHouse> list = new List<FullHouse>();
             ISqlMapper mapper = MapperHelper.GetMapper();
 
@@ -42,6 +42,16 @@ namespace Anju.Fangke.Server.BLL
                 list.Add(fh);
             }
             return list;
+        }
+
+        public int QueryCount(QueryHouseServiceForm form)
+        {
+            form.OwnerID = "";
+            List<FullHouse> list = new List<FullHouse>();
+            ISqlMapper mapper = MapperHelper.GetMapper();
+
+            HouseDao dao = new HouseDao(mapper);
+            return dao.QueryFullHouseCount(form);
         }
     }
 }

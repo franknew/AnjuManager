@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
+            this.btnAddRenter = new SOAFramework.Client.Controls.Button();
+            this.cmbRenter = new SOAFramework.Client.Controls.ComboBox();
+            this.label10 = new SOAFramework.Client.Controls.Label();
+            this.txbRentDay = new SOAFramework.Client.Controls.TextBox();
+            this.label9 = new SOAFramework.Client.Controls.Label();
             this.dateTimeComboPicker2 = new SOAFramework.Client.Controls.DateTimeComboPicker();
             this.label8 = new SOAFramework.Client.Controls.Label();
             this.dateTimeComboPicker1 = new SOAFramework.Client.Controls.DateTimeComboPicker();
@@ -68,6 +73,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAddRenter);
+            this.groupBox1.Controls.Add(this.cmbRenter);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txbRentDay);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.dateTimeComboPicker2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.dateTimeComboPicker1);
@@ -87,27 +97,97 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(1, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(414, 266);
+            this.groupBox1.Size = new System.Drawing.Size(414, 319);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "出租信息";
+            // 
+            // btnAddRenter
+            // 
+            this.btnAddRenter.ClickedMessage = null;
+            this.btnAddRenter.IngoreCallbackOnce = false;
+            this.btnAddRenter.Location = new System.Drawing.Point(347, 267);
+            this.btnAddRenter.Name = "btnAddRenter";
+            this.btnAddRenter.Response = null;
+            this.btnAddRenter.Size = new System.Drawing.Size(25, 26);
+            this.btnAddRenter.TabIndex = 19;
+            this.btnAddRenter.Text = "+";
+            this.btnAddRenter.UseSelectable = true;
+            this.btnAddRenter.Click += new System.EventHandler(this.btnAddRenter_Click);
+            // 
+            // cmbRenter
+            // 
+            this.cmbRenter.BindingRequestPropertyName = null;
+            this.cmbRenter.BindingResponsePropertyName = null;
+            this.cmbRenter.BindingSelfPropertyName = "SelectedItem";
+            this.cmbRenter.BindingSourcePropertyName = "Renter";
+            this.cmbRenter.DisplayMember = "Name";
+            this.cmbRenter.FontSize = MetroFramework.MetroComboBoxSize.Small;
+            this.cmbRenter.FormattingEnabled = true;
+            this.cmbRenter.InitableBindingGroupName = null;
+            this.cmbRenter.ItemHeight = 19;
+            this.cmbRenter.Location = new System.Drawing.Point(88, 268);
+            this.cmbRenter.Name = "cmbRenter";
+            this.cmbRenter.Size = new System.Drawing.Size(253, 25);
+            this.cmbRenter.TabIndex = 18;
+            this.cmbRenter.UseSelectable = true;
+            this.cmbRenter.Value = null;
+            this.cmbRenter.ValueMember = "ID";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(44, 270);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 19);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "租客";
+            // 
+            // txbRentDay
+            // 
+            this.txbRentDay.BindingRequestPropertyName = null;
+            this.txbRentDay.BindingResponsePropertyName = null;
+            this.txbRentDay.BindingSourcePropertyName = "RentFee.RentDay";
+            this.txbRentDay.EmptyWarning = null;
+            this.txbRentDay.InputType = SOAFramework.Client.Controls.InputType.整数;
+            this.txbRentDay.Lines = new string[0];
+            this.txbRentDay.Location = new System.Drawing.Point(87, 105);
+            this.txbRentDay.MaxLength = 32767;
+            this.txbRentDay.Name = "txbRentDay";
+            this.txbRentDay.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txbRentDay.SelectedText = "";
+            this.txbRentDay.SelectionLength = 0;
+            this.txbRentDay.SelectionStart = 0;
+            this.txbRentDay.Size = new System.Drawing.Size(284, 23);
+            this.txbRentDay.TabIndex = 16;
+            this.txbRentDay.UseSelectable = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 107);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 19);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "交租日期";
             // 
             // dateTimeComboPicker2
             // 
             this.dateTimeComboPicker2.BindingRequestPropertyName = null;
             this.dateTimeComboPicker2.BindingResponsePropertyName = null;
             this.dateTimeComboPicker2.BindingSourcePropertyName = "RentFee.RentDateEnd";
+            this.dateTimeComboPicker2.CollectFormat = null;
             this.dateTimeComboPicker2.FontSize = MetroFramework.MetroDateTimeSize.Small;
-            this.dateTimeComboPicker2.Location = new System.Drawing.Point(243, 133);
+            this.dateTimeComboPicker2.Location = new System.Drawing.Point(249, 133);
             this.dateTimeComboPicker2.MinimumSize = new System.Drawing.Size(0, 25);
             this.dateTimeComboPicker2.Name = "dateTimeComboPicker2";
-            this.dateTimeComboPicker2.Size = new System.Drawing.Size(129, 25);
+            this.dateTimeComboPicker2.Size = new System.Drawing.Size(123, 25);
             this.dateTimeComboPicker2.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(222, 134);
+            this.label8.Location = new System.Drawing.Point(215, 139);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 19);
             this.label8.TabIndex = 14;
@@ -118,11 +198,12 @@
             this.dateTimeComboPicker1.BindingRequestPropertyName = null;
             this.dateTimeComboPicker1.BindingResponsePropertyName = null;
             this.dateTimeComboPicker1.BindingSourcePropertyName = "RentFee.RentDateStart";
+            this.dateTimeComboPicker1.CollectFormat = null;
             this.dateTimeComboPicker1.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.dateTimeComboPicker1.Location = new System.Drawing.Point(87, 133);
             this.dateTimeComboPicker1.MinimumSize = new System.Drawing.Size(0, 25);
             this.dateTimeComboPicker1.Name = "dateTimeComboPicker1";
-            this.dateTimeComboPicker1.Size = new System.Drawing.Size(129, 25);
+            this.dateTimeComboPicker1.Size = new System.Drawing.Size(113, 25);
             this.dateTimeComboPicker1.TabIndex = 5;
             // 
             // numbericUpDown2
@@ -132,14 +213,14 @@
             this.numbericUpDown2.BindingSourcePropertyName = "RentFee.Deposit";
             this.numbericUpDown2.DecimalPlaces = 2;
             this.numbericUpDown2.EmptyWarning = null;
-            this.numbericUpDown2.Location = new System.Drawing.Point(88, 106);
+            this.numbericUpDown2.Location = new System.Drawing.Point(249, 81);
             this.numbericUpDown2.Maximum = new decimal(new int[] {
             1215752191,
             23,
             0,
             0});
             this.numbericUpDown2.Name = "numbericUpDown2";
-            this.numbericUpDown2.Size = new System.Drawing.Size(284, 21);
+            this.numbericUpDown2.Size = new System.Drawing.Size(123, 21);
             this.numbericUpDown2.TabIndex = 4;
             // 
             // numbericUpDown1
@@ -156,7 +237,7 @@
             0,
             0});
             this.numbericUpDown1.Name = "numbericUpDown1";
-            this.numbericUpDown1.Size = new System.Drawing.Size(284, 21);
+            this.numbericUpDown1.Size = new System.Drawing.Size(113, 21);
             this.numbericUpDown1.TabIndex = 3;
             // 
             // textBox4
@@ -266,7 +347,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 108);
+            this.label4.Location = new System.Drawing.Point(206, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 19);
             this.label4.TabIndex = 3;
@@ -304,9 +385,9 @@
             this.groupBox2.Controls.Add(this.dgvOtherFee);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(1, 296);
+            this.groupBox2.Location = new System.Drawing.Point(1, 349);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(414, 156);
+            this.groupBox2.Size = new System.Drawing.Size(414, 173);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "费用信息";
@@ -315,19 +396,20 @@
             // 
             this.dgvOtherFee.AllowUserToAddRows = false;
             this.dgvOtherFee.AllowUserToDeleteRows = false;
+            this.dgvOtherFee.AllowUserToOrderColumns = true;
             this.dgvOtherFee.AutoGenerateColumns = false;
             this.dgvOtherFee.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvOtherFee.BindingRequestPropertyName = null;
             this.dgvOtherFee.BindingResponsePropertyName = null;
             this.dgvOtherFee.BindingSourcePropertyName = "OtherFees";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOtherFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOtherFee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvOtherFee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOtherFee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.名称,
@@ -340,7 +422,7 @@
             this.dgvOtherFee.ReadOnly = true;
             this.dgvOtherFee.RowTemplate.Height = 23;
             this.dgvOtherFee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOtherFee.Size = new System.Drawing.Size(408, 107);
+            this.dgvOtherFee.Size = new System.Drawing.Size(408, 124);
             this.dgvOtherFee.TabIndex = 1;
             // 
             // 名称
@@ -400,7 +482,7 @@
             this.groupBox3.Controls.Add(this.btnClose);
             this.groupBox3.Controls.Add(this.btnSave);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(1, 452);
+            this.groupBox3.Location = new System.Drawing.Point(1, 522);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(414, 42);
             this.groupBox3.TabIndex = 2;
@@ -435,13 +517,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 495);
+            this.ClientSize = new System.Drawing.Size(416, 565);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "BaseEditRentFee";
             this.Text = "BaseEditRentFee";
             this.InitControl += new System.EventHandler(this.BaseEditRentFee_InitControl);
+            this.Shown += new System.EventHandler(this.BaseEditRentFee_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numbericUpDown2)).EndInit();
@@ -484,5 +567,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 类型;
         private System.Windows.Forms.DataGridViewTextBoxColumn 价格;
         private System.Windows.Forms.DataGridViewTextBoxColumn 备注;
+        protected SOAFramework.Client.Controls.TextBox txbRentDay;
+        protected SOAFramework.Client.Controls.Label label9;
+        private SOAFramework.Client.Controls.ComboBox cmbRenter;
+        protected SOAFramework.Client.Controls.Label label10;
+        private SOAFramework.Client.Controls.Button btnAddRenter;
     }
 }

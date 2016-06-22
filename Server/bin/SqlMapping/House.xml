@@ -252,6 +252,62 @@
         `DecorationType`=#DecorationType#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="RentFee_Start">
+        `RentFee`&gt;=#RentFee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFee_End">
+        `RentFee`&lt;=#RentFee_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFee">
+        `RentFee`=#RentFee#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateStart_Start">
+        `RentDateStart`&gt;=#RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_End">
+        `RentDateStart`&lt;=#RentDateStart_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateStart">
+        `RentDateStart`=#RentDateStart#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateEnd_Start">
+        `RentDateEnd`&gt;=#RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_End">
+        `RentDateEnd`&lt;=#RentDateEnd_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateEnd">
+        `RentDateEnd`=#RentDateEnd#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentRemark">
+        `RentRemark`=#RentRemark#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ContractCode">
+        `ContractCode`=#ContractCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsOurs">
+        `IsOurs`=#IsOurs#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDay_Start">
+        `RentDay`&gt;=#RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_End">
+        `RentDay`&lt;=#RentDay_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDay">
+        `RentDay`=#RentDay#
+    </isNotNull>
+    
     </dynamic>
         ORDER BY LastUpdateTime DESC
     <isNotNull property="PageSize">
@@ -263,63 +319,217 @@
   <insert id="AddHouse" parameterClass="House">
   INSERT INTO `House`
   (
-    `ID`,
-    `BuildingID`,
-    `Name`,
-    `Floor`,
-    `RoomCount`,
-    `HallCount`,
-    `ToiletCount`,
-    `Creator`,
-    `CreateTime`,
-    `LastUpdator`,
-    `LastUpdateTime`,
-    `Remark`,
-    `RentType`,
-    `RoomNumber`,
-    `HallNumber`,
-    `ToiletNumber`,
-    `KitchenNumber`,
-    `OwnerID`,
-    `Area`,
-    `IsRented`,
-    `Enabled`,
-    `IsDeleted`,
-    `Cost`,
-    `SalePrice`,
-    `KeyCode`,
-    `Status`,
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    `ID`
+    </isNotNull>
+    <isNotNull prepend="," property="BuildingID">
+    `BuildingID`
+    </isNotNull>
+    <isNotNull prepend="," property="Name">
+    `Name`
+    </isNotNull>
+    <isNotNull prepend="," property="Floor">
+    `Floor`
+    </isNotNull>
+    <isNotNull prepend="," property="RoomCount">
+    `RoomCount`
+    </isNotNull>
+    <isNotNull prepend="," property="HallCount">
+    `HallCount`
+    </isNotNull>
+    <isNotNull prepend="," property="ToiletCount">
+    `ToiletCount`
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    `Creator`
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    `CreateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    `LastUpdator`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    `LastUpdateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    `Remark`
+    </isNotNull>
+    <isNotNull prepend="," property="RentType">
+    `RentType`
+    </isNotNull>
+    <isNotNull prepend="," property="RoomNumber">
+    `RoomNumber`
+    </isNotNull>
+    <isNotNull prepend="," property="HallNumber">
+    `HallNumber`
+    </isNotNull>
+    <isNotNull prepend="," property="ToiletNumber">
+    `ToiletNumber`
+    </isNotNull>
+    <isNotNull prepend="," property="KitchenNumber">
+    `KitchenNumber`
+    </isNotNull>
+    <isNotNull prepend="," property="OwnerID">
+    `OwnerID`
+    </isNotNull>
+    <isNotNull prepend="," property="Area">
+    `Area`
+    </isNotNull>
+    <isNotNull prepend="," property="IsRented">
+    `IsRented`
+    </isNotNull>
+    <isNotNull prepend="," property="Enabled">
+    `Enabled`
+    </isNotNull>
+    <isNotNull prepend="," property="IsDeleted">
+    `IsDeleted`
+    </isNotNull>
+    <isNotNull prepend="," property="Cost">
+    `Cost`
+    </isNotNull>
+    <isNotNull prepend="," property="SalePrice">
+    `SalePrice`
+    </isNotNull>
+    <isNotNull prepend="," property="KeyCode">
+    `KeyCode`
+    </isNotNull>
+    <isNotNull prepend="," property="Status">
+    `Status`
+    </isNotNull>
+    <isNotNull prepend="," property="DecorationType">
     `DecorationType`
+    </isNotNull>
+    <isNotNull prepend="," property="RentFee">
+    `RentFee`
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateStart">
+    `RentDateStart`
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateEnd">
+    `RentDateEnd`
+    </isNotNull>
+    <isNotNull prepend="," property="RentRemark">
+    `RentRemark`
+    </isNotNull>
+    <isNotNull prepend="," property="ContractCode">
+    `ContractCode`
+    </isNotNull>
+    <isNotNull prepend="," property="IsOurs">
+    `IsOurs`
+    </isNotNull>
+    <isNotNull prepend="," property="RentDay">
+    `RentDay`
+    </isNotNull>
+  </dynamic>
   )
   VALUES
   (
-        #ID#,
-        #BuildingID#,
-        #Name#,
-        #Floor#,
-        #RoomCount#,
-        #HallCount#,
-        #ToiletCount#,
-        #Creator#,
-        #CreateTime#,
-        #LastUpdator#,
-        #LastUpdateTime#,
-        #Remark#,
-        #RentType#,
-        #RoomNumber#,
-        #HallNumber#,
-        #ToiletNumber#,
-        #KitchenNumber#,
-        #OwnerID#,
-        #Area#,
-        #IsRented#,
-        #Enabled#,
-        #IsDeleted#,
-        #Cost#,
-        #SalePrice#,
-        #KeyCode#,
-        #Status#,
-        #DecorationType#
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    #ID#
+    </isNotNull>
+    <isNotNull prepend="," property="BuildingID">
+    #BuildingID#
+    </isNotNull>
+    <isNotNull prepend="," property="Name">
+    #Name#
+    </isNotNull>
+    <isNotNull prepend="," property="Floor">
+    #Floor#
+    </isNotNull>
+    <isNotNull prepend="," property="RoomCount">
+    #RoomCount#
+    </isNotNull>
+    <isNotNull prepend="," property="HallCount">
+    #HallCount#
+    </isNotNull>
+    <isNotNull prepend="," property="ToiletCount">
+    #ToiletCount#
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    #Creator#
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    #CreateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    #LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    #LastUpdateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    #Remark#
+    </isNotNull>
+    <isNotNull prepend="," property="RentType">
+    #RentType#
+    </isNotNull>
+    <isNotNull prepend="," property="RoomNumber">
+    #RoomNumber#
+    </isNotNull>
+    <isNotNull prepend="," property="HallNumber">
+    #HallNumber#
+    </isNotNull>
+    <isNotNull prepend="," property="ToiletNumber">
+    #ToiletNumber#
+    </isNotNull>
+    <isNotNull prepend="," property="KitchenNumber">
+    #KitchenNumber#
+    </isNotNull>
+    <isNotNull prepend="," property="OwnerID">
+    #OwnerID#
+    </isNotNull>
+    <isNotNull prepend="," property="Area">
+    #Area#
+    </isNotNull>
+    <isNotNull prepend="," property="IsRented">
+    #IsRented#
+    </isNotNull>
+    <isNotNull prepend="," property="Enabled">
+    #Enabled#
+    </isNotNull>
+    <isNotNull prepend="," property="IsDeleted">
+    #IsDeleted#
+    </isNotNull>
+    <isNotNull prepend="," property="Cost">
+    #Cost#
+    </isNotNull>
+    <isNotNull prepend="," property="SalePrice">
+    #SalePrice#
+    </isNotNull>
+    <isNotNull prepend="," property="KeyCode">
+    #KeyCode#
+    </isNotNull>
+    <isNotNull prepend="," property="Status">
+    #Status#
+    </isNotNull>
+    <isNotNull prepend="," property="DecorationType">
+    #DecorationType#
+    </isNotNull>
+    <isNotNull prepend="," property="RentFee">
+    #RentFee#
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateStart">
+    #RentDateStart#
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateEnd">
+    #RentDateEnd#
+    </isNotNull>
+    <isNotNull prepend="," property="RentRemark">
+    #RentRemark#
+    </isNotNull>
+    <isNotNull prepend="," property="ContractCode">
+    #ContractCode#
+    </isNotNull>
+    <isNotNull prepend="," property="IsOurs">
+    #IsOurs#
+    </isNotNull>
+    <isNotNull prepend="," property="RentDay">
+    #RentDay#
+    </isNotNull>
+  </dynamic>
   )
   </insert>
   <update id="UpdateHouse" parameterClass="HouseUpdateForm">
@@ -402,6 +612,27 @@
         </isNotNull>
         <isNotNull prepend="," property="Entity.DecorationType">
         `DecorationType`=#Entity.DecorationType#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentFee">
+        `RentFee`=#Entity.RentFee#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentDateStart">
+        `RentDateStart`=#Entity.RentDateStart#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentDateEnd">
+        `RentDateEnd`=#Entity.RentDateEnd#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentRemark">
+        `RentRemark`=#Entity.RentRemark#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.ContractCode">
+        `ContractCode`=#Entity.ContractCode#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.IsOurs">
+        `IsOurs`=#Entity.IsOurs#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentDay">
+        `RentDay`=#Entity.RentDay#
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
@@ -579,6 +810,46 @@
     </isNotNull>
     <isNotNull prepend="AND" property="HouseQueryForm.DecorationType_End">
         `DecorationType`&lt;=#HouseQueryForm.DecorationType_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RentFee_Start">
+        `RentFee`&gt;=#HouseQueryForm.RentFee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.RentFee_End">
+        `RentFee`&lt;=#HouseQueryForm.RentFee_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RentDateStart_Start">
+        `RentDateStart`&gt;=#HouseQueryForm.RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.RentDateStart_End">
+        `RentDateStart`&lt;=#HouseQueryForm.RentDateStart_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RentDateEnd_Start">
+        `RentDateEnd`&gt;=#HouseQueryForm.RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.RentDateEnd_End">
+        `RentDateEnd`&lt;=#HouseQueryForm.RentDateEnd_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RentRemark">
+        `RentRemark`=#HouseQueryForm.RentRemark#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.ContractCode">
+        `ContractCode`=#HouseQueryForm.ContractCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.IsOurs">
+        `IsOurs`=#HouseQueryForm.IsOurs#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="HouseQueryForm.RentDay_Start">
+        `RentDay`&gt;=#HouseQueryForm.RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="HouseQueryForm.RentDay_End">
+        `RentDay`&lt;=#HouseQueryForm.RentDay_End#
     </isNotNull>
     
     </dynamic>
@@ -762,6 +1033,46 @@
         `DecorationType`&lt;=#DecorationType_End#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="RentFee_Start">
+        `RentFee`&gt;=#RentFee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFee_End">
+        `RentFee`&lt;=#RentFee_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateStart_Start">
+        `RentDateStart`&gt;=#RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_End">
+        `RentDateStart`&lt;=#RentDateStart_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateEnd_Start">
+        `RentDateEnd`&gt;=#RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_End">
+        `RentDateEnd`&lt;=#RentDateEnd_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentRemark">
+        `RentRemark`=#RentRemark#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="ContractCode">
+        `ContractCode`=#ContractCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="IsOurs">
+        `IsOurs`=#IsOurs#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDay_Start">
+        `RentDay`&gt;=#RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_End">
+        `RentDay`&lt;=#RentDay_End#
+    </isNotNull>
+    
   </delete>
    <select id="QueryHouseLastUpdateTime" resultClass="DateTime">
         SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `House`
@@ -917,6 +1228,39 @@
     </isNotNull>
     <isNotNull prepend="AND" property="DecorationType_End">
         `DecorationType`&lt;=#DecorationType_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFee_Start">
+        `RentFee`&gt;=#RentFee_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFee_End">
+        `RentFee`&lt;=#RentFee_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_Start">
+        `RentDateStart`&gt;=#RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_End">
+        `RentDateStart`&lt;=#RentDateStart_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_Start">
+        `RentDateEnd`&gt;=#RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_End">
+        `RentDateEnd`&lt;=#RentDateEnd_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentRemark">
+        `RentRemark`=#RentRemark#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ContractCode">
+        `ContractCode`=#ContractCode#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsOurs">
+        `IsOurs`=#IsOurs#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_Start">
+        `RentDay`&gt;=#RentDay_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDay_End">
+        `RentDay`&lt;=#RentDay_End#
     </isNotNull>
     </dynamic>
    </select>

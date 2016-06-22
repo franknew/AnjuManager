@@ -20,5 +20,7 @@ namespace Anju.Fangke.Server.Model
         public FullUser Owner { get; set; }
 
         public List<FullFollowup> Followups { get; set; }
+
+        public Customer Renter { get; set; }
     }
 }

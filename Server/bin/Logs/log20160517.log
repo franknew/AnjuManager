@@ -1,0 +1,4 @@
+2016-05-17 15:45:36.140 - SELECT * FROM `Role`                 ORDER BY LastUpdateTime DESC
+2016-05-17 15:46:30.051 - SELECT * FROM `Role`                 ORDER BY LastUpdateTime DESC
+2016-05-17 15:46:43.351 - SELECT * FROM `Role`                 ORDER BY LastUpdateTime DESC
+2016-05-17 15:48:12.761 - SELECT * FROM `User_Role`       WHERE            `UserID`= ?param0

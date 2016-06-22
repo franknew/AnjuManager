@@ -272,7 +272,7 @@ namespace Anju.Fangke.Server.BLL
 
     public enum DataAccesssEnum
     {
-        Self = 1,
-        All = 2,
+        Self = 2,
+        All = 1,
     }
 }

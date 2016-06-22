@@ -18,6 +18,27 @@ namespace Anju.Fangke.Server.BLL
             return dao.Query(form);
         }
 
+        public int QueryCount(CustomerQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            CustomerDao dao = new CustomerDao(mapper);
+            return dao.QueryCount(form);
+        }
+
+        public List<Customer> QueryFullCustomer(FullCustomerQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            CustomerDao dao = new CustomerDao(mapper);
+            return dao.QueryFullCustomer(form);
+        }
+
+        public int QueryFullCustomerCount(FullCustomerQueryForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            CustomerDao dao = new CustomerDao(mapper);
+            return dao.QueryFullCustomerCount(form);
+        }
+
         public string Add(Customer customer)
         {
             ISqlMapper mapper = MapperHelper.GetMapper();

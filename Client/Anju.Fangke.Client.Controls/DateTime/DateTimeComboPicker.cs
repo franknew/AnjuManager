@@ -39,7 +39,9 @@ namespace SOAFramework.Client.Controls
 
         public object CollectBindingData()
         {
-            return this.GetValue(controlBindingPropertyName);
+            DateTime data = Convert.ToDateTime(this.GetValue(controlBindingPropertyName));
+            if (!string.IsNullOrEmpty(CollectFormat)) data = Convert.ToDateTime(data.ToString(CollectFormat));
+            return data;
         }
         #endregion
 
@@ -90,5 +92,9 @@ namespace SOAFramework.Client.Controls
         [DefaultValue(null)]
         public object DBNullValue { get; set; }
         #endregion
+
+        [Category(ControlCategory.Category)]
+        [DefaultValue("")]
+        public string CollectFormat { get; set; }
     }
 }

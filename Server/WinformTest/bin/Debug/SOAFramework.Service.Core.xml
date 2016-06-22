@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SOAFramework.Service.Core</name>
+    </assembly>
+    <members>
+        <member name="M:SOAFramework.Service.Core.ServiceAnalyzer.IsCustomClassType(System.Type)">
+            <summary>
+            是否用户自定义类
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Core.ServiceAnalyzer.GetFilterFromMethod(System.Collections.Generic.List{SOAFramework.Service.Core.Model.IFilter},System.Reflection.MethodInfo)">
+            <summary>
+            获得方法中所有的过滤器
+            </summary>
+            <param name="filterList"></param>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Core.ServiceAnalyzer.GetService(System.Collections.Generic.Dictionary{System.String,SOAFramework.Service.Core.Model.ServiceModel},System.Collections.Generic.List{SOAFramework.Service.Core.Model.IFilter})">
+            <summary>
+            设置服务信息到内存池中
+            </summary>
+            <param name="serviceDic"></param>
+            <param name="filterList"></param>
+        </member>
+        <member name="P:SOAFramework.Service.Core.Model.ServicePool.EnableConsoleMonitor">
+            <summary>
+            开启性能监控
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Service.Core.Model.ServicePool.EnableRegDispatcher">
+            <summary>
+            开启注册分发起
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Service.Core.Model.ServicePool.DispatchServerUrl">
+            <summary>
+            分发服务器url
+            </summary>
+        </member>
+        <member name="M:SOAFramework.Service.Core.Model.ServicePool.GetGlobalFilters">
+            <summary>
+            获得公用的filter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Core.Model.ServicePool.GetBussinessConfigAss">
+            <summary>
+            获得配置中的业务程序集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Core.Model.ServicePool.GetBusinessAssmeblyList">
+            <summary>
+            获得所有业务程序集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.DefaultService.DiscoverService">
+            <summary>
+            获得所有服务类型
+            </summary>
+            <returns>服务对象列表</returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.DefaultService.DiscoverServiceByName(System.String)">
+            <summary>
+            根据接口名称获得服务信息
+            </summary>
+            <param name="name">接口名称</param>
+            <returns>服务对象</returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.DefaultService.DiscoverServiceByModule(System.String)">
+            <summary>
+            根据模块名称获得相关服务信息
+            </summary>
+            <param name="moduleName">模块名称</param>
+            <returns>服务列表</returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.DefaultService.GetServiceModuleNames">
+            <summary>
+            获得服务池内所有的模块名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.DefaultService.GetTypeDescription(System.String)">
+            <summary>
+            根据类型全名获得类型的结构
+            </summary>
+            <param name="fullTypeName">类型全名</param>
+            <returns>类型描述对象</returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.DefaultService.BigDataTest">
+            <summary>
+            大数据测试，构造10万个对象返回
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.ServiceUtility.GetBusinessAssmeblyList">
+            <summary>
+            初始化缓存
+            </summary>
+            <param name="cache"></param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.ServiceUtility.FilterExecuting(SOAFramework.Service.Core.Model.ServiceModel,SOAFramework.Service.Core.Model.ActionContext)">
+            <summary>
+            
+            </summary>
+            <param name="filterList"></param>
+            <returns>运行失败的filter</returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.SOAService.Execute(System.String,System.String,System.String)">
+            <summary>
+            execute method 
+            </summary>
+            <param name="typeName"></param>
+            <param name="functionName"></param>
+            <param name="args"></param>
+            <returns>return stream for pure json</returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.SOAService.Download(System.String)">
+            <summary>
+            下载
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SOAFramework.Service.Server.SOAService.Upload(System.String,System.String)">
+            <summary>
+            上传
+            </summary>
+            <param name="fileName"></param>
+            <param name="fileContent"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

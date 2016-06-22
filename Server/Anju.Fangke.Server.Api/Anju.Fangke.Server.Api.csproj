@@ -75,7 +75,9 @@
     <Compile Include="DataDictionaryApi.cs" />
     <Compile Include="Filter\DataAuthorityFilter.cs" />
     <Compile Include="Filter\InitDBFilter.cs" />
+    <Compile Include="FollowupApi.cs" />
     <Compile Include="LoginApi.cs" />
+    <Compile Include="LogonHistoryApi.cs" />
     <Compile Include="MenuApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentApi.cs" />

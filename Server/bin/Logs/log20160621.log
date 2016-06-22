@@ -1,0 +1,13 @@
+2016-06-21 10:27:53.031 - SELECT * FROM `House_Customer`       WHERE  (            `HouseOrRoomID`= ?param0           )
+2016-06-21 10:27:53.094 - SELECT * FROM `Customer`       WHERE  (            `ID`= ?param0           ) AND           `Enabled`= ?param1        AND           `IsDeleted`= ?param2                  ORDER BY LastUpdateTime DESC
+2016-06-21 10:27:53.118 - SELECT * FROM `Building`       WHERE  (            `ID`= ?param0           )           ORDER BY LastUpdateTime DESC
+2016-06-21 10:27:53.151 - SELECT * FROM `RentFee`       WHERE  (            `HouseOrRoomID`= ?param0           ) AND           `Enabled`= ?param1        AND           `IsDeleted`= ?param2                  ORDER BY LastUpdateTime DESC
+2016-06-21 10:27:53.175 - SELECT * FROM `House_OtherFee`       WHERE  (            `HouseOrRoomID`= ?param0           )
+2016-06-21 10:27:53.196 - SELECT * FROM `OtherFee`       WHERE  (            `ID`= ?param0           OR             `ID`= ?param1           )           ORDER BY LastUpdateTime DESC
+2016-06-21 10:28:06.688 - SELECT * FROM `House_Customer`       WHERE  (            `HouseOrRoomID`= ?param0           )
+2016-06-21 10:28:07.026 - SELECT * FROM `Customer`       WHERE  (            `ID`= ?param0           ) AND           `Enabled`= ?param1        AND           `IsDeleted`= ?param2                  ORDER BY LastUpdateTime DESC
+2016-06-21 10:28:07.399 - SELECT * FROM `Building`       WHERE  (            `ID`= ?param0           )           ORDER BY LastUpdateTime DESC
+2016-06-21 10:28:08.517 - SELECT * FROM `RentFee`       WHERE  (            `HouseOrRoomID`= ?param0           ) AND           `Enabled`= ?param1        AND           `IsDeleted`= ?param2                  ORDER BY LastUpdateTime DESC
+2016-06-21 10:28:08.921 - SELECT * FROM `House_OtherFee`       WHERE  (            `HouseOrRoomID`= ?param0           )
+2016-06-21 10:28:09.330 - SELECT * FROM `OtherFee`       WHERE  (            `ID`= ?param0           OR             `ID`= ?param1           )           ORDER BY LastUpdateTime DESC
+2016-06-21 14:44:25.182 - SELECT * FROM `Menu`                 ORDER BY LastUpdateTime DESC

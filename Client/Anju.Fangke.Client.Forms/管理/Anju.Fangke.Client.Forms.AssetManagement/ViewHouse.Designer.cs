@@ -35,6 +35,14 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(1, 431);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Size = new System.Drawing.Size(367, 305);
+            // 
             // numCost
             // 
             this.numCost.ReadOnly = true;
@@ -77,6 +85,10 @@
             // 
             this.cmbStatus.Enabled = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Location = new System.Drawing.Point(0, 305);
+            // 
             // cmbCustomer
             // 
             this.cmbCustomer.Enabled = false;
@@ -105,13 +117,19 @@
             // 
             this.btnClose.Location = new System.Drawing.Point(327, 20);
             // 
+            // chkIsOurs
+            // 
+            this.chkIsOurs.Enabled = false;
+            // 
             // ViewHouse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(920, 488);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ViewHouse";
             this.Text = "查看房间信息";
+            this.InitControl += new System.EventHandler(this.ViewHouse_InitControl);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

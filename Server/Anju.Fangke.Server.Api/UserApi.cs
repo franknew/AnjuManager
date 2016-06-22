@@ -21,6 +21,16 @@ namespace Anju.Fangke.Server.Api
             return bll.Query(form);
         }
 
+        [QueryAction]
+        public PagingEntity<FullUser> QueryPaging(FullUserQueryForm form)
+        {
+            form.IsDeleted = 0;
+            PagingEntity<FullUser> result = new PagingEntity<FullUser>();
+            result.Record = bll.Query(form);
+            result.RecordCount = bll.QueryCount(form);
+            return result;
+        }
+
         [EditAction]
         public string Add(FullUser form)
         {

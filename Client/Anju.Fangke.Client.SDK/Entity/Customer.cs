@@ -28,5 +28,7 @@ namespace Anju.Fangke.Client.SDK
         /// </summary>
         public string IdentityCode { get; set; }
 
+        public int? Type { get; set; }
+
     }
 }

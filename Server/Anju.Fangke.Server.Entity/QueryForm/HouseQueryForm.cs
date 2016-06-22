@@ -132,5 +132,13 @@ namespace Anju.Fangke.Server.Form
         
         public string ContractCode { get; set; }
         
+        public UInt64? IsOurs { get; set; }
+        
+        public Int32? RentDay { get; set; }
+        
+        public Int32? RentDay_Start { get; set; }
+        
+        public Int32? RentDay_End { get; set; }
+        
     }
 }

@@ -1,0 +1,2 @@
+2016-04-03 16:03:40.665 - SELECT * FROM `OtherFee`       WHERE            `Enabled`= ?param0        AND           `IsDeleted`= ?param1                  ORDER BY LastUpdateTime DESC
+2016-04-03 16:05:05.981 - SELECT * FROM `OtherFee`       WHERE            `Enabled`= ?param0        AND           `IsDeleted`= ?param1                  ORDER BY LastUpdateTime DESC

@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MetroFramework</name>
+    </assembly>
+    <members>
+        <member name="F:MetroFramework.Controls.MetroGrid.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MetroFramework.Controls.MetroGrid.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MetroFramework.Controls.MetroGrid.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:MetroFramework.Controls.MetroDataGridHelper._scrollbar">
+            <summary>
+            The associated scrollbar or scrollbar collector
+            </summary>
+        </member>
+        <member name="F:MetroFramework.Controls.MetroDataGridHelper._grid">
+            <summary>
+            Associated Grid
+            </summary>
+        </member>
+        <member name="F:MetroFramework.Controls.MetroDataGridHelper._ignoreScrollbarChange">
+            <summary>
+            if greater zero, scrollbar changes are ignored
+            </summary>
+        </member>
+        <member name="F:MetroFramework.Controls.MetroDataGridHelper._ishorizontal">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MetroFramework.Controls.MetroDataGridHelper.UpdateScrollbar">
+            <summary>
+            Updates the scrollbar values
+            </summary>
+        </member>
+        <member name="M:MetroFramework.Controls.MetroDataGridHelper.VisibleFlexGridRows">
+            <summary>
+            Determine the current count of visible rows
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MetroFramework.Controls.MetroDataGridHelper.VisibleFlexGridCols">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MetroFramework.MetroMessageBox">
+            <summary>
+            Metro-styled message notification.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:MetroFramework.MetroMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:MetroFramework.MetroMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:MetroFramework.MetroMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:MetroFramework.MetroMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:MetroFramework.MetroMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton,System.Int32)" -->
+        <member name="P:MetroFramework.MetroMessageBoxControl.Body">
+            <summary>
+            Gets the top body section of the control. 
+            </summary>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxControl.Properties">
+            <summary>
+            Gets the message box display properties.
+            </summary>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxControl.Result">
+            <summary>
+            Gets the dialog result that the user have chosen.
+            </summary>
+        </member>
+        <member name="M:MetroFramework.MetroMessageBoxControl.ArrangeApperance">
+            <summary>
+            Arranges the apperance of the message box overlay.
+            </summary>
+        </member>
+        <member name="M:MetroFramework.MetroMessageBoxControl.SetDefaultButton">
+            <summary>
+            Sets the default focused button.
+            </summary>
+        </member>
+        <member name="F:MetroFramework.MetroMessageBoxControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MetroFramework.MetroMessageBoxControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MetroFramework.MetroMessageBoxControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MetroFramework.MetroMessageBoxProperties">
+            <summary>
+            Message box overlay display properties.
+            </summary>
+        </member>
+        <member name="M:MetroFramework.MetroMessageBoxProperties.#ctor(MetroFramework.MetroMessageBoxControl)">
+            <summary>
+            Creates a new instance of MessageBoxOverlayProperties.
+            </summary>
+            <param name="owner"></param>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxProperties.Buttons">
+            <summary>
+            Gets or sets the message box buttons in the message box overlay.
+            </summary>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxProperties.DefaultButton">
+            <summary>
+            Gets or sets the message box default button.
+            </summary>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxProperties.Icon">
+            <summary>
+            Gets or sets the message box overlay icon.
+            </summary>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxProperties.Message">
+            <summary>
+            Gets or sets the message box overlay message contents.
+            </summary>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxProperties.Owner">
+            <summary>
+            Gets the property owner.
+            </summary>
+        </member>
+        <member name="P:MetroFramework.MetroMessageBoxProperties.Title">
+            <summary>
+            Gets or sets the message box overlat title.
+            </summary>
+        </member>
+    </members>
+</doc>

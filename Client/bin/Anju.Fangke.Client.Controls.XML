@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Anju.Fangke.Client.Controls</name>
+    </assembly>
+    <members>
+        <member name="P:SOAFramework.Client.Controls.Button.EnableSyncSpinner">
+            <summary>
+            是否异步时显示时间轴
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Client.Controls.CheckBox.BindingChecked">
+            <summary>
+            用来绑定整形的Checked属性
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Client.Controls.NumbericUpDown.EmptyToNull">
+            <summary>
+            空值是否读出为null
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Client.Controls.NumbericUpDown.CanbeEmpty">
+            <summary>
+            文本框是否可空
+            </summary>
+        </member>
+        <member name="F:SOAFramework.Client.Controls.Pager.Pager.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:SOAFramework.Client.Controls.Pager.Pager.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:SOAFramework.Client.Controls.Pager.Pager.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Client.Controls.TextBox.CanbeEmpty">
+            <summary>
+            文本框是否可空
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Client.Controls.TextBox.EmptyToNull">
+            <summary>
+            空值是否读出为null
+            </summary>
+        </member>
+        <member name="P:SOAFramework.Client.Controls.TextBox.InputType">
+            <summary>
+            文本输入类型
+            </summary>
+        </member>
+        <member name="F:SOAFramework.Client.Forms.BaseForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.BaseForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.BaseForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SOAFramework.Client.Forms.ChildForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.ChildForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.ChildForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SOAFramework.Client.Forms.ContainerForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.ContainerForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.ContainerForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SOAFramework.Client.Forms.PopupForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.PopupForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SOAFramework.Client.Forms.PopupForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

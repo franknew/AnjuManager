@@ -8,7 +8,7 @@
     <isGreaterThan compareProperty="PageSize" compareValue="0">
     
     </isGreaterThan>
-    SELECT h.*
+    SELECT h.*,b.Name AS BuildingName
     FROM `House` h LEFT JOIN Building b ON h.BuildingID=b.ID
     <dynamic prepend="WHERE">
     <isNotNull prepend="AND" property="ID">
@@ -30,7 +30,7 @@
         </iterate>
     </isNotNull>
     <isNotNull prepend="AND" property="Name">
-      h.`Name`=#Name#
+      h.`Name` LIKE '%$Name$%'
     </isNotNull>
 
       <isNotNull prepend="AND" property="Floor_Start">
@@ -46,6 +46,9 @@
     
     <isNotNull prepend="AND" property="RoomCount">
       h.`RoomCount`=#RoomCount#
+    </isNotNull>
+    <isNotNull prepend="AND" property="IsOurs">
+      h.`IsOurs`=#IsOurs#
     </isNotNull>
     
     <isNotNull prepend="AND" property="HallCount">
@@ -106,24 +109,29 @@
     <isNotNull prepend="AND" property="KitchenNumber">
       h.`KitchenNumber`=#KitchenNumber#
     </isNotNull>
-    
-    <isNotNull prepend="AND" property="OwnerID">
-      h.`OwnerID`=#OwnerID#
-    </isNotNull>
-    
-        <isNotNull prepend="AND"  property="OwnerIDs">
-        <iterate property="OwnerIDs" open="(" close=")" conjunction="OR">
-          h.`OwnerID`=#OwnerIDs[]#
-        </iterate>
-    </isNotNull>
+      <isNotNull prepend="AND" property="IsDeleted">
+        h.`IsDeleted`=#IsDeleted#
+      </isNotNull>
+      <isNotNull prepend="AND" property="Enabled">
+        h.`Enabled`=#Enabled#
+      </isNotNull>
     <isNotNull prepend="AND" property="Area_Start">
       h.`Area`&gt;=#Area_Start#
     </isNotNull>
     <isNotNull prepend="AND" property="Area_End">
       h.`Area`&lt;=#Area_End#
     </isNotNull>
+      <isNotNull prepend="AND" property="OwnerID">
+        h.`OwnerID`=#OwnerID#
+      </isNotNull>
+
+      <isNotNull prepend="AND"  property="OwnerIDs">
+        <iterate property="OwnerIDs" open="(" close=")" conjunction="OR">
+          h.`OwnerID`=#OwnerIDs[]#
+        </iterate>
+      </isNotNull>
       <isNotNull prepend="AND" property="BuildingName">
-        b.`Name` LIKE '%BuildingName%'
+        b.`Name` LIKE '%$BuildingName$%'
       </isNotNull>
     
     </dynamic>
@@ -134,6 +142,138 @@
         </isGreaterThan>
     </isNotNull>
   </select>
+
+    <select id="QueryFullHouseCount" resultClass="Int" parameterClass="QueryHouseServiceForm">
+      <isGreaterThan compareProperty="PageSize" compareValue="0">
+
+      </isGreaterThan>
+      SELECT COUNT(h.ID)
+      FROM `House` h LEFT JOIN Building b ON h.BuildingID=b.ID
+      <dynamic prepend="WHERE">
+        <isNotNull prepend="AND" property="ID">
+          h.`ID`=#ID#
+        </isNotNull>
+
+        <isNotNull prepend="AND"  property="IDs">
+          <iterate property="IDs" open="(" close=")" conjunction="OR">
+            h.`ID`=#IDs[]#
+          </iterate>
+        </isNotNull>
+        <isNotNull prepend="AND" property="BuildingID">
+          h.`BuildingID`=#BuildingID#
+        </isNotNull>
+
+        <isNotNull prepend="AND"  property="BuildingIDs">
+          <iterate property="BuildingIDs" open="(" close=")" conjunction="OR">
+            h.`BuildingID`=#BuildingIDs[]#
+          </iterate>
+        </isNotNull>
+        <isNotNull prepend="AND" property="Name">
+          h.`Name` LIKE '%$Name$%'
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="Floor_Start">
+          h.`Floor`&gt;=#Floor_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="Floor_End">
+          h.`Floor`&lt;=#Floor_End#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="Floor">
+          h.`Floor`=#Floor#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="RoomCount">
+          h.`RoomCount`=#RoomCount#
+        </isNotNull>
+        <isNotNull prepend="AND" property="IsOurs">
+          h.`IsOurs`=#IsOurs#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="HallCount">
+          h.`HallCount`=#HallCount#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="ToiletCount">
+          h.`ToiletCount`=#ToiletCount#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="Creator">
+          h.`Creator`=#Creator#
+        </isNotNull>
+
+        <isNotNull prepend="AND"  property="Creators">
+          <iterate property="Creators" open="(" close=")" conjunction="OR">
+            h.`Creator`=#Creators[]#
+          </iterate>
+        </isNotNull>
+        <isNotNull prepend="AND" property="CreateTime_Start">
+          h.`CreateTime`&gt;=#CreateTime_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="CreateTime_End">
+          h.`CreateTime`&lt;=#CreateTime_End#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="LastUpdator">
+          h.`LastUpdator`=#LastUpdator#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="LastUpdateTime_Start">
+          h.`LastUpdateTime`&gt;=#LastUpdateTime_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="LastUpdateTime_End">
+          h.`LastUpdateTime`&lt;=#LastUpdateTime_End#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="Remark">
+          h.`Remark` LIKE '%$Remark$%'
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="RentType">
+          h.`RentType`=#RentType#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="RoomNumber">
+          h.`RoomNumber`=#RoomNumber#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="HallNumber">
+          h.`HallNumber`=#HallNumber#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="ToiletNumber">
+          h.`ToiletNumber`=#ToiletNumber#
+        </isNotNull>
+
+        <isNotNull prepend="AND" property="KitchenNumber">
+          h.`KitchenNumber`=#KitchenNumber#
+        </isNotNull>
+        <isNotNull prepend="AND" property="IsDeleted">
+          h.`IsDeleted`=#IsDeleted#
+        </isNotNull>
+        <isNotNull prepend="AND" property="Enabled">
+          h.`Enabled`=#Enabled#
+        </isNotNull>
+        <isNotNull prepend="AND" property="Area_Start">
+          h.`Area`&gt;=#Area_Start#
+        </isNotNull>
+        <isNotNull prepend="AND" property="Area_End">
+          h.`Area`&lt;=#Area_End#
+        </isNotNull>
+        <isNotNull prepend="AND" property="OwnerID">
+          h.`OwnerID`=#OwnerID#
+        </isNotNull>
+
+        <isNotNull prepend="AND"  property="OwnerIDs">
+          <iterate property="OwnerIDs" open="(" close=")" conjunction="OR">
+            h.`OwnerID`=#OwnerIDs[]#
+          </iterate>
+        </isNotNull>
+        <isNotNull prepend="AND" property="BuildingName">
+          b.`Name` LIKE '%$BuildingName$%'
+        </isNotNull>
+      </dynamic>
+    </select>
   
   </statements>
 </sqlMap>

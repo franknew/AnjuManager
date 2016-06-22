@@ -58,9 +58,11 @@
     <Compile Include="Entities\DataDictionaryGroup.cs" />
     <Compile Include="Entities\FileVersion.cs" />
     <Compile Include="Entities\Followup.cs" />
+    <Compile Include="Entities\FollowupModel.cs" />
     <Compile Include="Entities\FullBill.cs" />
     <Compile Include="Entities\FullFollowup.cs" />
     <Compile Include="Entities\FullHouse.cs" />
+    <Compile Include="Entities\FullLogonHistory.cs" />
     <Compile Include="Entities\FullOtherFeeBill.cs" />
     <Compile Include="Entities\FullRoleInfo.cs" />
     <Compile Include="Entities\FullUser.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Entities\Module.cs" />
     <Compile Include="Entities\OtherFee.cs" />
     <Compile Include="Entities\OtherFeeBill.cs" />
+    <Compile Include="Entities\PagingEntity.cs" />
     <Compile Include="Entities\RentFee.cs" />
     <Compile Include="Entities\RentPeriodType.cs" />
     <Compile Include="Entities\Role.cs" />
@@ -94,6 +97,8 @@
     <Compile Include="QueryForm\DataDictionaryGroupQueryForm.cs" />
     <Compile Include="QueryForm\DataDictionaryQueryForm.cs" />
     <Compile Include="QueryForm\FollowupQueryForm.cs" />
+    <Compile Include="QueryForm\FullFollowupQueryForm.cs" />
+    <Compile Include="QueryForm\FullLogonHistoryQueryForm.cs" />
     <Compile Include="QueryForm\FullUserQueryForm.cs" />
     <Compile Include="QueryForm\HouseQueryForm.cs" />
     <Compile Include="QueryForm\House_CustomerQueryForm.cs" />
@@ -105,6 +110,7 @@
     <Compile Include="QueryForm\ModuleQueryForm.cs" />
     <Compile Include="QueryForm\OtherFeeBillQueryForm.cs" />
     <Compile Include="QueryForm\OtherFeeQueryForm.cs" />
+    <Compile Include="QueryForm\FullCustomerQueryForm.cs" />
     <Compile Include="QueryForm\RentFeeQueryForm.cs" />
     <Compile Include="QueryForm\RentPeriodTypeQueryForm.cs" />
     <Compile Include="QueryForm\RoleQueryForm.cs" />

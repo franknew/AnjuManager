@@ -83,8 +83,41 @@ namespace WinformTest
 
         private void button9_Click(object sender, EventArgs e)
         {
-            TakeHouseBLL bll = new TakeHouseBLL();
-            var list = bll.Query(new QueryHouseServiceForm { Enabled = 1, IsDeleted = 0 });
+            FollowupBLL bll = new FollowupBLL();
+            HouseBLL housebll = new HouseBLL();
+            BuildingBLL buildingbll = new BuildingBLL();
+            UserBLL userbll = new UserBLL();
+            CustomerBLL customerbll = new CustomerBLL();
+            House_CustomerBLL hcbll = new House_CustomerBLL();
+            PagingEntity<FollowupModel> result = new PagingEntity<FollowupModel>();
+            result.Record = new List<FollowupModel>();
+            var list = bll.QueryFullFollowup(new FullFollowupQueryForm { });
+            var houseids = (from f in list select f.HouseID).Distinct().ToList();
+            var houses = housebll.Query(new HouseQueryForm { IDs = houseids });
+            var buildingids = (from h in houses select h.BuildingID).Distinct().ToList();
+            var ownerids = (from h in houses where !string.IsNullOrEmpty(h.OwnerID) select h.OwnerID).Distinct().ToList();
+            var userids = (from f in list select f.Creator).Distinct().ToList();
+            var buildings = buildingbll.Query(new BuildingQueryForm { IDs = buildingids });
+            var hcs = hcbll.Query(new House_CustomerQueryForm { HouseOrRoomIDs = houseids });
+            var customerids = (from hc in hcs select hc.CustomerID).Distinct().ToList();
+            var customers = customerbll.Query(new CustomerQueryForm { IDs = customerids });
+            var users = userbll.SimpleQuery(new FullUserQueryForm { IDs = userids });
+            list.ForEach(t =>
+            {
+                FollowupModel followup = new FollowupModel
+                {
+                    House = houses.Find(p => p.ID.Equals(t.HouseID)),
+                    Followup = t,
+                    User = users.Find(p => p.ID.Equals(t.Creator)),
+                };
+                followup.Building = buildings.Find(p => p.ID.Equals(followup.House?.BuildingID));
+                followup.Owner = (from hc in hcs
+                                  join c in customers on hc.CustomerID equals c.ID
+                                  where hc.HouseOrRoomID.Equals(followup.House?.ID) && c.Type == (int)CustomerType.业主
+                                  select c).FirstOrDefault();
+                result.Record.Add(followup);
+            });
+            //result.RecordCount = bll.QueryFullFollowupCount(form);
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -96,6 +129,20 @@ namespace WinformTest
             var roleids = (from ur in urs select ur.RoleID).ToList();
             var role = rolebll.Query(new RoleQueryForm { IDs = roleids }).ToList();
             var result = rolebll.GetUserSubUserIDs("155f1092db4043a0b9ecd62a60ffc51d");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            UserBLL userbll = new UserBLL();
+            RentFeeBLL bll = new RentFeeBLL();
+            //MonitorCache.GetInstance().PushMessage(new CacheMessage { Message = "ids:" + string.Join(",", ids) }, SOAFramework.Library.CacheEnum.FormMonitor);
+            var data = bll.QueryFullHouse(new QueryHouseServiceForm { IsDeleted = 0, IsOurs = 1 });
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            MenuBLL menubll = new MenuBLL();
+            var data = menubll.Query(new MenuQueryForm { });
         }
     }
 }

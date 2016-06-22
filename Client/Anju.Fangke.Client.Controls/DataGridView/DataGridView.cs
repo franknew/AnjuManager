@@ -14,6 +14,10 @@ namespace SOAFramework.Client.Controls
 {
     public class DataGridView : System.Windows.Forms.DataGridView, IServiceBindable, IControlBindable
     {
+        public DataGridView()
+        {
+            this.AllowUserToOrderColumns = true;
+        }
         #region attribute
 
         #endregion
@@ -192,10 +196,26 @@ namespace SOAFramework.Client.Controls
 
         public void RemoveRow<T>(T row) 
         {
-            var datasource = this.DataSource as List<T>;
+            List<T> datasource = null;
+            DataTable dt = null;
+            bool isDatatable = false;
+            if (this.DataSource.GetType().IsGenericType) datasource = this.DataSource as List<T>;
+            else if (this.DataSource is DataTable)
+            {
+                dt = this.DataSource as DataTable;
+                isDatatable = true;
+            }
             this.DataSource = null;
-            datasource.Remove(row);
-            this.DataSource = datasource;
+            if (isDatatable)
+            {
+                dt.Rows.Remove((row as DataRowView).Row);
+                this.DataSource = dt;
+            }
+            else
+            {
+                datasource.Remove(row);
+                this.DataSource = datasource;
+            }
         }
 
         public void RemoveRow<T>(DataGridViewRow row)

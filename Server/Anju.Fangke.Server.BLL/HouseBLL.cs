@@ -40,6 +40,14 @@ namespace Anju.Fangke.Server.BLL
             return dao.Delete(form);
         }
 
+        public int QueryFullHouseCount(QueryHouseServiceForm form)
+        {
+            ISqlMapper mapper = MapperHelper.GetMapper();
+            HouseDao dao = new HouseDao(mapper);
+            form.IsDeleted = 0;
+            return dao.QueryFullHouseCount(form);
+        }
+
         public List<FullHouse> QueryFullHouse(QueryHouseServiceForm form)
         {
             List<FullHouse> list = new List<FullHouse>();

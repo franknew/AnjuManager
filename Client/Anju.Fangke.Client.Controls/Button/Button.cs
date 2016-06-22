@@ -87,29 +87,12 @@ namespace SOAFramework.Client.Controls
                 if (CheckFormInputEmpty(form)) return;
             if (EnableSyncClick)
             {
-                _worker = new BackgroundWorker();
-                _worker.WorkerSupportsCancellation = true;
-                if (EnableClickOnceOnAction)
-                {
-                    _status = this.Enabled;
-                    this.Enabled = false;
-                }
-                if (InitClick != null) InitClick.Invoke(this, e); 
-                //收集窗体数据
-                data = form.CollectData();
-                _worker.DoWork += worker_DoWork;
-                _worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-                Form parent = form;
-                if (form.MdiParent != null) parent = form.MdiParent;
-                form.ShowSpinner();
-                //将异步处理传递给窗体以支持取消异步
-                //dynamic dyForm = parentForm;
-                //dyForm.Worker = worker;
-                if (BeforeRunSyncClick != null) BeforeRunSyncClick.Invoke(this, e);
-                _worker.RunWorkerAsync();
+                if (InitClick != null) InitClick.Invoke(this, null);
+                StartSyncClick(form);
             }
             else
             {
+                if (InitClick != null) InitClick.Invoke(this, null);
                 base.OnClick(e);
                 ShowClickedMessage(form);
                 CloseParentForm(form);
@@ -118,41 +101,12 @@ namespace SOAFramework.Client.Controls
         #endregion
 
         #region event
-        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            BaseForm form = this.FindForm() as BaseForm;
-            BaseResponse baseresponse = Response as BaseResponse;
-            if (baseresponse == null)
-            {
-                form.HideSpinner();
-                return;
-            }
-            form.CheckLoginValid(baseresponse);
-            form.HideSpinner();
-
-            if (_handler.IsError)
-            {
-                SOAFramework.Client.Controls.MessageBox.Show(form, _handler.Message, "错误");
-                _handler.IsError = false;
-                return;
-            }
-
-            if (!IngoreCallbackOnce)
-            {
-                BindingResponse();
-                if (ClickCallback != null) ClickCallback.Invoke(this, e);
-                IngoreCallbackOnce = false;
-            }
-            if (EnableClickOnceOnAction) this.Enabled = _status;
-            ShowClickedMessage(form);
-            DisposeWorkder(sender);
-            CloseParentForm(form);
-        }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
+                #region 访问接口
                 if (!string.IsNullOrEmpty(RequestName))
                 {
                     Form form = this.FindForm();
@@ -191,6 +145,7 @@ namespace SOAFramework.Client.Controls
                     BaseResponse baseresponse = Response as BaseResponse;
                     //dynamic dyresponse = Response;
                 }
+                #endregion
             }
             catch (Exception ex)
             {
@@ -203,6 +158,37 @@ namespace SOAFramework.Client.Controls
             }
             if (this.InvokeRequired) this.Invoke(new ButtonClickInvoker(base.OnClick), e);
             else base.OnClick(e);
+        }
+
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            BaseForm form = this.FindForm() as BaseForm;
+            BaseResponse baseresponse = Response as BaseResponse;
+            if (baseresponse == null)
+            {
+                form.HideSpinner();
+                return;
+            }
+            form.CheckLoginValid(baseresponse);
+            form.HideSpinner();
+
+            if (_handler.IsError)
+            {
+                SOAFramework.Client.Controls.MessageBox.Show(form, _handler.Message, "错误");
+                _handler.IsError = false;
+                return;
+            }
+
+            if (!IngoreCallbackOnce)
+            {
+                BindingResponse();
+                if (ClickCallback != null) ClickCallback.Invoke(this, e);
+                IngoreCallbackOnce = false;
+            }
+            if (EnableClickOnceOnAction) this.Enabled = _status;
+            ShowClickedMessage(form);
+            DisposeWorkder(sender);
+            CloseParentForm(form);
         }
         #endregion
 
@@ -274,6 +260,31 @@ namespace SOAFramework.Client.Controls
                 var mainform = Form.FromHandle(Process.GetCurrentProcess().MainWindowHandle) as Form;
                 mainform.Activate();
             }
+        }
+        #endregion
+
+        #region action
+        public void StartSyncClick(BaseForm form)
+        {
+            _worker = new BackgroundWorker();
+            _worker.WorkerSupportsCancellation = true;
+            if (EnableClickOnceOnAction)
+            {
+                _status = this.Enabled;
+                this.Enabled = false;
+            }
+            //收集窗体数据
+            data = form.CollectData();
+            _worker.DoWork += worker_DoWork;
+            _worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            Form parent = form;
+            if (form.MdiParent != null) parent = form.MdiParent;
+            form.ShowSpinner();
+            //将异步处理传递给窗体以支持取消异步
+            //dynamic dyForm = parentForm;
+            //dyForm.Worker = worker;
+            if (BeforeRunSyncClick != null) BeforeRunSyncClick.Invoke(this, null);
+            _worker.RunWorkerAsync();
         }
         #endregion
         private delegate void ButtonClickInvoker(EventArgs e);

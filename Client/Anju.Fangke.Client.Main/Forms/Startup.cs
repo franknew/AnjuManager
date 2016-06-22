@@ -107,15 +107,26 @@ namespace Anju.Fangke.Client.Main
             }
         }
 
-        private void AddSubMenu_Resc(List<SDK.Menu> menus, ToolStripMenuItem item, string menuid)
+        private void AddSubMenu_Resc(List<SDK.Menu> menus, ToolStripItem item, string menuid)
         {
+            if (item == null) return;
             var submenus = menus.FindAll(t => t.ParentID == menuid);
+            submenus.Sort((l, r) => l.Index.Value - r.Index.Value);
             foreach (var m in submenus)
             {
-                ToolStripMenuItem submenu = new ToolStripMenuItem(m.Name);
-                submenu.Tag = m.Page;
-                submenu.Click += menu_Click;
-                item.DropDownItems.Add(submenu);
+                ToolStripItem submenu = null;
+                if (m.Name.Equals("-")) submenu = new ToolStripSeparator(); 
+                else
+                {
+                    submenu = new ToolStripMenuItem(m.Name);
+                    submenu.Tag = m.Page;
+                    submenu.Click += menu_Click;
+                }
+                if (item is ToolStripMenuItem)
+                {
+                    var asitem = item as ToolStripMenuItem;
+                    asitem.DropDownItems.Add(submenu);
+                }
                 AddSubMenu_Resc(menus, submenu, m.ID);
             }
         }

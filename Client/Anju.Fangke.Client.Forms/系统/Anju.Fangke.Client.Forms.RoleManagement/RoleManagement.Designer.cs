@@ -64,9 +64,9 @@
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnQuery);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(5, 30);
+            this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1123, 43);
+            this.groupBox1.Size = new System.Drawing.Size(1290, 43);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -152,9 +152,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(5, 73);
+            this.groupBox2.Location = new System.Drawing.Point(5, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1123, 59);
+            this.groupBox2.Size = new System.Drawing.Size(1290, 59);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -295,12 +295,12 @@
             this.启用,
             this.备注});
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvList.Location = new System.Drawing.Point(5, 132);
+            this.dgvList.Location = new System.Drawing.Point(5, 107);
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
             this.dgvList.RowTemplate.Height = 23;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(1123, 322);
+            this.dgvList.Size = new System.Drawing.Size(1290, 405);
             this.dgvList.TabIndex = 2;
             // 
             // 名称
@@ -356,13 +356,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 459);
+            this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.DisplayHeader = false;
             this.Name = "RoleManagement";
-            this.Padding = new System.Windows.Forms.Padding(5, 30, 5, 5);
             this.Text = "角色管理";
             this.InitControl += new System.EventHandler(this.RoleManagement_InitControl);
             this.ShownOnSync += new System.EventHandler(this.RoleManagement_ShownOnSync);

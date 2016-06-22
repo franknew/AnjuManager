@@ -85,7 +85,7 @@ namespace Anju.Fangke.Client.Forms
 
         private void BaseEditHouse_ShownOnSync(object sender, EventArgs e)
         {
-            QueryOwnerRequest ownerrequest = new QueryOwnerRequest();
+            QueryAllOwnerRequest ownerrequest = new QueryAllOwnerRequest();
             ownerrequest.token = this.Token;
             _ownerResponse = SDKFactory.Client.Execute(ownerrequest);
             //SDKSync<QueryOwnerResponse>.CreateInstance(this).Execute(ownerrequest, QueryOwner_Callback);
@@ -101,14 +101,6 @@ namespace Anju.Fangke.Client.Forms
             if (!string.IsNullOrEmpty(BuildingID)) cmbBuilding.SelectedValue = BuildingID;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AddFollowup form = new AddFollowup();
-            form.House = House;
-            form.Add_Callback += AddFollowup_Callback;
-            form.ShowDialog(this);
-        }
-
         private void AddFollowup_Callback(object sender, EventArgs e)
         {
             if (dgvFollowup.DataSource == null) dgvFollowup.DataSource = new List<Followup>();
@@ -116,6 +108,14 @@ namespace Anju.Fangke.Client.Forms
             var data = sender as Followup;
             list.Add(data);
             dgvFollowup.Reset();
+        }
+
+        private void btnAddFollowup_Click(object sender, EventArgs e)
+        {
+            AddFollowup form = new AddFollowup();
+            form.House = House;
+            form.Add_Callback += AddFollowup_Callback;
+            form.ShowDialog(this);
         }
     }
 }

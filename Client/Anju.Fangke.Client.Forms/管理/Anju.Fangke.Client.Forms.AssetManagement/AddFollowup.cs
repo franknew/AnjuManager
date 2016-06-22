@@ -21,7 +21,7 @@ namespace Anju.Fangke.Client.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Followup f = new Followup { HouseID = House.House.ID, Remark = txbRemark.Text, CreatorName = AppData.UserInfo.CnName };
+            Followup f = new Followup { HouseID = House?.House?.ID, Remark = txbRemark.Text, CreatorName = AppData.UserInfo.CnName };
             if (Add_Callback != null) Add_Callback.Invoke(f, e);
             this.Close();
         }

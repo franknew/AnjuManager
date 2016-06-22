@@ -1,0 +1,9 @@
+2016-04-10 14:15:51.005 - SELECT * FROM `OtherFee`                 ORDER BY LastUpdateTime DESC
+2016-04-10 14:15:51.077 - SELECT * FROM `OtherFeeBill`       WHERE  (            `BillID`= ?param0           OR             `BillID`= ?param1           OR             `BillID`= ?param2           OR             `BillID`= ?param3           OR             `BillID`= ?param4           OR             `BillID`= ?param5           OR             `BillID`= ?param6           )           ORDER BY LastUpdateTime DESC
+2016-04-10 14:16:16.567 - SELECT * FROM `OtherFee`                 ORDER BY LastUpdateTime DESC
+2016-04-10 14:16:16.584 - SELECT * FROM `OtherFeeBill`       WHERE  (            `BillID`= ?param0           OR             `BillID`= ?param1           OR             `BillID`= ?param2           OR             `BillID`= ?param3           OR             `BillID`= ?param4           OR             `BillID`= ?param5           OR             `BillID`= ?param6           )           ORDER BY LastUpdateTime DESC
+2016-04-10 14:16:18.876 - SELECT * FROM `OtherFee`                 ORDER BY LastUpdateTime DESC
+2016-04-10 14:16:18.895 - SELECT * FROM `OtherFeeBill`       WHERE  (            `BillID`= ?param0           OR             `BillID`= ?param1           OR             `BillID`= ?param2           OR             `BillID`= ?param3           OR             `BillID`= ?param4           OR             `BillID`= ?param5           OR             `BillID`= ?param6           )           ORDER BY LastUpdateTime DESC
+2016-04-10 23:01:11.638 - SELECT * FROM `House_OtherFee`       WHERE            `HouseOrRoomID`= ?param0
+2016-04-10 23:01:11.715 - SELECT * FROM `OtherFeeBill`       WHERE            `BillID`= ?param0                  ORDER BY LastUpdateTime DESC
+2016-04-10 23:01:11.738 - SELECT * FROM `OtherFee`       WHERE  (            `ID`= ?param0           OR             `ID`= ?param1           )           ORDER BY LastUpdateTime DESC

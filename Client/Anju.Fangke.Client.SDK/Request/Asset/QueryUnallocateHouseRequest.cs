@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Anju.Fangke.Client.SDK
 {
-    public class QueryUnallocateHouseRequest : FangkeRequest<QueryHouseResponse>
+    public class QueryUnallocateHouseRequest : FangkeRequest<QueryHousePagingResponse>
     {
         public override string GetApi()
         {
-            return "Anju.Fangke.Server.Api.TakeHouseApi.Query";
+            return "Anju.Fangke.Server.Api.AssetManagerApi.QueryUnallocateHousePaging";
         }
 
         public HouseQueryForm form { get; set; }

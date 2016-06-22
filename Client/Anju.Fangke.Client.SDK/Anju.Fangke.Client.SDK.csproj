@@ -76,6 +76,9 @@
     <Compile Include="Entity\Bill.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\Followup.cs" />
+    <Compile Include="Entity\FullFollowup.cs" />
+    <Compile Include="Entity\LogonHistory.cs" />
+    <Compile Include="Entity\PagingEntity.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\UserEntireInfo.cs" />
     <Compile Include="Entity\UserInfo.cs" />
@@ -93,6 +96,8 @@
     <Compile Include="Entity\FullRoleInfo.cs" />
     <Compile Include="Entity\FullUser.cs" />
     <Compile Include="Form\CustomerQueryForm.cs" />
+    <Compile Include="Form\FollowupQueryForm.cs" />
+    <Compile Include="Form\FullFollowupQueryForm.cs" />
     <Compile Include="Form\FullUserQueryForm.cs" />
     <Compile Include="Entity\House.cs" />
     <Compile Include="Form\HouseQueryForm.cs" />
@@ -107,6 +112,7 @@
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\UserFullInfo.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Form\LogonHistoryQueryForm.cs" />
     <Compile Include="Form\MenuQueryForm.cs" />
     <Compile Include="Form\RoleQueryForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +126,14 @@
     <Compile Include="Request\Asset\QueryAllocateHouseRequest.cs" />
     <Compile Include="Request\Asset\QueryBuildingRequest.cs" />
     <Compile Include="Request\Asset\QueryHouseRequest.cs" />
+    <Compile Include="Request\Asset\QueryOurHouseRequest.cs" />
+    <Compile Include="Request\Bill\DeleteBillRequest.cs" />
+    <Compile Include="Request\Customer\AddRenterRequest.cs" />
+    <Compile Include="Request\Customer\QueryAllOwnerRequest.cs" />
+    <Compile Include="Request\Customer\QueryRenterPagingRequest.cs" />
+    <Compile Include="Request\Customer\QueryRenterRequest.cs" />
+    <Compile Include="Request\Followup\QueryFullFollowupRequest.cs" />
+    <Compile Include="Request\LogonHistory\QueryLogonHistoryRequest.cs" />
     <Compile Include="Request\Rent\AddRentFeeRequest.cs" />
     <Compile Include="Request\Rent\QueryOtherFeeRequest.cs" />
     <Compile Include="Request\Rent\QueryRentFeeRequest.cs" />
@@ -154,7 +168,11 @@
     <Compile Include="Response\Asset\AddHouseResponse.cs" />
     <Compile Include="AddModelResponse.cs" />
     <Compile Include="Response\Asset\QueryBuildingResponse.cs" />
+    <Compile Include="Response\Asset\QueryHousePagingResponse.cs" />
     <Compile Include="Response\Asset\QueryHouseResponse.cs" />
+    <Compile Include="Response\Customer\QueryCustomerPagingResponse.cs" />
+    <Compile Include="Response\Followup\QueryFullFollowupResponse.cs" />
+    <Compile Include="Response\LogonHistory\QueryLogonHistoryResponse.cs" />
     <Compile Include="Response\Rent\QueryOtherFeeResponse.cs" />
     <Compile Include="CommonResponse.cs" />
     <Compile Include="Response\Bill\GenerateBillResponse.cs" />

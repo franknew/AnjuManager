@@ -26,5 +26,10 @@ namespace Anju.Fangke.Client.SDK
         public FullUser Owner { get; set; }
 
         public List<Followup> Followups { get; set; }
+
+        /// <summary>
+        /// 租客
+        /// </summary>
+        public Customer Renter { get; set; }
     }
 }

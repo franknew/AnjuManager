@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
+            this.btnClose = new SOAFramework.Client.Controls.Button();
+            this.btnDelete = new SOAFramework.Client.Controls.Button();
             this.btnEdit = new SOAFramework.Client.Controls.Button();
             this.btnGenerate = new SOAFramework.Client.Controls.Button();
             this.btnQuery = new SOAFramework.Client.Controls.Button();
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
+            this.txbRentDay = new SOAFramework.Client.Controls.TextBox();
             this.label5 = new SOAFramework.Client.Controls.Label();
             this.cmbHouse = new SOAFramework.Client.Controls.ComboBox();
             this.label4 = new SOAFramework.Client.Controls.Label();
@@ -52,7 +55,6 @@
             this.交租日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.应收 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.已收 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txbRentDay = new SOAFramework.Client.Controls.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
@@ -60,15 +62,44 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClose);
+            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnGenerate);
             this.groupBox1.Controls.Add(this.btnQuery);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(5, 30);
+            this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(933, 44);
+            this.groupBox1.Size = new System.Drawing.Size(1290, 44);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.ClickedMessage = null;
+            this.btnClose.CloseFormAfterInvoke = true;
+            this.btnClose.IngoreCallbackOnce = false;
+            this.btnClose.Location = new System.Drawing.Point(330, 15);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.RequestName = "";
+            this.btnClose.Response = null;
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "退出";
+            this.btnClose.UseSelectable = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.ClickedMessage = null;
+            this.btnDelete.IngoreCallbackOnce = false;
+            this.btnDelete.Location = new System.Drawing.Point(249, 15);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Response = null;
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.UseSelectable = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -122,11 +153,31 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.dateTimeComboPicker1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(5, 74);
+            this.groupBox2.Location = new System.Drawing.Point(5, 49);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(933, 94);
+            this.groupBox2.Size = new System.Drawing.Size(1290, 94);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // txbRentDay
+            // 
+            this.txbRentDay.BindingRequestPropertyName = "form.RentDay";
+            this.txbRentDay.BindingResponsePropertyName = null;
+            this.txbRentDay.BindingSourcePropertyName = null;
+            this.txbRentDay.EmptyToNull = true;
+            this.txbRentDay.EmptyWarning = null;
+            this.txbRentDay.InputType = SOAFramework.Client.Controls.InputType.整数;
+            this.txbRentDay.Lines = new string[0];
+            this.txbRentDay.Location = new System.Drawing.Point(430, 14);
+            this.txbRentDay.MaxLength = 32767;
+            this.txbRentDay.Name = "txbRentDay";
+            this.txbRentDay.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txbRentDay.SelectedText = "";
+            this.txbRentDay.SelectionLength = 0;
+            this.txbRentDay.SelectionStart = 0;
+            this.txbRentDay.Size = new System.Drawing.Size(117, 23);
+            this.txbRentDay.TabIndex = 8;
+            this.txbRentDay.UseSelectable = true;
             // 
             // label5
             // 
@@ -217,6 +268,7 @@
             this.dateTimeComboPicker1.BindingRequestPropertyName = null;
             this.dateTimeComboPicker1.BindingResponsePropertyName = null;
             this.dateTimeComboPicker1.BindingSourcePropertyName = null;
+            this.dateTimeComboPicker1.CollectFormat = null;
             this.dateTimeComboPicker1.FontSize = MetroFramework.MetroDateTimeSize.Small;
             this.dateTimeComboPicker1.Location = new System.Drawing.Point(624, 13);
             this.dateTimeComboPicker1.MinimumSize = new System.Drawing.Size(0, 25);
@@ -235,14 +287,14 @@
             this.dgvBill.BindingRequestPropertyName = null;
             this.dgvBill.BindingResponsePropertyName = "Table";
             this.dgvBill.BindingSourcePropertyName = null;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -254,13 +306,13 @@
             this.应收,
             this.已收});
             this.dgvBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBill.Location = new System.Drawing.Point(5, 168);
+            this.dgvBill.Location = new System.Drawing.Point(5, 143);
             this.dgvBill.MultiSelect = false;
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.ReadOnly = true;
             this.dgvBill.RowTemplate.Height = 23;
             this.dgvBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBill.Size = new System.Drawing.Size(933, 315);
+            this.dgvBill.Size = new System.Drawing.Size(1290, 369);
             this.dgvBill.TabIndex = 2;
             // 
             // ID
@@ -306,8 +358,8 @@
             // 交租日期
             // 
             this.交租日期.DataPropertyName = "交租日期";
-            dataGridViewCellStyle10.Format = "\\yyyy-MM-dd";
-            this.交租日期.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Format = "\\yyyy-MM-dd";
+            this.交租日期.DefaultCellStyle = dataGridViewCellStyle2;
             this.交租日期.HeaderText = "交租日期";
             this.交租日期.Name = "交租日期";
             this.交租日期.ReadOnly = true;
@@ -327,37 +379,15 @@
             this.已收.Name = "已收";
             this.已收.ReadOnly = true;
             // 
-            // txbRentDay
-            // 
-            this.txbRentDay.BindingRequestPropertyName = "form.RentDay";
-            this.txbRentDay.BindingResponsePropertyName = null;
-            this.txbRentDay.BindingSourcePropertyName = null;
-            this.txbRentDay.EmptyToNull = true;
-            this.txbRentDay.EmptyWarning = null;
-            this.txbRentDay.InputType = SOAFramework.Client.Controls.InputType.整数;
-            this.txbRentDay.Lines = new string[0];
-            this.txbRentDay.Location = new System.Drawing.Point(430, 14);
-            this.txbRentDay.MaxLength = 32767;
-            this.txbRentDay.Name = "txbRentDay";
-            this.txbRentDay.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txbRentDay.SelectedText = "";
-            this.txbRentDay.SelectionLength = 0;
-            this.txbRentDay.SelectionStart = 0;
-            this.txbRentDay.Size = new System.Drawing.Size(117, 23);
-            this.txbRentDay.TabIndex = 8;
-            this.txbRentDay.UseSelectable = true;
-            // 
             // BillManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 488);
+            this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Controls.Add(this.dgvBill);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.DisplayHeader = false;
             this.Name = "BillManagement";
-            this.Padding = new System.Windows.Forms.Padding(5, 30, 5, 5);
             this.Text = "账单管理";
             this.InitControl += new System.EventHandler(this.BillManagement_InitControl);
             this.Shown += new System.EventHandler(this.BillManagement_Shown);
@@ -394,5 +424,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 应收;
         private System.Windows.Forms.DataGridViewTextBoxColumn 已收;
         private SOAFramework.Client.Controls.TextBox txbRentDay;
+        private SOAFramework.Client.Controls.Button btnClose;
+        private SOAFramework.Client.Controls.Button btnDelete;
     }
 }

@@ -138,6 +138,8 @@ namespace Anju.Fangke.Client.SDK
         /// </summary>
         public string ContractCode { get; set; }
 
+        public int IsOurs { get; set; }
+
         public string HouseTypeName
         {
             get

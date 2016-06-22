@@ -16,5 +16,7 @@ namespace Anju.Fangke.Server.Form
         public DateTime? RentDate_Start { get; set; }
         public DateTime? RentDate_End { get; set; }
         public int? Status { get; set; }
+        public int? IsDeleted { get; set; }
+        public int? Enabled { get; set; }
     }
 }

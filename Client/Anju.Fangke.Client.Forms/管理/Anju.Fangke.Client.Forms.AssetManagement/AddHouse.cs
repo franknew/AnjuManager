@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Anju.Fangke.Client.SDK;
 using SOAFramework.Client.Controls;
 using SOAFramework.Client.Forms;
+using SOAFramework.Library;
 using SOAFramework.Service.SDK.Core;
 
 namespace Anju.Fangke.Client.Forms
@@ -47,7 +48,8 @@ namespace Anju.Fangke.Client.Forms
         private void AddHouse_Callback(AddHouseResponse response)
         {
             House.House.ID = response.Result.HouseID;
-            House.Building = cmbBuilding.SelectedItem as Building;
+            House.Building = (cmbBuilding.SelectedItem as Building).Clone<Building>();
+            if (House.Followups != null) House.Followups.ForEach(t => t.HouseID = House.House.ID);
             //this.Building.CurrentHouse.RentFee.ID = response.Result.RentFeeID;
             if (Add_Callback != null) Add_Callback.Invoke(House, null);
             SOAFramework.Client.Controls.MessageBox.Show(this, "新增房间成功");

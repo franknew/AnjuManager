@@ -72,7 +72,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(5, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1184, 54);
+            this.groupBox1.Size = new System.Drawing.Size(1290, 54);
             this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             // 
@@ -171,7 +171,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(5, 55);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1184, 89);
+            this.groupBox2.Size = new System.Drawing.Size(1290, 89);
             this.groupBox2.TabIndex = 200;
             this.groupBox2.TabStop = false;
             // 
@@ -319,6 +319,7 @@
             // 
             this.dgvUsers.AllowUserToAddRows = false;
             this.dgvUsers.AllowUserToDeleteRows = false;
+            this.dgvUsers.AllowUserToOrderColumns = true;
             this.dgvUsers.AutoGenerateColumns = false;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvUsers.BindingRequestPropertyName = null;
@@ -349,7 +350,7 @@
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowTemplate.Height = 23;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(1184, 341);
+            this.dgvUsers.Size = new System.Drawing.Size(1290, 368);
             this.dgvUsers.TabIndex = 2;
             // 
             // 用户名
@@ -420,11 +421,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1194, 490);
+            this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.DisplayHeader = false;
             this.Name = "UserManagement";
             this.Padding = new System.Windows.Forms.Padding(5, 1, 5, 5);
             this.Text = "员工管理";

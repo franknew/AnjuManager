@@ -167,20 +167,20 @@ namespace Anju.Fangke.Client.Forms
                 }
             }
             groupBox3.Text = building.Name;
-            QuerySelfAndUnallocateHouseRequest request = new QuerySelfAndUnallocateHouseRequest();
+            QueryUnallocateHouseRequest request = new QueryUnallocateHouseRequest();
             request.token = this.Token;
             request.form = new HouseQueryForm
             {
                 BuildingID = building.ID,
             };
-            var response = new SDKSync<QueryHouseResponse>(this).Execute(request, tvBuilding_AfterSelect_CallBack);
+            var response = new SDKSync<QueryHousePagingResponse>(this).Execute(request, tvBuilding_AfterSelect_CallBack);
         }
 
-        private void tvBuilding_AfterSelect_CallBack(QueryHouseResponse r)
+        private void tvBuilding_AfterSelect_CallBack(QueryHousePagingResponse r)
         {
             FullBuilding buiding = tvBuilding.SelectedNode.Tag as FullBuilding;
             if (buiding == null) return;
-            buiding.House = r.List;
+            buiding.House = r.List.Record;
             tabFloor_SelectedIndexChanged(this, null);
         }
 

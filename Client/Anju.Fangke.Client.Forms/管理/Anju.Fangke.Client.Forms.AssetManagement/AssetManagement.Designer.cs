@@ -33,6 +33,13 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("房客易租");
             this.groupBox3 = new SOAFramework.Client.Controls.GroupBox();
             this.dgvHouse = new SOAFramework.Client.Controls.DataGridView();
+            this.房间名称 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.所在楼层 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.房型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.装修类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.业主信息 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox1 = new SOAFramework.Client.Controls.GroupBox();
             this.btnEditRoom = new SOAFramework.Client.Controls.Button();
             this.btnDelete = new SOAFramework.Client.Controls.Button();
@@ -41,13 +48,6 @@
             this.tabFloor = new MetroFramework.Controls.MetroTabControl();
             this.groupBox2 = new SOAFramework.Client.Controls.GroupBox();
             this.tvBuilding = new SOAFramework.Client.Controls.TreeView();
-            this.房间名称 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.所在楼层 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.房型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.装修类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.备注 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.业主信息 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHouse)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -62,7 +62,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(233, 30);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(859, 424);
+            this.groupBox3.Size = new System.Drawing.Size(1062, 482);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
@@ -70,6 +70,7 @@
             // 
             this.dgvHouse.AllowUserToAddRows = false;
             this.dgvHouse.AllowUserToDeleteRows = false;
+            this.dgvHouse.AllowUserToOrderColumns = true;
             this.dgvHouse.AutoGenerateColumns = false;
             this.dgvHouse.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvHouse.BindingRequestPropertyName = null;
@@ -106,9 +107,70 @@
             this.dgvHouse.ReadOnly = true;
             this.dgvHouse.RowTemplate.Height = 23;
             this.dgvHouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHouse.Size = new System.Drawing.Size(853, 312);
+            this.dgvHouse.Size = new System.Drawing.Size(1056, 370);
             this.dgvHouse.TabIndex = 1;
             this.dgvHouse.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHouse_CellContentClick);
+            // 
+            // 房间名称
+            // 
+            this.房间名称.DataPropertyName = "House.Name";
+            this.房间名称.HeaderText = "房间名称";
+            this.房间名称.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.房间名称.Name = "房间名称";
+            this.房间名称.ReadOnly = true;
+            this.房间名称.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.房间名称.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.房间名称.Width = 80;
+            // 
+            // 所在楼层
+            // 
+            this.所在楼层.DataPropertyName = "House.Floor";
+            this.所在楼层.HeaderText = "所在楼层";
+            this.所在楼层.Name = "所在楼层";
+            this.所在楼层.ReadOnly = true;
+            this.所在楼层.Width = 80;
+            // 
+            // 房型
+            // 
+            this.房型.DataPropertyName = "House.HouseTypeName";
+            this.房型.HeaderText = "房型";
+            this.房型.Name = "房型";
+            this.房型.ReadOnly = true;
+            this.房型.Width = 120;
+            // 
+            // 装修类型
+            // 
+            this.装修类型.DataPropertyName = "House.DecorationTypeName";
+            this.装修类型.HeaderText = "装修类型";
+            this.装修类型.Name = "装修类型";
+            this.装修类型.ReadOnly = true;
+            this.装修类型.Width = 80;
+            // 
+            // 状态
+            // 
+            this.状态.DataPropertyName = "House.StatusName";
+            this.状态.HeaderText = "状态";
+            this.状态.Name = "状态";
+            this.状态.ReadOnly = true;
+            this.状态.Width = 80;
+            // 
+            // 备注
+            // 
+            this.备注.DataPropertyName = "House.Remark";
+            this.备注.HeaderText = "备注";
+            this.备注.Name = "备注";
+            this.备注.ReadOnly = true;
+            this.备注.Width = 200;
+            // 
+            // 业主信息
+            // 
+            this.业主信息.DataPropertyName = "Customer.Name";
+            this.业主信息.HeaderText = "业主信息";
+            this.业主信息.Name = "业主信息";
+            this.业主信息.ReadOnly = true;
+            this.业主信息.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.业主信息.Text = "查看业主";
+            this.业主信息.Width = 80;
             // 
             // groupBox1
             // 
@@ -119,7 +181,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 56);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(853, 53);
+            this.groupBox1.Size = new System.Drawing.Size(1056, 53);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -183,7 +245,7 @@
             this.tabFloor.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabFloor.Location = new System.Drawing.Point(3, 17);
             this.tabFloor.Name = "tabFloor";
-            this.tabFloor.Size = new System.Drawing.Size(853, 39);
+            this.tabFloor.Size = new System.Drawing.Size(1056, 39);
             this.tabFloor.TabIndex = 0;
             this.tabFloor.UseSelectable = true;
             // 
@@ -193,7 +255,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox2.Location = new System.Drawing.Point(5, 30);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(228, 424);
+            this.groupBox2.Size = new System.Drawing.Size(228, 482);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             // 
@@ -206,79 +268,17 @@
             treeNode1.Text = "房客易租";
             this.tvBuilding.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
-            this.tvBuilding.Size = new System.Drawing.Size(222, 404);
+            this.tvBuilding.Size = new System.Drawing.Size(222, 462);
             this.tvBuilding.TabIndex = 0;
             this.tvBuilding.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvBuilding_NodeMouseClick);
-            // 
-            // 房间名称
-            // 
-            this.房间名称.DataPropertyName = "House.Name";
-            this.房间名称.HeaderText = "房间名称";
-            this.房间名称.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.房间名称.Name = "房间名称";
-            this.房间名称.ReadOnly = true;
-            this.房间名称.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.房间名称.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.房间名称.Width = 80;
-            // 
-            // 所在楼层
-            // 
-            this.所在楼层.DataPropertyName = "House.Floor";
-            this.所在楼层.HeaderText = "所在楼层";
-            this.所在楼层.Name = "所在楼层";
-            this.所在楼层.ReadOnly = true;
-            this.所在楼层.Width = 80;
-            // 
-            // 房型
-            // 
-            this.房型.DataPropertyName = "House.HouseTypeName";
-            this.房型.HeaderText = "房型";
-            this.房型.Name = "房型";
-            this.房型.ReadOnly = true;
-            this.房型.Width = 120;
-            // 
-            // 装修类型
-            // 
-            this.装修类型.DataPropertyName = "House.DecorationTypeName";
-            this.装修类型.HeaderText = "装修类型";
-            this.装修类型.Name = "装修类型";
-            this.装修类型.ReadOnly = true;
-            this.装修类型.Width = 80;
-            // 
-            // 状态
-            // 
-            this.状态.DataPropertyName = "House.StatusName";
-            this.状态.HeaderText = "状态";
-            this.状态.Name = "状态";
-            this.状态.ReadOnly = true;
-            this.状态.Width = 80;
-            // 
-            // 备注
-            // 
-            this.备注.DataPropertyName = "House.Remark";
-            this.备注.HeaderText = "备注";
-            this.备注.Name = "备注";
-            this.备注.ReadOnly = true;
-            this.备注.Width = 200;
-            // 
-            // 业主信息
-            // 
-            this.业主信息.DataPropertyName = "Customer.Name";
-            this.业主信息.HeaderText = "业主信息";
-            this.业主信息.Name = "业主信息";
-            this.业主信息.ReadOnly = true;
-            this.业主信息.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.业主信息.Text = "查看业主";
-            this.业主信息.Width = 80;
             // 
             // AssetManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 459);
+            this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.DisplayHeader = false;
             this.Name = "AssetManagement";
             this.Padding = new System.Windows.Forms.Padding(5, 30, 5, 5);
             this.Text = "楼盘房源管理";

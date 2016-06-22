@@ -40,7 +40,6 @@
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Location = new System.Drawing.Point(5, 5);
             this.groupBox1.Controls.SetChildIndex(this.btnQuery, 0);
             this.groupBox1.Controls.SetChildIndex(this.btnClose, 0);
             this.groupBox1.Controls.SetChildIndex(this.btnAdd, 0);
@@ -53,11 +52,7 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.RequestName = "QuerySelfAndUnallocateHouseRequest";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(5, 46);
+            this.btnQuery.RequestName = "QueryUnallocateHouseRequest";
             // 
             // cmbDecorationType
             // 
@@ -92,6 +87,14 @@
             // txbContractCode
             // 
             this.txbContractCode.Lines = new string[0];
+            // 
+            // txbAreaEnd
+            // 
+            this.txbAreaEnd.Lines = new string[0];
+            // 
+            // txbAreaStart
+            // 
+            this.txbAreaStart.Lines = new string[0];
             // 
             // btnAdd
             // 
@@ -138,8 +141,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 517);
             this.Name = "HouseManagement";
-            this.Padding = new System.Windows.Forms.Padding(5);
-            this.Text = "房源管理";
+            this.Text = "公盘管理";
             this.OnShown += new System.EventHandler(this.HouseManagement_OnShown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

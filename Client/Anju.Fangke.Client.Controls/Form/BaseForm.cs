@@ -262,18 +262,20 @@ namespace SOAFramework.Client.Forms
             {
                 if (!string.IsNullOrEmpty(binding.InitableBindingGroupName)) groups.Add(binding.InitableBindingGroupName);
             }
-            if (groups.Count == 0) return;
-            var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
-            if (sdk == null) return;
-            var types = sdk.GetTypes();
-            var requestType = types.FirstOrDefault(t => t.Name == "QueryDataDictionaryByNameRequest");
-            if (requestType == null) return;
-            dynamic request = Activator.CreateInstance(requestType);
-            request.NameList = groups;
-            request.token = this.Token;
-            var responseType = requestType.BaseType.GetGenericArguments()[0];
-            object Response = SDKFactory.Client.Execute(request, responseType);
-            e.Result = Response;
+            if (groups.Count > 0)
+            {
+                var sdk = Assembly.Load("Anju.Fangke.Client.SDK");
+                if (sdk == null) return;
+                var types = sdk.GetTypes();
+                var requestType = types.FirstOrDefault(t => t.Name == "QueryDataDictionaryByNameRequest");
+                if (requestType == null) return;
+                dynamic request = Activator.CreateInstance(requestType);
+                request.NameList = groups;
+                request.token = this.Token;
+                var responseType = requestType.BaseType.GetGenericArguments()[0];
+                object Response = SDKFactory.Client.Execute(request, responseType);
+                e.Result = Response;
+            }
 
             if (ShownOnSync != null) ShownOnSync(param.Data, e);
             #endregion

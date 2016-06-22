@@ -1,0 +1,733 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Anju.Fangke.Server.Entity</name>
+    </assembly>
+    <members>
+        <member name="P:Anju.Fangke.Server.Model.Action.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.AuthorityNodeForCheck.ID">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.AuthorityNodeForCheck.Name">
+            <summary>
+            显示用的名称
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.AuthorityNodeForCheck.Checked">
+            <summary>
+            是否选中，true为有权限，false为无权限
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.HouseOrRoomID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.ShouldPay">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.Payed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.PayDay">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.Year">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Bill.Month">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.ProvinceID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.CityID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.AreaID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.Street">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.FloorCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Building.DistrictID">
+            <summary>
+            片区ID
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.ChargeFee.UnitPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.ChargeFee.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.ChargeFee.CalType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.ChargeFee.Unit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.ChargeFee.PeriodTypeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.ChargeFee.IsShared">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.ChargeFee.RoomID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Customer.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Customer.Mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Customer.WX">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Customer.IdentityCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Customer.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Customer.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Customer.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.DataDictionary.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.DataDictionary.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.DataDictionary.DataDictionaryGroupID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.DataDictionaryGroup.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.DataDictionaryGroup.ParentID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Followup.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Followup.HouseID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.FullRoleInfo.ParentRoleName">
+            <summary>
+            父角色名称
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.FullRoleInfo.Authority">
+            <summary>
+            权限列表
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.BuildingID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.Floor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RoomCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.HallCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.ToiletCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RentType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RoomNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.HallNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.ToiletNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.KitchenNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.OwnerID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.Area">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.IsRented">
+            <summary>
+            是否出租
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.Cost">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.SalePrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.KeyCode">
+            <summary>
+            钥匙编号
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.Status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.DecorationType">
+            <summary>
+            装修类型
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RentFee">
+            <summary>
+            收房租金
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RentDateStart">
+            <summary>
+            收房租期
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RentDateEnd">
+            <summary>
+            收房租期
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RentRemark">
+            <summary>
+            收房备注
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.ContractCode">
+            <summary>
+            合同编号
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.IsOurs">
+            <summary>
+            是否自己承包
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House.RentDay">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House_Customer.CustomerID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House_Customer.HouseOrRoomID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House_Customer.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House_OtherFee.HouseOrRoomID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House_OtherFee.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.House_OtherFee.OtherFeeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Level.DataAccessType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.LogonHistory.UserID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.LogonHistory.Token">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.LogonHistory.LogonTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.LogonHistory.IP">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.LogonHistory.ActiveTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu.Page">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu.ParentID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu.ImagePath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu.Index">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu_Role.MenuID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Menu_Role.RoleID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Module.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFee.FeeType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFee.UnitPrice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFee.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFee.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFee.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFee.IsShared">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFeeBill.BillID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFeeBill.StartValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFeeBill.EndValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFeeBill.OtherFeeID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.OtherFeeBill.Fee">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.HouseOrRoomID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.RentMoney">
+            <summary>
+            租金
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.Cycle">
+            <summary>
+            收租周期
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.CycleType">
+            <summary>
+            周期类型
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.Deposit">
+            <summary>
+            押金
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.RentDay">
+            <summary>
+            租房日期
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.ExpiredTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.ContractCode">
+            <summary>
+            合同编号
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.RentDateStart">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentFee.RentDateEnd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.RentPeriodType.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role.DataAccessType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role.ParentID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role.LevelID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role_Module_Action.RoleID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role_Module_Action.ModuleID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Role_Module_Action.ActionID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Room.HouseID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Room.Area">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Room.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Room.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.Room.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.User.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.User.Enabled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.User.IsDeleted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.UserInfo.QQ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.UserInfo.Mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.UserInfo.WX">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.UserInfo.Address">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.UserInfo.Identity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.UserInfo.CnName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.UserInfo.Remark">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.User_Role.UserID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Anju.Fangke.Server.Model.User_Role.RoleID">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

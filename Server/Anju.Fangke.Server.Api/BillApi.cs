@@ -17,6 +17,8 @@ namespace Anju.Fangke.Server.Api
         
         public DataTable Query(QueryFullBillServiceForm form)
         {
+            form.IsDeleted = 0;
+            form.Enabled = 1;
             return bll.QueryFullBill(form);
         }
 
@@ -34,6 +36,15 @@ namespace Anju.Fangke.Server.Api
         public bool Update(BillModel Bill)
         {
             return bll.Update(Bill);
+        }
+
+        public bool Delete(string billid)
+        {
+            return bll.Update(new BillUpdateForm
+            {
+                BillQueryForm = new BillQueryForm { ID = billid },
+                Entity = new Bill { IsDeleted = 1 }
+            });
         }
     }
 }

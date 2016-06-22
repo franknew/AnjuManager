@@ -16,6 +16,12 @@ namespace Anju.Fangke.Client.Forms
         public BaseQueryHouse()
         {
             InitializeComponent();
+            pager1.Paging += Pager1_Paging;
+        }
+
+        private void Pager1_Paging(object sender, SOAFramework.Client.Controls.Pager.PagingEventArgs e)
+        {
+            btnQuery.StartSyncClick(this);
         }
 
         protected List<FullBuilding> _buildings;
@@ -47,6 +53,16 @@ namespace Anju.Fangke.Client.Forms
             }
             if (!dgvList.Columns[e.ColumnIndex].Equals(业主信息) || dgvList.CurrentRow == null) return;
 
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnQuery_InitClick(object sender, EventArgs e)
+        {
+            pager1.CurrentPageIndex = 1;
+            btnQuery.StartSyncClick(this);
         }
     }
 }

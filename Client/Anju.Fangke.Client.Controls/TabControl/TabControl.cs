@@ -42,7 +42,7 @@ namespace SOAFramework.Client.Controls
             using (Brush selectionBrush = new SolidBrush(MetroPaint.GetStyleColor(Style)))
             {
                 Rectangle selectedTabRect = GetTabRect(index);
-                Rectangle borderRectangle = new Rectangle(selectedTabRect.X + ((index == 0) ? 2 : 0), GetTabRect(index).Bottom + 2 - TabBottomBorderHeight, selectedTabRect.Width + ((index == 0) ? 0 : 2), TabBottomBorderHeight);
+                Rectangle borderRectangle = new Rectangle(selectedTabRect.X + ((index == 0) ? 2 : 0), GetTabRect(index).Bottom + 2 - TabBottomBorderHeight, Convert.ToInt32(graphics.MeasureString(tabPage.Text, tabPage.Font).Width) , TabBottomBorderHeight);
                 graphics.FillRectangle(selectionBrush, borderRectangle);
             }
 

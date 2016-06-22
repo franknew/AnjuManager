@@ -9,7 +9,7 @@ namespace Anju.Fangke.Client.SDK
     {
         public override string GetApi()
         {
-            return "Anju.Fangke.Server.Api.CustomerApi.QueryOwner";
+            return "Anju.Fangke.Server.Api.CustomerApi.QueryOurHouseOwner";
         }
 
         public CustomerQueryForm form { get; set; }

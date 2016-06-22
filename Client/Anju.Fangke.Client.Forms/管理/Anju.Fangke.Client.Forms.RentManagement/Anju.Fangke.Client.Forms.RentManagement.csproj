@@ -144,6 +144,10 @@
       <Project>{1f23da0f-1907-46cc-9a71-2eb02c04b2c4}</Project>
       <Name>Anju.Fangke.Client.Forms.AssetManagement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Anju.Fangke.Client.Forms.CustomerManagement\Anju.Fangke.Client.Forms.CustomerManagement.csproj">
+      <Project>{942a1d7a-148d-4844-818c-71dff8c2b5ae}</Project>
+      <Name>Anju.Fangke.Client.Forms.CustomerManagement</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddOtherFee.resx">

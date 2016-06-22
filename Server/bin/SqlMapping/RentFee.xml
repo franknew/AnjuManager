@@ -154,6 +154,32 @@
         `ExpiredTime`=#ExpiredTime#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="ContractCode">
+        `ContractCode`=#ContractCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateStart_Start">
+        `RentDateStart`&gt;=#RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_End">
+        `RentDateStart`&lt;=#RentDateStart_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateStart">
+        `RentDateStart`=#RentDateStart#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateEnd_Start">
+        `RentDateEnd`&gt;=#RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_End">
+        `RentDateEnd`&lt;=#RentDateEnd_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateEnd">
+        `RentDateEnd`=#RentDateEnd#
+    </isNotNull>
+    
     </dynamic>
         ORDER BY LastUpdateTime DESC
     <isNotNull property="PageSize">
@@ -165,41 +191,127 @@
   <insert id="AddRentFee" parameterClass="RentFee">
   INSERT INTO `RentFee`
   (
-    `ID`,
-    `HouseOrRoomID`,
-    `Type`,
-    `RentMoney`,
-    `Cycle`,
-    `CycleType`,
-    `Remark`,
-    `Deposit`,
-    `Creator`,
-    `CreateTime`,
-    `LastUpdator`,
-    `LastUpdateTime`,
-    `RentDay`,
-    `Enabled`,
-    `IsDeleted`,
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    `ID`
+    </isNotNull>
+    <isNotNull prepend="," property="HouseOrRoomID">
+    `HouseOrRoomID`
+    </isNotNull>
+    <isNotNull prepend="," property="Type">
+    `Type`
+    </isNotNull>
+    <isNotNull prepend="," property="RentMoney">
+    `RentMoney`
+    </isNotNull>
+    <isNotNull prepend="," property="Cycle">
+    `Cycle`
+    </isNotNull>
+    <isNotNull prepend="," property="CycleType">
+    `CycleType`
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    `Remark`
+    </isNotNull>
+    <isNotNull prepend="," property="Deposit">
+    `Deposit`
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    `Creator`
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    `CreateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    `LastUpdator`
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    `LastUpdateTime`
+    </isNotNull>
+    <isNotNull prepend="," property="RentDay">
+    `RentDay`
+    </isNotNull>
+    <isNotNull prepend="," property="Enabled">
+    `Enabled`
+    </isNotNull>
+    <isNotNull prepend="," property="IsDeleted">
+    `IsDeleted`
+    </isNotNull>
+    <isNotNull prepend="," property="ExpiredTime">
     `ExpiredTime`
+    </isNotNull>
+    <isNotNull prepend="," property="ContractCode">
+    `ContractCode`
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateStart">
+    `RentDateStart`
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateEnd">
+    `RentDateEnd`
+    </isNotNull>
+  </dynamic>
   )
   VALUES
   (
-        #ID#,
-        #HouseOrRoomID#,
-        #Type#,
-        #RentMoney#,
-        #Cycle#,
-        #CycleType#,
-        #Remark#,
-        #Deposit#,
-        #Creator#,
-        #CreateTime#,
-        #LastUpdator#,
-        #LastUpdateTime#,
-        #RentDay#,
-        #Enabled#,
-        #IsDeleted#,
-        #ExpiredTime#
+  <dynamic prepend=" ">
+    <isNotNull prepend="," property="ID">
+    #ID#
+    </isNotNull>
+    <isNotNull prepend="," property="HouseOrRoomID">
+    #HouseOrRoomID#
+    </isNotNull>
+    <isNotNull prepend="," property="Type">
+    #Type#
+    </isNotNull>
+    <isNotNull prepend="," property="RentMoney">
+    #RentMoney#
+    </isNotNull>
+    <isNotNull prepend="," property="Cycle">
+    #Cycle#
+    </isNotNull>
+    <isNotNull prepend="," property="CycleType">
+    #CycleType#
+    </isNotNull>
+    <isNotNull prepend="," property="Remark">
+    #Remark#
+    </isNotNull>
+    <isNotNull prepend="," property="Deposit">
+    #Deposit#
+    </isNotNull>
+    <isNotNull prepend="," property="Creator">
+    #Creator#
+    </isNotNull>
+    <isNotNull prepend="," property="CreateTime">
+    #CreateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdator">
+    #LastUpdator#
+    </isNotNull>
+    <isNotNull prepend="," property="LastUpdateTime">
+    #LastUpdateTime#
+    </isNotNull>
+    <isNotNull prepend="," property="RentDay">
+    #RentDay#
+    </isNotNull>
+    <isNotNull prepend="," property="Enabled">
+    #Enabled#
+    </isNotNull>
+    <isNotNull prepend="," property="IsDeleted">
+    #IsDeleted#
+    </isNotNull>
+    <isNotNull prepend="," property="ExpiredTime">
+    #ExpiredTime#
+    </isNotNull>
+    <isNotNull prepend="," property="ContractCode">
+    #ContractCode#
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateStart">
+    #RentDateStart#
+    </isNotNull>
+    <isNotNull prepend="," property="RentDateEnd">
+    #RentDateEnd#
+    </isNotNull>
+  </dynamic>
   )
   </insert>
   <update id="UpdateRentFee" parameterClass="RentFeeUpdateForm">
@@ -249,6 +361,15 @@
         </isNotNull>
         <isNotNull prepend="," property="Entity.ExpiredTime">
         `ExpiredTime`=#Entity.ExpiredTime#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.ContractCode">
+        `ContractCode`=#Entity.ContractCode#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentDateStart">
+        `RentDateStart`=#Entity.RentDateStart#
+        </isNotNull>
+        <isNotNull prepend="," property="Entity.RentDateEnd">
+        `RentDateEnd`=#Entity.RentDateEnd#
         </isNotNull>
     </dynamic>
     <dynamic prepend="WHERE">
@@ -356,6 +477,24 @@
     </isNotNull>
     <isNotNull prepend="AND" property="RentFeeQueryForm.ExpiredTime_End">
         `ExpiredTime`&lt;=#RentFeeQueryForm.ExpiredTime_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.ContractCode">
+        `ContractCode`=#RentFeeQueryForm.ContractCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentDateStart_Start">
+        `RentDateStart`&gt;=#RentFeeQueryForm.RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentDateStart_End">
+        `RentDateStart`&lt;=#RentFeeQueryForm.RentDateStart_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentDateEnd_Start">
+        `RentDateEnd`&gt;=#RentFeeQueryForm.RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentFeeQueryForm.RentDateEnd_End">
+        `RentDateEnd`&lt;=#RentFeeQueryForm.RentDateEnd_End#
     </isNotNull>
     
     </dynamic>
@@ -469,6 +608,24 @@
         `ExpiredTime`&lt;=#ExpiredTime_End#
     </isNotNull>
     
+    <isNotNull prepend="AND" property="ContractCode">
+        `ContractCode`=#ContractCode#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateStart_Start">
+        `RentDateStart`&gt;=#RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_End">
+        `RentDateStart`&lt;=#RentDateStart_End#
+    </isNotNull>
+    
+    <isNotNull prepend="AND" property="RentDateEnd_Start">
+        `RentDateEnd`&gt;=#RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_End">
+        `RentDateEnd`&lt;=#RentDateEnd_End#
+    </isNotNull>
+    
   </delete>
    <select id="QueryRentFeeLastUpdateTime" resultClass="DateTime">
         SELECT MAX(LastUpdateTime) AS LastUpdateTime FROM `RentFee`
@@ -565,6 +722,21 @@
     </isNotNull>
     <isNotNull prepend="AND" property="ExpiredTime_End">
         `ExpiredTime`&lt;=#ExpiredTime_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="ContractCode">
+        `ContractCode`=#ContractCode#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_Start">
+        `RentDateStart`&gt;=#RentDateStart_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateStart_End">
+        `RentDateStart`&lt;=#RentDateStart_End#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_Start">
+        `RentDateEnd`&gt;=#RentDateEnd_Start#
+    </isNotNull>
+    <isNotNull prepend="AND" property="RentDateEnd_End">
+        `RentDateEnd`&lt;=#RentDateEnd_End#
     </isNotNull>
     </dynamic>
    </select>

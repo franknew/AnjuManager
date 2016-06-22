@@ -23,21 +23,21 @@ namespace Anju.Fangke.Client.Forms
 
         public event EventHandler SaveCallback;
 
+        private QueryUserResponse _response;
+
         private void LoadUser_Callback(QueryUserResponse response)
         {
-            cmbEmployee.DataSource = response.Users;
         }
 
         private void AllocatePopup_Shown(object sender, EventArgs e)
         {
-            QueryUserRequest request = new QueryUserRequest();
-            request.token = this.Token;
-            request.form = new FullUserQueryForm { };
-            SDKSync<QueryUserResponse>.CreateInstance(this).Execute(request, LoadUser_Callback);
         }
 
         private void AllocatePopup_InitControl(object sender, EventArgs e)
         {
+            if (_response.Users != null) _response.Users.Insert(0, new FullUser { ID = "", Name = "" });
+            cmbEmployee.DataSource = _response.Users;
+
             txbHouseID.Text = House.House.ID;
             cmbEmployee.SelectedValue = House.House.OwnerID;
         }
@@ -47,6 +47,14 @@ namespace Anju.Fangke.Client.Forms
             House.Owner = cmbEmployee.SelectedItem as FullUser;
             if (SaveCallback != null) SaveCallback.Invoke(sender, e);
             this.Close();
+        }
+
+        private void AllocatePopup_ShownOnSync(object sender, EventArgs e)
+        {
+            QueryUserRequest request = new QueryUserRequest();
+            request.token = this.Token;
+            request.form = new FullUserQueryForm { };
+            _response = SDKSync<QueryUserResponse>.CreateInstance(this).Execute(request);
         }
     }
 }
